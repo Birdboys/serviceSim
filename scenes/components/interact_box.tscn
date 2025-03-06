@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://x3a8ykssvsxo"]
+
+[ext_resource type="Script" uid="uid://d1j2lwyb1pg46" path="res://scripts/components/interact_box.gd" id="1_lbeof"]
+
+[node name="interactBox" type="Area3D"]
+visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_lbeof")

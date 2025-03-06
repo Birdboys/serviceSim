@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dedlrs3cw2r5k"]
+
+[ext_resource type="Script" uid="uid://bimiasyw8ftob" path="res://scripts/components/trash_box.gd" id="1_rwgdd"]
+
+[node name="trashBox" type="Area3D"]
+visible = false
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_rwgdd")

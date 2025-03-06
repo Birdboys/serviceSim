@@ -1,0 +1,255 @@
+[gd_scene load_steps=14 format=3 uid="uid://b5hxccw6xqmdh"]
+
+[ext_resource type="Script" uid="uid://b28ay6my54ijt" path="res://scripts/player/player_character.gd" id="1_56udc"]
+[ext_resource type="Script" uid="uid://8cg5k2ajkd8v" path="res://scripts/state_machine.gd" id="2_6r27q"]
+[ext_resource type="Script" uid="uid://m6w2sksvujgj" path="res://scripts/player/player_states/off_state.gd" id="3_kww55"]
+[ext_resource type="Script" uid="uid://c7464u45hf2xm" path="res://scripts/player/player_states/walk_state.gd" id="4_4h0vy"]
+[ext_resource type="Script" uid="uid://1xyu436nbq8" path="res://scripts/player/player_states/jump_state.gd" id="5_2vmgx"]
+[ext_resource type="Script" uid="uid://ctf47d27ditpd" path="res://scripts/player/player_ui.gd" id="5_uj7mf"]
+[ext_resource type="Script" uid="uid://nx7h0i1s6ano" path="res://scripts/bag_state.gd" id="6_6unfe"]
+[ext_resource type="Script" uid="uid://crfem2a7ajljt" path="res://scripts/player/player_states/fall_state.gd" id="7_pxja8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yqrqw"]
+height = 3.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_56udc"]
+height = 3.0
+
+[sub_resource type="Animation" id="Animation_6unfe"]
+resource_name = "open_bag"
+length = 0.75
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playerUI/uiCont/bagMarginCont/bagVbox/bagPanel:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playerUI/uiCont/bagMarginCont:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playerUI/uiCont/bagMarginCont:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_pxja8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playerUI/uiCont/bagMarginCont/bagVbox/bagPanel:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playerUI/uiCont/bagMarginCont:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playerUI/uiCont/bagMarginCont:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iadup"]
+_data = {
+&"RESET": SubResource("Animation_pxja8"),
+&"open_bag": SubResource("Animation_6unfe")
+}
+
+[node name="playerCharacter" type="CharacterBody3D"]
+script = ExtResource("1_56udc")
+
+[node name="playerMesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_yqrqw")
+
+[node name="playerCol" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_56udc")
+
+[node name="playerNeck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="playerCam" type="Camera3D" parent="playerNeck"]
+current = true
+fov = 65.0
+size = 64.999
+far = 500.0
+
+[node name="interactRay" type="RayCast3D" parent="playerNeck/playerCam"]
+target_position = Vector3(0, 0, -4)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="trashHand" type="Node3D" parent="playerNeck/playerCam"]
+
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_6r27q")
+initial_state = NodePath("fallState")
+
+[node name="offState" type="Node" parent="stateMachine"]
+script = ExtResource("3_kww55")
+camera_control = false
+movement_control = false
+interact_control = false
+
+[node name="walkState" type="Node" parent="stateMachine"]
+script = ExtResource("4_4h0vy")
+
+[node name="jumpState" type="Node" parent="stateMachine"]
+script = ExtResource("5_2vmgx")
+
+[node name="bagState" type="Node" parent="stateMachine"]
+script = ExtResource("6_6unfe")
+camera_control = false
+movement_control = false
+interact_control = false
+
+[node name="fallState" type="Node" parent="stateMachine"]
+script = ExtResource("7_pxja8")
+
+[node name="playerUI" type="CanvasLayer" parent="."]
+script = ExtResource("5_uj7mf")
+
+[node name="uiCont" type="Control" parent="playerUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="marginCont" type="MarginContainer" parent="playerUI/uiCont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="promptVbox" type="VBoxContainer" parent="playerUI/uiCont/marginCont"]
+layout_mode = 2
+
+[node name="promptSpacer" type="Control" parent="playerUI/uiCont/marginCont/promptVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.1
+mouse_filter = 2
+
+[node name="promptLabel" type="Label" parent="playerUI/uiCont/marginCont/promptVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+
+[node name="crossHair" type="TextureRect" parent="playerUI/uiCont"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bagMarginCont" type="MarginContainer" parent="playerUI/uiCont"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 64
+
+[node name="bagVbox" type="VBoxContainer" parent="playerUI/uiCont/bagMarginCont"]
+layout_mode = 2
+
+[node name="bagSpacer" type="Control" parent="playerUI/uiCont/bagMarginCont/bagVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="bagPanel" type="Panel" parent="playerUI/uiCont/bagMarginCont/bagVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+mouse_filter = 1
+
+[node name="bagScroll" type="ScrollContainer" parent="playerUI/uiCont/bagMarginCont/bagVbox/bagPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bagGrid" type="GridContainer" parent="playerUI/uiCont/bagMarginCont/bagVbox/bagPanel/bagScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="bagAnim" type="AnimationPlayer" parent="playerUI"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_iadup")
+}

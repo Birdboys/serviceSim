@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpi5xw7k5r43u"]
+
+[ext_resource type="Script" uid="uid://ccypjrjxvcuac" path="res://scripts/components/trash_scatterer.gd" id="1_2npaj"]
+
+[node name="trashScatterer" type="Node3D"]
+script = ExtResource("1_2npaj")
+valid_rects = Array[Rect2i]([Rect2i(0, 0, 20, 20)])
