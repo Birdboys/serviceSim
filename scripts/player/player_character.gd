@@ -9,7 +9,7 @@ extends CharacterBody3D
 
 var sensitivity := 0.0015
 var gravity = 10.0
-var speed := 15.0
+var speed := 75.0
 
 func _ready() -> void:
 	stateMachine.initialize(self)

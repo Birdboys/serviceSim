@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://3auaj033xy3f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5yohy"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yohy"]
+albedo_color = Color(0.635294, 0.662745, 0.278431, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5yohy"]
+material = SubResource("StandardMaterial3D_5yohy")
+size = Vector3(100, 1, 100)
+
+[node name="grassTile" type="Node3D"]
+
+[node name="groundBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_mask = 0
+
+[node name="groundCol" type="CollisionShape3D" parent="groundBody"]
+shape = SubResource("BoxShape3D_5yohy")
+
+[node name="grassMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_5yohy")

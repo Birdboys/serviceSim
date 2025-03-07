@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckld4a3si6dyh"]
+[gd_scene load_steps=8 format=3 uid="uid://ckld4a3si6dyh"]
 
 [ext_resource type="PackedScene" uid="uid://b5hxccw6xqmdh" path="res://scenes/player_character.tscn" id="1_uhjjb"]
 [ext_resource type="PackedScene" uid="uid://x3a8ykssvsxo" path="res://scenes/components/interact_box.tscn" id="2_b3mux"]
+[ext_resource type="PackedScene" uid="uid://dadx7l4klw7tr" path="res://scenes/tiles/road_l_tile.tscn" id="3_nbain"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0i8xb"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -34,10 +35,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(30, 1, 30)
-
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -2)
 size = Vector3(2, 5, 2)
@@ -64,3 +61,5 @@ interactCol = NodePath("CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D5/interactBox"]
 shape = SubResource("BoxShape3D_nbain")
+
+[node name="roadLTile" parent="." instance=ExtResource("3_nbain")]

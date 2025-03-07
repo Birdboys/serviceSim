@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WFCTileDesc" load_steps=2 format=3 uid="uid://c658h1puuq1a6"]
+
+[ext_resource type="Script" uid="uid://btbha5wivv4yy" path="res://addons/wfc/wfc_tile_description.gd" id="1_vdgfq"]
+
+[resource]
+script = ExtResource("1_vdgfq")
+tile_type = 6
+rot_vals = Array[int]([0])
+top_connectors = Array[int]([2, 0])
+bottom_connectors = Array[int]([2, 0])
+left_connectors = Array[int]([2, 0])
+right_connectors = Array[int]([2, 0])
+top_illegal_tiles = Array[int]([6])
+bottom_illegal_tiles = Array[int]([6])
+left_illegal_tiles = Array[int]([6])
+right_illegal_tiles = Array[int]([6])

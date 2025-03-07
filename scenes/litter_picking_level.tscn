@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://0knb5mcvwdki"]
+
+[ext_resource type="Script" uid="uid://bdu2knapkrjsi" path="res://scripts/litter_picking_level.gd" id="1_27wqk"]
+[ext_resource type="PackedScene" uid="uid://b5hxccw6xqmdh" path="res://scenes/player_character.tscn" id="2_s2r40"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_27wqk"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_s2r40"]
+sky_material = SubResource("ProceduralSkyMaterial_27wqk")
+
+[sub_resource type="Environment" id="Environment_5f2k8"]
+background_mode = 2
+sky = SubResource("Sky_s2r40")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="litterPickingLevel" type="Node3D"]
+script = ExtResource("1_27wqk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5f2k8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="playerCharacter" parent="." instance=ExtResource("2_s2r40")]
+
+[node name="townTiles" type="Node3D" parent="."]
