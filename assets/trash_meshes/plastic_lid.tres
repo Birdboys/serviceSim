@@ -1,0 +1,33 @@
+[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://dcl77bw7kmdwn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7txio"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wm0j5"]
+_surfaces = [{
+"aabb": AABB(-0.27045, -5.96046e-08, -0.312288, 0.540898, 0.0293795, 0.624576),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAADAAEAAgADAAUABgAEAAAABgAHAAQACAAHAAYABQADAAkABQAJAAoAAwAEAAsACwAEAAcAAwALAAkACAALAAcACgAJAAsACgALAAgA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//8AAP+/AAD//////z8AAP//AAD/PwAA/3///wAAAAD//////78AAP9/AAAAAAAA/38AAP//AAD/f/////8AAAAAAAD/vwAAAAD///8/AAAAAAAA/z8AAAAA////vwAA")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "trash_models_Cylinder_012"
+_surfaces = [{
+"aabb": AABB(-0.27045, -5.96046e-08, -0.312288, 0.540898, 0.0293795, 0.624576),
+"attribute_data": PackedByteArray("//8AAP9//3//fwAA////f////3///wAA//8AAP9//3//f/9//38AAP//AAD/f/9//38AAP///3///wAA/3//f/9/AAD///9///8AAP9//3//fwAA////f///AAD/f/9//38AAP///3///wAA/3//f/9/AAD///9/"),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABQAEAAcABwAEAAgABQAHAAkACgALAAwACgANAAsADgAPABAADgARAA8AEgATABQAEgAVABMAFgAXABgAFgAZABcAGgAbABwAGgAdABsA"),
+"material": SubResource("StandardMaterial3D_7txio"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("//8AAP+//////////z//////AAD/P/////////+//////////7//v/9///8AAEzA//////8//78AAP///79MwP9///////+/AAD///8/usIAAAAA/z///wAA////v///AAAAAP+///8AAP///z//////AAD/P////3///wAA////fwAAAAD/////////P////38AAP///////////7//////AAD/v////3//////////fwAAAAD//wAA////P///AAAAAP8/////f///AAD//wAAAAD/v////3//////////fwAA/////wAA////v////7//f/+//3//v/9//7//f////3+M9htt////f4z2G23///9/qulWU/8//3//P/9//z//f/8//3/y5P9/8uT/f/Lk/3/y5P9/DJv/fwyb/38Mm/9/DJv/f///DJv//wyb//8Mm///DJvyZP9/8mT/f/Jk/3/yZP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_wm0j5")

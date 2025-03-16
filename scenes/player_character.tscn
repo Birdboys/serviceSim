@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5hxccw6xqmdh"]
+[gd_scene load_steps=15 format=3 uid="uid://b5hxccw6xqmdh"]
 
 [ext_resource type="Script" uid="uid://b28ay6my54ijt" path="res://scripts/player/player_character.gd" id="1_56udc"]
 [ext_resource type="Script" uid="uid://8cg5k2ajkd8v" path="res://scripts/state_machine.gd" id="2_6r27q"]
+[ext_resource type="PackedScene" uid="uid://c2uowl1x3nkn2" path="res://scenes/tools/basic_picker.tscn" id="2_iadup"]
 [ext_resource type="Script" uid="uid://m6w2sksvujgj" path="res://scripts/player/player_states/off_state.gd" id="3_kww55"]
 [ext_resource type="Script" uid="uid://c7464u45hf2xm" path="res://scripts/player/player_states/walk_state.gd" id="4_4h0vy"]
 [ext_resource type="Script" uid="uid://1xyu436nbq8" path="res://scripts/player/player_states/jump_state.gd" id="5_2vmgx"]
@@ -113,6 +114,7 @@ shape = SubResource("CapsuleShape3D_56udc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="playerCam" type="Camera3D" parent="playerNeck"]
+cull_mask = 1048573
 current = true
 fov = 65.0
 size = 64.999
@@ -123,6 +125,8 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="trashHand" type="Node3D" parent="playerNeck/playerCam"]
+
+[node name="basicPicker" parent="playerNeck/playerCam/trashHand" instance=ExtResource("2_iadup")]
 
 [node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_6r27q")
@@ -149,6 +153,27 @@ interact_control = false
 
 [node name="fallState" type="Node" parent="stateMachine"]
 script = ExtResource("7_pxja8")
+
+[node name="toolLayer" type="CanvasLayer" parent="."]
+
+[node name="toolCont" type="SubViewportContainer" parent="toolLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="toolViewport" type="SubViewport" parent="toolLayer/toolCont"]
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4294966274
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="toolCam" type="Camera3D" parent="toolLayer/toolCont/toolViewport"]
+cull_mask = 1047554
 
 [node name="playerUI" type="CanvasLayer" parent="."]
 script = ExtResource("5_uj7mf")

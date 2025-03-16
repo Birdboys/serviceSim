@@ -1,0 +1,33 @@
+[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://b7kkdkax538xq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xpjq8"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_c1kqp"]
+_surfaces = [{
+"aabb": AABB(-0.0882505, -0.0549211, -0.101903, 0.176501, 0.109842, 0.203806),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAgADAAQAAAAFAAEABgAFAAAABAADAAcAAQAHAAMABAAHAAgACQABAAUABgAJAAUABwABAAkACgAJAAYACAAHAAsACAALAAoABwAJAAsACgALAAkA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAP//AAD//////78AAP//AAD/vwAA//////8/AAD//wAA/z8AAP9//////wAAAAAAAP+/AAD/f///AAAAAP9/AAAAAAAAAAD///+/AAAAAAAA/z8AAAAA////PwAA")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "trash_models_Cylinder_028"
+_surfaces = [{
+"aabb": AABB(-0.0882505, -0.0549211, -0.101903, 0.176501, 0.109842, 0.203806),
+"attribute_data": PackedByteArray("/38AAAAA/38AAAAA/3//f/9//3//fwAA/38AAAAA/38AAP9/AAAAAP9/AAAAAP9/AAAAAP9//3//fwAAAAD/fwAAAAD/f/9//38AAAAA/38AAAAA/3//f/9/AAAAAP9/AAAAAP9//3//fwAAAAD/fwAAAAD/f/9/"),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABQAEAAcABwAEAAgABQAHAAkACgALAAwACgANAAsADgAPABAADgARAA8AEgATABQAEgAVABMAFgAXABgAFgAZABcAGgAbABwAGgAdABsA"),
+"material": SubResource("StandardMaterial3D_xpjq8"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("/38AAP///////////7//////AAD/v////3///////////////7//v/9///8AAEzA//////8//78AAP///79MwP9///////+/AAD///8/usL//wAA/z////9///8AAP///38AAAAA/////////z////9/AAAAAP//AAD///8///8AAAAA/z////9///8AAP//AAAAAP+/////f/////////9/AAD/////AAD///+//////wAA/7//////////P/////8AAP8//////////7///wAAAAD/P///AAD///+///8AAAAA/7///wAA////P///DJv/fwyb/38Mm/9/DJv/f////3+M9htt////f4z2G23///9/qulWU/Lk/3/y5P9/8uT/f/Lk/3///wyb//8Mm///DJv//wyb8mT/f/Jk/3/yZP9/8mT/f/+//3//v/9//7//f/+//3//P/9//z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_c1kqp")

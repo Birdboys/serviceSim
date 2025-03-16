@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckld4a3si6dyh"]
+[gd_scene load_steps=9 format=3 uid="uid://ckld4a3si6dyh"]
 
 [ext_resource type="PackedScene" uid="uid://b5hxccw6xqmdh" path="res://scenes/player_character.tscn" id="1_uhjjb"]
 [ext_resource type="PackedScene" uid="uid://x3a8ykssvsxo" path="res://scenes/components/interact_box.tscn" id="2_b3mux"]
 [ext_resource type="PackedScene" uid="uid://dadx7l4klw7tr" path="res://scenes/tiles/road_l_tile.tscn" id="3_nbain"]
+[ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="4_8ya4j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0i8xb"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -63,3 +64,13 @@ interactCol = NodePath("CollisionShape3D")
 shape = SubResource("BoxShape3D_nbain")
 
 [node name="roadLTile" parent="." instance=ExtResource("3_nbain")]
+
+[node name="trashScatterer" parent="." instance=ExtResource("4_8ya4j")]
+valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
+num_trash = 100
+trash_dist = {
+0: 1.0,
+1: 0.0,
+2: 0.0,
+3: 0.0
+}

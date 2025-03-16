@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var neck := $playerNeck
 @onready var cam := $playerNeck/playerCam
+@onready var toolCam := $toolLayer/toolCont/toolViewport/toolCam
 @onready var interactRay := $playerNeck/playerCam/interactRay
 @onready var trashHand := $playerNeck/playerCam/trashHand
 @onready var stateMachine := $stateMachine
@@ -9,13 +10,15 @@ extends CharacterBody3D
 
 var sensitivity := 0.0015
 var gravity = 10.0
-var speed := 75.0
+var speed := 5.0
 
 func _ready() -> void:
 	stateMachine.initialize(self)
 	UI.initBag(Vector2(4,4))
+	
 func _process(delta: float) -> void:
 	if stateMachine.current_state.movement_control: handleMovement(delta)
+	syncCameras()
 
 func _physics_process(delta: float) -> void:
 	if stateMachine.current_state.interact_control: handlePrompt()
@@ -27,6 +30,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("hotbar"):
 			var hb_key = int(OS.get_keycode_string(event.keycode))-1
 			equipTool(hb_key)
+
+func syncCameras():
+	toolCam.global_transform = cam.global_transform
 	
 func handleCamera(event):
 	if event is InputEventMouseButton or event is InputEventJoypadButton:

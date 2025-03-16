@@ -22,3 +22,6 @@ var total_money := 0
 
 func _ready() -> void:
 	tool_data = default_tool_data.duplicate(true)
+
+func weightedChoice():
+	pass

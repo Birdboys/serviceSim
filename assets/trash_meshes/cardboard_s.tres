@@ -1,0 +1,34 @@
+[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://b26jcuupqc0hv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gagag"]
+cull_mode = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4rboj"]
+_surfaces = [{
+"aabb": AABB(-0.663263, -4.26173e-08, -0.599706, 1.32652, 0.95913, 1.19941),
+"format": 34896613377,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAAACAAUAAgAEAAUABQAEAAYABQAGAAcABAAIAAkAAAAFAAoAAwAAAAoACgAFAAsACgALAAwABAANAAgAAwAKAA0AAQANAAQAAQADAA0ADQAKAA4ADQAOAA8A"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("8zkAAKLNAAALxgAAXDIAAAvGAACizQAA8zkAAFwyAAALxkCpXDIAAAvGQKmizQAA//9FvVwyAAD//0W9os0AAPM5//8AAAAAC8b//wAAAADzOUCpos0AAAvG/////wAA8zn/////AADzOUCpXDIAAAAARb2izQAAAABFvVwyAAA=")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "trash_models_Plane_007"
+_surfaces = [{
+"aabb": AABB(-0.663263, -4.26173e-08, -0.599706, 1.32652, 0.95913, 1.19941),
+"attribute_data": PackedByteArray("/38AAAAA/3//f/9/AAAAAP9/AAAAAP9//3//fwAAAAD/fwAAAAD/f/9//38AAAAA/38AAAAA/3//f/9/AAAAAP9/AAAAAP9//3//fwAAAAD//wAA/3//f////3//fwAA//8AAP9//3////9//38AAP//AAD/f/9/////f/9/AAD//wAA/3//f////3//fwAA"),
+"format": 34896613399,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEA"),
+"material": SubResource("StandardMaterial3D_gagag"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("8zkAAKLNqioLxgAAXDKqKgvGAACizaoq8zkAAFwyqioLxgAAos3/PwvGQKlcMv8/C8ZAqaLN/z8LxgAAXDL/P/M5AABcMv8/8zlAqaLN/z/zOUCpXDL/P/M5AACizf8/C8YAAFwy/n/zOUCpXDL+fwvGQKlcMv5/8zkAAFwy/n/zOQAAos0AAAvGQKmizQAA8zlAqaLNAAALxgAAos0AAAvGQKmizSsw//9FvVwyKzD//0W9os0rMAvGQKlcMisw8zlAqVwyKzAAAEW9os0rMAAARb1cMisw8zlAqaLNKzALxkCpXDJpZvM5//8AAGlmC8b//wAAaWbzOUCpXDJpZvM5QKmizQAAC8b/////AADzOf////8AAAvGQKmizQAAqqqqqqqqqqqqqqqqqqqqqv9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9///8Ep/WxBKf1sQSn9bEEp/WxCM4EJwjOBCcIzgQnCM4EJ////3////9/////f////3//f57g/3+e4P9/nuD/f57g")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_4rboj")

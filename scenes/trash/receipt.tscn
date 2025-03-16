@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2ca6j3q1u0ko"]
+
+[ext_resource type="Script" uid="uid://cd0r6h7jeknup" path="res://scripts/trash/trash_scene.gd" id="1_poit0"]
+[ext_resource type="PackedScene" uid="uid://x3a8ykssvsxo" path="res://scenes/components/interact_box.tscn" id="2_jn355"]
+[ext_resource type="PackedScene" uid="uid://dedlrs3cw2r5k" path="res://scenes/components/trash_box.tscn" id="3_tr0jv"]
+[ext_resource type="ArrayMesh" uid="uid://c2qygluxcxdpt" path="res://assets/trash_meshes/receipt.tres" id="4_poit0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tuyrs"]
+size = Vector3(0.628906, 0.29535, 1.43164)
+
+[node name="receipt" type="Node3D" node_paths=PackedStringArray("interactBox", "trashBox", "trashMesh")]
+script = ExtResource("1_poit0")
+interactBox = NodePath("interactBox")
+trashBox = NodePath("trashBox")
+trashMesh = NodePath("trashMesh")
+
+[node name="interactBox" parent="." node_paths=PackedStringArray("interactCol") instance=ExtResource("2_jn355")]
+interactCol = NodePath("interactCol")
+
+[node name="interactCol" type="CollisionShape3D" parent="interactBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0265907, 0)
+shape = SubResource("BoxShape3D_tuyrs")
+
+[node name="trashBox" parent="." node_paths=PackedStringArray("trashCol") instance=ExtResource("3_tr0jv")]
+visible = true
+paper = true
+trashCol = NodePath("trashCol")
+
+[node name="trashCol" type="CollisionShape3D" parent="trashBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0265907, 0)
+shape = SubResource("BoxShape3D_tuyrs")
+
+[node name="trashMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0)
+mesh = ExtResource("4_poit0")
