@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var promptLabel := $uiCont/marginCont/promptVbox/promptLabel
 @onready var bagLabel := $uiCont/marginCont/bagLabel
+@onready var timerLabel := $uiCont/marginCont/timerLabel
 @onready var bagGrid := $uiCont/bagMarginCont/bagVbox/bagPanel/bagScroll/bagGrid
 @onready var bagAnim := $bagAnim
 @onready var trashIcon := preload("res://scenes/ui/trash_icon.tscn")
@@ -30,3 +31,9 @@ func closeTrashBag():
 
 func updateBagLabel(v, m):
 	bagLabel.text = "%s/%s" % [v, m]
+
+func updateTimerLabel(t):
+	var min = int(floor(t/60))
+	var sec = int(t-(min*60))
+	if sec < 10: sec = "0%s" % sec
+	timerLabel.text = "%s:%s" % [min, sec]

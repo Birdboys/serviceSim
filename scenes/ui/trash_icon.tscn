@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dnxikvvig81cx" path="res://assets/trash_icons/icon_empty.png" id="2_ewkvx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7opn0"]
-bg_color = Color(0.294118, 0.305882, 0.309804, 1)
+bg_color = Color(0.607843, 0.670588, 0.698039, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16

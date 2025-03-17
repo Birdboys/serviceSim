@@ -18,7 +18,6 @@ func initTrash():
 	for x in range(num_trash):
 		var trash_type = TrashData.getWeightedChoice(trash_dist)
 		var new_trash = TrashData.getTrash(trash_type)
-		print(new_trash.name)
 		var new_trash_rect = valid_rects.pick_random()
 		var rect_beginning = new_trash_rect.position
 		var rect_end = new_trash_rect.end

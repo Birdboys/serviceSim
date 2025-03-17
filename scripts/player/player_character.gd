@@ -24,7 +24,7 @@ func _ready() -> void:
 	max_trash = bag_dim.x * bag_dim.y
 	UI.initBag(bag_dim)
 	UI.updateBagLabel(0, max_trash)
-	loadTrashTools(["basic_picker", "basic_picker"])
+	loadTrashTools(["basic_picker", "better_picker"])
 	
 func _process(delta: float) -> void:
 	if stateMachine.current_state.movement_control: handleMovement(delta)

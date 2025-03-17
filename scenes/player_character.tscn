@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5hxccw6xqmdh"]
+[gd_scene load_steps=17 format=3 uid="uid://b5hxccw6xqmdh"]
 
 [ext_resource type="Script" uid="uid://b28ay6my54ijt" path="res://scripts/player/player_character.gd" id="1_56udc"]
 [ext_resource type="Script" uid="uid://8cg5k2ajkd8v" path="res://scripts/state_machine.gd" id="2_6r27q"]
@@ -8,11 +8,15 @@
 [ext_resource type="Script" uid="uid://ctf47d27ditpd" path="res://scripts/player/player_ui.gd" id="5_uj7mf"]
 [ext_resource type="Script" uid="uid://nx7h0i1s6ano" path="res://scripts/bag_state.gd" id="6_6unfe"]
 [ext_resource type="Script" uid="uid://crfem2a7ajljt" path="res://scripts/player/player_states/fall_state.gd" id="7_pxja8"]
+[ext_resource type="Theme" uid="uid://djs6o2b5hx67f" path="res://assets/themes/game_ui.tres" id="9_herhr"]
 [ext_resource type="Texture2D" uid="uid://df3wg36bbpjuj" path="res://assets/crosshair.png" id="9_iadup"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yqrqw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_56udc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_herhr"]
+bg_color = Color(0.780392, 0.862745, 0.815686, 1)
 
 [sub_resource type="Animation" id="Animation_pxja8"]
 length = 0.001
@@ -171,6 +175,7 @@ size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="toolCam" type="Camera3D" parent="toolLayer/toolCont/toolViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 cull_mask = 1047554
 fov = 90.0
 
@@ -187,6 +192,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
+theme = ExtResource("9_herhr")
 
 [node name="marginCont" type="MarginContainer" parent="playerUI/uiCont"]
 layout_mode = 1
@@ -195,10 +201,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="promptVbox" type="VBoxContainer" parent="playerUI/uiCont/marginCont"]
 layout_mode = 2
@@ -221,6 +227,12 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 48
 horizontal_alignment = 2
+
+[node name="timerLabel" type="Label" parent="playerUI/uiCont/marginCont"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 48
 
 [node name="crossHair" type="TextureRect" parent="playerUI/uiCont"]
 layout_mode = 1
@@ -264,6 +276,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_herhr")
 
 [node name="bagScroll" type="ScrollContainer" parent="playerUI/uiCont/bagMarginCont/bagVbox/bagPanel"]
 layout_mode = 1
