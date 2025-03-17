@@ -17,7 +17,7 @@ func _ready() -> void:
 func initTrash():
 	for x in range(num_trash):
 		var trash_type = TrashData.getWeightedChoice(trash_dist)
-		var trash_subtype = TrashData.getWeightedSubtype()
+		var trash_skin = TrashData.getWeightedSkin()
 		var new_trash = TrashData.getTrash(trash_type)
 		var new_trash_rect = valid_rects.pick_random()
 		var rect_beginning = new_trash_rect.position
@@ -36,10 +36,10 @@ func initTrash():
 			break
 		add_child(new_trash)
 		#new_trash.getSubType(trash_type)
-		new_trash.loadTexture(trash_subtype)
+		if trash_type == TrashData.trash_types.METAL: new_trash.loadTexture(trash_skin)
+		#new_trash.loadTexture(trash_subtype)
 		new_trash.position = Vector3(new_trash_pos.x, randf() * -0.05, new_trash_pos.y)
 		new_trash.rotation = Vector3((randf()-0.5)*PI/20.0, randf() * 2 * PI, (randf()-0.5)*PI/20.0)
-		new_trash.type = trash_type
 		if x % 5 == 0: await get_tree().physics_frame
 	return
 

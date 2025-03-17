@@ -20,18 +20,18 @@ const paper_type_dist := {
 	paper_types.FAST_CUP_L:1.0
 }
 
-const paper_type_scenes := {
-	paper_types.NEWSPAPER:preload("res://scenes/trash/newspaper.tscn"), 
-	paper_types.MAGAZINE:preload("res://scenes/trash/magazine.tscn"), 
-	paper_types.RECEIPT:preload("res://scenes/trash/receipt.tscn"), 
-	paper_types.CARTON_S:preload("res://scenes/trash/carton_small.tscn"), 
-	paper_types.CARTON_L:preload("res://scenes/trash/carton_large.tscn"), 
-	paper_types.CARDBOARD_S:preload("res://scenes/trash/cardboard_small.tscn"), 
-	paper_types.CARDBOARD_M:preload("res://scenes/trash/cardboard_medium.tscn"), 
-	paper_types.CARDBOARD_L:preload("res://scenes/trash/cardboard_large.tscn"), 
-	paper_types.CEREAL:preload("res://scenes/trash/cereal_box.tscn"), 
-	paper_types.FAST_CUP_S:preload("res://scenes/trash/fast_cup_small.tscn"), 
-	paper_types.FAST_CUP_L:preload("res://scenes/trash/fast_cup_large.tscn")
+@onready var paper_type_data := {
+	paper_types.NEWSPAPER: {"scene":preload("res://scenes/trash/newspaper.tscn"), "sub_name":"newspaper", "textures":[]}, 
+	paper_types.MAGAZINE: {"scene":preload("res://scenes/trash/magazine.tscn"), "sub_name":"magazine", "textures":[]}, 
+	paper_types.RECEIPT: {"scene":preload("res://scenes/trash/receipt.tscn"), "sub_name":"receipt", "textures":[]}, 
+	paper_types.CARTON_S: {"scene":preload("res://scenes/trash/carton_small.tscn"), "sub_name":"carton_small", "textures":[]},
+	paper_types.CARTON_L: {"scene":preload("res://scenes/trash/carton_large.tscn"), "sub_name":"carton_large", "textures":[]},
+	paper_types.CARDBOARD_S: {"scene":preload("res://scenes/trash/cardboard_small.tscn"), "sub_name":"cardboard_small", "textures":[]},
+	paper_types.CARDBOARD_M: {"scene":preload("res://scenes/trash/cardboard_medium.tscn"), "sub_name":"cardboard_medium", "textures":[]},
+	paper_types.CARDBOARD_L: {"scene":preload("res://scenes/trash/cardboard_large.tscn"), "sub_name":"cardboard_large", "textures":[]},
+	paper_types.CEREAL: {"scene":preload("res://scenes/trash/cereal_box.tscn"), "sub_name":"cereal_box", "textures":[]},
+	paper_types.FAST_CUP_S: {"scene":preload("res://scenes/trash/fast_cup_small.tscn"), "sub_name":"fast_cup_small", "textures":[]},
+	paper_types.FAST_CUP_L: {"scene":preload("res://scenes/trash/fast_cup_large.tscn"), "sub_name":"fast_cup_large", "textures":[]},
 }
 const plastic_type_dist := {
 	plastic_types.WATER_S: 1.0, 
@@ -46,17 +46,17 @@ const plastic_type_dist := {
 	plastic_types.BOTTLE: 1.0
 }
 
-const plastic_type_scenes := {
-	plastic_types.WATER_S: preload("res://scenes/trash/water_small.tscn"), 
-	plastic_types.WATER_M: preload("res://scenes/trash/water_medium.tscn"), 
-	plastic_types.WATER_L: preload("res://scenes/trash/water_large.tscn"), 
-	plastic_types.CUP: preload("res://scenes/trash/plastic_cup.tscn"), 
-	plastic_types.FILM: preload("res://scenes/trash/plastic_film.tscn"), 
-	plastic_types.STRAW: preload("res://scenes/trash/plastic_straw.tscn"), 
+@onready var plastic_type_data := {
+	plastic_types.WATER_S: {"scene":preload("res://scenes/trash/water_small.tscn"), "sub_name":"water_small", "textures":[]},
+	plastic_types.WATER_M: {"scene":preload("res://scenes/trash/water_medium.tscn"), "sub_name":"water_medium", "textures":[]},
+	plastic_types.WATER_L: {"scene":preload("res://scenes/trash/water_large.tscn"), "sub_name":"water_large", "textures":[]},
+	plastic_types.CUP: {"scene":preload("res://scenes/trash/plastic_cup.tscn"), "sub_name":"plastic_cup", "textures":[]},
+	plastic_types.FILM: {"scene":preload("res://scenes/trash/plastic_film.tscn"), "sub_name":"plastic_film", "textures":[]},
+	plastic_types.STRAW: {"scene":preload("res://scenes/trash/plastic_straw.tscn"), "sub_name":"plastic_straw", "textures":[]},
 	#plastic_types.RINGS: 1.0, 
-	plastic_types.LID: preload("res://scenes/trash/plastic_lid.tscn"), 
-	plastic_types.CAP: preload("res://scenes/trash/bottle_cap.tscn"), 
-	plastic_types.BOTTLE: preload("res://scenes/trash/plastic_bottle.tscn")
+	plastic_types.LID: {"scene":preload("res://scenes/trash/plastic_lid.tscn"), "sub_name":"plastic_lid", "textures":[]},
+	plastic_types.CAP: {"scene":preload("res://scenes/trash/bottle_cap.tscn"), "sub_name":"bottle_cap", "textures":[]},
+	plastic_types.BOTTLE: {"scene":preload("res://scenes/trash/plastic_bottle.tscn"), "sub_name":"plastic_bottle", "textures":[]},
 }
 
 const metal_type_dist := {
@@ -65,10 +65,10 @@ const metal_type_dist := {
 	metal_types.FOOD_CAN: 1.0,
 }
 
-const metal_type_scenes := {
-	metal_types.TALL_CAN: preload("res://scenes/trash/tall_can.tscn"),
-	metal_types.WIDE_CAN: preload("res://scenes/trash/wide_can.tscn"),
-	metal_types.FOOD_CAN: preload("res://scenes/trash/food_can.tscn"),
+@onready var metal_type_data := {
+	metal_types.TALL_CAN: {"scene":preload("res://scenes/trash/tall_can.tscn"), "sub_name":"tall_can", "textures":[]},
+	metal_types.WIDE_CAN: {"scene":preload("res://scenes/trash/wide_can.tscn"), "sub_name":"wide_can", "textures":[]},
+	metal_types.FOOD_CAN: {"scene":preload("res://scenes/trash/food_can.tscn"), "sub_name":"food_can", "textures":[]},
 }
 
 const glass_type_dist := {
@@ -77,29 +77,46 @@ const glass_type_dist := {
 	glass_types.GLASS_BOTTLE: 1.0
 }
 
-const glass_type_scenes := {
-	glass_types.BURG_BOTTLE: preload("res://scenes/trash/burg_bottle.tscn"), 
-	glass_types.BORD_BOTTLE: preload("res://scenes/trash/bord_bottle.tscn"), 
-	glass_types.GLASS_BOTTLE: preload("res://scenes/trash/glass_bottle.tscn")
+@onready var glass_type_data := {
+	glass_types.BURG_BOTTLE: {"scene":preload("res://scenes/trash/burg_bottle.tscn"), "sub_name":"burg_bottle", "textures":[]},
+	glass_types.BORD_BOTTLE: {"scene":preload("res://scenes/trash/bord_bottle.tscn"), "sub_name":"bord_bottle", "textures":[]},
+	glass_types.GLASS_BOTTLE: {"scene":preload("res://scenes/trash/glass_bottle.tscn"), "sub_name":"glass_bottle", "textures":[]},
 }
+
+func _ready() -> void:
+	loadTextures()
+
+func loadTextures():
+	for t in metal_type_data:
+		var trash_name = metal_type_data[t]['sub_name']
+		for x in range(5):
+			metal_type_data[t]['textures'].append(load("res://assets/textures/%s/%s_%s.png" % [trash_name, trash_name, x]))
 
 func getTrash(trash_t):
 	match trash_t:
 		trash_types.PAPER:
 			var new_paper_trash_type = getWeightedChoice(paper_type_dist)
-			var new_trash = paper_type_scenes[new_paper_trash_type].instantiate()
+			var new_trash = paper_type_data[new_paper_trash_type]['scene'].instantiate()
+			new_trash.type = trash_t
+			new_trash.sub_type = new_paper_trash_type
 			return new_trash
 		trash_types.PLASTIC: 
 			var new_plastic_trash_type = getWeightedChoice(plastic_type_dist)
-			var new_trash = plastic_type_scenes[new_plastic_trash_type].instantiate()
+			var new_trash = plastic_type_data[new_plastic_trash_type]['scene'].instantiate()
+			new_trash.type = trash_t
+			new_trash.sub_type = new_plastic_trash_type
 			return new_trash
 		trash_types.METAL: 
 			var new_metal_trash_type = getWeightedChoice(metal_type_dist)
-			var new_trash = metal_type_scenes[new_metal_trash_type].instantiate()
+			var new_trash = metal_type_data[new_metal_trash_type]['scene'].instantiate()
+			new_trash.type = trash_t
+			new_trash.sub_type = new_metal_trash_type
 			return new_trash
 		trash_types.GLASS:
 			var new_glass_trash_type = getWeightedChoice(glass_type_dist)
-			var new_trash = glass_type_scenes[new_glass_trash_type].instantiate()
+			var new_trash = glass_type_data[new_glass_trash_type]['scene'].instantiate()
+			new_trash.type = trash_t
+			new_trash.sub_type = new_glass_trash_type
 			return new_trash
 
 func getWeightedChoice(stuff):
@@ -110,7 +127,7 @@ func getWeightedChoice(stuff):
 		if rand_pick <= weight_acc:
 			return choice
 
-func getWeightedSubtype():
+func getWeightedSkin():
 	var rand_type = randf()
 	if rand_type < 0.4:
 		return 0
@@ -122,3 +139,14 @@ func getWeightedSubtype():
 		return 3
 	else:
 		return 4
+
+func getTexture(t, st, skin):
+	match t:
+		trash_types.PAPER:
+			return paper_type_data[st]['textures'][skin]
+		trash_types.PLASTIC: 
+			return plastic_type_data[st]['textures'][skin]
+		trash_types.METAL: 
+			return metal_type_data[st]['textures'][skin]
+		trash_types.GLASS:
+			return glass_type_data[st]['textures'][skin]

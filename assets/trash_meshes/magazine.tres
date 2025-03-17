@@ -1,6 +1,8 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://cjgpf2adcyjrv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwkjn"]
+resource_local_to_scene = true
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cc1h8"]
 _surfaces = [{
@@ -16,6 +18,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [resource]
+resource_local_to_scene = true
 resource_name = "trash_models_Cube"
 _surfaces = [{
 "aabb": AABB(-0.635408, -0.845984, 0, 1.27082, 1.69197, 0.05),

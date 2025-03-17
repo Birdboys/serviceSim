@@ -1,7 +1,9 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://kcqk5wlo2jsb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov7bu"]
+resource_local_to_scene = true
 cull_mode = 2
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6alqb"]
 _surfaces = [{
@@ -18,6 +20,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [resource]
+resource_local_to_scene = true
 resource_name = "trash_models_Cylinder_013"
 _surfaces = [{
 "aabb": AABB(-0.0228159, -0.25, -0.215033, 0.04756, 0.762544, 0.241379),
