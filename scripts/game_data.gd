@@ -5,9 +5,9 @@ var total_money := 0
 
 @onready var num_tool_slots := 2
 @onready var unlocked_tools := ["basic_picker", "better_picker", "squeeze_picker", "auto_picker", "basic_vacuum", "spear_picker", "pogo_picker"]
-@onready var current_gear := ["basic_picker", "", ""]
+@onready var current_gear := ["basic_picker", ""]
 @onready var bag_dim :=  Vector2(8,8)
-@onready var game_time := 1.0 #minutes
+@onready var game_time := 5.0 * 60.0 #seconds
 @onready var default_tool_data := {
 	"basic_picker": {"price": 10, "owned": true, "trash":"11100"}, 
 	"better_picker": {"price": 1, "owned": false, "trash":"11100"}, 
@@ -22,6 +22,3 @@ var total_money := 0
 
 func _ready() -> void:
 	tool_data = default_tool_data.duplicate(true)
-
-func weightedChoice():
-	pass

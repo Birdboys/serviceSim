@@ -12,3 +12,7 @@ var trash_name : String
 
 func trashCollected():
 	queue_free()
+
+func loadTexture(sub):
+	print(name)
+	trashMesh.mesh.surface_get_material(0).albedo_texture

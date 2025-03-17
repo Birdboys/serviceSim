@@ -109,3 +109,16 @@ func getWeightedChoice(stuff):
 		weight_acc += stuff[choice]
 		if rand_pick <= weight_acc:
 			return choice
+
+func getWeightedSubtype():
+	var rand_type = randf()
+	if rand_type < 0.4:
+		return 0
+	elif rand_type < 0.55:
+		return 1
+	elif rand_type < 0.70:
+		return 2 
+	elif rand_type < 0.95:
+		return 3
+	else:
+		return 4

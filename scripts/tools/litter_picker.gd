@@ -17,4 +17,3 @@ func trashRayCollect():
 	var new_trash = trashRay.get_collider().get_parent()
 	if new_trash is Trash and isTrashValid(new_trash):
 		emit_signal("attempt_collect_trash", new_trash)
-	

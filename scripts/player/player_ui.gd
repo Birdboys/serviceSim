@@ -19,7 +19,6 @@ func initBag(dim):
 		for y in range(bag_dim.y):
 			var new_trash_icon = trashIcon.instantiate()
 			bagGrid.add_child(new_trash_icon)
-	print(bagGrid.get_child_count())
 
 func openTrashBag():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
