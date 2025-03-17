@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b28ay6my54ijt" path="res://scripts/player/player_character.gd" id="1_56udc"]
 [ext_resource type="Script" uid="uid://8cg5k2ajkd8v" path="res://scripts/state_machine.gd" id="2_6r27q"]
-[ext_resource type="PackedScene" uid="uid://c2uowl1x3nkn2" path="res://scenes/tools/basic_picker.tscn" id="2_iadup"]
 [ext_resource type="Script" uid="uid://m6w2sksvujgj" path="res://scripts/player/player_states/off_state.gd" id="3_kww55"]
 [ext_resource type="Script" uid="uid://c7464u45hf2xm" path="res://scripts/player/player_states/walk_state.gd" id="4_4h0vy"]
 [ext_resource type="Script" uid="uid://1xyu436nbq8" path="res://scripts/player/player_states/jump_state.gd" id="5_2vmgx"]
 [ext_resource type="Script" uid="uid://ctf47d27ditpd" path="res://scripts/player/player_ui.gd" id="5_uj7mf"]
 [ext_resource type="Script" uid="uid://nx7h0i1s6ano" path="res://scripts/bag_state.gd" id="6_6unfe"]
 [ext_resource type="Script" uid="uid://crfem2a7ajljt" path="res://scripts/player/player_states/fall_state.gd" id="7_pxja8"]
+[ext_resource type="Texture2D" uid="uid://df3wg36bbpjuj" path="res://assets/crosshair.png" id="9_iadup"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yqrqw"]
 
@@ -124,9 +124,7 @@ target_position = Vector3(0, 0, -4)
 collision_mask = 4
 collide_with_areas = true
 
-[node name="trashHand" type="Node3D" parent="playerNeck/playerCam"]
-
-[node name="basicPicker" parent="playerNeck/playerCam/trashHand" instance=ExtResource("2_iadup")]
+[node name="toolHand" type="Node3D" parent="playerNeck/playerCam"]
 
 [node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_6r27q")
@@ -143,7 +141,7 @@ script = ExtResource("4_4h0vy")
 
 [node name="jumpState" type="Node" parent="stateMachine"]
 script = ExtResource("5_2vmgx")
-jump_strength = 30.0
+jump_strength = 10.0
 
 [node name="bagState" type="Node" parent="stateMachine"]
 script = ExtResource("6_6unfe")
@@ -174,6 +172,7 @@ render_target_update_mode = 4
 
 [node name="toolCam" type="Camera3D" parent="toolLayer/toolCont/toolViewport"]
 cull_mask = 1047554
+fov = 90.0
 
 [node name="playerUI" type="CanvasLayer" parent="."]
 script = ExtResource("5_uj7mf")
@@ -216,6 +215,13 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 
+[node name="bagLabel" type="Label" parent="playerUI/uiCont/marginCont"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 2
+
 [node name="crossHair" type="TextureRect" parent="playerUI/uiCont"]
 layout_mode = 1
 anchors_preset = 8
@@ -223,12 +229,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("9_iadup")
 
 [node name="bagMarginCont" type="MarginContainer" parent="playerUI/uiCont"]
 visible = false

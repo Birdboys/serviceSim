@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var promptLabel := $uiCont/marginCont/promptVbox/promptLabel
+@onready var bagLabel := $uiCont/marginCont/bagLabel
 @onready var bagGrid := $uiCont/bagMarginCont/bagVbox/bagPanel/bagScroll/bagGrid
 @onready var bagAnim := $bagAnim
 @onready var trashIcon := preload("res://scenes/ui/trash_icon.tscn")
@@ -26,3 +27,6 @@ func openTrashBag():
 func closeTrashBag():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	bagAnim.play_backwards("open_bag")
+
+func updateBagLabel(v, m):
+	bagLabel.text = "%s/%s" % [v, m]

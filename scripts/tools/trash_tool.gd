@@ -9,6 +9,8 @@ class_name TrashTool
 
 @export var speed_mod := 1.0
 
+signal attempt_collect_trash(t: Trash)
+
 func primaryDown():
 	pass
 	
@@ -33,6 +35,9 @@ func isTrashValid(t:Trash):
 			return pickup_glass
 		TrashData.trash_types.BIO:
 			return pickup_bio
+
+func equip():
+	pass
 
 func unequip():
 	pass

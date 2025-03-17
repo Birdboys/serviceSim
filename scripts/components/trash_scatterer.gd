@@ -36,8 +36,9 @@ func initTrash():
 			break
 		add_child(new_trash)
 		#new_trash.getSubType(trash_type)
-		new_trash.position = Vector3(new_trash_pos.x, randf() * -0.1, new_trash_pos.y)
-		new_trash.rotation.y = randf() * 2 * PI
+		new_trash.position = Vector3(new_trash_pos.x, randf() * -0.05, new_trash_pos.y)
+		new_trash.rotation = Vector3((randf()-0.5)*PI/20.0, randf() * 2 * PI, (randf()-0.5)*PI/20.0)
+		new_trash.type = trash_type
 		if x % 5 == 0: await get_tree().physics_frame
 	return
 
