@@ -36,3 +36,10 @@ func updateTimerLabel(t):
 	var sec = int(t-(min*60))
 	if sec < 10: sec = "0%s" % sec
 	timerLabel.text = "%s:%s" % [min, sec]
+
+func addTrashToBag(t, num_col):
+	var trash_slot = bagGrid.get_child(num_col-1)
+	print(trash_slot)
+	print("res://assets/trash_icons/%s.png" % t)
+	trash_slot.updateTrash("res://assets/trash_icons/%s.png" % t)
+	

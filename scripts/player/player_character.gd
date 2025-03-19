@@ -122,5 +122,5 @@ func collectTrash(t: Trash):
 	
 	trash_collected += 1
 	#value_collected += trash_val
-	#UI.addTrashToBag(trash_name, trash_collected)
+	UI.addTrashToBag(t.trash_name, trash_collected)
 	UI.updateBagLabel(trash_collected, max_trash)

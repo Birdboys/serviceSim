@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cd0r6h7jeknup" path="res://scripts/trash/trash_scene.gd" id="1_11cdc"]
 [ext_resource type="PackedScene" uid="uid://x3a8ykssvsxo" path="res://scenes/components/interact_box.tscn" id="2_06j68"]
 [ext_resource type="PackedScene" uid="uid://dedlrs3cw2r5k" path="res://scenes/components/trash_box.tscn" id="3_7spf1"]
-[ext_resource type="ArrayMesh" uid="uid://kcqk5wlo2jsb" path="res://assets/trash_meshes/straw.tres" id="4_11cdc"]
+[ext_resource type="ArrayMesh" uid="uid://kcqk5wlo2jsb" path="res://assets/trash_meshes/plastic_straw.tres" id="4_11cdc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tuyrs"]
 size = Vector3(0.25, 0.864511, 0.388916)

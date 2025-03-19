@@ -70,4 +70,4 @@ shape = SubResource("BoxShape3D_nbain")
 
 [node name="trashScatterer" parent="." instance=ExtResource("4_8ya4j")]
 valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
-num_trash = 100
+num_trash = 500

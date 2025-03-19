@@ -130,32 +130,6 @@ collide_with_areas = true
 
 [node name="toolHand" type="Node3D" parent="playerNeck/playerCam"]
 
-[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_6r27q")
-initial_state = NodePath("fallState")
-
-[node name="offState" type="Node" parent="stateMachine"]
-script = ExtResource("3_kww55")
-camera_control = false
-movement_control = false
-interact_control = false
-
-[node name="walkState" type="Node" parent="stateMachine"]
-script = ExtResource("4_4h0vy")
-
-[node name="jumpState" type="Node" parent="stateMachine"]
-script = ExtResource("5_2vmgx")
-jump_strength = 10.0
-
-[node name="bagState" type="Node" parent="stateMachine"]
-script = ExtResource("6_6unfe")
-camera_control = false
-movement_control = false
-interact_control = false
-
-[node name="fallState" type="Node" parent="stateMachine"]
-script = ExtResource("7_pxja8")
-
 [node name="toolLayer" type="CanvasLayer" parent="."]
 
 [node name="toolCont" type="SubViewportContainer" parent="toolLayer"]
@@ -296,3 +270,29 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_iadup")
 }
+
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_6r27q")
+initial_state = NodePath("fallState")
+
+[node name="offState" type="Node" parent="stateMachine"]
+script = ExtResource("3_kww55")
+camera_control = false
+movement_control = false
+interact_control = false
+
+[node name="walkState" type="Node" parent="stateMachine"]
+script = ExtResource("4_4h0vy")
+
+[node name="jumpState" type="Node" parent="stateMachine"]
+script = ExtResource("5_2vmgx")
+jump_strength = 10.0
+
+[node name="bagState" type="Node" parent="stateMachine"]
+script = ExtResource("6_6unfe")
+camera_control = false
+movement_control = false
+interact_control = false
+
+[node name="fallState" type="Node" parent="stateMachine"]
+script = ExtResource("7_pxja8")

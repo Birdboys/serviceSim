@@ -87,10 +87,25 @@ func _ready() -> void:
 	loadTextures()
 
 func loadTextures():
+	for t in paper_type_data:
+		var trash_name = paper_type_data[t]['sub_name']
+		for x in range(5):
+			paper_type_data[t]['textures'].append(load("res://assets/textures/%s/%s_%s.png" % [trash_name, trash_name, x]))
+	
+	for t in plastic_type_data:
+		var trash_name = plastic_type_data[t]['sub_name']
+		for x in range(5):
+			plastic_type_data[t]['textures'].append(load("res://assets/textures/%s/%s_%s.png" % [trash_name, trash_name, x]))
+	
 	for t in metal_type_data:
 		var trash_name = metal_type_data[t]['sub_name']
 		for x in range(5):
 			metal_type_data[t]['textures'].append(load("res://assets/textures/%s/%s_%s.png" % [trash_name, trash_name, x]))
+			
+	for t in glass_type_data:
+		var trash_name = glass_type_data[t]['sub_name']
+		for x in range(5):
+			glass_type_data[t]['textures'].append(load("res://assets/textures/%s/%s_%s.png" % [trash_name, trash_name, x]))
 
 func getTrash(trash_t):
 	match trash_t:
@@ -150,3 +165,14 @@ func getTexture(t, st, skin):
 			return metal_type_data[st]['textures'][skin]
 		trash_types.GLASS:
 			return glass_type_data[st]['textures'][skin]
+
+func getTrashName(t, st, skin):
+	match t:
+		trash_types.PAPER:
+			return paper_type_data[st]['sub_name'] + "_%s" % skin
+		trash_types.PLASTIC: 
+			return plastic_type_data[st]['sub_name'] + "_%s" % skin
+		trash_types.METAL: 
+			return metal_type_data[st]['sub_name'] + "_%s" % skin
+		trash_types.GLASS:
+			return glass_type_data[st]['sub_name'] + "_%s" % skin

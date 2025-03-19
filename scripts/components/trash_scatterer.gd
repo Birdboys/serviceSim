@@ -36,10 +36,11 @@ func initTrash():
 			break
 		add_child(new_trash)
 		#new_trash.getSubType(trash_type)
-		if trash_type == TrashData.trash_types.METAL: new_trash.loadTexture(trash_skin)
+		new_trash.initializeTrash(trash_skin)
 		#new_trash.loadTexture(trash_subtype)
 		new_trash.position = Vector3(new_trash_pos.x, randf() * -0.05, new_trash_pos.y)
 		new_trash.rotation = Vector3((randf()-0.5)*PI/20.0, randf() * 2 * PI, (randf()-0.5)*PI/20.0)
+		var trash_name = "%s_%s"
 		if x % 5 == 0: await get_tree().physics_frame
 	return
 
