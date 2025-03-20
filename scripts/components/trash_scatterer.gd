@@ -23,17 +23,28 @@ func initTrash():
 		var rect_beginning = new_trash_rect.position
 		var rect_end = new_trash_rect.end
 		var new_trash_pos = Vector2()
+		var placed = false
 		new_trash_pos.x = randf_range(rect_beginning.x,rect_end.x)
 		new_trash_pos.y = randf_range(rect_beginning.y,rect_end.y)
-		while miss_chances > 0:
+		while not placed:
+			placed = true
+			new_trash_pos.x = randf_range(rect_beginning.x,rect_end.x)
+			new_trash_pos.y = randf_range(rect_beginning.y,rect_end.y)
+			if miss_chances == 0:
+				placed = false
+				print("TRASH NOT PLACED")
+				break
 			for rect in invalid_rects:
 				if rect.has_point(new_trash_pos):
 					miss_chances -= 1
+					print("MISS")
 					new_trash_pos.x = randf_range(rect_beginning.x,rect_end.x)
 					new_trash_pos.y = randf_range(rect_beginning.y,rect_end.y)
-					print("MISS")
+					placed = false
 					continue
-			break
+					
+		if not placed: continue
+		print("PLACING TRASH")
 		add_child(new_trash)
 		#new_trash.getSubType(trash_type)
 		new_trash.initializeTrash(trash_skin)

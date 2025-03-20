@@ -6,6 +6,13 @@ enum plastic_types {WATER_S, WATER_M, WATER_L, CUP, FILM, STRAW, RINGS, LID, CAP
 enum metal_types {TALL_CAN, WIDE_CAN, FOOD_CAN}
 enum glass_types {BURG_BOTTLE, BORD_BOTTLE, GLASS_BOTTLE}
 
+const trash_type_names := {
+	trash_types.PAPER: "paper",
+	trash_types.PLASTIC: "plastic",
+	trash_types.METAL: "metal",
+	trash_types.GLASS: "glass",
+}
+
 const paper_type_dist := {
 	paper_types.NEWSPAPER:1.0, 
 	paper_types.MAGAZINE:1.0, 
