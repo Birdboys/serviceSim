@@ -1,3 +1,630 @@
-[gd_scene format=3 uid="uid://dp6pjn8bcgigu"]
+[gd_scene load_steps=67 format=4 uid="uid://dp6pjn8bcgigu"]
+
+[ext_resource type="Script" uid="uid://bmkdeiv33ldnb" path="res://scripts/bed_menu.gd" id="1_mswj1"]
+[ext_resource type="ArrayMesh" uid="uid://cmcnbsmd2mcmq" path="res://assets/trash_meshes/carton_small.tres" id="2_atm4g"]
+[ext_resource type="ArrayMesh" uid="uid://c0nmiuup4lteu" path="res://assets/trash_meshes/fast_cup_large.tres" id="3_qf0xj"]
+[ext_resource type="ArrayMesh" uid="uid://kcqk5wlo2jsb" path="res://assets/trash_meshes/plastic_straw.tres" id="4_qf0xj"]
+[ext_resource type="ArrayMesh" uid="uid://eevq5rgg0m61" path="res://assets/tool_meshes/basic_picker.tres" id="5_hnsmf"]
+[ext_resource type="Script" uid="uid://d1j2lwyb1pg46" path="res://scripts/components/interact_box.gd" id="6_0mrwf"]
+[ext_resource type="ArrayMesh" uid="uid://dfw1gm6gmyabe" path="res://assets/tool_meshes/better_picker.tres" id="6_b2k6o"]
+[ext_resource type="Script" uid="uid://bo4mwykdxv6x0" path="res://scripts/ui/door_menu.gd" id="8_0mrwf"]
+[ext_resource type="Script" uid="uid://ban3dfopn45q" path="res://scripts/ui/bed_ui.gd" id="8_2xgiy"]
+[ext_resource type="Theme" uid="uid://djs6o2b5hx67f" path="res://assets/themes/game_ui.tres" id="9_yda35"]
+[ext_resource type="Script" uid="uid://ohhpvceqcfqv" path="res://scripts/ui/trash_menu.gd" id="10_6iq6k"]
+[ext_resource type="Script" uid="uid://cuq1r4j0qb1qy" path="res://scripts/ui/computer_menu.gd" id="11_yda35"]
+[ext_resource type="Script" uid="uid://6ddc631ft4u0" path="res://scripts/ui/table_menu.gd" id="12_le12v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j37jo"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_mswj1"]
+sky_material = SubResource("ProceduralSkyMaterial_j37jo")
+
+[sub_resource type="Environment" id="Environment_011cc"]
+background_mode = 2
+sky = SubResource("Sky_mswj1")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.15
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mswj1"]
+cull_mode = 2
+albedo_color = Color(0.560784, 0.827451, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pa260"]
+albedo_color = Color(0.984314, 1, 0.52549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnsmf"]
+cull_mode = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w2yj1"]
+_surfaces = [{
+"aabb": AABB(-1.1, -1.4, -1.20009, 2.2, 2.4, 2.4),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAgAMAAAACgAAAAwACgANAAAACwAKAAwACAANAAoADgAAAA0ACAAOAA0AAQAAAA4AAQAOAAMAAwAEAAEADwADAA4ADwAEAAMADwAOAAgAEAAPAAgABAAPABAAEAAIAAkABAAQAAUABQAQAAkABQAGAAQABQAJABEAEQAGAAUAEQAJAAsABgARABIAEQALABIABgASAAcABwACAAYAEgALABMAEgATAAcAEwACAAcACwAMABMAAgATAAwA"),
+"lods": [0.0444407, PackedByteArray("AAABAAIAAQAAAAMAAwAEAAEABAADAAUABQAGAAQABwACAAYABgAFAAcAAgAHAAAABQADAAgAAwAAAAgABQAIAAkACAAAAAoABQAJAAsABQALAAcACwAAAAcACwAKAAAA")],
+"name": "bedBase",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AAD/////AAAAAAAAAAAAAAAAAAD//wAAAAD/nwAAAAD//wAAAAAAAP///58AAAAA//8AAP//AAD///////8AAFVVqcAaVwAAqqqpwBpXAABVVXDfLKkAAKqqcN8sqQAAVVX/////AAAAAHDfLKkAAAAAqcAaVwAAVVX/nwAAAACqqv+fAAAAAP//qcAaVwAA//9w3yypAACqqv////8AAA==")
+}, {
+"aabb": AABB(-1.1, -1.4, -1.20009, 2.2, 1e-05, 2.4),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "floor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//wAA//8AAAAAAAD//wAA//8AAAAAAAA=")
+}, {
+"aabb": AABB(-0.366667, 0.406234, -0.383465, 0.733333, 0.288534, 0.769423),
+"format": 34896613377,
+"index_count": 42,
+"index_data": PackedByteArray("AAABAAIAAwACAAEABAACAAMAAQAAAAUAAQAFAAYABwAFAAAABQAHAAgACAAHAAkAAgAEAAoACgAJAAcACQAKAAQACQAEAAsADAANAA4ADAAPAA0A"),
+"name": "window",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("//8AAAAAAAAy8zLzMvMAAP///////wAA/38y8zLzAADMDDLzMvMAADLzzAzMDAAAMvP/f/9/AAAAAAAAAAAAAP9/zAzMDAAAzAzMDMwMAAAAAP////8AAMwM/3//fwAAw3oy8zLzAAA7hcwMzAwAAMN6zAzMDAAAO4Uy8zLzAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dsgkv"]
+resource_name = "bedroom_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1.1, -1.4, -1.20009, 2.2, 2.4, 2.4),
+"attribute_data": PackedByteArray("/5////9f/7//X////5//v/+f/3//X/8//1//f/+f/z//3/9//9//P6nKOGr/n/9/qcq0VVS1OGpUtbRV/5//P/+f/z//XwAA/1//P/+fAAD/n/+//1//f/9f/7//n/9//5/F1f+fSur/nzhq/5+0VanK/z//37RVqcr/f//fOGpUtf9//584aqnKOGr/37RVqcq0Vf/fOGr/nzhqVLW0Vf+ftFVUtThq/5+0VVS1/z9UtbRVqcr/P1S1/z+pyrRV/5+qKv+fVRX/n6qq/59UlQ=="),
+"format": 34896613399,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAQAAABgAGAAAABkAAQAYAAMABAAFAAYAGgAFAAQABQAaABsABQAbAAcADAAJABwADAAdAAkAHgAfAAoAHgAIAB8AIAAeAAoAIAAKAA0ACwAgAA0ACwANACEAIgAjACQAIgAlACMAJgAnACgAJgApACcAKgArAA8AKgAOACsALAAtAC4ALAAvAC0AEAARABIAMAARABAAEQAwADEAEQAxABMAFAAVABYAMgAVABQAFQAyADMAFQAzABcA"),
+"lods": [0.0444407, PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABQAEAAcACAAJAAoACwAIAAoACgAJAAwACwAKAA0ADgAMAAkACwANAA4ADgAJAA8ACwAOAA8AEAARABIAEQAQABMAFAAVABYAFQAUABcA")],
+"material": SubResource("StandardMaterial3D_mswj1"),
+"name": "bedBase",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 52,
+"vertex_data": PackedByteArray("AAD/////qSoAAAAAAACqKgAAAAD//6oqAAD/nwAAqir///+fAACqKv//AAD//6oq//8AAAAAqir///////+qKgAA/58AAAAAAAD/////AABVVanAGlcAAP///58AAAAAVVVw3yypAACqqqnAGlcAAKqqcN8sqQAA////////AAD///////8AAAAAAAD//wAA//8AAP//AAAAAP////8AAAAA/58AAP8///8AAAAA/z8AAAAAAAD/P////58AAP8/AACpwBpXqioAAHDfLKleGf//qcAaV6oq//9w3yypqipVVf////8AAAAAcN8sqQAAVVX/nwAAAAAAAKnAGlcAAKqq/58AAAAA//+pwBpXAABVVanAGlcAAAAAcN8sqQAAVVVw3yypAAAAAKnAGlcAAP//qcAaVwAAqqpw3yypAAD//3DfLKkAAKqqqcAaVwAA//9w3yypAACqqv////8AAKqqcN8sqQAAVVX/////AACqqv////8AAFVVcN8sqQAAqqr/////AABVVf////8AAFVV/58AAP8/qqr/nwAA/z+pKqsqqiqqKqoqqiqqKqoqVNVU1VTVVNVU1VTVVNVU1f9/mkv/f5pL/3+aS/9/mkv/f5pL/3+aS/9/mkv/f5pL/7//v/+//7//v/+//7//v/////////////////////+qKqoqzBiZM1TVVNVU1VTV/3+aS/9/mkv/f5pL/3+aS/9/mkv/f5pL/3+aS/9/mkv/f5pL/3+aS/9/mkv/f5pL/3+aS/9/mkv/f5pL/3+aS/9/mkv/f5pL/3+aS/9/mkv/v/+//7//v///////////")
+}, {
+"aabb": AABB(-1.1, -1.4, -1.20009, 2.2, 1e-05, 2.4),
+"attribute_data": PackedByteArray("/1//v/9f/z//XwAA/1//fw=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_pa260"),
+"name": "floor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAA/7///wAA////vwAAAAD///+///8AAAAA/7////9/////f////3////9/")
+}, {
+"aabb": AABB(-0.366667, 0.406234, -0.383465, 0.733333, 0.288534, 0.769423),
+"attribute_data": PackedByteArray("VLU4alS1tFVUtbRVVLU4alS19l+pyrRVqco4aqnKOGqpyrRVqcr2X1S1tFWpyrRVqcq0Vf+/tFVUtbRVqco4alS1OGpUtThq/784aqnKOGoAAP//AAD//wAA//8AAP//"),
+"format": 34896613399,
+"index_count": 42,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABQAGAAcABgAFAAgABgAIAAkACgALAAwACwAKAA0ADQAKAA4ADwAQABEAEAAPABIAEgAPABMAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_hnsmf"),
+"name": "window",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAAAAnU4y8zLzMvN1zf///////51OMvPMDMwMdc0y8/9//391zQAA/////51OzAzMDMwMdc0AAAAAAACdTswMMvMy83XNzAz/f/9/iTL///////+dTswMMvMy851OAAD/////nU7/fzLzMvOdTjLzMvMy851OAAAAAAAA4Loy88wMzAzguv//AAAAAJ1O/3/MDMwM4LrMDMwMzAydTsN6MvMy851OO4XMDMwMnU7DeswMzAydTjuFMvMy851OAAD/f9Ja0loAAP9/0lrSWtJa0loAAP9/AAD/fwAA/38AAP9/LSXR2gAA/38AAP9/AAD/fwAA/38AAP9/YBvgwmAb4MIAAP9/YBvgwgAA/38AAP9/AAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_w2yj1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j37jo"]
+albedo_color = Color(0.568627, 0.858824, 0.411765, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mswj1"]
+material = SubResource("StandardMaterial3D_j37jo")
+size = Vector2(35, 21)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_011cc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j37jo"]
+material = SubResource("StandardMaterial3D_011cc")
+size = Vector3(0.5, 15, 7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2k6o"]
+albedo_color = Color(0.384314, 0.333333, 0.396078, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0mrwf"]
+material = SubResource("StandardMaterial3D_b2k6o")
+
+[sub_resource type="Animation" id="Animation_yda35"]
+resource_name = "open_door"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.261799, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_le12v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nqw76"]
+_data = {
+&"RESET": SubResource("Animation_le12v"),
+&"open_door": SubResource("Animation_yda35")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yda35"]
+size = Vector3(1, 16, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qf0xj"]
+size = Vector3(2.56104, 15, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mrwf"]
+albedo_color = Color(0.764706, 0.141176, 0.329412, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2xgiy"]
+material = SubResource("StandardMaterial3D_0mrwf")
+size = Vector3(14, 2, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atm4g"]
+albedo_color = Color(0.780392, 0.862745, 0.815686, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mswj1"]
+material = SubResource("StandardMaterial3D_atm4g")
+size = Vector3(12, 0.5, 5.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qf0xj"]
+albedo_color = Color(0.192157, 0.211765, 0.219608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pa260"]
+material = SubResource("StandardMaterial3D_qf0xj")
+size = Vector3(0.3, 4, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xgiy"]
+cull_mode = 2
+albedo_color = Color(0.607843, 0.670588, 0.698039, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bugeo"]
+material = SubResource("StandardMaterial3D_2xgiy")
+top_radius = 1.25
+bottom_radius = 0.9
+height = 3.0
+radial_segments = 6
+cap_top = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_atm4g"]
+size = Vector3(3, 4, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bugeo"]
+albedo_color = Color(0.968627, 0.588235, 0.0901961, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_flnl5"]
+material = SubResource("StandardMaterial3D_bugeo")
+size = Vector3(3, 3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6iq6k"]
+material = SubResource("StandardMaterial3D_bugeo")
+size = Vector3(2, 2, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flnl5"]
+albedo_color = Color(0.192157, 0.211765, 0.219608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yda35"]
+material = SubResource("StandardMaterial3D_flnl5")
+size = Vector3(2.5, 2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6iq6k"]
+albedo_color = Color(0.968627, 0.588235, 0.0901961, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yda35"]
+material = SubResource("StandardMaterial3D_6iq6k")
+radius = 0.3
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_le12v"]
+albedo_color = Color(0.968627, 0.588235, 0.0901961, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nqw76"]
+material = SubResource("StandardMaterial3D_le12v")
+size = Vector3(2.5, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mswj1"]
+size = Vector3(5, 4, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4cyr"]
+albedo_color = Color(0.670588, 0.580392, 0.478431, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_011cc"]
+material = SubResource("StandardMaterial3D_m4cyr")
+size = Vector3(3.5, 1, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5st7i"]
+albedo_color = Color(0.670588, 0.580392, 0.478431, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_atm4g"]
+material = SubResource("StandardMaterial3D_5st7i")
+size = Vector3(1.5, 0.5, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_futsp"]
+material = SubResource("StandardMaterial3D_m4cyr")
+size = Vector3(3.5, 1, 4)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hnsmf"]
+radius = 0.124188
+height = 2.3812
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yda35"]
+albedo_color = Color(0.988235, 0.654902, 0.564706, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qf0xj"]
+material = SubResource("StandardMaterial3D_yda35")
+size = Vector3(5, 3, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6mv7e"]
+albedo_color = Color(0.243137, 0.207843, 0.27451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hnsmf"]
+material = SubResource("StandardMaterial3D_6mv7e")
+size = Vector3(0.2, 0.2, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_011cc"]
+size = Vector3(5.6, 3.5, 10.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqw76"]
+albedo_color = Color(0.619608, 0.270588, 0.223529, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j37jo"]
+material = SubResource("StandardMaterial3D_nqw76")
+top_radius = 1.5
+bottom_radius = 1.25
+height = 3.0
+radial_segments = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_futsp"]
+albedo_color = Color(0.137255, 0.564706, 0.388235, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6mv7e"]
+material = SubResource("StandardMaterial3D_futsp")
+radius = 1.5
+height = 10.0
 
 [node name="bedMenu" type="Node3D"]
+script = ExtResource("1_mswj1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_011cc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.989016, -0.0971662, 0.111384, 0, 0.753563, 0.657375, -0.147809, 0.650154, -0.745286, 0, 0, 0)
+light_angular_distance = 1.0
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.3001, 2.52618)
+omni_range = 64.682
+omni_attenuation = 0.75
+
+[node name="playerCam" type="Camera3D" parent="."]
+transform = Transform3D(0.573576, 0.106921, -0.812144, 0, 0.991445, 0.130526, 0.819152, -0.0748668, 0.568669, -17, 8, 8.685)
+
+[node name="bedCam" type="Camera3D" parent="."]
+transform = Transform3D(0.573576, 0.106921, -0.812144, 0, 0.991445, 0.130526, 0.819152, -0.0748668, 0.568669, -17, 8, 8.685)
+
+[node name="tableCam" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.819152, 0.573576, 0, 0.573576, 0.819152, -1, 3.58063e-08, -2.50718e-08, -2.055, 6, 7)
+fov = 60.0
+
+[node name="trashCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 1.75, 4.5, -6.5)
+fov = 60.0
+
+[node name="computerCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5.79, -7.25)
+fov = 60.0
+
+[node name="doorCam" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.22, 8, -1.084)
+fov = 60.0
+
+[node name="roomMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 10, 0, 0, 0, 10, 0, 14, 0)
+mesh = SubResource("ArrayMesh_dsgkv")
+skeleton = NodePath("")
+
+[node name="rugMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.01, 0)
+mesh = SubResource("PlaneMesh_mswj1")
+
+[node name="door" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6613, -0.396944, 8.41092)
+
+[node name="doorMesh" type="MeshInstance3D" parent="door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, -3.5)
+mesh = SubResource("BoxMesh_j37jo")
+skeleton = NodePath("../..")
+
+[node name="handleMesh" type="MeshInstance3D" parent="door/doorMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.443, 0, -2.5)
+mesh = SubResource("SphereMesh_0mrwf")
+
+[node name="doorAnim" type="AnimationPlayer" parent="door"]
+libraries = {
+&"": SubResource("AnimationLibrary_nqw76")
+}
+
+[node name="doorArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6613, 7.10306, 4.91092)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="doorCol" type="CollisionShape3D" parent="doorArea"]
+shape = SubResource("BoxShape3D_yda35")
+
+[node name="toolArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 7, 5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="toolCol" type="CollisionShape3D" parent="toolArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21948, 0.5, -6)
+shape = SubResource("BoxShape3D_qf0xj")
+
+[node name="bedMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.87, 1, 7.967)
+mesh = SubResource("BoxMesh_2xgiy")
+
+[node name="deskMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 4, -9)
+mesh = SubResource("BoxMesh_mswj1")
+
+[node name="deskLegMesh" type="MeshInstance3D" parent="deskMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, -2, 2.5)
+mesh = SubResource("BoxMesh_pa260")
+skeleton = NodePath("../..")
+
+[node name="deskLegMesh2" type="MeshInstance3D" parent="deskMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, -2, 2.5)
+mesh = SubResource("BoxMesh_pa260")
+skeleton = NodePath("../..")
+
+[node name="deskLegMesh3" type="MeshInstance3D" parent="deskMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, -2, -2.5)
+mesh = SubResource("BoxMesh_pa260")
+skeleton = NodePath("../..")
+
+[node name="deskLegMesh4" type="MeshInstance3D" parent="deskMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, -2, -2.5)
+mesh = SubResource("BoxMesh_pa260")
+skeleton = NodePath("../..")
+
+[node name="trashMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1.511, -8.5)
+mesh = SubResource("CylinderMesh_bugeo")
+
+[node name="trashArea" type="Area3D" parent="trashMesh"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="trashCol" type="CollisionShape3D" parent="trashMesh/trashArea"]
+shape = SubResource("BoxShape3D_atm4g")
+
+[node name="trash" type="MeshInstance3D" parent="trashMesh"]
+transform = Transform3D(0.758779, 0.438081, 1.21751, -0.75, 1.29904, 0, -1.0544, -0.608757, 0.876162, 0.211242, -0.382412, -0.0820732)
+mesh = ExtResource("2_atm4g")
+
+[node name="trash2" type="MeshInstance3D" parent="trashMesh"]
+transform = Transform3D(0.702197, -0.414726, 1.25894, 0.157481, 1.4407, 0.386765, -1.3161, -0.048884, 0.717977, -0.0146129, -0.941413, 0.327101)
+mesh = ExtResource("3_qf0xj")
+
+[node name="trash3" type="MeshInstance3D" parent="trashMesh"]
+transform = Transform3D(0.971005, -0.828891, 0.787457, 1.01726, 1.09792, -0.0986797, -0.521849, 0.597913, 1.27286, 0.21093, 0.331412, 0.415374)
+mesh = ExtResource("4_qf0xj")
+
+[node name="computerMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5.7574, -10)
+mesh = SubResource("BoxMesh_flnl5")
+
+[node name="computerMesh2" type="MeshInstance3D" parent="computerMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.717117)
+mesh = SubResource("BoxMesh_6iq6k")
+skeleton = NodePath("../..")
+
+[node name="screenMesh" type="MeshInstance3D" parent="computerMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.477746)
+mesh = SubResource("BoxMesh_yda35")
+
+[node name="mouseMesh" type="MeshInstance3D" parent="computerMesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.33894, -1.48172, 1.77711)
+mesh = SubResource("CapsuleMesh_yda35")
+skeleton = NodePath("../../deskMesh")
+
+[node name="keyboardMesh" type="MeshInstance3D" parent="computerMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.457, 2.001)
+mesh = SubResource("BoxMesh_nqw76")
+skeleton = NodePath("../../deskMesh")
+
+[node name="computerArea" type="Area3D" parent="computerMesh"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="computerCol" type="CollisionShape3D" parent="computerMesh/computerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 1.5)
+shape = SubResource("BoxShape3D_mswj1")
+
+[node name="toolBenchMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 0.5, -6)
+mesh = SubResource("BoxMesh_011cc")
+
+[node name="toolRackMesh" type="MeshInstance3D" parent="toolBenchMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 11.715, 0)
+mesh = SubResource("BoxMesh_atm4g")
+skeleton = NodePath("../..")
+
+[node name="toolBenchMesh2" type="MeshInstance3D" parent="toolBenchMesh"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.56765, 0, -4.25261)
+mesh = SubResource("BoxMesh_futsp")
+skeleton = NodePath("../..")
+
+[node name="tools" type="Node3D" parent="toolBenchMesh"]
+
+[node name="basic_picker" type="Area3D" parent="toolBenchMesh/tools"]
+transform = Transform3D(3.26863, -0.228565, -2.29431, -0.279026, -3.99026, 3.49691e-07, -2.28872, 0.160042, -3.27661, 1.06945, 3.58413, -4.46187)
+script = ExtResource("6_0mrwf")
+interact_ret = "basic_picker"
+on_start = false
+metadata/_custom_type_script = "uid://d1j2lwyb1pg46"
+
+[node name="colShape" type="CollisionShape3D" parent="toolBenchMesh/tools/basic_picker"]
+transform = Transform3D(1, 9.31323e-09, 0, 1.86265e-09, 1, -7.45058e-09, -5.96046e-08, 1.49012e-08, 1, -0.021327, -0.304976, 2.38419e-07)
+shape = SubResource("CapsuleShape3D_hnsmf")
+
+[node name="toolMesh" type="MeshInstance3D" parent="toolBenchMesh/tools/basic_picker"]
+transform = Transform3D(1, 3.72529e-09, 2.98023e-08, 3.72529e-09, 1, -3.72529e-09, -2.98023e-08, 7.45058e-09, 1, 0, 0, 0)
+mesh = ExtResource("5_hnsmf")
+skeleton = NodePath("../..")
+
+[node name="better_picker" type="Area3D" parent="toolBenchMesh/tools"]
+transform = Transform3D(2.77186, -0.193828, 2.87736, -0.279026, -3.99026, -2.09974e-08, 2.87035, -0.200714, -2.77863, 1.20724, 3.49154, -3.07127)
+script = ExtResource("6_0mrwf")
+interact_ret = "better_picker"
+on_start = false
+metadata/_custom_type_script = "uid://d1j2lwyb1pg46"
+
+[node name="colShape" type="CollisionShape3D" parent="toolBenchMesh/tools/better_picker"]
+transform = Transform3D(1, 9.31323e-09, 0, 1.86265e-09, 1, -7.45058e-09, -5.96046e-08, 1.49012e-08, 1, -0.021327, -0.304976, 2.38419e-07)
+shape = SubResource("CapsuleShape3D_hnsmf")
+
+[node name="toolMesh" type="MeshInstance3D" parent="toolBenchMesh/tools/better_picker"]
+transform = Transform3D(1, 7.45058e-09, 0, 3.72529e-09, 1, 0, 0, -3.72529e-09, 1, 0, 0, 0)
+mesh = ExtResource("6_b2k6o")
+skeleton = NodePath("../..")
+
+[node name="tableMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.5, 7)
+mesh = SubResource("BoxMesh_qf0xj")
+
+[node name="handleMesh" type="MeshInstance3D" parent="tableMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.601, -0.471318, 0)
+mesh = SubResource("BoxMesh_hnsmf")
+
+[node name="handleMesh2" type="MeshInstance3D" parent="tableMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.601, 0.528682, 0)
+mesh = SubResource("BoxMesh_hnsmf")
+
+[node name="tableArea" type="Area3D" parent="tableMesh"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="tableCol" type="CollisionShape3D" parent="tableMesh/tableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.0999999)
+shape = SubResource("BoxShape3D_011cc")
+
+[node name="potMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.752, 1.5, -10.25)
+mesh = SubResource("CylinderMesh_j37jo")
+
+[node name="plantMesh" type="MeshInstance3D" parent="potMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.85088, 0)
+mesh = SubResource("SphereMesh_6mv7e")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+script = ExtResource("8_2xgiy")
+
+[node name="UI" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("9_yda35")
+
+[node name="uiMargin" type="MarginContainer" parent="UILayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="doorMenu" type="Control" parent="UILayer/UI/uiMargin"]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("8_0mrwf")
+
+[node name="doorHbox" type="HBoxContainer" parent="UILayer/UI/uiMargin/doorMenu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="trashMenu" type="Control" parent="UILayer/UI/uiMargin"]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("10_6iq6k")
+
+[node name="trashMargin" type="MarginContainer" parent="UILayer/UI/uiMargin/trashMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_right = 256
+
+[node name="trashVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/trashMenu/trashMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="saveButton" type="Button" parent="UILayer/UI/uiMargin/trashMenu/trashMargin/trashVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "SAVE GAME"
+
+[node name="quitButton" type="Button" parent="UILayer/UI/uiMargin/trashMenu/trashMargin/trashVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "QUIT GAME"
+
+[node name="computerMenu" type="Control" parent="UILayer/UI/uiMargin"]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("11_yda35")
+
+[node name="tableMenu" type="Control" parent="UILayer/UI/uiMargin"]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("12_le12v")

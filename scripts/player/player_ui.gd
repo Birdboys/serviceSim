@@ -4,8 +4,11 @@ extends CanvasLayer
 @onready var bagLabel := $uiCont/marginCont/bagLabel
 @onready var timerLabel := $uiCont/marginCont/timerLabel
 @onready var bagGrid := $uiCont/bagMarginCont/bagVbox/bagPanel/bagScroll/bagGrid
+@onready var hotbarCont := $uiCont/marginCont/hotbarCont
 @onready var bagAnim := $bagAnim
 @onready var trashIcon := preload("res://scenes/ui/trash_icon.tscn")
+@onready var hotbarIcon := preload("res://scenes/ui/hotbar_icon.tscn")
+
 var trash_open := false
 var bag_dim : Vector2
 
@@ -43,3 +46,15 @@ func addTrashToBag(t, num_col):
 	print("res://assets/trash_icons/%s.png" % t)
 	trash_slot.updateTrash("res://assets/trash_icons/%s.png" % t)
 	
+func loadToolIcons(tools):
+	for t in range(len(tools)):
+		if tools[t] == "": continue
+		var new_icon = hotbarIcon.instantiate()
+		hotbarCont.add_child(new_icon)
+		new_icon.updateIcon(tools[t])
+		new_icon.updateId(t)
+		new_icon.toggleSelected(t==0)
+
+func hotbarSelect(t):
+	for x in range(hotbarCont.get_child_count()):
+		hotbarCont.get_child(x).toggleSelected(x==t)

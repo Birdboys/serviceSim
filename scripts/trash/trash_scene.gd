@@ -5,7 +5,8 @@ class_name Trash
 @export var trashBox : TrashBox
 @export var trashMesh : MeshInstance3D
 
-
+var is_lake_trash := false
+var is_tree_trash := false
 var type : TrashData.trash_types
 var sub_type 
 var skin_type : int

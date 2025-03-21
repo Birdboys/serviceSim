@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var townTiles := $townTiles
 @onready var player := $playerCharacter
+@onready var pauseMenu := $pauseMenu
 
 var block_size := Vector2(5, 5)
 var block_overlap := 1
@@ -15,7 +16,7 @@ var grid := {}
 var adjacent_dirs := [Vector2(1,0), Vector2(1,1), Vector2(0,1), Vector2(-1,1), Vector2(-1,0), Vector2(-1,-1), Vector2(0,-1), Vector2(1,-1)]
 var expand_thread : Thread
 var start_time := -1
-var total_time : float
+var total_time : float 
 
 const tile_to_scene := {
 	WFCInfo.tile_type.GRASS: preload("res://scenes/tiles/grass_tile.tscn"),
@@ -38,6 +39,8 @@ func _ready() -> void:
 	await startGrid()
 	await generateTiles()
 	await startTrash()
+	pauseMenu.can_pause = true
+	pauseMenu.game_paused.connect(gamePaused)
 	print("LOAD TIME: ", (Time.get_ticks_msec()-init_time)/1000.0)
 	#player.loadTrashTools(GameStuff.current_gear)
 	player.position += Vector3(1, 0, 1) * game_tile_size.x
@@ -58,8 +61,7 @@ func _physics_process(delta: float) -> void:
 		print("CHECKING EXPAND")
 		prev_block_pos = current_block_pos
 		checkExpandGrid()
-	
-	return
+
 	current_tile_pos = posToTile(player.position)
 	if current_tile_pos != prev_tile_pos:
 		prev_tile_pos = current_tile_pos
@@ -138,12 +140,12 @@ func checkExpandGrid():
 	return
 
 func checkInitTrash():
+	print("DOING TRASH")
 	for x in range(-2, 3):
 		for y in range(-2, 3):
 			var trash_tile = Vector2(x, y) + current_tile_pos
 			if trash_tile in grid: grid[trash_tile]['tile_scene'].initTrash()
 		
-	
 func expandGrid(blocks_to_create: Array):
 	for b in blocks_to_create:
 		await wfc.setCurrentPosition(b)
@@ -174,4 +176,6 @@ func endGame():
 	#GameStuff.total_money += player.current_trash_val
 	#GameStuff.total_trash_collected += player.trash_collected
 	#get_tree().change_scene_to_file("res://scenes/bed_menu.tscn")
-	
+
+func gamePaused(on: bool):
+	player.toggleUI(not on)

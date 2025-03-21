@@ -1,6 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsierlp02o525"]
+[gd_scene load_steps=15 format=3 uid="uid://dsierlp02o525"]
 
 [ext_resource type="PackedScene" uid="uid://cfxkdmxms47s8" path="res://scenes/tiles/house.tscn" id="1_c1jmc"]
+[ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="1_giyk1"]
+[ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="2_qxeh6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhbjo"]
 size = Vector3(100, 2, 100)
@@ -42,6 +44,7 @@ material = SubResource("StandardMaterial3D_5781l")
 size = Vector3(3.5, 1, 100)
 
 [node name="roadXTile" type="Node3D"]
+script = ExtResource("1_giyk1")
 
 [node name="groundBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -104,3 +107,14 @@ transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 12.5, 0,
 
 [node name="house8" parent="houses" instance=ExtResource("1_c1jmc")]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 37.5, 0, -30)
+
+[node name="trashScatterer" parent="." instance=ExtResource("2_qxeh6")]
+valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
+num_trash = 50
+miss_chances = 25
+trash_dist = {
+0: 2.0,
+1: 2.0,
+2: 1.0,
+3: 1.0
+}

@@ -1,8 +1,11 @@
-[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://cmcnbsmd2mcmq"]
+[gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://cmcnbsmd2mcmq"]
+
+[ext_resource type="Texture2D" uid="uid://dwpqyl2mjly4n" path="res://assets/textures/carton_small/carton_small_1.png" id="1_7qo6u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhxfh"]
 resource_local_to_scene = true
 cull_mode = 2
+albedo_texture = ExtResource("1_7qo6u")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_art1i"]

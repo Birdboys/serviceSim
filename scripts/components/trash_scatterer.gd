@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var lake_trash := false
+@export var tree_trash := false
 @export var valid_rects : Array[Rect2i]
 @export var invalid_rects : Array[Rect2i]
 @export var num_trash := 25
@@ -10,9 +12,6 @@ extends Node3D
 	TrashData.trash_types.METAL: 1.0,
 	TrashData.trash_types.GLASS: 1.0,
 }
-
-func _ready() -> void:
-	initTrash()
 	
 func initTrash():
 	for x in range(num_trash):
@@ -32,26 +31,21 @@ func initTrash():
 			new_trash_pos.y = randf_range(rect_beginning.y,rect_end.y)
 			if miss_chances == 0:
 				placed = false
-				print("TRASH NOT PLACED")
 				break
 			for rect in invalid_rects:
 				if rect.has_point(new_trash_pos):
 					miss_chances -= 1
-					print("MISS")
 					new_trash_pos.x = randf_range(rect_beginning.x,rect_end.x)
 					new_trash_pos.y = randf_range(rect_beginning.y,rect_end.y)
 					placed = false
 					continue
 					
 		if not placed: continue
-		print("PLACING TRASH")
 		add_child(new_trash)
-		#new_trash.getSubType(trash_type)
 		new_trash.initializeTrash(trash_skin)
-		#new_trash.loadTexture(trash_subtype)
 		new_trash.position = Vector3(new_trash_pos.x, randf() * -0.05, new_trash_pos.y)
 		new_trash.rotation = Vector3((randf()-0.5)*PI/20.0, randf() * 2 * PI, (randf()-0.5)*PI/20.0)
-		var trash_name = "%s_%s"
+
 		if x % 5 == 0: await get_tree().physics_frame
 	return
 

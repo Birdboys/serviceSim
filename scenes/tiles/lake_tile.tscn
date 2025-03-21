@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://unfghn3ggayc"]
+[gd_scene load_steps=8 format=3 uid="uid://unfghn3ggayc"]
+
+[ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="1_mprh5"]
+[ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="1_ppu47"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5yohy"]
 size = Vector3(100, 2, 100)
@@ -18,6 +21,8 @@ material = SubResource("StandardMaterial3D_dv7ke")
 size = Vector3(80, 1, 80)
 
 [node name="lakeTile" type="Node3D"]
+script = ExtResource("1_ppu47")
+auto_rotate = true
 
 [node name="groundBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -45,3 +50,15 @@ mesh = SubResource("BoxMesh_5yohy")
 [node name="oceanMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
 mesh = SubResource("BoxMesh_mprh5")
+
+[node name="trashScatterer" parent="." instance=ExtResource("1_mprh5")]
+valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
+invalid_rects = Array[Rect2i]([Rect2i(-40, -40, 80, 80)])
+num_trash = 50
+miss_chances = 25
+trash_dist = {
+0: 1.0,
+1: 1.0,
+2: 3.0,
+3: 3.0
+}

@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://10n2r2a6uyha"]
+
+[ext_resource type="Script" uid="uid://bb6bkirkufc6h" path="res://scripts/ui/hotbar_icon.gd" id="1_kp6pa"]
+[ext_resource type="Texture2D" uid="uid://3mch0fo4hbdp" path="res://assets/tool_icons/empty.png" id="2_kp6pa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp6pa"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kp6pa"]
+content_margin_left = 6.0
+
+[node name="hotbarIcon" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -640.0
+offset_right = 640.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+script = ExtResource("1_kp6pa")
+
+[node name="bg" type="Panel" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_kp6pa")
+
+[node name="toolTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_kp6pa")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="toolLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="idLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kp6pa")
+text = "13"

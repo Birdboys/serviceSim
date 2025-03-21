@@ -208,6 +208,11 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 48
 
+[node name="hotbarCont" type="HBoxContainer" parent="playerUI/uiCont/marginCont"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 8
+
 [node name="crossHair" type="TextureRect" parent="playerUI/uiCont"]
 layout_mode = 1
 anchors_preset = 8

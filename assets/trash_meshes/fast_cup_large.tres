@@ -1,7 +1,10 @@
-[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://c0nmiuup4lteu"]
+[gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://c0nmiuup4lteu"]
+
+[ext_resource type="Texture2D" uid="uid://ck2osrc3b16gn" path="res://assets/textures/fast_cup_small/fast_cup_small_1.png" id="1_o2oy8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3yvo"]
 resource_local_to_scene = true
+albedo_texture = ExtResource("1_o2oy8")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5d22m"]

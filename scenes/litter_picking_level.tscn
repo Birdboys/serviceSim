@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://0knb5mcvwdki"]
+[gd_scene load_steps=12 format=3 uid="uid://0knb5mcvwdki"]
 
 [ext_resource type="Script" uid="uid://bdu2knapkrjsi" path="res://scripts/litter_picking_level.gd" id="1_27wqk"]
 [ext_resource type="PackedScene" uid="uid://b5hxccw6xqmdh" path="res://scenes/player_character.tscn" id="2_s2r40"]
+[ext_resource type="Script" uid="uid://jtl18psc6b6c" path="res://scripts/ui/pause_menu.gd" id="3_s2r40"]
+[ext_resource type="Theme" uid="uid://djs6o2b5hx67f" path="res://assets/themes/game_ui.tres" id="4_5f2k8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_27wqk"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -16,6 +18,14 @@ sky = SubResource("Sky_s2r40")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5f2k8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_itd7a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odoyc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kj3ed"]
+
 [node name="litterPickingLevel" type="Node3D"]
 script = ExtResource("1_27wqk")
 
@@ -29,3 +39,98 @@ shadow_enabled = true
 [node name="playerCharacter" parent="." instance=ExtResource("2_s2r40")]
 
 [node name="townTiles" type="Node3D" parent="."]
+
+[node name="pauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("3_s2r40")
+
+[node name="bg" type="ColorRect" parent="pauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.447059, 0.447059, 0.501961)
+
+[node name="pauseMargin" type="MarginContainer" parent="pauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_5f2k8")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="pauseVbox" type="VBoxContainer" parent="pauseMenu/pauseMargin"]
+layout_mode = 2
+alignment = 1
+
+[node name="pauseLabel" type="Label" parent="pauseMenu/pauseMargin/pauseVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="musicSlider" type="HBoxContainer" parent="pauseMenu/pauseMargin/pauseVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="sliderLabel" type="Label" parent="pauseMenu/pauseMargin/pauseVbox/musicSlider"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "MUSIC:"
+
+[node name="musicSlider" type="HSlider" parent="pauseMenu/pauseMargin/pauseVbox/musicSlider"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="soundSlider" type="HBoxContainer" parent="pauseMenu/pauseMargin/pauseVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="sliderLabel" type="Label" parent="pauseMenu/pauseMargin/pauseVbox/soundSlider"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "SOUND:"
+
+[node name="soundSlider" type="HSlider" parent="pauseMenu/pauseMargin/pauseVbox/soundSlider"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="quitButton" type="Button" parent="pauseMenu/pauseMargin/pauseVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_hover_color = Color(0.813258, 0.813258, 0.813258, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5f2k8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_itd7a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_odoyc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kj3ed")
+text = "QUIT GAME"
+
+[node name="noticeLabel" type="Label" parent="pauseMenu/pauseMargin/pauseVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "TRASH COLLECTED THIS RUN WILL NOT SAVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="escLabel" type="Label" parent="pauseMenu/pauseMargin"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 18
+text = "ESC - TO RESUME"
+horizontal_alignment = 1
+vertical_alignment = 2

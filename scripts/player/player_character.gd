@@ -12,7 +12,7 @@ var current_tool_id := -1
 var current_tool 
 var sensitivity := 0.0015
 var gravity = 10.0
-var speed := 15.0
+var speed := 45.0
 
 var bag_dim := Vector2(8,8)
 var trash_collected := 0
@@ -24,7 +24,7 @@ func _ready() -> void:
 	max_trash = bag_dim.x * bag_dim.y
 	UI.initBag(bag_dim)
 	UI.updateBagLabel(0, max_trash)
-	loadTrashTools(["basic_picker", "better_picker"])
+	#loadTrashTools(["basic_picker", "better_picker"])
 	
 func _process(delta: float) -> void:
 	if stateMachine.current_state.movement_control: handleMovement(delta)
@@ -87,18 +87,17 @@ func equipTool(tool_id):
 	if current_tool_id == tool_id:
 		print("UNEQUIPPING")
 		unequipTool()
-		#UI.hotbarSelect(-1)
+		UI.hotbarSelect(-1)
 		return
 		
 	unequipTool()
-	#UI.hotbarSelect(tool_idx)
+	UI.hotbarSelect(tool_id)
 	current_tool = available_tools[tool_id].instantiate()
 	current_tool_id = tool_id 
 	toolHand.add_child(current_tool)
 	current_tool.equip()
 	current_tool.attempt_collect_trash.connect(collectTrash)
 	
-
 func unequipTool():
 	if current_tool: 
 		current_tool.unequip()
@@ -107,12 +106,13 @@ func unequipTool():
 	current_tool_id = -1
 
 func loadTrashTools(tools: Array):
+	tools = tools.filter(func(t): return t != "")
 	for t in tools:
 		if t == "": continue
 		available_tools.append(load("res://scenes/tools/%s.tscn" % t))
 	if available_tools != []: 
 		equipTool(0)
-		#UI.loadToolIcons(tools)
+		UI.loadToolIcons(tools)
 
 func collectTrash(t: Trash):
 	if trash_collected >= max_trash: return
@@ -124,3 +124,6 @@ func collectTrash(t: Trash):
 	#value_collected += trash_val
 	UI.addTrashToBag(t.trash_name, trash_collected)
 	UI.updateBagLabel(trash_collected, max_trash)
+
+func toggleUI(on: bool):
+	UI.visible = on

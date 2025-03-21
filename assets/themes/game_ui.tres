@@ -1,8 +1,39 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://djs6o2b5hx67f"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://djs6o2b5hx67f"]
 
 [ext_resource type="FontFile" uid="uid://buf4naw1mfdrd" path="res://assets/fonts/Chewy/Chewy-Regular.ttf" id="1_xijo0"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xijo0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xijo0"]
+bg_color = Color(0.180392, 0.133333, 0.184314, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpb4n"]
+bg_color = Color(0.180392, 0.133333, 0.184314, 0.752941)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxkm7"]
+bg_color = Color(0.180392, 0.133333, 0.184314, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [resource]
 default_font = ExtResource("1_xijo0")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_xijo0")
+Button/styles/hover = SubResource("StyleBoxFlat_xijo0")
+Button/styles/normal = SubResource("StyleBoxFlat_xpb4n")
+Button/styles/pressed = SubResource("StyleBoxFlat_dxkm7")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 8
