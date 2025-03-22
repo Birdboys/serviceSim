@@ -278,7 +278,7 @@ libraries = {
 
 [node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_6r27q")
-initial_state = NodePath("fallState")
+initial_state = NodePath("offState")
 
 [node name="offState" type="Node" parent="stateMachine"]
 script = ExtResource("3_kww55")

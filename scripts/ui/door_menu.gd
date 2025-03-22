@@ -4,7 +4,10 @@ extends Control
 @onready var toolIcon := preload("res://scenes/ui/hotbar_icon.tscn")
 @onready var equipped_tools 
 
+signal ready_to_leave(yes:bool)
+
 func loadMenu():
+	emit_signal("ready_to_leave", GameData.current_gear.any(func(t): return t != ""))
 	visible = true
 	equipped_tools = GameData.current_gear.duplicate()
 	for x in range(len(equipped_tools)):
@@ -36,4 +39,4 @@ func gearClicked(event: InputEvent, i):
 	
 func pushToolData():
 	GameData.current_gear = equipped_tools.duplicate()
-	
+	emit_signal("ready_to_leave", GameData.current_gear.any(func(t): return t != ""))

@@ -28,4 +28,4 @@ func _unhandled_input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func toggleNotice(on: bool):
-	noticeLabel.modulate = Color.WHITE if on else Color.TRANSPARENT
+	noticeLabel.modulate = Color.hex(0xffffffcc) if on else Color.TRANSPARENT

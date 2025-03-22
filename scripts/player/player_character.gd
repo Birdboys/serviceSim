@@ -127,3 +127,9 @@ func collectTrash(t: Trash):
 
 func toggleUI(on: bool):
 	UI.visible = on
+
+func turnOn():
+	stateMachine.on_state_transition(stateMachine.current_state, "walkState")
+	
+func turnOff():
+	stateMachine.on_state_transition(stateMachine.current_state, "offState")

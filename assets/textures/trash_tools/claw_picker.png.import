@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdccny31qqv8b"
-path="res://.godot/imported/better_picker.png-b0f736ddbe5197b33ee2880a20d4c984.ctex"
+uid="uid://bh1dcxekvopmx"
+path="res://.godot/imported/claw_picker.png-a3e966f0e704a00fbaedf36c09dd1d58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temp/better_picker.png"
-dest_files=["res://.godot/imported/better_picker.png-b0f736ddbe5197b33ee2880a20d4c984.ctex"]
+source_file="res://assets/textures/trash_tools/claw_picker.png"
+dest_files=["res://.godot/imported/claw_picker.png-a3e966f0e704a00fbaedf36c09dd1d58.ctex"]
 
 [params]
 

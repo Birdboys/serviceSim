@@ -19,7 +19,9 @@ extends Node3D
 @onready var door := $door
 @onready var doorArea := $doorArea
 @onready var doorAnim := $door/doorAnim
-
+@onready var leaveLabel := $doorArea/leaveLabel
+@onready var transitionUI := $transitionLayer/endBG
+var can_leave := false
 var can_click := false
 var current_menu := "main"
 var transition_tween : Tween
@@ -29,17 +31,29 @@ func _ready() -> void:
 		areas[a].input_event.connect(menuClick.bind(a))
 	for t in tools.get_children():
 		t.input_event.connect(toolClick.bind(t.name))
+	getOwnedTools()
+	UI.menus['door'].ready_to_leave.connect(toggleReady)
 	doorArea.mouse_entered.connect(toggleDoor.bind(true))
 	doorArea.mouse_exited.connect(toggleDoor.bind(false))
+	doorArea.input_event.connect(tryToLeave)
 	doorArea.monitoring = false
 	can_click = true
 	toggleToolCols(false)
 	UI.reset()
-
+	
+	var load_tween := get_tree().create_tween()
+	load_tween.tween_property(transitionUI, "modulate", Color.TRANSPARENT, 1.0)
+	load_tween.tween_callback(transitionUI.queue_free)
+	await load_tween.finished
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape") and current_menu != "bed" and can_click:
 		if current_menu == "door": 
+			can_leave = false
 			var door_tween = get_tree().create_tween().tween_property(door, "rotation", Vector3.ZERO, 0.5)
+			leaveLabel.visible = false
+		UI.escLabel.visible = false
 		can_click = false
 		current_menu = "bed"
 		UI.reset()
@@ -76,6 +90,7 @@ func loadMenu(m):
 		"door": 
 			toggleToolCols(true)
 			doorArea.monitoring = true
+			leaveLabel.visible = true
 		_: 
 			toggleToolCols(false)
 			doorArea.monitoring = true
@@ -92,3 +107,17 @@ func toggleDoor(on: bool):
 	if not GameData.current_gear.any(func(t): return t != ""): return
 	if on: doorAnim.play("open_door")
 	else: doorAnim.play_backwards("open_door")
+
+func toggleReady(yes: bool):
+	can_leave = yes
+
+func tryToLeave(cam, event:InputEvent, _event_pos, _event_norm, _shape_idx):
+	if event is InputEventMouseButton and event.pressed and event.button_index == 1 and can_leave:
+		can_leave = false
+		get_tree().change_scene_to_file("res://scenes/litter_picking_level.tscn")
+
+func getOwnedTools():
+	for t in GameData.tool_data:
+		if not GameData.tool_data[t]['owned']:
+			tools.find_child(t).visible = false
+			

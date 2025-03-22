@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var escLabel := $UI/uiMargin/escLabel
 @onready var menus := {
 	"door": $UI/uiMargin/doorMenu,
 	"trash": $UI/uiMargin/trashMenu,
@@ -11,6 +12,7 @@ func loadMenu(m):
 	if m == "bed": return
 	print("LOADING MENU ", m)
 	menus[m].loadMenu()
+	escLabel.visible = true
 	
 func reset():
 	for m in menus:

@@ -1,12 +1,12 @@
 extends TrashTool
-
+class_name LitterPicker
 @onready var trashRay := $trashRay
 @onready var pickerAnim := $pickerAnim
 
 @export var picker_range := 5.0
 
 func primaryDown():
-	pickerAnim.play("pick")
+	pickerAnim.play("pick", -1, speed_mod)
 	
 func equip():
 	trashRay.target_position = Vector3(0,0,-picker_range)

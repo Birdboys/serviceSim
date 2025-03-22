@@ -1,7 +1,7 @@
 extends Control
 
 func loadMenu():
-	pass
+	visible = true
 		
 func reset():
 	visible = false

@@ -3,6 +3,8 @@ extends Node3D
 @onready var townTiles := $townTiles
 @onready var player := $playerCharacter
 @onready var pauseMenu := $pauseMenu
+@onready var transitionUI := $transitionLayer/transitionBG
+@onready var endUI := $transitionLayer/endBG
 
 var block_size := Vector2(5, 5)
 var block_overlap := 1
@@ -17,6 +19,7 @@ var adjacent_dirs := [Vector2(1,0), Vector2(1,1), Vector2(0,1), Vector2(-1,1), V
 var expand_thread : Thread
 var start_time := -1
 var total_time : float 
+var playing := false
 
 const tile_to_scene := {
 	WFCInfo.tile_type.GRASS: preload("res://scenes/tiles/grass_tile.tscn"),
@@ -30,28 +33,30 @@ const tile_to_scene := {
 }
 
 func _ready() -> void:
-	total_time = floor(GameData.game_time * 60.0)
-	#player.toggleReady(false)
-	#player.UI.updateTimerLabel(total_time)
+	total_time = floor(GameData.game_time)
+	player.UI.updateTimerLabel(total_time)
 	wfc = BlockMS.new()
 	wfc.initBlockMS(block_size, block_overlap)
 	var init_time = Time.get_ticks_msec()
 	await startGrid()
 	await generateTiles()
 	await startTrash()
-	pauseMenu.can_pause = true
 	pauseMenu.game_paused.connect(gamePaused)
 	print("LOAD TIME: ", (Time.get_ticks_msec()-init_time)/1000.0)
-	#player.loadTrashTools(GameStuff.current_gear)
+	player.loadTrashTools(GameData.current_gear)
 	player.position += Vector3(1, 0, 1) * game_tile_size.x
 	#bus.position += Vector3(1, 0, 1) * game_tile_size.x
-	#var load_tween = get_tree().create_tween()
-	#load_tween.tween_property($loadUI, "modulate", Color.TRANSPARENT, 0.5)
-	#load_tween.tween_callback($loadUI.queue_free)
-	#load_tween.tween_callback(player.toggleReady.bind(true))
-	#load_tween.tween_interval(0.75)
-	#load_tween.tween_property(bus, "global_position", bus.global_position - bus.basis.z * 40.0, 2.5)
-	#load_tween.tween_callback(bus.queue_free)
+	var load_tween = get_tree().create_tween()
+	load_tween.tween_interval(0.5)
+	load_tween.tween_property(transitionUI, "modulate", Color.TRANSPARENT, 0.5)
+	load_tween.tween_callback(transitionUI.queue_free)
+	load_tween.tween_callback(player.turnOn)
+	load_tween.tween_interval(0.75)
+	await load_tween.finished
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	playing = true
+	pauseMenu.can_pause = true
+	
 	#$sunAnim.play("sun", -1, 0.2)
 	start_time = Time.get_ticks_msec()
 	
@@ -67,11 +72,13 @@ func _physics_process(delta: float) -> void:
 		prev_tile_pos = current_tile_pos
 		checkInitTrash()
 	
-	#if start_time > -1:
-		#var elapsed_time = floor((Time.get_ticks_msec()-start_time)/1000.0)
-		#player.UI.updateTimerLabel(total_time-elapsed_time)
-		#if elapsed_time >= total_time and player.playing:
-			#endGame()
+	if start_time > -1:
+		var elapsed_time = floor((Time.get_ticks_msec()-start_time)/1000.0)
+		player.UI.updateTimerLabel(total_time-elapsed_time)
+		if elapsed_time >= total_time and playing:
+			playing = false
+			pauseMenu.can_pause = false
+			endGame()
 	
 func startGrid():
 	var start_tile = WFCTile.new()
@@ -166,16 +173,16 @@ func addTileThreaded(thread:Thread, t, p, r):
 	grid[t]["tile_scene"] = new_tile
 
 func endGame():
-	return
 	#player.UI.updateTimerLabel(0)
-	#player.toggleReady(false)
-	#var end_tween = get_tree().create_tween()
-	#end_tween.tween_property(endBG, "modulate", Color.WHITE, 0.5)
-	#end_tween.tween_interval(0.5)
-	#await end_tween.finished
-	#GameStuff.total_money += player.current_trash_val
-	#GameStuff.total_trash_collected += player.trash_collected
-	#get_tree().change_scene_to_file("res://scenes/bed_menu.tscn")
+	player.turnOff()
+	var end_tween = get_tree().create_tween()
+	end_tween.tween_interval(1.0)
+	end_tween.tween_property(endUI, "modulate", Color.WHITE, 1.0)
+	end_tween.tween_interval(0.5)
+	await end_tween.finished
+	GameData.total_money += player.value_collected
+	GameData.total_trash_collected += player.trash_collected
+	get_tree().change_scene_to_file("res://scenes/bed_menu.tscn")
 
 func gamePaused(on: bool):
 	player.toggleUI(not on)
