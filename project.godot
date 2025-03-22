@@ -99,3 +99,7 @@ escape={
 3d_physics/layer_6="metal"
 3d_physics/layer_7="glass"
 3d_physics/layer_8="bio"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=3
