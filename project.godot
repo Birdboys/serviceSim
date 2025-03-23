@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="serviceSim"
-run/main_scene="uid://ckld4a3si6dyh"
+run/main_scene="uid://dp6pjn8bcgigu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameData="*res://scripts/game_data.gd"
-TrashData="*res://scripts/trash/trash_data.gd"
 AudioHandler="*res://scenes/audio_handler.tscn"
+TrashData="*res://scripts/trash/trash_data.gd"
 
 [display]
 

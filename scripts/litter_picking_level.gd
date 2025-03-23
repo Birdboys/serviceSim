@@ -41,6 +41,7 @@ func _ready() -> void:
 	await startGrid()
 	await generateTiles()
 	await startTrash()
+	pauseMenu.sens_updated.connect(player.updateSensitivity)
 	pauseMenu.game_paused.connect(gamePaused)
 	print("LOAD TIME: ", (Time.get_ticks_msec()-init_time)/1000.0)
 	player.loadTrashTools(GameData.current_gear)

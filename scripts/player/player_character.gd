@@ -10,7 +10,7 @@ extends CharacterBody3D
 var available_tools := []
 var current_tool_id := -1
 var current_tool 
-var sensitivity := 0.0015
+var sensitivity := 0.0
 var gravity = 10.0
 var speed := 45.0
 
@@ -19,11 +19,14 @@ var trash_collected := 0
 var value_collected := 0
 var max_trash := 0
 
+const base_sens := 0.00005
+
 func _ready() -> void:
 	stateMachine.initialize(self)
 	max_trash = bag_dim.x * bag_dim.y
 	UI.initBag(bag_dim)
 	UI.updateBagLabel(0, max_trash)
+	updateSensitivity()
 	#loadTrashTools(["basic_picker", "better_picker"])
 	
 func _process(delta: float) -> void:
@@ -54,9 +57,9 @@ func handleCamera(event):
 
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			rotate_y(-event.relative.x * sensitivity)
-			cam.rotate_x(-event.relative.y * sensitivity)
-			cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-60), deg_to_rad(85))
+			rotate_y(-event.relative.x * sensitivity * base_sens)
+			cam.rotate_x(-event.relative.y * sensitivity * base_sens)
+			cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-70), deg_to_rad(85))
 
 func handlePrompt():
 	var interact_col = interactRay.get_collider()
@@ -133,3 +136,7 @@ func turnOn():
 	
 func turnOff():
 	stateMachine.on_state_transition(stateMachine.current_state, "offState")
+
+func updateSensitivity():
+	sensitivity = GameData.settings_data['sensitivity']
+	print("CURRENT SENS: ", sensitivity)

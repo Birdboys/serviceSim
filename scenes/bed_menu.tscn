@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=4 uid="uid://dp6pjn8bcgigu"]
+[gd_scene load_steps=89 format=4 uid="uid://dp6pjn8bcgigu"]
 
 [ext_resource type="Script" uid="uid://bmkdeiv33ldnb" path="res://scripts/bed_menu.gd" id="1_mswj1"]
 [ext_resource type="ArrayMesh" uid="uid://cmcnbsmd2mcmq" path="res://assets/trash_meshes/carton_small.tres" id="2_atm4g"]
@@ -189,6 +189,13 @@ albedo_color = Color(0.764706, 0.141176, 0.329412, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_2xgiy"]
 material = SubResource("StandardMaterial3D_0mrwf")
 size = Vector3(14, 2, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekvf7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qf3g8"]
+material = SubResource("StandardMaterial3D_ekvf7")
+radius = 1.0
+height = 6.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atm4g"]
 albedo_color = Color(0.780392, 0.862745, 0.815686, 1)
@@ -590,6 +597,11 @@ shape = SubResource("BoxShape3D_qf0xj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.87, 1, 7.967)
 mesh = SubResource("BoxMesh_2xgiy")
 
+[node name="pillowMesh" type="MeshInstance3D" parent="bedMesh"]
+transform = Transform3D(1.8, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.11178, 1.06243, 0)
+mesh = SubResource("CapsuleMesh_qf3g8")
+skeleton = NodePath("../..")
+
 [node name="deskMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 4, -9)
 mesh = SubResource("BoxMesh_mswj1")
@@ -728,7 +740,6 @@ transform = Transform3D(1, 9.31323e-09, 0, 1.86265e-09, 1, -7.45058e-09, -5.9604
 shape = SubResource("CapsuleShape3D_le12v")
 
 [node name="claw_picker" type="MeshInstance3D" parent="toolBenchMesh/tools/claw_picker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 layers = 2
 mesh = SubResource("ArrayMesh_m4cyr")
 skeleton = NodePath("")
@@ -758,7 +769,6 @@ transform = Transform3D(1, 0, -2.98023e-08, 0, 1, -1.11759e-08, -8.9407e-08, 1.4
 shape = SubResource("CapsuleShape3D_hnsmf")
 
 [node name="auto_picker" type="MeshInstance3D" parent="toolBenchMesh/tools/auto_picker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 layers = 2
 mesh = SubResource("ArrayMesh_5st7i")
 skeleton = NodePath("")

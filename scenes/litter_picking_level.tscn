@@ -37,6 +37,7 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="playerCharacter" parent="." instance=ExtResource("2_s2r40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="townTiles" type="Node3D" parent="."]
 
@@ -67,6 +68,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="pauseVbox" type="VBoxContainer" parent="pauseMenu/pauseMargin"]
 layout_mode = 2
+size_flags_horizontal = 4
 alignment = 1
 
 [node name="pauseLabel" type="Label" parent="pauseMenu/pauseMargin/pauseVbox"]
@@ -76,13 +78,38 @@ text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="sensitivitySlider" type="HBoxContainer" parent="pauseMenu/pauseMargin/pauseVbox"]
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_constants/separation = 16
+
+[node name="sliderLabel" type="Label" parent="pauseMenu/pauseMargin/pauseVbox/sensitivitySlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "SENSITIVITY:"
+
+[node name="sensitivitySlider" type="HSlider" parent="pauseMenu/pauseMargin/pauseVbox/sensitivitySlider"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 5.0
+max_value = 95.0
+value = 10.0
+
+[node name="spacer" type="Control" parent="pauseMenu/pauseMargin/pauseVbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
 [node name="musicSlider" type="HBoxContainer" parent="pauseMenu/pauseMargin/pauseVbox"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 5
 theme_override_constants/separation = 16
 
 [node name="sliderLabel" type="Label" parent="pauseMenu/pauseMargin/pauseVbox/musicSlider"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "MUSIC:"
 
@@ -94,11 +121,12 @@ size_flags_vertical = 1
 
 [node name="soundSlider" type="HBoxContainer" parent="pauseMenu/pauseMargin/pauseVbox"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 5
 theme_override_constants/separation = 16
 
 [node name="sliderLabel" type="Label" parent="pauseMenu/pauseMargin/pauseVbox/soundSlider"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "SOUND:"
 

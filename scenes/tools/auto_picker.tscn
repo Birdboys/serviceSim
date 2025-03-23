@@ -3,38 +3,6 @@
 [ext_resource type="Script" uid="uid://cskoftrh3m17g" path="res://scripts/tools/auto_picker.gd" id="1_ygx83"]
 [ext_resource type="Texture2D" uid="uid://d1n1qsvlq028j" path="res://assets/textures/trash_tools/auto_picker.png" id="2_ygx83"]
 
-[sub_resource type="Animation" id="Animation_ygx83"]
-resource_name = "pick"
-length = 0.4
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("auto_picker/auto_bottom:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector3(0, -0.95, 0), Vector3(0, -1.09657, 0), Vector3(0, -0.95, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"trashRayCollect"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_eack2"]
 length = 0.001
 tracks/0/type = "value"
@@ -72,6 +40,38 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.0673868, -1.31155, -0.176882)]
+}
+
+[sub_resource type="Animation" id="Animation_ygx83"]
+resource_name = "pick"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("auto_picker/auto_bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, -0.95, 0), Vector3(0, -1.09657, 0), Vector3(0, -0.95, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"trashRayCollect"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_sy8qy"]
@@ -209,7 +209,7 @@ libraries = {
 }
 
 [node name="auto_picker" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.240898, 0.109178, -0.96439, -0.175562, 0.982163, 0.0673358, 0.95454, 0.153089, 0.255768, 1.18408, 0.657685, -0.795418)
+transform = Transform3D(0.2409, 0.109178, -0.964389, -0.175562, 0.982163, 0.0673358, 0.95454, 0.153089, 0.25577, 1.18408, 0.657685, -0.795418)
 layers = 2
 mesh = SubResource("ArrayMesh_wrp8o")
 skeleton = NodePath("")

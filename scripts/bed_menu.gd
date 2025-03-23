@@ -25,6 +25,7 @@ var can_leave := false
 var can_click := false
 var current_menu := "main"
 var transition_tween : Tween
+var cam_tween_time := 0.8
 
 func _ready() -> void:
 	for a in areas:
@@ -77,10 +78,10 @@ func transitionCamera(m):
 	print("TRANSITIONING TO ", m)
 	var transition_tween := get_tree().create_tween().set_parallel(true).set_ease(Tween.EASE_IN_OUT)
 	print("MADE TWEEN")
-	transition_tween.tween_property(playerCam, "position", cams[m].position, 1.0)
-	transition_tween.tween_property(playerCam, "rotation", cams[m].rotation, 1.0)
-	transition_tween.tween_property(playerCam, "fov", cams[m].fov, 1.0)
-	transition_tween.tween_callback(loadMenu.bind(m)).set_delay(1.0)
+	transition_tween.tween_property(playerCam, "position", cams[m].position, cam_tween_time)
+	transition_tween.tween_property(playerCam, "rotation", cams[m].rotation, cam_tween_time)
+	transition_tween.tween_property(playerCam, "fov", cams[m].fov, cam_tween_time)
+	transition_tween.tween_callback(loadMenu.bind(m)).set_delay(cam_tween_time)
 	print("TWEEN FINISHED")
 
 func loadMenu(m):

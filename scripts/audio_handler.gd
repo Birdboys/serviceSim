@@ -11,6 +11,7 @@ extends Node
 
 var music_tween 
 func _ready():
+	loadAudioSettings()
 	populateQueues()
 
 func populateQueues():
@@ -19,8 +20,8 @@ func populateQueues():
 		var new_3d_player = AudioStreamPlayer3D.new()
 		soundQueue.add_child(new_player)
 		soundQueue3D.add_child(new_3d_player)
-		#new_player.bus = "soundEffects"
-		#new_3d_player.bus = "soundEffects"
+		new_player.bus = "soundBus"
+		new_3d_player.bus = "soundBus"
 		players.append(new_player)
 		players_3d.append(new_3d_player)
 		new_3d_player.finished.connect(reset3DPlayer.bind(x))
@@ -69,3 +70,7 @@ func setPlayerStream(player, stream):
 		
 func reset3DPlayer(index):
 	players_3d[index].global_position = Vector3.ZERO
+
+func loadAudioSettings():
+	AudioServer.set_bus_volume_linear(1, GameData.settings_data['sound'])
+	AudioServer.set_bus_volume_linear(2, GameData.settings_data['music'])
