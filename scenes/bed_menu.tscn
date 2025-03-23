@@ -598,7 +598,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.87, 1, 7.967)
 mesh = SubResource("BoxMesh_2xgiy")
 
 [node name="pillowMesh" type="MeshInstance3D" parent="bedMesh"]
-transform = Transform3D(1.8, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.11178, 1.06243, 0)
+transform = Transform3D(2, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.11178, 1.06243, 0)
 mesh = SubResource("CapsuleMesh_qf3g8")
 skeleton = NodePath("../..")
 

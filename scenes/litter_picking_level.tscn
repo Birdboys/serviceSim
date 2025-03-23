@@ -98,6 +98,26 @@ min_value = 5.0
 max_value = 95.0
 value = 10.0
 
+[node name="fovSlider" type="HBoxContainer" parent="pauseMenu/pauseMargin/pauseVbox"]
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_constants/separation = 16
+
+[node name="sliderLabel" type="Label" parent="pauseMenu/pauseMargin/pauseVbox/fovSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "FOV:"
+
+[node name="fovSlider" type="HSlider" parent="pauseMenu/pauseMargin/pauseVbox/fovSlider"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 30.0
+max_value = 110.0
+value = 40.0
+
 [node name="spacer" type="Control" parent="pauseMenu/pauseMargin/pauseVbox"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
@@ -160,7 +180,6 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 18
 text = "ESC - TO RESUME"
-horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="transitionLayer" type="CanvasLayer" parent="."]

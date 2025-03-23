@@ -139,4 +139,6 @@ func turnOff():
 
 func updateSensitivity():
 	sensitivity = GameData.settings_data['sensitivity']
-	print("CURRENT SENS: ", sensitivity)
+
+func updateFOV():
+	cam.fov = GameData.settings_data['fov']

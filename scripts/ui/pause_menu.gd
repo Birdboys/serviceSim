@@ -5,14 +5,16 @@ extends CanvasLayer
 @onready var musicSlider := $pauseMargin/pauseVbox/musicSlider/musicSlider
 @onready var soundSlider := $pauseMargin/pauseVbox/soundSlider/soundSlider
 @onready var sensitivitySlider := $pauseMargin/pauseVbox/sensitivitySlider/sensitivitySlider
-
+@onready var fovSlider := $pauseMargin/pauseVbox/fovSlider/fovSlider
 var can_pause := false
 
 signal game_paused(on:bool)
-signal sens_updated()
+signal sens_updated
+signal fov_updated
 
 func _ready() -> void:
 	sensitivitySlider.value_changed.connect(updateSensitivity)
+	fovSlider.value_changed.connect(updateFOV)
 	musicSlider.value_changed.connect(updateMusic)
 	soundSlider.value_changed.connect(updateSound)
 	
@@ -50,7 +52,12 @@ func updateSensitivity(v):
 	GameData.settings_data['sensitivity'] = v
 	emit_signal("sens_updated")
 
+func updateFOV(v):
+	GameData.settings_data['fov'] = v
+	emit_signal("fov_updated")
+	
 func setSliders():
 	musicSlider.value = GameData.settings_data['music'] * 100.0
 	soundSlider.value = GameData.settings_data['sound'] * 100.0
 	sensitivitySlider.value = GameData.settings_data['sensitivity']
+	fovSlider.value = GameData.settings_data['fov']
