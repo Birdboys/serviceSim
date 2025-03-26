@@ -89,6 +89,7 @@ speed_mod = 1.15
 [node name="trashRay" type="RayCast3D" parent="."]
 enabled = false
 collision_mask = 248
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="pickerMesh" type="MeshInstance3D" parent="."]

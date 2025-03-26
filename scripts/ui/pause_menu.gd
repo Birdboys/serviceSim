@@ -23,6 +23,7 @@ func _ready() -> void:
 	quitButton.pressed.connect(get_tree().quit)
 	toggleNotice(false)
 	
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape") and can_pause:
 		if get_tree().paused: #unpause

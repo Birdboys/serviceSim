@@ -6,12 +6,29 @@ extends CanvasLayer
 @onready var bagGrid := $uiCont/bagMarginCont/bagVbox/bagPanel/bagScroll/bagGrid
 @onready var hotbarCont := $uiCont/marginCont/hotbarCont
 @onready var bagAnim := $bagAnim
+@onready var comboHbox := $uiCont/marginCont/comboHbox
+@onready var comboLabel := $uiCont/marginCont/comboHbox/VBoxContainer/comboLabel
+@onready var comboBar := $uiCont/marginCont/comboHbox/VBoxContainer/comboBar
 @onready var trashIcon := preload("res://scenes/ui/trash_icon.tscn")
 @onready var hotbarIcon := preload("res://scenes/ui/hotbar_icon.tscn")
 
+var combo_quip := ""
 var trash_open := false
 var bag_dim : Vector2
 
+const combo_quips := {
+	0: "",
+	1: "Combo",
+	10: "Super Combo",
+	20: "Trash-tastic",
+	30: "Trashinator",
+	40: "Trashed out",
+	50: "THE TRASH MAN",
+}
+func _ready() -> void:
+	setComboLabel(0)
+	updateComboUI(0)
+	
 func updatePrompt(t):
 	promptLabel.text = t
 
@@ -58,3 +75,13 @@ func loadToolIcons(tools):
 func hotbarSelect(t):
 	for x in range(hotbarCont.get_child_count()):
 		hotbarCont.get_child(x).toggleSelected(x==t)
+
+func setComboLabel(t):
+	if t in combo_quips: 
+		combo_quip = combo_quips[t]
+		comboLabel.rotation_degrees = randi_range(-15,15)
+	comboLabel.text = "%s %sx" % [combo_quip, t]
+	
+func updateComboUI(v):
+	comboHbox.modulate.a = sin(v)
+	comboBar.value = v * 100.0

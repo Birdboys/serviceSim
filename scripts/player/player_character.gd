@@ -7,6 +7,8 @@ extends CharacterBody3D
 @onready var interactRay := $playerNeck/playerCam/interactRay
 @onready var stateMachine := $stateMachine
 @onready var UI := $playerUI
+@onready var comboTimer := $comboTimer
+
 var available_tools := []
 var current_tool_id := -1
 var current_tool 
@@ -18,12 +20,16 @@ var bag_dim := Vector2(8,8)
 var trash_collected := 0
 var value_collected := 0
 var max_trash := 0
+var combo_counter := 0
+var max_combo := 0
 
+const combo_time_window := 3.0
 const base_sens := 0.00005
 
 func _ready() -> void:
 	stateMachine.initialize(self)
 	max_trash = bag_dim.x * bag_dim.y
+	comboTimer.timeout.connect(endCombo)
 	UI.initBag(bag_dim)
 	UI.updateBagLabel(0, max_trash)
 	updateSensitivity()
@@ -35,6 +41,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if stateMachine.current_state.interact_control: handlePrompt()
+	if not comboTimer.is_stopped() and combo_counter >= 3: UI.updateComboUI(comboTimer.time_left/combo_time_window)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if stateMachine.current_state.camera_control: handleCamera(event)
@@ -124,9 +131,11 @@ func collectTrash(t: Trash):
 	#var trash_name = col_data['name']
 	
 	trash_collected += 1
-	#value_collected += trash_val
+	#value_collected += 
+	handleCombo()
 	UI.addTrashToBag(t.trash_name, trash_collected)
 	UI.updateBagLabel(trash_collected, max_trash)
+	
 
 func toggleUI(on: bool):
 	UI.visible = on
@@ -142,3 +151,14 @@ func updateSensitivity():
 
 func updateFOV():
 	cam.fov = GameData.settings_data['fov']
+
+func handleCombo():
+	combo_counter += 1
+	if combo_counter > max_combo: max_combo = combo_counter
+	comboTimer.start(combo_time_window)
+	UI.setComboLabel(combo_counter)
+
+func endCombo():
+	combo_counter = 0
+	UI.updateComboUI(0)
+	UI.setComboLabel(0)
