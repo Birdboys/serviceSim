@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://0knb5mcvwdki"]
+[gd_scene load_steps=18 format=3 uid="uid://0knb5mcvwdki"]
 
 [ext_resource type="Script" uid="uid://bdu2knapkrjsi" path="res://scripts/litter_picking_level.gd" id="1_27wqk"]
 [ext_resource type="PackedScene" uid="uid://b5hxccw6xqmdh" path="res://scenes/player_character.tscn" id="2_s2r40"]
 [ext_resource type="Script" uid="uid://jtl18psc6b6c" path="res://scripts/ui/pause_menu.gd" id="3_s2r40"]
 [ext_resource type="Theme" uid="uid://djs6o2b5hx67f" path="res://assets/themes/game_ui.tres" id="4_5f2k8"]
+[ext_resource type="Script" uid="uid://dkmehpj2pmw37" path="res://scripts/ui/end_menu.gd" id="5_itd7a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_27wqk"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -25,6 +26,251 @@ glow_enabled = true
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odoyc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kj3ed"]
+
+[sub_resource type="Animation" id="Animation_odoyc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("endMenuCont:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("endMenuCont/transitionBG:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:trash_percent")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:value_percent")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:combo_percent")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:loading_stats")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("endMenuCont/transitionBG/endLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_itd7a"]
+resource_name = "load_end_menu"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("endMenuCont:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"showStats"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kj3ed"]
+resource_name = "transition_to_bed"
+length = 2.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("endMenuCont/transitionBG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"to_bedroom"],
+"method": &"emit_signal"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("endMenuCont/transitionBG/endLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j6dpq"]
+resource_name = "load_stats"
+length = 2.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:trash_percent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-5, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:value_percent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1, 2.1),
+"transitions": PackedFloat32Array(-5, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:combo_percent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.21, 2.7),
+"transitions": PackedFloat32Array(-5, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:loading_stats")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_odoyc"]
+_data = {
+&"RESET": SubResource("Animation_odoyc"),
+&"load_end_menu": SubResource("Animation_itd7a"),
+&"load_stats": SubResource("Animation_j6dpq"),
+&"transition_to_bed": SubResource("Animation_kj3ed")
+}
 
 [node name="litterPickingLevel" type="Node3D"]
 script = ExtResource("1_27wqk")
@@ -159,6 +405,7 @@ size_flags_vertical = 1
 [node name="quitButton" type="Button" parent="pauseMenu/pauseMargin/pauseVbox"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 10
 theme_override_colors/font_hover_color = Color(0.813258, 0.813258, 0.813258, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 48
@@ -182,9 +429,171 @@ theme_override_font_sizes/font_size = 18
 text = "ESC - TO RESUME"
 vertical_alignment = 2
 
+[node name="endMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("5_itd7a")
+
+[node name="endMenuCont" type="Control" parent="endMenu"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="bg" type="ColorRect" parent="endMenu/endMenuCont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.447059, 0.447059, 0.501961)
+
+[node name="endMargin" type="MarginContainer" parent="endMenu/endMenuCont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_5f2k8")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="endVbox" type="VBoxContainer" parent="endMenu/endMenuCont/endMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="endLabel" type="Label" parent="endMenu/endMenuCont/endMargin/endVbox"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 128
+text = "PICKING FINISHED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="trashHBox" type="HBoxContainer" parent="endMenu/endMenuCont/endMargin/endVbox"]
+layout_mode = 2
+
+[node name="trashLabel" type="Label" parent="endMenu/endMenuCont/endMargin/endVbox/trashHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "TRASH COLLECTED:"
+vertical_alignment = 1
+
+[node name="trashCountLabel" type="Label" parent="endMenu/endMenuCont/endMargin/endVbox/trashHBox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 48
+text = "0 pieces"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="moneyHbox" type="HBoxContainer" parent="endMenu/endMenuCont/endMargin/endVbox"]
+layout_mode = 2
+
+[node name="moneyLabel" type="Label" parent="endMenu/endMenuCont/endMargin/endVbox/moneyHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "MONEY EARNED:"
+vertical_alignment = 1
+
+[node name="moneyCountLabel" type="Label" parent="endMenu/endMenuCont/endMargin/endVbox/moneyHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 48
+text = "0 dollars"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="comboHbox" type="HBoxContainer" parent="endMenu/endMenuCont/endMargin/endVbox"]
+layout_mode = 2
+
+[node name="comboLabel" type="Label" parent="endMenu/endMenuCont/endMargin/endVbox/comboHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "MAX COMBO:"
+vertical_alignment = 1
+
+[node name="comboCountLabel" type="Label" parent="endMenu/endMenuCont/endMargin/endVbox/comboHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="endButtonHbox" type="HBoxContainer" parent="endMenu/endMenuCont/endMargin/endVbox"]
+layout_mode = 2
+size_flags_vertical = 10
+alignment = 1
+
+[node name="bedButton" type="Button" parent="endMenu/endMenuCont/endMargin/endVbox/endButtonHbox"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_hover_color = Color(0.813258, 0.813258, 0.813258, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5f2k8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_itd7a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_odoyc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kj3ed")
+text = "TO BEDROOM"
+
+[node name="quitButton" type="Button" parent="endMenu/endMenuCont/endMargin/endVbox/endButtonHbox"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_hover_color = Color(0.813258, 0.813258, 0.813258, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5f2k8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_itd7a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_odoyc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kj3ed")
+text = "QUIT GAME"
+
+[node name="transitionBG" type="ColorRect" parent="endMenu/endMenuCont"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_5f2k8")
+color = Color(0, 0, 0, 1)
+
+[node name="endLabel" type="Label" parent="endMenu/endMenuCont/transitionBG"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = "HEADING
+HOME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="endAnim" type="AnimationPlayer" parent="endMenu"]
+libraries = {
+&"": SubResource("AnimationLibrary_odoyc")
+}
+
 [node name="transitionLayer" type="CanvasLayer" parent="."]
 
 [node name="transitionBG" type="ColorRect" parent="transitionLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -208,25 +617,6 @@ text = "LOADING"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="endBG" type="ColorRect" parent="transitionLayer"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="endLabel" type="Label" parent="transitionLayer/endBG"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 96
-text = "HEADING
-HOME"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="gameTimer" type="Timer" parent="."]
+process_mode = 1
+one_shot = true

@@ -17,11 +17,11 @@ var gravity = 10.0
 var speed := 45.0
 
 var bag_dim := Vector2(8,8)
-var trash_collected := 0
-var value_collected := 0
+var trash_collected := 150
+var value_collected := 150
 var max_trash := 0
 var combo_counter := 0
-var max_combo := 0
+var max_combo := 150
 
 const combo_time_window := 3.0
 const base_sens := 0.00005

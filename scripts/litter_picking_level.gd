@@ -3,8 +3,9 @@ extends Node3D
 @onready var townTiles := $townTiles
 @onready var player := $playerCharacter
 @onready var pauseMenu := $pauseMenu
+@onready var endMenu := $endMenu
 @onready var transitionUI := $transitionLayer/transitionBG
-@onready var endUI := $transitionLayer/endBG
+@onready var gameTimer := $gameTimer
 
 var block_size := Vector2(5, 5)
 var block_overlap := 1
@@ -18,7 +19,6 @@ var grid := {}
 var adjacent_dirs := [Vector2(1,0), Vector2(1,1), Vector2(0,1), Vector2(-1,1), Vector2(-1,0), Vector2(-1,-1), Vector2(0,-1), Vector2(1,-1)]
 var expand_thread : Thread
 var start_time := -1
-var total_time : float 
 var playing := false
 
 const tile_to_scene := {
@@ -33,18 +33,22 @@ const tile_to_scene := {
 }
 
 func _ready() -> void:
-	total_time = floor(GameData.game_time)
-	player.UI.updateTimerLabel(total_time)
+	transitionUI.visible = true
 	wfc = BlockMS.new()
 	wfc.initBlockMS(block_size, block_overlap)
 	var init_time = Time.get_ticks_msec()
 	await startGrid()
 	await generateTiles()
 	await startTrash()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pauseMenu.sens_updated.connect(player.updateSensitivity)
 	pauseMenu.fov_updated.connect(player.updateFOV)
 	pauseMenu.game_paused.connect(gamePaused)
+	endMenu.to_bedroom.connect(toBedroom)
+	endMenu.quit_game.connect(quitGame)
+	gameTimer.timeout.connect(endPicking)
 	print("LOAD TIME: ", (Time.get_ticks_msec()-init_time)/1000.0)
+	player.UI.updateTimerLabel(GameData.game_time)
 	player.loadTrashTools(GameData.current_gear)
 	player.position += Vector3(1, 0, 1) * game_tile_size.x
 	#bus.position += Vector3(1, 0, 1) * game_tile_size.x
@@ -55,12 +59,12 @@ func _ready() -> void:
 	load_tween.tween_callback(player.turnOn)
 	load_tween.tween_interval(0.75)
 	await load_tween.finished
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 	playing = true
 	pauseMenu.can_pause = true
 	
 	#$sunAnim.play("sun", -1, 0.2)
-	start_time = Time.get_ticks_msec()
+	gameTimer.start(GameData.game_time)
 	
 func _physics_process(delta: float) -> void:
 	current_block_pos = posToBlock(player.position)    
@@ -74,13 +78,7 @@ func _physics_process(delta: float) -> void:
 		prev_tile_pos = current_tile_pos
 		checkInitTrash()
 	
-	if start_time > -1:
-		var elapsed_time = floor((Time.get_ticks_msec()-start_time)/1000.0)
-		player.UI.updateTimerLabel(total_time-elapsed_time)
-		if elapsed_time >= total_time and playing:
-			playing = false
-			pauseMenu.can_pause = false
-			endGame()
+	if not gameTimer.is_stopped(): player.UI.updateTimerLabel(gameTimer.time_left)
 	
 func startGrid():
 	var start_tile = WFCTile.new()
@@ -174,17 +172,26 @@ func addTileThreaded(thread:Thread, t, p, r):
 	new_tile.rotation.y = -PI/2 * grid[t]["tile_rot"]
 	grid[t]["tile_scene"] = new_tile
 
-func endGame():
-	#player.UI.updateTimerLabel(0)
+func endPicking():
+	pauseMenu.can_pause = true
 	player.turnOff()
-	var end_tween = get_tree().create_tween()
-	end_tween.tween_interval(1.0)
-	end_tween.tween_property(endUI, "modulate", Color.WHITE, 1.0)
-	end_tween.tween_interval(0.5)
-	await end_tween.finished
-	GameData.total_money += player.value_collected
-	GameData.total_trash_collected += player.trash_collected
-	get_tree().change_scene_to_file("res://scenes/bed_menu.tscn")
-
+	player.UI.updateTimerLabel(0.0)
+	await get_tree().create_timer(1.25).timeout
+	player.toggleUI(false)
+	endMenu.loadMenu(player.trash_collected, player.value_collected, player.max_combo)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 func gamePaused(on: bool):
 	player.toggleUI(not on)
+
+func toBedroom():
+	GameData.total_money += player.value_collected
+	GameData.total_trash_collected += player.trash_collected
+	GameData.saveGame()
+	get_tree().change_scene_to_file("res://scenes/bed_menu.tscn")
+	
+func quitGame():
+	GameData.total_money += player.value_collected
+	GameData.total_trash_collected += player.trash_collected
+	GameData.saveGame()
+	get_tree().quit()
