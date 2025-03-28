@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ct2wilxjo2x2v"]
+
+[ext_resource type="FontFile" uid="uid://fslvvjj84y6a" path="res://assets/fonts/Tektur/Tektur-Bold.ttf" id="1_8mtpr"]
+
+[resource]
+default_font = ExtResource("1_8mtpr")

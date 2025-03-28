@@ -1011,13 +1011,13 @@ theme_override_constants/separation = 8
 [node name="testBUtton" type="Button" parent="tableMesh/toolMagViewport/toolMargin/toolVbox"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 1.5
 text = "BUTTON 1"
 
 [node name="Button2" type="Button" parent="tableMesh/toolMagViewport/toolMargin/toolVbox"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 1.5
 text = "BUTTO N2"
 
 [node name="Button3" type="Button" parent="tableMesh/toolMagViewport/toolMargin/toolVbox"]
@@ -1026,7 +1026,7 @@ size_flags_vertical = 3
 text = "BUTTO N3"
 
 [node name="toolMagCam" type="Camera3D" parent="tableMesh"]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 3.5, -1.239)
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 3.5, -1.25)
 fov = 60.0
 
 [node name="potMesh" type="MeshInstance3D" parent="."]
@@ -1152,7 +1152,7 @@ offset_bottom = 21.0
 theme_override_font_sizes/font_size = 48
 
 [node name="toolMagUI" type="Control" parent="UILayer/UI/uiMargin/tableMenu"]
-custom_minimum_size = Vector2(1000, 680)
+custom_minimum_size = Vector2(960, 640)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1166,56 +1166,14 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="magHbox" type="HBoxContainer" parent="UILayer/UI/uiMargin/tableMenu/toolMagUI"]
+[node name="ColorRect" type="ColorRect" parent="UILayer/UI/uiMargin/tableMenu/toolMagUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 8
-
-[node name="leftPageVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/tableMenu/toolMagUI/magHbox"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="UILayer/UI/uiMargin/tableMenu/toolMagUI/magHbox/leftPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-text = "TEST BUTTON 1"
-
-[node name="Button2" type="Button" parent="UILayer/UI/uiMargin/tableMenu/toolMagUI/magHbox/leftPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-text = "TEST BUTTON 2"
-
-[node name="Button3" type="Button" parent="UILayer/UI/uiMargin/tableMenu/toolMagUI/magHbox/leftPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "TEST BUTTON 3"
-
-[node name="rightPageVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/tableMenu/toolMagUI/magHbox"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="UILayer/UI/uiMargin/tableMenu/toolMagUI/magHbox/rightPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-text = "TEST BUTTON 4"
-
-[node name="Button2" type="Button" parent="UILayer/UI/uiMargin/tableMenu/toolMagUI/magHbox/rightPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-text = "TEST BUTTON 5"
-
-[node name="Button3" type="Button" parent="UILayer/UI/uiMargin/tableMenu/toolMagUI/magHbox/rightPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "TEST BUTTON 6"
+color = Color(0.392157, 1, 1, 1)
 
 [node name="escLabel" type="Label" parent="UILayer/UI/uiMargin"]
 visible = false

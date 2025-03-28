@@ -5,7 +5,8 @@ extends Node3D
 @onready var tools := $toolBenchMesh/tools
 @onready var cams := {
 	"bed": $bedCam,	
-	"table": $tableCam,
+	#"table": $tableCam,
+	"table": $tableMesh/toolMagCam,
 	"trash": $trashCam,
 	"computer": $computerCam,
 	"door": $doorCam
@@ -21,6 +22,7 @@ extends Node3D
 @onready var doorAnim := $door/doorAnim
 @onready var leaveLabel := $doorArea/leaveLabel
 @onready var transitionUI := $transitionLayer/endBG
+@onready var magAnim := $tableMesh/magAnim
 var can_leave := false
 var can_click := false
 var current_menu := "main"
@@ -47,6 +49,8 @@ func _ready() -> void:
 	load_tween.tween_callback(transitionUI.queue_free)
 	await load_tween.finished
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	$tableMesh/toolMagViewport/toolMargin/toolVbox/testBUtton.pressed.connect(print.bind("TEST BUTTON WORKS"))
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape") and current_menu != "bed" and can_click:
@@ -78,8 +82,8 @@ func transitionCamera(m):
 	print("TRANSITIONING TO ", m)
 	var transition_tween := get_tree().create_tween().set_parallel(true).set_ease(Tween.EASE_IN_OUT)
 	print("MADE TWEEN")
-	transition_tween.tween_property(playerCam, "position", cams[m].position, cam_tween_time)
-	transition_tween.tween_property(playerCam, "rotation", cams[m].rotation, cam_tween_time)
+	transition_tween.tween_property(playerCam, "position", cams[m].global_position, cam_tween_time)
+	transition_tween.tween_property(playerCam, "rotation", cams[m].global_rotation, cam_tween_time)
 	transition_tween.tween_property(playerCam, "fov", cams[m].fov, cam_tween_time)
 	transition_tween.tween_callback(loadMenu.bind(m)).set_delay(cam_tween_time)
 	print("TWEEN FINISHED")
@@ -92,9 +96,12 @@ func loadMenu(m):
 			toggleToolCols(true)
 			doorArea.monitoring = true
 			leaveLabel.visible = true
+		"table":
+			magAnim.play("open_tool_mag")
 		_: 
 			toggleToolCols(false)
 			doorArea.monitoring = true
+			magAnim.play_backwards("open_tool_mag")
 	UI.loadMenu(m)
 	
 func toggleToolCols(on: bool):
