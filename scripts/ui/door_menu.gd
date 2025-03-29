@@ -10,6 +10,7 @@ func loadMenu():
 	emit_signal("ready_to_leave", GameData.current_gear.any(func(t): return t != ""))
 	visible = true
 	equipped_tools = GameData.current_gear.duplicate()
+	await get_tree().process_frame
 	for x in range(len(equipped_tools)):
 		var new_icon = toolIcon.instantiate()
 		doorHbox.add_child(new_icon, true)

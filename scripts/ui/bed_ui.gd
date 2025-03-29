@@ -5,7 +5,8 @@ extends CanvasLayer
 	"door": $UI/uiMargin/doorMenu,
 	"trash": $UI/uiMargin/trashMenu,
 	"computer": $UI/uiMargin/computerMenu,
-	"table": $UI/uiMargin/tableMenu
+	"table": $UI/uiMargin/tableMenu,
+	"tool_mag": $UI/uiMargin/toolMagMenu
 }
 
 func loadMenu(m):

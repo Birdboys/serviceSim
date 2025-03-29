@@ -5,27 +5,36 @@ extends Node3D
 @onready var tools := $toolBenchMesh/tools
 @onready var cams := {
 	"bed": $bedCam,	
-	#"table": $tableCam,
-	"table": $tableMesh/toolMagCam,
+	"table": $tableCam,
 	"trash": $trashCam,
 	"computer": $computerCam,
-	"door": $doorCam
+	"door": $doorCam,
+	"tool_mag": $tableMesh/toolMagCam,
 }
 @onready var areas := {
 	"table": $tableMesh/tableArea,
 	"trash": $trashMesh/trashArea,
 	"computer": $computerMesh/computerArea,
-	"door": $toolArea
+	"door": $toolArea,
+	"tool_mag": $tableMesh/toolMagArea,
+}
+@onready var escape_path := {
+	"bed": "",	
+	"table": "bed",
+	"trash": "bed",
+	"computer": "bed",
+	"door": "bed",
+	"tool_mag": "table",
 }
 @onready var door := $door
 @onready var doorArea := $doorArea
 @onready var doorAnim := $door/doorAnim
 @onready var leaveLabel := $doorArea/leaveLabel
 @onready var transitionUI := $transitionLayer/endBG
-@onready var magAnim := $tableMesh/magAnim
+@onready var magAnim := $UILayer/UI/uiMargin/toolMagMenu/magAnim
 var can_leave := false
 var can_click := false
-var current_menu := "main"
+var current_menu := "bed"
 var transition_tween : Tween
 var cam_tween_time := 0.8
 
@@ -50,26 +59,24 @@ func _ready() -> void:
 	await load_tween.finished
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
-	$tableMesh/toolMagViewport/toolMargin/toolVbox/testBUtton.pressed.connect(print.bind("TEST BUTTON WORKS"))
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape") and current_menu != "bed" and can_click:
-		if current_menu == "door": 
-			can_leave = false
-			var door_tween = get_tree().create_tween().tween_property(door, "rotation", Vector3.ZERO, 0.5)
-			leaveLabel.visible = false
 		UI.escLabel.visible = false
 		can_click = false
-		current_menu = "bed"
+		leaveMenu(current_menu)
+		current_menu = escape_path[current_menu]
 		UI.reset()
-		transitionCamera("bed") 
+		transitionCamera(current_menu) 
 		
 
 func menuClick(cam, event:InputEvent, _event_pos, _event_norm, _shape_idx, m):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1 and can_click:
 		if m == current_menu: return
+		if m == "tool_mag": print("TOOL MAG")
 		can_click = false
 		UI.reset()
+		leaveMenu(current_menu)
 		current_menu = m
 		transitionCamera(current_menu)
 
@@ -88,26 +95,45 @@ func transitionCamera(m):
 	transition_tween.tween_callback(loadMenu.bind(m)).set_delay(cam_tween_time)
 	print("TWEEN FINISHED")
 
+func leaveMenu(m):
+	match m:
+		"door":
+			toggleToolCols(false)
+			can_leave = false
+			var door_tween = get_tree().create_tween().tween_property(door, "rotation", Vector3.ZERO, 0.5)
+			leaveLabel.visible = false
+			doorArea.visible = false
+			areas["door"].visible = true
+		"table":
+			areas["tool_mag"].visible = false
+			areas["table"].visible = true
+		"tool_mag":
+			areas["tool_mag"].visible = true
+			magAnim.play_backwards("open_tool_mag")
+			
 func loadMenu(m):
 	print("TRANSITION FINISHED")
 	can_click = true
 	match m:
 		"door": 
 			toggleToolCols(true)
-			doorArea.monitoring = true
+			doorArea.visible = true
+			areas["door"].visible = false
 			leaveLabel.visible = true
 		"table":
-			magAnim.play("open_tool_mag")
-		_: 
-			toggleToolCols(false)
-			doorArea.monitoring = true
-			magAnim.play_backwards("open_tool_mag")
+			areas["tool_mag"].visible = true
+			areas["table"].visible = false
+		"tool_mag":
+			areas["table"].visible = false
+			areas["tool_mag"].visible = false
+
 	UI.loadMenu(m)
 	
 func toggleToolCols(on: bool):
 	for t in tools.get_children():
 		if on: t.activate()
 		else: t.deactivate()
+		#t.visible = on
 
 func toggleDoor(on: bool):
 	if current_menu != "door": return
