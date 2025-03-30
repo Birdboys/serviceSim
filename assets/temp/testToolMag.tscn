@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://4ymd1wvh53xy"]
+[gd_scene load_steps=6 format=3 uid="uid://4ymd1wvh53xy"]
 
 [ext_resource type="Theme" uid="uid://ct2wilxjo2x2v" path="res://assets/themes/tool_mag.tres" id="1_hkisb"]
 [ext_resource type="Texture2D" uid="uid://0robtaaqg61h" path="res://assets/tool_icons/magazine_icons/basic_picker.png" id="2_agige"]
 [ext_resource type="Texture2D" uid="uid://cbvm7mukgjvki" path="res://assets/tool_icons/magazine_icons/better_picker.png" id="3_agige"]
 [ext_resource type="FontFile" uid="uid://fslvvjj84y6a" path="res://assets/fonts/Tektur/Tektur-Bold.ttf" id="4_i5s0e"]
+[ext_resource type="Texture2D" uid="uid://bouqjh2fub4i6" path="res://assets/tool_icons/magazine_icons/claw_picker.png" id="5_i5s0e"]
 
 [node name="testToolMag" type="Control"]
 custom_minimum_size = Vector2(512, 704)
@@ -26,132 +27,328 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"pageBG"
 
-[node name="magVBox" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
+[node name="page1" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="topSeparator" type="HSeparator" parent="magVBox"]
+[node name="topSeparator" type="HSeparator" parent="page1"]
 layout_mode = 2
 theme_type_variation = &"topSep"
 
-[node name="toolAArea" type="MarginContainer" parent="magVBox"]
+[node name="toolAArea" type="MarginContainer" parent="page1"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
 
-[node name="toolCont" type="HBoxContainer" parent="magVBox/toolAArea"]
+[node name="toolCont" type="HBoxContainer" parent="page1/toolAArea"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="toolIcon" type="TextureRect" parent="magVBox/toolAArea/toolCont"]
+[node name="toolIcon" type="TextureRect" parent="page1/toolAArea/toolCont"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_agige")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="magVBox/toolAArea/toolCont"]
+[node name="VBoxContainer" type="VBoxContainer" parent="page1/toolAArea/toolCont"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="toolName" type="Label" parent="magVBox/toolAArea/toolCont/VBoxContainer"]
+[node name="toolName" type="Label" parent="page1/toolAArea/toolCont/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
-theme_override_font_sizes/font_size = 42
+theme_type_variation = &"nameLabel"
 text = "BASIC PICKER"
 
-[node name="toolDesc" type="Label" parent="magVBox/toolAArea/toolCont/VBoxContainer"]
+[node name="toolDesc" type="Label" parent="page1/toolAArea/toolCont/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
-theme_override_font_sizes/font_size = 18
+theme_type_variation = &"listingLabel"
 text = "Standard trash picker.
-Collects: Paper, Plastic
-Upgrades: None"
 
-[node name="priceLabel" type="Label" parent="magVBox/toolAArea"]
+Collects: Paper, Plastic
+
+Upgrade: None"
+autowrap_mode = 3
+
+[node name="priceLabel" type="Label" parent="page1/toolAArea"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
-theme_override_font_sizes/font_size = 18
-text = "UPGRADE: $30"
+theme_type_variation = &"priceLabel"
+text = "COMPLETE"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="toolSep" type="HSeparator" parent="magVBox"]
+[node name="toolSep" type="HSeparator" parent="page1"]
 layout_mode = 2
 theme_type_variation = &"listingSep"
 
-[node name="toolAArea2" type="MarginContainer" parent="magVBox"]
+[node name="toolAArea2" type="MarginContainer" parent="page1"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
 
-[node name="toolCont" type="HBoxContainer" parent="magVBox/toolAArea2"]
+[node name="toolCont" type="HBoxContainer" parent="page1/toolAArea2"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="magVBox/toolAArea2/toolCont"]
+[node name="VBoxContainer" type="VBoxContainer" parent="page1/toolAArea2/toolCont"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="toolName" type="Label" parent="magVBox/toolAArea2/toolCont/VBoxContainer"]
+[node name="toolName" type="Label" parent="page1/toolAArea2/toolCont/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
-theme_override_font_sizes/font_size = 42
+theme_type_variation = &"nameLabel"
 text = "BETTER PICKER"
 horizontal_alignment = 2
 
-[node name="toolDesc" type="Label" parent="magVBox/toolAArea2/toolCont/VBoxContainer"]
+[node name="toolDesc" type="Label" parent="page1/toolAArea2/toolCont/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
-theme_override_font_sizes/font_size = 18
+theme_type_variation = &"listingLabel"
 text = "Pick faster, pick longer, pick better
-Collects: Paper, Plastic, Metal
-Upgrades: Increase range (0/5)"
-horizontal_alignment = 2
 
-[node name="toolIcon" type="TextureRect" parent="magVBox/toolAArea2/toolCont"]
+Collects: Paper, Plastic, Metal
+
+Upgrade: Increase range (0/5)"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="toolIcon" type="TextureRect" parent="page1/toolAArea2/toolCont"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("3_agige")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 3
 
-[node name="priceLabel" type="Label" parent="magVBox/toolAArea2"]
+[node name="priceLabel" type="Label" parent="page1/toolAArea2"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
+theme_type_variation = &"priceLabel"
 theme_override_fonts/font = ExtResource("4_i5s0e")
-theme_override_font_sizes/font_size = 18
-text = "PURCHASE: $30"
+text = "$30"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="toolSep2" type="HSeparator" parent="magVBox"]
+[node name="toolSep2" type="HSeparator" parent="page1"]
 layout_mode = 2
 theme_type_variation = &"listingSep"
 
-[node name="gearArea" type="Control" parent="magVBox"]
+[node name="gearArea" type="Control" parent="page1"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="toolSep3" type="HSeparator" parent="magVBox"]
+[node name="toolSep3" type="HSeparator" parent="page1"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"listingSep"
 
-[node name="botControl" type="Control" parent="magVBox"]
+[node name="botControl" type="Control" parent="page1"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="page2" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="topSeparator" type="HSeparator" parent="page2"]
+layout_mode = 2
+theme_type_variation = &"topSep"
+
+[node name="toolAArea" type="MarginContainer" parent="page2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="toolCont" type="HBoxContainer" parent="page2/toolAArea"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="toolIcon" type="TextureRect" parent="page2/toolAArea/toolCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_i5s0e")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="page2/toolAArea/toolCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="toolName" type="Label" parent="page2/toolAArea/toolCont/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"nameLabel"
+text = "CLAW PICKER"
+
+[node name="toolDesc" type="Label" parent="page2/toolAArea/toolCont/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"listingLabel"
+text = "Grabbing without the stabbing
+
+Collects: Paper, Plastic, Metal, Glass
+
+Upgrade: Increase speed (0/5)"
+autowrap_mode = 3
+
+[node name="priceLabel" type="Label" parent="page2/toolAArea"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_type_variation = &"priceLabel"
+text = "$75"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="toolSep" type="HSeparator" parent="page2"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+
+[node name="toolAArea2" type="MarginContainer" parent="page2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="toolCont" type="HBoxContainer" parent="page2/toolAArea2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="page2/toolAArea2/toolCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="toolName" type="Label" parent="page2/toolAArea2/toolCont/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"nameLabel"
+text = "AUTO-PICKER"
+horizontal_alignment = 2
+
+[node name="toolDesc" type="Label" parent="page2/toolAArea2/toolCont/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"listingLabel"
+text = "The picker of the future
+
+Collects: Paper, Plastic, Metal
+
+Upgrade: Increase range (0/5)"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="toolIcon" type="TextureRect" parent="page2/toolAArea2/toolCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_agige")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="priceLabel" type="Label" parent="page2/toolAArea2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_type_variation = &"priceLabel"
+theme_override_fonts/font = ExtResource("4_i5s0e")
+text = "$100"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="toolSep2" type="HSeparator" parent="page2"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+
+[node name="gearArea" type="Control" parent="page2"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="toolSep3" type="HSeparator" parent="page2"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"listingSep"
+
+[node name="botControl" type="Control" parent="page2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="pageDemo" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="topSeparator" type="HSeparator" parent="pageDemo"]
+layout_mode = 2
+theme_type_variation = &"topSep"
+
+[node name="toolAArea" type="MarginContainer" parent="pageDemo"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="toolName" type="Label" parent="pageDemo/toolAArea"]
+layout_mode = 2
+theme_type_variation = &"nameLabel"
+text = "MORE TOOLS COMING IN FULL GAME"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="toolSep" type="HSeparator" parent="pageDemo"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+
+[node name="toolAArea2" type="MarginContainer" parent="pageDemo"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="toolName" type="Label" parent="pageDemo/toolAArea2"]
+layout_mode = 2
+theme_type_variation = &"nameLabel"
+text = "MORE TOOLS COMING IN FULL GAME"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="toolSep2" type="HSeparator" parent="pageDemo"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+
+[node name="gearArea" type="Control" parent="pageDemo"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="toolSep3" type="HSeparator" parent="pageDemo"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"listingSep"
+
+[node name="botControl" type="Control" parent="pageDemo"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2

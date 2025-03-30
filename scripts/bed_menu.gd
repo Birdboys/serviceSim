@@ -31,7 +31,6 @@ extends Node3D
 @onready var doorAnim := $door/doorAnim
 @onready var leaveLabel := $doorArea/leaveLabel
 @onready var transitionUI := $transitionLayer/endBG
-@onready var magAnim := $UILayer/UI/uiMargin/toolMagMenu/magAnim
 var can_leave := false
 var can_click := false
 var current_menu := "bed"
@@ -152,4 +151,3 @@ func getOwnedTools():
 	for t in GameData.tool_data:
 		if not GameData.tool_data[t]['owned']:
 			tools.find_child(t).visible = false
-			

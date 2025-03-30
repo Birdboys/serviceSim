@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://js2cjgbctdi0"]
+
+[ext_resource type="Theme" uid="uid://ct2wilxjo2x2v" path="res://assets/themes/tool_mag.tres" id="1_y1yah"]
+[ext_resource type="FontFile" uid="uid://fslvvjj84y6a" path="res://assets/fonts/Tektur/Tektur-Bold.ttf" id="2_b1xnd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1yah"]
+bg_color = Color(0.192157, 0.211765, 0.219608, 1)
+
+[node name="toolCover" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y1yah")
+theme_override_styles/panel = SubResource("StyleBoxFlat_y1yah")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.698039, 0.729412, 0.564706, 1)
+theme_override_fonts/font = ExtResource("2_b1xnd")
+theme_override_font_sizes/font_size = 72
+text = "CITY LITTER
+CATALOGUE"
+horizontal_alignment = 1
+vertical_alignment = 1

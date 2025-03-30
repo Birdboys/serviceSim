@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk3jypqq3qr6"]
+
+[ext_resource type="Theme" uid="uid://ct2wilxjo2x2v" path="res://assets/themes/tool_mag.tres" id="1_dlrc0"]
+
+[node name="pageDemo" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dlrc0")
+theme_override_constants/separation = 0
+
+[node name="topSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_type_variation = &"topSep"
+
+[node name="toolAArea" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="toolName" type="Label" parent="toolAArea"]
+layout_mode = 2
+theme_type_variation = &"nameLabel"
+text = "PAGE 3 RIGHT"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="toolSep" type="HSeparator" parent="."]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+
+[node name="toolAArea2" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="toolName" type="Label" parent="toolAArea2"]
+layout_mode = 2
+theme_type_variation = &"nameLabel"
+text = "PAGE 3 RIGHT"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="toolSep2" type="HSeparator" parent="."]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+
+[node name="gearArea" type="Control" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="toolSep3" type="HSeparator" parent="."]
+visible = false
+layout_mode = 2
+theme_type_variation = &"listingSep"
+
+[node name="botControl" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2

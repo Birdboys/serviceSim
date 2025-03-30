@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=4 uid="uid://dp6pjn8bcgigu"]
+[gd_scene load_steps=133 format=4 uid="uid://dp6pjn8bcgigu"]
 
 [ext_resource type="Script" uid="uid://bmkdeiv33ldnb" path="res://scripts/bed_menu.gd" id="1_mswj1"]
 [ext_resource type="ArrayMesh" uid="uid://cmcnbsmd2mcmq" path="res://assets/trash_meshes/carton_small.tres" id="2_atm4g"]
@@ -14,9 +14,10 @@
 [ext_resource type="Theme" uid="uid://djs6o2b5hx67f" path="res://assets/themes/game_ui.tres" id="9_yda35"]
 [ext_resource type="Script" uid="uid://ohhpvceqcfqv" path="res://scripts/ui/trash_menu.gd" id="10_6iq6k"]
 [ext_resource type="Texture2D" uid="uid://d1n1qsvlq028j" path="res://assets/textures/trash_tools/auto_picker.png" id="10_m4cyr"]
-[ext_resource type="PackedScene" uid="uid://4ymd1wvh53xy" path="res://assets/temp/testToolMag.tscn" id="11_futsp"]
 [ext_resource type="Script" uid="uid://cuq1r4j0qb1qy" path="res://scripts/ui/computer_menu.gd" id="11_yda35"]
 [ext_resource type="Script" uid="uid://6ddc631ft4u0" path="res://scripts/ui/table_menu.gd" id="12_le12v"]
+[ext_resource type="Theme" uid="uid://ct2wilxjo2x2v" path="res://assets/themes/tool_mag.tres" id="18_6mv7e"]
+[ext_resource type="PackedScene" uid="uid://js2cjgbctdi0" path="res://scenes/mag_pages/tool_cover.tscn" id="18_7gbya"]
 [ext_resource type="Script" uid="uid://bpwfd5bxbxava" path="res://scripts/ui/tool_mag_menu.gd" id="18_futsp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j37jo"]
@@ -636,12 +637,36 @@ shadow_mesh = SubResource("ArrayMesh_psrw2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qf3g8"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_futsp"]
+viewport_path = NodePath("UILayer/UI/uiMargin/toolMagMenu/rightPageViewport")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7yoa"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_futsp")
+uv1_scale = Vector3(2.375, 1.725, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_le3jw"]
 albedo_color = Color(0.329412, 0.494118, 0.392157, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_qvkyf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffebr"]
+resource_name = "edgeMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3pbk"]
+resource_name = "pageMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rx4uj"]
+resource_name = "backMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_11jqu"]
 _surfaces = [{
 "aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
 "format": 34896613377,
@@ -675,7 +700,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_6mv7e"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_wtgtk"]
 resource_name = "magazine_Cube_002"
 _surfaces = [{
 "aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
@@ -683,7 +708,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
-"material": SubResource("StandardMaterial3D_op4y5"),
+"material": SubResource("StandardMaterial3D_ffebr"),
 "name": "edgeMaterial",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -691,23 +716,23 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TVVNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq")
 }, {
 "aabb": AABB(-1.1, -0.01, -0.8, 2.2, 1e-05, 1.6),
-"attribute_data": PackedByteArray("xWsslAYABgDFawYABgAslA=="),
+"attribute_data": PackedByteArray("AAAAAP9r/5MAAP+T/2sAAA=="),
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"material": SubResource("StandardMaterial3D_omsfm"),
+"material": SubResource("StandardMaterial3D_e3pbk"),
 "name": "pageMaterial",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNVUVVRVVFVUVVRVVFVUVVRV")
+"vertex_data": PackedByteArray("AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNWqKlTVqipU1aoqVNWqKlTV")
 }, {
 "aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
 "attribute_data": PackedByteArray("/1//P/+fAAD/n/8//18AAP9r/5MAAAAA/2sAAAAA/5M="),
 "format": 34896613399,
 "index_count": 12,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
-"material": SubResource("StandardMaterial3D_r5jbm"),
+"material": SubResource("StandardMaterial3D_rx4uj"),
 "name": "backMaterial",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -715,9 +740,43 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAP///78AAP//////v/////////+/AAAAAP///7//////AABU1QAA/////1TVAAD//wAAVNX///////9U1f////////////////////9U1aoqVNWqKlTVqipU1aoq")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_qvkyf")
+shadow_mesh = SubResource("ArrayMesh_11jqu")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_8y0lk"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_6mv7e"]
+viewport_path = NodePath("UILayer/UI/uiMargin/toolMagMenu/leftPageViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycbik"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_6mv7e")
+uv1_scale = Vector3(2.375, 1.725, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7gbya"]
+viewport_path = NodePath("UILayer/UI/uiMargin/toolMagMenu/toolCoverViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11jqu"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_7gbya")
+uv1_scale = Vector3(2.375, 1.725, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlipp"]
+resource_name = "edgeMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wareh"]
+resource_name = "pageMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1wjq"]
+resource_name = "backMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_141p8"]
 _surfaces = [{
 "aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
 "format": 34896613377,
@@ -751,7 +810,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7gbya"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_eusd0"]
 resource_name = "magazine_Cube_003"
 _surfaces = [{
 "aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
@@ -759,7 +818,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
-"material": SubResource("StandardMaterial3D_op4y5"),
+"material": SubResource("StandardMaterial3D_nlipp"),
 "name": "edgeMaterial",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -767,23 +826,23 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TVVNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq")
 }, {
 "aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
-"attribute_data": PackedByteArray("xWsslAYABgDFawYABgAslP9r/5MAAAAA/2sAAAAA/5M="),
+"attribute_data": PackedByteArray("AAAAAP9r/5MAAP+T/2sAAP9r/5MAAAAA/2sAAAAA/5M="),
 "format": 34896613399,
 "index_count": 12,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
-"material": SubResource("StandardMaterial3D_omsfm"),
+"material": SubResource("StandardMaterial3D_wareh"),
 "name": "pageMaterial",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
-"vertex_data": PackedByteArray("AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNX/////AABU1QAA/////1TVAAD//wAAVNX///////9U1VRVVFVUVVRVVFVUVVRVVFVU1aoqVNWqKlTVqipU1aoq")
+"vertex_data": PackedByteArray("AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNX/////AABU1QAA/////1TVAAD//wAAVNX///////9U1aoqVNWqKlTVqipU1aoqVNVU1aoqVNWqKlTVqipU1aoq")
 }, {
 "aabb": AABB(-1.1, -0.01, 0.8, 2.2, 0.02, 1e-05),
 "attribute_data": PackedByteArray("/1//P/+fAAD/n/8//18AAA=="),
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"material": SubResource("StandardMaterial3D_r5jbm"),
+"material": SubResource("StandardMaterial3D_l1wjq"),
 "name": "backMaterial",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -791,15 +850,19 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAA/78AAP//AAD/v/////8AAP+/AAAAAAAA/7//////////////////////")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_8y0lk")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_futsp"]
-viewport_path = NodePath("UILayer/UI/uiMargin/toolMagMenu/toolMagViewport")
+shadow_mesh = SubResource("ArrayMesh_141p8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tw58w"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nlipp"]
+viewport_path = NodePath("UILayer/UI/uiMargin/toolMagMenu/middlePageViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_141p8"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_futsp")
-uv1_scale = Vector3(2.35, 1.7, 1)
+albedo_texture = SubResource("ViewportTexture_nlipp")
+uv1_scale = Vector3(2.375, 1.725, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eusd0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_011cc"]
 size = Vector3(5.6, 3.5, 10.4)
@@ -825,24 +888,18 @@ material = SubResource("StandardMaterial3D_futsp")
 radius = 1.5
 height = 10.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5st7i"]
-bg_color = Color(0.6, 0.203922, 0.6, 0.52549)
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6mv7e"]
+color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mv7e"]
-bg_color = Color(0.6, 0.203922, 0.6, 0.52549)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gbya"]
-bg_color = Color(0.6, 0.203922, 0.6, 0.52549)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6od6"]
-bg_color = Color(0.6, 0.203922, 0.6, 0.52549)
+bg_color = Color(0.898023, 0.217213, 0.551663, 1)
 
 [sub_resource type="Animation" id="Animation_5st7i"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("toolMag/magBottom/magTopHinge:rotation")
+tracks/0/path = NodePath("toolMag/magTopHinge:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -854,7 +911,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("toolMag/magBottom/magMidHinge:rotation")
+tracks/1/path = NodePath("toolMag/magMidHinge:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -866,7 +923,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("toolMag/magBottom/magMidHinge:visible")
+tracks/2/path = NodePath("toolMag/magMidHinge:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -882,7 +939,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("toolMag/magBottom/magTopHinge:rotation")
+tracks/0/path = NodePath("toolMag/magTopHinge:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -891,14 +948,42 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, 0],
+"method": &"updatePage"
+}, {
+"args": [0, 0],
+"method": &"updatePage"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_futsp"]
 resource_name = "turn_page_left"
-step = 0.5
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("toolMag/magBottom/magMidHinge:rotation")
+tracks/0/path = NodePath("toolMag/magMidHinge:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -910,7 +995,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("toolMag/magBottom/magMidHinge:visible")
+tracks/1/path = NodePath("toolMag/magMidHinge:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -919,14 +1004,48 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, 1],
+"method": &"updatePage"
+}, {
+"args": [0, 1],
+"method": &"updatePage"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, -1],
+"method": &"updateMiddle"
+}, {
+"args": [0, 0],
+"method": &"updateMiddle"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_6mv7e"]
 resource_name = "turn_page_right"
-step = 0.5
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("toolMag/magBottom/magMidHinge:rotation")
+tracks/0/path = NodePath("toolMag/magMidHinge:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -938,7 +1057,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("toolMag/magBottom/magMidHinge:visible")
+tracks/1/path = NodePath("toolMag/magMidHinge:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -946,6 +1065,40 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0, 0],
+"method": &"updatePage"
+}, {
+"args": [2, 0],
+"method": &"updatePage"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0, 1],
+"method": &"updateMiddle"
+}, {
+"args": [2, 0],
+"method": &"updateMiddle"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_futsp"]
@@ -1270,26 +1423,27 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qf3g8")
 surface_material_override/1 = SubResource("StandardMaterial3D_l7yoa")
 surface_material_override/2 = SubResource("StandardMaterial3D_le3jw")
 
-[node name="magTopHinge" type="Node3D" parent="tableMesh/toolMag/magBottom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00999999, 0.8)
+[node name="magTopHinge" type="Node3D" parent="tableMesh/toolMag"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00999999, 0)
 
-[node name="magTop" type="MeshInstance3D" parent="tableMesh/toolMag/magBottom/magTopHinge"]
+[node name="magTop" type="MeshInstance3D" parent="tableMesh/toolMag/magTopHinge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00999999, -0.8)
-mesh = SubResource("ArrayMesh_6mv7e")
+mesh = SubResource("ArrayMesh_wtgtk")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_qf3g8")
-surface_material_override/2 = SubResource("StandardMaterial3D_le3jw")
+surface_material_override/1 = SubResource("StandardMaterial3D_ycbik")
+surface_material_override/2 = SubResource("StandardMaterial3D_11jqu")
 
-[node name="magMidHinge" type="Node3D" parent="tableMesh/toolMag/magBottom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+[node name="magMidHinge" type="Node3D" parent="tableMesh/toolMag"]
 visible = false
 
-[node name="magMiddle" type="MeshInstance3D" parent="tableMesh/toolMag/magBottom/magMidHinge"]
+[node name="magMiddle" type="MeshInstance3D" parent="tableMesh/toolMag/magMidHinge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
-mesh = SubResource("ArrayMesh_7gbya")
+mesh = SubResource("ArrayMesh_eusd0")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf3g8")
-surface_material_override/1 = SubResource("StandardMaterial3D_tw58w")
+surface_material_override/0 = SubResource("StandardMaterial3D_tw58w")
+surface_material_override/1 = SubResource("StandardMaterial3D_141p8")
+surface_material_override/2 = SubResource("StandardMaterial3D_eusd0")
 
 [node name="tableArea" type="Area3D" parent="tableMesh"]
 collision_layer = 4
@@ -1442,80 +1596,8 @@ theme_override_font_sizes/font_size = 48
 
 [node name="toolMagMenu" type="Control" parent="UILayer/UI/uiMargin"]
 layout_mode = 2
+mouse_filter = 1
 script = ExtResource("18_futsp")
-
-[node name="magContents" type="Control" parent="UILayer/UI/uiMargin/toolMagMenu"]
-visible = false
-custom_minimum_size = Vector2(900, 620)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -270.0
-offset_right = 400.0
-offset_bottom = 270.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="magHbox" type="HBoxContainer" parent="UILayer/UI/uiMargin/toolMagMenu/magContents"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 4
-
-[node name="leftPageVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/toolMagMenu/magContents/magHbox"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="leftToolAButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magContents/magHbox/leftPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_5st7i")
-text = "TEST BUTTON 1"
-
-[node name="leftToolBButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magContents/magHbox/leftPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_6mv7e")
-text = "TEST BUTTON 2"
-
-[node name="leftGearButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magContents/magHbox/leftPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_7gbya")
-text = "TEST BUTTON 3"
-
-[node name="rightPageVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/toolMagMenu/magContents/magHbox"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="rightToolAButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magContents/magHbox/rightPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_i6od6")
-text = "TEST BUTTON 4"
-
-[node name="rightToolBButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magContents/magHbox/rightPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_i6od6")
-text = "TEST BUTTON 5"
-
-[node name="rightGearButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magContents/magHbox/rightPageVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_i6od6")
-text = "TEST BUTTON 6"
 
 [node name="leftButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu"]
 layout_mode = 1
@@ -1546,16 +1628,216 @@ theme_override_font_sizes/font_size = 96
 text = ">"
 alignment = 2
 
+[node name="magUI" type="HBoxContainer" parent="UILayer/UI/uiMargin/toolMagMenu"]
+custom_minimum_size = Vector2(900, 620)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -310.0
+offset_right = 450.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_6mv7e")
+
+[node name="leftPageButton" type="VBoxContainer" parent="UILayer/UI/uiMargin/toolMagMenu/magUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="topSeparator" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/leftPageButton"]
+layout_mode = 2
+theme_type_variation = &"topSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="toolALeftButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/leftPageButton"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_6mv7e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6mv7e")
+
+[node name="toolSep" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/leftPageButton"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="toolBLeftButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/leftPageButton"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_6mv7e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6mv7e")
+
+[node name="toolSep2" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/leftPageButton"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="gearArea" type="Control" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/leftPageButton"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="toolSep3" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/leftPageButton"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="botControl" type="Control" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/leftPageButton"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="rightPageButton" type="VBoxContainer" parent="UILayer/UI/uiMargin/toolMagMenu/magUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="topSeparator" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
+layout_mode = 2
+theme_type_variation = &"topSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="toolAArea" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_6mv7e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6mv7e")
+
+[node name="toolSep" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="toolAArea2" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_6mv7e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6mv7e")
+
+[node name="toolSep2" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="gearArea" type="Control" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="toolSep3" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="botControl" type="Control" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
 [node name="magAnim" type="AnimationPlayer" parent="UILayer/UI/uiMargin/toolMagMenu"]
 root_node = NodePath("../../../../../tableMesh")
 libraries = {
 &"": SubResource("AnimationLibrary_futsp")
 }
 
-[node name="toolMagViewport" type="SubViewport" parent="UILayer/UI/uiMargin/toolMagMenu"]
+[node name="toolCoverViewport" type="SubViewport" parent="UILayer/UI/uiMargin/toolMagMenu"]
 size = Vector2i(512, 704)
 
-[node name="testToolMag" parent="UILayer/UI/uiMargin/toolMagMenu/toolMagViewport" instance=ExtResource("11_futsp")]
+[node name="toolCover" parent="UILayer/UI/uiMargin/toolMagMenu/toolCoverViewport" instance=ExtResource("18_7gbya")]
+
+[node name="leftPageViewport" type="SubViewport" parent="UILayer/UI/uiMargin/toolMagMenu"]
+size = Vector2i(512, 704)
+
+[node name="pageBg" type="Panel" parent="UILayer/UI/uiMargin/toolMagMenu/leftPageViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("18_6mv7e")
+theme_type_variation = &"pageBG"
+
+[node name="leftPageSlot" type="Control" parent="UILayer/UI/uiMargin/toolMagMenu/leftPageViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("18_6mv7e")
+
+[node name="rightPageViewport" type="SubViewport" parent="UILayer/UI/uiMargin/toolMagMenu"]
+size = Vector2i(512, 704)
+
+[node name="pageBg" type="Panel" parent="UILayer/UI/uiMargin/toolMagMenu/rightPageViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("18_6mv7e")
+theme_type_variation = &"pageBG"
+
+[node name="rightPageSlot" type="Control" parent="UILayer/UI/uiMargin/toolMagMenu/rightPageViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("18_6mv7e")
+
+[node name="middlePageViewport" type="SubViewport" parent="UILayer/UI/uiMargin/toolMagMenu"]
+size = Vector2i(512, 704)
+
+[node name="pageBg" type="Panel" parent="UILayer/UI/uiMargin/toolMagMenu/middlePageViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("18_6mv7e")
+theme_type_variation = &"pageBG"
+
+[node name="middlePageSlot" type="Control" parent="UILayer/UI/uiMargin/toolMagMenu/middlePageViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("18_6mv7e")
+
+[node name="moneyLabel" type="Label" parent="UILayer/UI/uiMargin/toolMagMenu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 63.0
+grow_horizontal = 0
+theme = ExtResource("9_yda35")
+theme_override_font_sizes/font_size = 48
 
 [node name="escLabel" type="Label" parent="UILayer/UI/uiMargin"]
 visible = false
