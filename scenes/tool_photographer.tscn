@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfbvgkc81djqr"]
+[gd_scene load_steps=5 format=3 uid="uid://cfbvgkc81djqr"]
 
 [ext_resource type="Script" uid="uid://d05ag56dt7y3a" path="res://scripts/tool_photographer.gd" id="1_sltp7"]
-[ext_resource type="ArrayMesh" uid="uid://dfw1gm6gmyabe" path="res://assets/tool_meshes/better_picker.tres" id="2_sltp7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2mc72"]
 sky_top_color = Color(0.501961, 0.501961, 0.501961, 1)
@@ -36,9 +35,8 @@ light_energy = 0.25
 light_indirect_energy = 0.0
 sky_mode = 1
 
-[node name="toolMesh" type="MeshInstance3D" parent="."]
+[node name="toolSpot" type="Node3D" parent="."]
 transform = Transform3D(0.866026, -0.12941, 0.482963, 0, 0.965926, 0.258819, -0.5, -0.224144, 0.836516, 0, 0, 0)
-mesh = ExtResource("2_sltp7")
 
 [node name="toolCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.595, 3.335)

@@ -109,7 +109,6 @@ func leaveMenu(m):
 			areas["table"].visible = true
 		"tool_mag":
 			areas["tool_mag"].visible = true
-			magAnim.play_backwards("open_tool_mag")
 			
 func loadMenu(m):
 	print("TRANSITION FINISHED")
@@ -137,7 +136,6 @@ func toggleToolCols(on: bool):
 
 func toggleDoor(on: bool):
 	if current_menu != "door": return
-	print(GameData.current_gear, GameData.current_gear.any(func(t): return t != ""))
 	if not GameData.current_gear.any(func(t): return t != ""): return
 	if on: doorAnim.play("open_door")
 	else: doorAnim.play_backwards("open_door")

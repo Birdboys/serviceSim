@@ -1,9 +1,9 @@
-[gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://eevq5rgg0m61"]
+[gd_scene load_steps=5 format=4 uid="uid://nygy8dmqeur6"]
 
-[ext_resource type="Texture2D" uid="uid://cr5ywed3nqyok" path="res://assets/temp/picker.png" id="1_c0km3"]
+[ext_resource type="Texture2D" uid="uid://cr5ywed3nqyok" path="res://assets/temp/picker.png" id="1_nr334"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5ts6"]
-albedo_texture = ExtResource("1_c0km3")
+albedo_texture = ExtResource("1_nr334")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_eavmo"]
@@ -19,7 +19,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[resource]
+[sub_resource type="ArrayMesh" id="ArrayMesh_l7yoa"]
 resource_name = "basic_picker_Cylinder"
 _surfaces = [{
 "aabb": AABB(-0.0489445, -1.61085, -0.0565163, 0.0978891, 2.39358, 0.113033),
@@ -35,3 +35,10 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_eavmo")
+
+[node name="pickerMesh" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.998629, -0.052336, 0, 0.052336, 0.998629, 0, 0, 0)
+layers = 2
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_l7yoa")
+skeleton = NodePath("")

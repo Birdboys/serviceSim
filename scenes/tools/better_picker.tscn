@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://by57mh274pgd8"]
 
 [ext_resource type="Script" uid="uid://v6tjih10bvfq" path="res://scripts/tools/litter_picker.gd" id="1_wd1xa"]
-[ext_resource type="ArrayMesh" uid="uid://dfw1gm6gmyabe" path="res://assets/tool_meshes/better_picker.tres" id="2_wd1xa"]
+[ext_resource type="PackedScene" uid="uid://dhqc2ocsbxqtl" path="res://assets/tool_meshes/better_picker.tscn" id="2_wd1xa"]
 
 [sub_resource type="Animation" id="Animation_p7puk"]
 length = 0.001
@@ -92,12 +92,8 @@ collision_mask = 248
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="pickerMesh" type="MeshInstance3D" parent="."]
+[node name="pickerMesh" parent="." instance=ExtResource("2_wd1xa")]
 transform = Transform3D(1, 0, 0, 0, 0.998629, -0.052336, 0, 0.052336, 0.998629, 1.09788, 0.657685, -0.876581)
-layers = 2
-cast_shadow = 0
-mesh = ExtResource("2_wd1xa")
-skeleton = NodePath("")
 
 [node name="pickerAnim" type="AnimationPlayer" parent="."]
 libraries = {

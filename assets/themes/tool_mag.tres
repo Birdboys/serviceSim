@@ -1,6 +1,37 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ct2wilxjo2x2v"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ct2wilxjo2x2v"]
 
-[ext_resource type="FontFile" uid="uid://fslvvjj84y6a" path="res://assets/fonts/Tektur/Tektur-Bold.ttf" id="1_8mtpr"]
+[ext_resource type="FontFile" uid="uid://c00e5ac3jydju" path="res://assets/fonts/Tektur/Tektur-Regular.ttf" id="1_8mtpr"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8mtpr"]
+color = Color(0.192157, 0.211765, 0.219608, 1)
+grow_begin = -16.0
+grow_end = -16.0
+thickness = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mtpr"]
+bg_color = Color(0.698039, 0.729412, 0.564706, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_scqus"]
+color = Color(0.192157, 0.211765, 0.219608, 1)
+thickness = 64
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qdajg"]
+color = Color(0.192157, 0.211765, 0.219608, 1)
+grow_begin = -8.0
+grow_end = -8.0
+thickness = 4
+vertical = true
 
 [resource]
 default_font = ExtResource("1_8mtpr")
+listingSep/base_type = &"HSeparator"
+listingSep/constants/separation = 16
+listingSep/styles/separator = SubResource("StyleBoxLine_8mtpr")
+pageBG/base_type = &"Panel"
+pageBG/styles/panel = SubResource("StyleBoxFlat_8mtpr")
+topSep/base_type = &"HSeparator"
+topSep/constants/separation = 64
+topSep/styles/separator = SubResource("StyleBoxLine_scqus")
+vertSep/base_type = &"VSeparator"
+vertSep/constants/separation = 4
+vertSep/styles/separator = SubResource("StyleBoxLine_qdajg")
