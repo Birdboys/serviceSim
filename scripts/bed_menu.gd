@@ -44,6 +44,7 @@ func _ready() -> void:
 		t.input_event.connect(toolClick.bind(t.name))
 	getOwnedTools()
 	UI.menus['door'].ready_to_leave.connect(toggleReady)
+	UI.menus['tool_mag'].tool_purchased.connect(getOwnedTools)
 	doorArea.mouse_entered.connect(toggleDoor.bind(true))
 	doorArea.mouse_exited.connect(toggleDoor.bind(false))
 	doorArea.input_event.connect(tryToLeave)
@@ -149,5 +150,4 @@ func tryToLeave(cam, event:InputEvent, _event_pos, _event_norm, _shape_idx):
 
 func getOwnedTools():
 	for t in GameData.tool_data:
-		if not GameData.tool_data[t]['owned']:
-			tools.find_child(t).visible = false
+		tools.find_child(t).visible = GameData.tool_data[t]['owned']

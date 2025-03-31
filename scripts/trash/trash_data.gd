@@ -183,3 +183,14 @@ func getTrashName(t, st, skin):
 			return metal_type_data[st]['sub_name'] + "_%s" % skin
 		trash_types.GLASS:
 			return glass_type_data[st]['sub_name'] + "_%s" % skin
+
+func getTrashPrice(t, st):
+	match t:
+		trash_types.PAPER:
+			return 2
+		trash_types.PLASTIC: 
+			return 5
+		trash_types.METAL: 
+			return 10
+		trash_types.GLASS:
+			return 15

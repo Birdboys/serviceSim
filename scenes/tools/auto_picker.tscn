@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://c13dxgdb481y4"]
+[gd_scene load_steps=14 format=4 uid="uid://c13dxgdb481y4"]
 
 [ext_resource type="Script" uid="uid://cskoftrh3m17g" path="res://scripts/tools/auto_picker.gd" id="1_ygx83"]
+[ext_resource type="Texture2D" uid="uid://d1n1qsvlq028j" path="res://assets/textures/trash_tools/auto_picker.png" id="2_ygx83"]
 
 [sub_resource type="Animation" id="Animation_eack2"]
 length = 0.001
@@ -155,6 +156,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ygx83")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eack2"]
+albedo_texture = ExtResource("2_ygx83")
+texture_filter = 2
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpemy"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_eack2"]
@@ -209,9 +214,11 @@ transform = Transform3D(0.2409, 0.109178, -0.964389, -0.175562, 0.982163, 0.0673
 layers = 2
 mesh = SubResource("ArrayMesh_wrp8o")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_eack2")
 
 [node name="auto_bottom" type="MeshInstance3D" parent="auto_picker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.95, 0)
 layers = 2
 mesh = SubResource("ArrayMesh_88iug")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_eack2")

@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://k5t701js0kyc"]
+[gd_scene load_steps=6 format=3 uid="uid://k5t701js0kyc"]
 
 [ext_resource type="Texture2D" uid="uid://bouqjh2fub4i6" path="res://assets/tool_icons/magazine_icons/claw_picker.png" id="1_0n71c"]
 [ext_resource type="Theme" uid="uid://ct2wilxjo2x2v" path="res://assets/themes/tool_mag.tres" id="1_4osdn"]
+[ext_resource type="Script" uid="uid://ruyfks1d4nc6" path="res://scripts/tool_mag_page.gd" id="2_06pmv"]
 [ext_resource type="Texture2D" uid="uid://d1dvp2v3bwrcl" path="res://assets/tool_icons/magazine_icons/auto_picker.png" id="3_4osdn"]
 [ext_resource type="FontFile" uid="uid://fslvvjj84y6a" path="res://assets/fonts/Tektur/Tektur-Bold.ttf" id="3_a2dek"]
 
-[node name="page2" type="VBoxContainer"]
+[node name="rightPage1" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,6 +14,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4osdn")
 theme_override_constants/separation = 0
+script = ExtResource("2_06pmv")
+left = false
+tool_a_desc = "Grabbing without the stabbing
+
+Collects: Paper, Plastic, Metal, Glass
+
+Upgrade: Increase speed (%s/5)"
+tool_b_desc = "The picker of the future
+
+Collects: Paper, Plastic, Metal
+
+Upgrade: Increase range (%s/5)"
 
 [node name="topSeparator" type="HSeparator" parent="."]
 layout_mode = 2
@@ -53,7 +66,7 @@ text = "Grabbing without the stabbing
 
 Collects: Paper, Plastic, Metal, Glass
 
-Upgrade: Increase speed (0/5)"
+Upgrade: Increase speed (%s/5)"
 autowrap_mode = 3
 
 [node name="priceLabel" type="Label" parent="toolAArea"]
@@ -98,7 +111,7 @@ text = "The picker of the future
 
 Collects: Paper, Plastic, Metal
 
-Upgrade: Increase range (0/5)"
+Upgrade: Increase range (%s/5)"
 horizontal_alignment = 2
 autowrap_mode = 3
 

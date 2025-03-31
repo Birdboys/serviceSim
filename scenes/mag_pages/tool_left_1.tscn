@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjsglth2vgfl8"]
+[gd_scene load_steps=6 format=3 uid="uid://bjsglth2vgfl8"]
 
 [ext_resource type="Theme" uid="uid://ct2wilxjo2x2v" path="res://assets/themes/tool_mag.tres" id="1_jdhjb"]
 [ext_resource type="Texture2D" uid="uid://0robtaaqg61h" path="res://assets/tool_icons/magazine_icons/basic_picker.png" id="1_tb3sj"]
 [ext_resource type="Texture2D" uid="uid://cbvm7mukgjvki" path="res://assets/tool_icons/magazine_icons/better_picker.png" id="2_jdhjb"]
+[ext_resource type="Script" uid="uid://ruyfks1d4nc6" path="res://scripts/tool_mag_page.gd" id="2_t67hg"]
 [ext_resource type="FontFile" uid="uid://fslvvjj84y6a" path="res://assets/fonts/Tektur/Tektur-Bold.ttf" id="3_t67hg"]
 
-[node name="page1" type="VBoxContainer"]
+[node name="leftPage1" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,6 +14,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jdhjb")
 theme_override_constants/separation = 0
+script = ExtResource("2_t67hg")
+tool_a_desc = "Standard trash picker.
+
+Collects: Paper, Plastic
+
+Upgrade: (%s/5)"
+tool_b_desc = "Standard trash picker.
+
+Collects: Paper, Plastic
+
+Upgrade: (%s/5)"
 
 [node name="topSeparator" type="HSeparator" parent="."]
 layout_mode = 2
@@ -53,7 +65,7 @@ text = "Standard trash picker.
 
 Collects: Paper, Plastic
 
-Upgrade: None"
+Upgrade: (%s/5)"
 autowrap_mode = 3
 
 [node name="priceLabel" type="Label" parent="toolAArea"]
@@ -94,11 +106,11 @@ horizontal_alignment = 2
 [node name="toolDesc" type="Label" parent="toolAArea2/toolCont/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"listingLabel"
-text = "Pick faster, pick longer, pick better
+text = "Standard trash picker.
 
-Collects: Paper, Plastic, Metal
+Collects: Paper, Plastic
 
-Upgrade: Increase range (0/5)"
+Upgrade: (%s/5)"
 horizontal_alignment = 2
 autowrap_mode = 3
 
@@ -115,7 +127,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_type_variation = &"priceLabel"
 theme_override_fonts/font = ExtResource("3_t67hg")
-text = "$30"
+text = "$50"
 horizontal_alignment = 2
 vertical_alignment = 2
 

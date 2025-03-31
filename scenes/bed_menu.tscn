@@ -1703,7 +1703,7 @@ layout_mode = 2
 theme_type_variation = &"topSep"
 theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 
-[node name="toolAArea" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
+[node name="toolARightButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
@@ -1715,7 +1715,7 @@ layout_mode = 2
 theme_type_variation = &"listingSep"
 theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 
-[node name="toolAArea2" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
+[node name="toolBRightButton" type="Button" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5

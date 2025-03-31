@@ -31,7 +31,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if loading_stats: 
 		trashLabel.text = "%s pieces" % int(num_trash * trash_percent)
-		moneyLabel.text = "%s dollars" % int(trash_val * value_percent)
+		moneyLabel.text = "%s credits" % int(trash_val * value_percent)
 		comboLabel.text = "%s" % int(max_combo * combo_percent)
 	
 func reset():
