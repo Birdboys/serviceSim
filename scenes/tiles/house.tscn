@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfxkdmxms47s8"]
+[gd_scene load_steps=10 format=3 uid="uid://cfxkdmxms47s8"]
+
+[ext_resource type="Script" uid="uid://dvyremkus4iwq" path="res://scripts/house.gd" id="1_c2ydw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6eku"]
 albedo_color = Color(0.294118, 0.756863, 0.0745098, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_y6eku"]
-size = Vector3(18, 10, 16)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2ydw"]
 albedo_color = Color(0.670588, 0.580392, 0.478431, 1)
@@ -13,11 +12,24 @@ albedo_color = Color(0.670588, 0.580392, 0.478431, 1)
 material = SubResource("StandardMaterial3D_c2ydw")
 size = Vector3(25, 3.5, 0.25)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c2ydw"]
+points = PackedVector3Array(12.5, 1.75, 0.125, 12.5, 1.75, -0.125, -12.5, 1.75, 0.125, 12.5, -1.75, 0.125, 12.5, -1.75, -0.125, -12.5, 1.75, -0.125, -12.5, -1.75, 0.125, -12.5, -1.75, -0.125)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7euej"]
+points = PackedVector3Array(12.5, 1.75, 0.125, 12.5, 1.75, -0.125, -12.5, 1.75, 0.125, 12.5, -1.75, 0.125, 12.5, -1.75, -0.125, -12.5, 1.75, -0.125, -12.5, -1.75, 0.125, -12.5, -1.75, -0.125)
+
 [sub_resource type="BoxMesh" id="BoxMesh_7euej"]
 material = SubResource("StandardMaterial3D_c2ydw")
 size = Vector3(16, 3.5, 0.25)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0pxcl"]
+points = PackedVector3Array(8, 1.75, 0.125, 8, 1.75, -0.125, -8, 1.75, 0.125, 8, -1.75, 0.125, 8, -1.75, -0.125, -8, 1.75, -0.125, -8, -1.75, 0.125, -8, -1.75, -0.125)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lhn2m"]
+points = PackedVector3Array(8, 1.75, 0.125, 8, 1.75, -0.125, -8, 1.75, 0.125, 8, -1.75, 0.125, 8, -1.75, -0.125, -8, 1.75, -0.125, -8, -1.75, 0.125, -8, -1.75, -0.125)
+
 [node name="house" type="Node3D"]
+script = ExtResource("1_c2ydw")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -25,22 +37,41 @@ visible = false
 size = Vector3(25, 1, 40)
 material = SubResource("StandardMaterial3D_y6eku")
 
-[node name="houseMesh" type="MeshInstance3D" parent="."]
+[node name="houseNode" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00390244, 5, -2.94555)
-mesh = SubResource("BoxMesh_y6eku")
 
 [node name="fenceMeshFront" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
 mesh = SubResource("BoxMesh_c2ydw")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="fenceMeshFront"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fenceMeshFront/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_c2ydw")
+
 [node name="fenceMeshFront2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -19.875)
 mesh = SubResource("BoxMesh_c2ydw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="fenceMeshFront2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fenceMeshFront2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_7euej")
 
 [node name="fenceMeshSide" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.375, 1.75, -11.875)
 mesh = SubResource("BoxMesh_7euej")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="fenceMeshSide"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fenceMeshSide/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_0pxcl")
+
 [node name="fenceMeshSide2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.375, 1.75, -11.875)
 mesh = SubResource("BoxMesh_7euej")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="fenceMeshSide2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fenceMeshSide2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_lhn2m")

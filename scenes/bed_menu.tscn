@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=4 uid="uid://dp6pjn8bcgigu"]
+[gd_scene load_steps=135 format=4 uid="uid://dp6pjn8bcgigu"]
 
 [ext_resource type="Script" uid="uid://bmkdeiv33ldnb" path="res://scripts/bed_menu.gd" id="1_mswj1"]
 [ext_resource type="ArrayMesh" uid="uid://cmcnbsmd2mcmq" path="res://assets/trash_meshes/carton_small.tres" id="2_atm4g"]
@@ -891,9 +891,6 @@ height = 10.0
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_6mv7e"]
 color = Color(0, 0, 0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mv7e"]
-bg_color = Color(0.898023, 0.217213, 0.551663, 1)
-
 [sub_resource type="Animation" id="Animation_5st7i"]
 length = 0.001
 tracks/0/type = "value"
@@ -1101,12 +1098,73 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_7gbya"]
+resource_name = "reset_middle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("toolMag/magMidHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("toolMag/magMidHinge:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_futsp"]
 _data = {
 &"RESET": SubResource("Animation_5st7i"),
 &"open_tool_mag": SubResource("Animation_m4cyr"),
+&"reset_middle": SubResource("Animation_7gbya"),
 &"turn_page_left": SubResource("Animation_futsp"),
 &"turn_page_right": SubResource("Animation_6mv7e")
+}
+
+[sub_resource type="Animation" id="Animation_i6od6"]
+resource_name = "reset_middle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ekvf7"]
+_data = {
+&"reset_middle": SubResource("Animation_i6od6")
 }
 
 [node name="bedMenu" type="Node3D"]
@@ -1658,8 +1716,6 @@ theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_6mv7e")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6mv7e")
 
 [node name="toolSep" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/leftPageButton"]
 layout_mode = 2
@@ -1670,8 +1726,6 @@ theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_6mv7e")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6mv7e")
 
 [node name="toolSep2" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/leftPageButton"]
 layout_mode = 2
@@ -1707,8 +1761,6 @@ theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_6mv7e")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6mv7e")
 
 [node name="toolSep" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
 layout_mode = 2
@@ -1719,8 +1771,6 @@ theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_6mv7e")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6mv7e")
 
 [node name="toolSep2" type="HSeparator" parent="UILayer/UI/uiMargin/toolMagMenu/magUI/rightPageButton"]
 layout_mode = 2
@@ -1746,6 +1796,11 @@ layout_mode = 2
 root_node = NodePath("../../../../../tableMesh")
 libraries = {
 &"": SubResource("AnimationLibrary_futsp")
+}
+
+[node name="resetAnim" type="AnimationPlayer" parent="UILayer/UI/uiMargin/toolMagMenu"]
+libraries = {
+&"": SubResource("AnimationLibrary_ekvf7")
 }
 
 [node name="toolCoverViewport" type="SubViewport" parent="UILayer/UI/uiMargin/toolMagMenu"]
@@ -1838,6 +1893,22 @@ offset_bottom = 63.0
 grow_horizontal = 0
 theme = ExtResource("9_yda35")
 theme_override_font_sizes/font_size = 48
+
+[node name="buttonLabel" type="Label" parent="UILayer/UI/uiMargin/toolMagMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -21.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="escLabel" type="Label" parent="UILayer/UI/uiMargin"]
 visible = false

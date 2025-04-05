@@ -109,6 +109,8 @@ func leaveMenu(m):
 			areas["table"].visible = true
 		"tool_mag":
 			areas["tool_mag"].visible = true
+			UI.menus[m].resetMiddle()
+			
 			
 func loadMenu(m):
 	print("TRANSITION FINISHED")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://clguh4k8d0128"]
+
+[ext_resource type="ArrayMesh" uid="uid://7bgo6yga0m16" path="res://assets/house_meshes/house_5.tres" id="1_0750l"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0750l"]
+points = PackedVector3Array(0, 13, 5.99941, 10, 5.19988, 5.99941, 0, 13, -9, -9.00157, 5.9998, 4.99863, -4.50078, 9.49902, 9, 0.998434, 5.19988, 9, 10, 4.1991, 5.99941, 10, 5.19988, -9, -10, 5.19988, -9, -10, 5.19988, 9, 0.998434, 4.1991, 9, 10, 4.1991, -9, 0, -5, 9, 8.99961, -5, 4.99863, -10, 4.1991, -9, -10, 4.1991, 9, 8.99961, -5, -8.00098, -9.00157, -5, 9, -9.00157, -5, -8.00098)
+
+[node name="house" type="MeshInstance3D"]
+mesh = ExtResource("1_0750l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_0750l")

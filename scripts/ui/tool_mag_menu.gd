@@ -4,11 +4,13 @@ enum pages {LEFT, MIDDLE, RIGHT}
 @onready var leftButton := $leftButton
 @onready var rightButton := $rightButton
 @onready var magAnim := $magAnim
+@onready var resetAnim := $resetAnim
 @onready var leftPageViewport := $leftPageViewport/leftPageSlot
 @onready var rightPageViewport := $rightPageViewport/rightPageSlot
 @onready var middlePageViewport := $middlePageViewport/middlePageSlot
 @onready var magUI := $magUI
 @onready var moneyLabel := $moneyLabel
+@onready var buttonLabel := $buttonLabel
 
 @onready var toolALeftButton := $magUI/leftPageButton/toolALeftButton
 @onready var toolBLeftButton := $magUI/leftPageButton/toolBLeftButton
@@ -45,6 +47,16 @@ func _ready() -> void:
 	toolARightButton.pressed.connect(toolPressed.bind("rightA"))
 	toolBRightButton.pressed.connect(toolPressed.bind("rightB"))
 	
+	toolALeftButton.mouse_entered.connect(updateButtonLabel.bind("leftA"))
+	toolBLeftButton.mouse_entered.connect(updateButtonLabel.bind("leftB"))
+	toolARightButton.mouse_entered.connect(updateButtonLabel.bind("rightA"))
+	toolBRightButton.mouse_entered.connect(updateButtonLabel.bind("rightB"))
+	
+	toolALeftButton.mouse_exited.connect(updateButtonLabel.bind(""))
+	toolBLeftButton.mouse_exited.connect(updateButtonLabel.bind(""))
+	toolARightButton.mouse_exited.connect(updateButtonLabel.bind(""))
+	toolBRightButton.mouse_exited.connect(updateButtonLabel.bind(""))
+	
 func reset():
 	visible = false
 	can_turn_page = false
@@ -56,6 +68,10 @@ func reset():
 	magUI.visible = false
 	
 func loadMenu():
+	#var screen_size := DisplayServer.window_get_size()
+	#print(screen_size)
+	#magUI.custom_minimum_size.x = 900.0 * screen_size.x/1280.0
+	#magUI.custom_minimum_size.y = 620.0 * screen_size.y/720.0
 	visible = true
 	can_turn_page = true
 	updateMoneyLabel()
@@ -148,3 +164,30 @@ func tryUpgradeTool(t):
 	GameData.tool_data[t]['upgrade'] += 1
 	moneyLabel.text = "$%s" % GameData.total_money
 	
+func updateButtonLabel(b):
+	if leftPageViewport.get_child(0) is not ToolMagPage: return
+	var tool_name : String
+	var label_text : String
+	match b:
+		"leftA": tool_name = leftPageViewport.get_child(0).tool_a
+		"leftB": tool_name = leftPageViewport.get_child(0).tool_b
+		"rightA": tool_name = rightPageViewport.get_child(0).tool_a
+		"rightB": tool_name = rightPageViewport.get_child(0).tool_b
+		_: 
+			buttonLabel.text = ""
+			return 
+	if not GameData.tool_data[tool_name]['owned']:
+		if GameData.tool_data[tool_name]['price'] > GameData.total_money:
+			label_text = "Insufficient funds"
+		else:	
+			label_text = "Click to purchase %s" % GameData.tool_data[tool_name]["name"]
+	else:
+		if GameData.tool_data[tool_name]['upgrade'] < 5:
+			label_text = "Click to upgrade %s" % GameData.tool_data[tool_name]["name"]
+		else:
+			label_text = "%s fully upgraded" % GameData.tool_data[tool_name]["name"]
+	buttonLabel.text = label_text
+
+func resetMiddle():
+	print("MIDDLE RESET")
+	resetAnim.play("reset_middle")
