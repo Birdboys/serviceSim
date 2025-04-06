@@ -22,9 +22,9 @@ Collects: Paper, Plastic
 Upgrade: (%s/5)"
 tool_b_desc = "Standard trash picker.
 
-Collects: Paper, Plastic
+Collects: Paper, Plastic, Metal
 
-Upgrade: (%s/5)"
+Upgrade: Increase Range (%s/5)"
 
 [node name="topSeparator" type="HSeparator" parent="."]
 layout_mode = 2
@@ -110,7 +110,7 @@ text = "Standard trash picker.
 
 Collects: Paper, Plastic
 
-Upgrade: (%s/5)"
+Upgrade: Increase range (%s/5)"
 horizontal_alignment = 2
 autowrap_mode = 3
 

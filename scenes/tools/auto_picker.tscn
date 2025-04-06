@@ -197,6 +197,7 @@ script = ExtResource("1_ygx83")
 pickup_paper = true
 pickup_plastic = true
 pickup_metal = true
+tool_name = "auto_picker"
 
 [node name="trashRay" type="RayCast3D" parent="."]
 enabled = false

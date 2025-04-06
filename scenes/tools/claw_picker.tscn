@@ -277,6 +277,7 @@ pickup_paper = true
 pickup_plastic = true
 pickup_metal = true
 pickup_glass = true
+tool_name = "claw_picker"
 speed_mod = 0.9
 
 [node name="claw_picker" type="MeshInstance3D" parent="."]

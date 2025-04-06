@@ -117,6 +117,7 @@ _data = {
 script = ExtResource("1_eavmo")
 pickup_paper = true
 pickup_plastic = true
+tool_name = "basic_picker"
 
 [node name="trashRay" type="RayCast3D" parent="."]
 enabled = false
