@@ -33,6 +33,7 @@ const tile_to_scene := {
 }
 
 func _ready() -> void:
+	player.called_home.connect(endPicking)
 	transitionUI.visible = true
 	wfc = BlockMS.new()
 	wfc.initBlockMS(block_size, block_overlap)

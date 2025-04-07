@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var stateMachine := $stateMachine
 @onready var UI := $playerUI
 @onready var comboTimer := $comboTimer
+@onready var callTimer := $callTimer
 
 var available_tools := []
 var current_tool_id := -1
@@ -26,10 +27,13 @@ var max_combo := 0
 const combo_time_window := 3.0
 const base_sens := 0.00005
 
+signal called_home 
+
 func _ready() -> void:
 	stateMachine.initialize(self)
 	max_trash = bag_dim.x * bag_dim.y
 	comboTimer.timeout.connect(endCombo)
+	callTimer.timeout.connect(calledHome)
 	UI.initBag(bag_dim)
 	UI.updateBagLabel(0, max_trash)
 	updateSensitivity()
@@ -42,6 +46,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if stateMachine.current_state.interact_control: handlePrompt()
 	if not comboTimer.is_stopped() and combo_counter >= 3: UI.updateComboUI(comboTimer.time_left/combo_time_window)
+	if not callTimer.is_stopped(): UI.updateCallUI((GameData.call_time-callTimer.time_left)/GameData.call_time)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if stateMachine.current_state.camera_control: handleCamera(event)
@@ -54,7 +59,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_released("tool_primary") and current_tool: current_tool.primaryUp()
 		if event.is_action_pressed("tool_secondary") and current_tool: current_tool.secondaryDown()
 		if event.is_action_released("tool_secondary") and current_tool: current_tool.secondaryUp()
-
+		if event.is_action_pressed("call"): handleCall(true)
+		if event.is_action_released("call"): handleCall(false)
+		
 func syncCameras():
 	toolCam.global_transform = cam.global_transform
 	
@@ -162,3 +169,13 @@ func endCombo():
 	combo_counter = 0
 	UI.updateComboUI(0)
 	UI.setComboLabel(0)
+
+func handleCall(start: bool):
+	if start:
+		callTimer.start(GameData.call_time)
+	else:
+		callTimer.stop()
+		UI.updateCallUI(0)
+
+func calledHome():
+	emit_signal("called_home")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=4 uid="uid://dp6pjn8bcgigu"]
+[gd_scene load_steps=140 format=4 uid="uid://dp6pjn8bcgigu"]
 
 [ext_resource type="Script" uid="uid://bmkdeiv33ldnb" path="res://scripts/bed_menu.gd" id="1_mswj1"]
 [ext_resource type="ArrayMesh" uid="uid://cmcnbsmd2mcmq" path="res://assets/trash_meshes/carton_small.tres" id="2_atm4g"]
@@ -242,6 +242,7 @@ size = Vector3(2, 2, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flnl5"]
 albedo_color = Color(0.192157, 0.211765, 0.219608, 1)
+emission_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_yda35"]
 material = SubResource("StandardMaterial3D_flnl5")
@@ -887,6 +888,76 @@ albedo_color = Color(0.137255, 0.564706, 0.388235, 1)
 material = SubResource("StandardMaterial3D_futsp")
 radius = 1.5
 height = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6mv7e"]
+content_margin_left = 4.0
+
+[sub_resource type="Animation" id="Animation_ekvf7"]
+resource_name = "turn_computer_on"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../../../computerMesh/screenMesh:mesh:material:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.215686, 0.305882, 0.290196, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qf3g8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../../../computerMesh/screenMesh:mesh:material:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../savedLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l7yoa"]
+resource_name = "game_saved"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../savedLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7yoa"]
+_data = {
+&"RESET": SubResource("Animation_qf3g8"),
+&"game_saved": SubResource("Animation_l7yoa"),
+&"turn_computer_on": SubResource("Animation_ekvf7")
+}
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_6mv7e"]
 color = Color(0, 0, 0, 0)
@@ -1612,23 +1683,261 @@ layout_mode = 2
 mouse_filter = 2
 script = ExtResource("11_yda35")
 
-[node name="computerVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/computerMenu"]
+[node name="mainVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/computerMenu"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -377.5
+offset_top = -298.0
+offset_right = 377.5
+offset_bottom = 298.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 8
+size_flags_horizontal = 4
 alignment = 1
 
-[node name="tempLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/computerVbox"]
+[node name="musicSlider" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/mainVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="sliderLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/mainVbox/musicSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "MUSIC:"
+
+[node name="musicSlider" type="HSlider" parent="UILayer/UI/uiMargin/computerMenu/mainVbox/musicSlider"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="soundSlider" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/mainVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="sliderLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/mainVbox/soundSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "SOUND:"
+
+[node name="soundSlider" type="HSlider" parent="UILayer/UI/uiMargin/computerMenu/mainVbox/soundSlider"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="spacer" type="Control" parent="UILayer/UI/uiMargin/computerMenu/mainVbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="controlsButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/mainVbox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "NO SAVE DATA
-IN DEMO"
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "CONTROLS"
+
+[node name="spacer2" type="Control" parent="UILayer/UI/uiMargin/computerMenu/mainVbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="saveButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/mainVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "SAVE GAME"
+
+[node name="controlsVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/computerMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 24.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="controlScroll" type="ScrollContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox"]
+custom_minimum_size = Vector2(512, 384)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6mv7e")
+
+[node name="scrollVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="forwardCont" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="controlLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/forwardCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 48
+text = "FORWARD"
+
+[node name="forwardButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/forwardCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"controlButton"
+theme_override_font_sizes/font_size = 48
+toggle_mode = true
+text = "W"
+
+[node name="backwardCont" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="controlLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/backwardCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 48
+text = "BACKWARD"
+
+[node name="backwardButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/backwardCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"controlButton"
+theme_override_font_sizes/font_size = 48
+toggle_mode = true
+text = "S"
+
+[node name="leftCont" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="controlLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/leftCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 48
+text = "LEFT"
+
+[node name="leftButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/leftCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"controlButton"
+theme_override_font_sizes/font_size = 48
+toggle_mode = true
+text = "A"
+
+[node name="rightCont" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="controlLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/rightCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 48
+text = "RIGHT"
+
+[node name="rightButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/rightCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"controlButton"
+theme_override_font_sizes/font_size = 48
+toggle_mode = true
+text = "D"
+
+[node name="jumpCont" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="controlLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/jumpCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 48
+text = "JUMP"
+
+[node name="jumpButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/jumpCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"controlButton"
+theme_override_font_sizes/font_size = 48
+toggle_mode = true
+text = "SPACE"
+
+[node name="bagCont" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="controlLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/bagCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 48
+text = "BAG"
+
+[node name="bagButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/bagCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"controlButton"
+theme_override_font_sizes/font_size = 48
+toggle_mode = true
+text = "TAB"
+
+[node name="callCont" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="controlLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/callCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 48
+text = "CALL HOME"
+
+[node name="callButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/callCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"controlButton"
+theme_override_font_sizes/font_size = 48
+toggle_mode = true
+text = "C"
+
+[node name="spacer" type="Control" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="controlsBack" type="Button" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+
+[node name="computerAnim" type="AnimationPlayer" parent="UILayer/UI/uiMargin/computerMenu"]
+root_node = NodePath("../mainVbox/saveButton")
+libraries = {
+&"": SubResource("AnimationLibrary_l7yoa")
+}
+
+[node name="savedLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -21.0
+offset_right = 39.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "GAME SAVED"
 
 [node name="tableMenu" type="Control" parent="UILayer/UI/uiMargin"]
 layout_mode = 2
@@ -1920,7 +2229,6 @@ theme_override_font_sizes/font_size = 32
 text = "ESC TO EXIT"
 
 [node name="transitionLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="endBG" type="ColorRect" parent="transitionLayer"]
 anchors_preset = 15

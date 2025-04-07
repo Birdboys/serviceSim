@@ -9,6 +9,9 @@ extends CanvasLayer
 @onready var comboHbox := $uiCont/marginCont/comboHbox
 @onready var comboLabel := $uiCont/marginCont/comboHbox/VBoxContainer/comboLabel
 @onready var comboBar := $uiCont/marginCont/comboHbox/VBoxContainer/comboBar
+@onready var callHbox := $uiCont/marginCont/callHbox
+@onready var callLabel := $uiCont/marginCont/callHbox/callLabel
+@onready var callBar := $uiCont/marginCont/callHbox/callBar
 @onready var trashIcon := preload("res://scenes/ui/trash_icon.tscn")
 @onready var hotbarIcon := preload("res://scenes/ui/hotbar_icon.tscn")
 
@@ -28,6 +31,7 @@ const combo_quips := {
 func _ready() -> void:
 	setComboLabel(0)
 	updateComboUI(0)
+	updateCallUI(0)
 	
 func updatePrompt(t):
 	promptLabel.text = t
@@ -85,3 +89,9 @@ func setComboLabel(t):
 func updateComboUI(v):
 	comboHbox.modulate.a = sin(v)
 	comboBar.value = v * 100.0
+
+func updateCallUI(v):
+	#v = remap(v, 0.0, 1.0, 0.1, 1.0)
+	callLabel.modulate.a = sin(v)
+	callBar.modulate.a = sin(v)
+	callBar.value = v * 100.0

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://djs6o2b5hx67f"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://djs6o2b5hx67f"]
 
 [ext_resource type="FontFile" uid="uid://buf4naw1mfdrd" path="res://assets/fonts/Chewy/Chewy-Regular.ttf" id="1_xijo0"]
 
@@ -9,6 +9,25 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxkm7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_au6vn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpb4n"]
+bg_color = Color(0, 0, 0, 0.247059)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xijo0"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [resource]
 default_font = ExtResource("1_xijo0")
@@ -23,3 +42,6 @@ Button/styles/normal = SubResource("StyleBoxEmpty_dxkm7")
 Button/styles/pressed = SubResource("StyleBoxEmpty_au6vn")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 8
+ProgressBar/styles/background = SubResource("StyleBoxFlat_xpb4n")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_xijo0")
+controlButton/base_type = &"Button"

@@ -73,7 +73,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func menuClick(cam, event:InputEvent, _event_pos, _event_norm, _shape_idx, m):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1 and can_click:
 		if m == current_menu: return
-		if m == "tool_mag": print("TOOL MAG")
 		can_click = false
 		UI.reset()
 		leaveMenu(current_menu)
@@ -110,7 +109,8 @@ func leaveMenu(m):
 		"tool_mag":
 			areas["tool_mag"].visible = true
 			UI.menus[m].resetMiddle()
-			
+		"computer":
+			UI.menus[m].computerAnim.play_backwards("turn_computer_on")
 			
 func loadMenu(m):
 	print("TRANSITION FINISHED")
@@ -127,6 +127,8 @@ func loadMenu(m):
 		"tool_mag":
 			areas["table"].visible = false
 			areas["tool_mag"].visible = false
+		#"computer":
+			#UI.menus[m].computerAnim.play("turn_computer_on")
 
 	UI.loadMenu(m)
 	

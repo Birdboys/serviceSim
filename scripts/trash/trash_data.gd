@@ -22,7 +22,7 @@ const paper_type_dist := {
 	paper_types.CARDBOARD_S:1.0, 
 	paper_types.CARDBOARD_M:1.0, 
 	paper_types.CARDBOARD_L:1.0, 
-	paper_types.CEREAL:1.0, 
+	#paper_types.CEREAL:1.0, 
 	paper_types.FAST_CUP_S:1.0, 
 	paper_types.FAST_CUP_L:1.0
 }

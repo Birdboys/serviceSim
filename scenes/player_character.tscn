@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5hxccw6xqmdh"]
+[gd_scene load_steps=17 format=3 uid="uid://b5hxccw6xqmdh"]
 
 [ext_resource type="Script" uid="uid://b28ay6my54ijt" path="res://scripts/player/player_character.gd" id="1_56udc"]
 [ext_resource type="Script" uid="uid://8cg5k2ajkd8v" path="res://scripts/state_machine.gd" id="2_6r27q"]
@@ -14,12 +14,6 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yqrqw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_56udc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_herhr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xb3ya"]
-bg_color = Color(1, 1, 1, 1)
-border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_herhr"]
 bg_color = Color(0.780392, 0.862745, 0.815686, 1)
@@ -139,6 +133,9 @@ collide_with_areas = true
 [node name="comboTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="callTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="toolLayer" type="CanvasLayer" parent="."]
 
 [node name="toolCont" type="SubViewportContainer" parent="toolLayer"]
@@ -233,8 +230,26 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 1
-theme_override_styles/background = SubResource("StyleBoxEmpty_herhr")
-theme_override_styles/fill = SubResource("StyleBoxFlat_xb3ya")
+value = 50.0
+show_percentage = false
+
+[node name="callHbox" type="HBoxContainer" parent="playerUI/uiCont/marginCont"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="callLabel" type="Label" parent="playerUI/uiCont/marginCont/callHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "CALLING HOME:"
+
+[node name="callBar" type="ProgressBar" parent="playerUI/uiCont/marginCont/callHbox"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 1
 value = 50.0
 show_percentage = false
 
