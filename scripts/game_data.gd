@@ -8,14 +8,14 @@ const tool_mag_data := {
 }
 
 var total_trash_collected := 0
-var total_money := 0
+var total_money := 300
 
 @onready var num_tool_slots := 2
 @onready var unlocked_tools := ["basic_picker", "better_picker", "squeeze_picker", "auto_picker", "basic_vacuum", "spear_picker", "pogo_picker"]
 @onready var current_gear := ["basic_picker", ""]
 @onready var bag_dim :=  Vector2(8,8)
-@onready var game_time := .05 * 60.0 #seconds
-@onready var call_time := 5.0
+@onready var game_time := 2.5 * 60.0 #seconds
+@onready var call_time := 3.0
 @onready var default_tool_data := {
 	"basic_picker": {"price": 0, "upgrade_price":0, "owned": true, "upgrade": 5, "name":"Basic Picker"}, 
 	"better_picker": {"price": 50, "upgrade_price":10, "owned": false, "upgrade": 0, "name":"Better Picker"}, 

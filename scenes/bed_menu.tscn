@@ -892,22 +892,6 @@ height = 10.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6mv7e"]
 content_margin_left = 4.0
 
-[sub_resource type="Animation" id="Animation_ekvf7"]
-resource_name = "turn_computer_on"
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../../../../computerMesh/screenMesh:mesh:material:emission")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2, 2),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0.215686, 0.305882, 0.290196, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_qf3g8"]
 length = 0.001
 tracks/0/type = "value"
@@ -950,6 +934,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, 0.5, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ekvf7"]
+resource_name = "turn_computer_on"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../../../computerMesh/screenMesh:mesh:material:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.215686, 0.305882, 0.290196, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l7yoa"]
