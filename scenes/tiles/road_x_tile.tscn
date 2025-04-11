@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bosj2o6gap5rm"]
+[gd_scene load_steps=11 format=3 uid="uid://bosj2o6gap5rm"]
 
 [ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="1_bq8od"]
 [ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="2_admef"]
+[ext_resource type="PackedScene" uid="uid://bot4fe2vntboq" path="res://scenes/houses/rock_bed.tscn" id="3_bq8od"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhbjo"]
 size = Vector3(100, 2, 100)
@@ -94,9 +95,6 @@ mesh = SubResource("BoxMesh_qutkw")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.25, -0.5, 8.25)
 mesh = SubResource("BoxMesh_qutkw")
 
-[node name="houses" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30, 0, 37.5)
-
 [node name="trashScatterer" parent="." instance=ExtResource("2_admef")]
 valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
 num_trash = 50
@@ -107,3 +105,20 @@ trash_dist = {
 2: 1.0,
 3: 1.0
 }
+
+[node name="rockBeds" type="Node3D" parent="."]
+visible = false
+
+[node name="rockBed" parent="rockBeds" instance=ExtResource("3_bq8od")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30)
+
+[node name="rockBed4" parent="rockBeds" instance=ExtResource("3_bq8od")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30, 0, 30)
+
+[node name="rockBed2" parent="rockBeds" instance=ExtResource("3_bq8od")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, -30)
+
+[node name="rockBed3" parent="rockBeds" instance=ExtResource("3_bq8od")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 30, 0, -30)
+
+[node name="houses" type="Node3D" parent="."]

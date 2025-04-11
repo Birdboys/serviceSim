@@ -122,6 +122,7 @@ cull_mask = 1048573
 current = true
 fov = 65.0
 size = 64.999
+far = 300.0
 
 [node name="interactRay" type="RayCast3D" parent="playerNeck/playerCam"]
 target_position = Vector3(0, 0, -4)
@@ -270,6 +271,11 @@ theme_override_font_sizes/font_size = 48
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 8
+
+[node name="fpsLabel" type="Label" parent="playerUI/uiCont/marginCont"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="crossHair" type="TextureRect" parent="playerUI/uiCont"]
 layout_mode = 1

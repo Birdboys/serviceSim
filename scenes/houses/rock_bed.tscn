@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=3 uid="uid://bot4fe2vntboq"]
+
+[ext_resource type="Script" uid="uid://1onia4wojg7o" path="res://scripts/rock_bed.gd" id="1_yvngm"]
+[ext_resource type="PackedScene" uid="uid://bu06dfirp3ee1" path="res://scenes/houses/tree.tscn" id="2_sk6sw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_admef"]
+albedo_color = Color(0.670588, 0.580392, 0.478431, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_admef"]
+material = SubResource("StandardMaterial3D_admef")
+size = Vector3(28, 0.25, 28)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq8od"]
+albedo_color = Color(0.588235, 0.423529, 0.423529, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bq8od"]
+material = SubResource("StandardMaterial3D_bq8od")
+size = Vector3(2, 1, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbvdv"]
+albedo_color = Color(0.0862745, 0.352941, 0.298039, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dceb8"]
+material = SubResource("StandardMaterial3D_nbvdv")
+radius = 2.0
+height = 12.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dceb8"]
+albedo_color = Color(0.192157, 0.211765, 0.219608, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_mruyh"]
+material = SubResource("StandardMaterial3D_dceb8")
+radius = 5.0
+height = 4.0
+radial_segments = 6
+rings = 6
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gwkhs"]
+points = PackedVector3Array(-3.30403, -1.22208, -2.03158, 4.13887, 0.524346, 2.34472, 3.83498, 0.815803, 2.19168, -0.25749, -0.49806, 4.66207, -2.26086, 1.66118, 1.29068, 0.17982, 0.5228, -4.67713, 1.89623, -1.77906, -1.14626, 3.33091, 1.22998, -2.00655, -3.30403, -1.22208, 2.03158, -4.02377, 0.518464, -2.46308, 4.16017, -0.503916, -2.35689, 3.34796, -1.21318, 2.01693, -4.02377, 0.518465, 2.46308, -0.108156, 1.7923, -2.13707, 0.176495, 1.36802, 3.42785, 0.034003, -1.22231, -3.91929, -0.250731, -1.76691, 2.13434, 1.87901, 1.7856, 1.13567, -1.83755, -1.78803, -1.152, -4.0446, -0.497971, -2.47572, 0.17982, 0.5228, 4.67713, -3.28698, 1.23887, -2.0212, 4.16017, -0.503916, 2.35689, -4.0446, -0.497971, 2.47572, 4.13887, 0.524346, -2.34472, -0.25749, -0.49806, -4.66207, 0.034003, -1.22231, 3.91929, 0.034003, 1.10032, -4.06613, 3.34796, -1.21318, -2.01693, -3.28698, 1.23887, 2.0212, -0.534672, 1.9329, 0.426144, 1.89623, -1.77905, 1.14626)
+
+[node name="rockBed" type="Node3D"]
+script = ExtResource("1_yvngm")
+
+[node name="rocks" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+mesh = SubResource("BoxMesh_admef")
+
+[node name="wall1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.089787, 14)
+mesh = SubResource("BoxMesh_bq8od")
+
+[node name="wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.089787, 0)
+mesh = SubResource("BoxMesh_bq8od")
+
+[node name="bushes" type="Node3D" parent="."]
+
+[node name="bush" type="MeshInstance3D" parent="bushes"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 8, 0.903788, 12)
+mesh = SubResource("CapsuleMesh_dceb8")
+skeleton = NodePath("../..")
+
+[node name="bush2" type="MeshInstance3D" parent="bushes"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5, 0.903788, 12)
+mesh = SubResource("CapsuleMesh_dceb8")
+skeleton = NodePath("../..")
+
+[node name="bush3" type="MeshInstance3D" parent="bushes"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -11.5, 0.903788, -8.5)
+mesh = SubResource("CapsuleMesh_dceb8")
+skeleton = NodePath("../..")
+
+[node name="bush4" type="MeshInstance3D" parent="bushes"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -11.5, 0.903788, 4.5)
+mesh = SubResource("CapsuleMesh_dceb8")
+skeleton = NodePath("../..")
+
+[node name="trees" type="Node3D" parent="."]
+visible = false
+
+[node name="tree" parent="trees" instance=ExtResource("2_sk6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
+
+[node name="tree2" parent="trees" instance=ExtResource("2_sk6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 8)
+
+[node name="tree3" parent="trees" instance=ExtResource("2_sk6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.65193, 0, -4.36765)
+
+[node name="tree4" parent="trees" instance=ExtResource("2_sk6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10242, 0, -4.48904)
+
+[node name="tree5" parent="trees" instance=ExtResource("2_sk6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="tree6" parent="trees" instance=ExtResource("2_sk6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3)
+
+[node name="tree7" parent="trees" instance=ExtResource("2_sk6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -11)
+
+[node name="tree8" parent="trees" instance=ExtResource("2_sk6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9579, 0, -10.6108)
+
+[node name="tree9" parent="trees" instance=ExtResource("2_sk6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04213, 0, -13.6108)
+
+[node name="stones" type="Node3D" parent="."]
+visible = false
+
+[node name="stone1" type="MeshInstance3D" parent="stones"]
+transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, -2, -0.308278, -7)
+mesh = SubResource("SphereMesh_mruyh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stones/stone1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stones/stone1/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_gwkhs")
+
+[node name="stone2" type="MeshInstance3D" parent="stones"]
+transform = Transform3D(-0.334989, 0.785597, -0.520212, -0.174184, 0.490962, 0.85359, 0.925982, 0.376555, -0.0276288, 5.88026, -2.40893, 4.15934)
+mesh = SubResource("SphereMesh_mruyh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stones/stone2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stones/stone2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_gwkhs")
+
+[node name="stone3" type="MeshInstance3D" parent="stones"]
+transform = Transform3D(0.85603, 0.467012, -0.221613, -0.081371, 0.545108, 0.834408, 0.510481, -0.696245, 0.50463, 7.82796, -2.13419, -9.70739)
+mesh = SubResource("SphereMesh_mruyh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stones/stone3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stones/stone3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_gwkhs")

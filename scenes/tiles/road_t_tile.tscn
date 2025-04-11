@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsierlp02o525"]
+[gd_scene load_steps=16 format=3 uid="uid://dsierlp02o525"]
 
 [ext_resource type="PackedScene" uid="uid://cfxkdmxms47s8" path="res://scenes/tiles/house.tscn" id="1_c1jmc"]
 [ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="1_giyk1"]
 [ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="2_qxeh6"]
+[ext_resource type="PackedScene" uid="uid://bot4fe2vntboq" path="res://scenes/houses/rock_bed.tscn" id="4_xu382"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhbjo"]
 size = Vector3(100, 2, 100)
@@ -43,7 +44,7 @@ size = Vector3(3.5, 1, 43.5)
 material = SubResource("StandardMaterial3D_5781l")
 size = Vector3(3.5, 1, 100)
 
-[node name="roadXTile" type="Node3D"]
+[node name="roadTTile" type="Node3D"]
 script = ExtResource("1_giyk1")
 
 [node name="groundBody" type="StaticBody3D" parent="."]
@@ -118,3 +119,12 @@ trash_dist = {
 2: 1.0,
 3: 1.0
 }
+
+[node name="rockBeds" type="Node3D" parent="."]
+visible = false
+
+[node name="rockBed" parent="rockBeds" instance=ExtResource("4_xu382")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30)
+
+[node name="rockBed4" parent="rockBeds" instance=ExtResource("4_xu382")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30, 0, 30)

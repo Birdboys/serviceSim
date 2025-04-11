@@ -95,3 +95,5 @@ trash_dist = {
 2: 1.0,
 3: 1.0
 }
+
+[node name="rockBeds" type="Node3D" parent="."]

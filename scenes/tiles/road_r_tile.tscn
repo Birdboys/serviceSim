@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4ka2npfj5l6g"]
+[gd_scene load_steps=14 format=3 uid="uid://c4ka2npfj5l6g"]
 
 [ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="1_bse6s"]
 [ext_resource type="PackedScene" uid="uid://cfxkdmxms47s8" path="res://scenes/tiles/house.tscn" id="1_ndolb"]
 [ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="2_5urf6"]
+[ext_resource type="PackedScene" uid="uid://bot4fe2vntboq" path="res://scenes/houses/rock_bed.tscn" id="4_tiqto"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhbjo"]
 size = Vector3(100, 2, 100)
@@ -113,3 +114,8 @@ trash_dist = {
 2: 1.0,
 3: 1.0
 }
+
+[node name="rockBeds" type="Node3D" parent="."]
+
+[node name="rockBed4" parent="rockBeds" instance=ExtResource("4_tiqto")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30, 0, 30)
