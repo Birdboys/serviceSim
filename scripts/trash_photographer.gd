@@ -5,7 +5,7 @@ extends Node3D
 
 var trash_path := "res://assets/trash_meshes/"
 var texture_path := "res://assets/textures/%s/%s_%s.png"
-var og_cam_pos := Vector3(0.0, 1.75, 3.5)
+var og_cam_pos := Vector3(0.0, 1.25, 3)
 
 func doPhotography():
 	var trash_dir = DirAccess.open(trash_path)
@@ -14,14 +14,19 @@ func doPhotography():
 		var mesh_name = t.split(".")[0]
 		if new_mesh is ArrayMesh:
 			trashMesh.mesh = new_mesh
+			print(t, " ", trashMesh.get_aabb())
+			var aabb = trashMesh.get_aabb()
+			var endpoint = aabb.get_endpoint(6)
+			print("ENDPOINT: ", endpoint)
+			trashCam.position = og_cam_pos * endpoint.length()
 			for x in range(0,5):
 				var new_texture = load(texture_path % [mesh_name, mesh_name, x])
 				trashMesh.mesh.surface_get_material(0).albedo_texture = new_texture
 				await RenderingServer.frame_post_draw
 				await RenderingServer.frame_post_draw
 				var abs = trashMesh.get_aabb()
-				trashCam.position = og_cam_pos 
-				print(abs)
+				#trashCam.position = og_cam_pos 
+				#print(abs)
 				var trash_image = get_viewport().get_texture().get_image()
 				var image_name = mesh_name + "_" + str(x) + ".png"
 				var error = trash_image.save_png("user://"+image_name)

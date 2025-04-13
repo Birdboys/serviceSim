@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://db5ljrvu575ri"]
 
 [ext_resource type="Script" uid="uid://htt0a7qbve77" path="res://scripts/trash_photographer.gd" id="1_2mc72"]
-[ext_resource type="ArrayMesh" uid="uid://cty3qsosr7dig" path="res://assets/trash_meshes/newspaper.tres" id="2_2mc72"]
+[ext_resource type="ArrayMesh" uid="uid://vgn3vqgox564" path="res://assets/trash_meshes/bord_bottle.tres" id="2_2mc72"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2mc72"]
 sky_top_color = Color(0.501961, 0.501961, 0.501961, 1)
@@ -41,5 +41,5 @@ transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 
 mesh = ExtResource("2_2mc72")
 
 [node name="trashCam" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.5, 3)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 5)
 fov = 45.0

@@ -29,3 +29,4 @@ func doRockBeds():
 		r.doTrees()
 		r.doStones()
 		await get_tree().process_frame
+	rockbeds.visible = true

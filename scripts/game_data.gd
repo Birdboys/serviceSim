@@ -38,6 +38,8 @@ var total_money := 300
 @onready var tool_data : Dictionary
 @onready var settings_data : Dictionary
 
+@onready var tree := preload("res://scenes/houses/tree.tscn")
+
 func _ready() -> void:
 	tool_data = default_tool_data.duplicate(true)
 	settings_data = default_settings_data.duplicate(true)

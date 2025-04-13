@@ -18,11 +18,13 @@ func trashRayCollect():
 	trashRay.force_raycast_update()
 	if not trashRay.is_colliding(): return
 	var new_trash = trashRay.get_collider().get_parent()
-	if new_trash is Trash and isTrashValid(new_trash):
-		AudioHandler.playSound3D("%s_pickup" % [TrashData.trash_type_names[new_trash.type]], new_trash.global_position)
-		emit_signal("attempt_collect_trash", new_trash)
-	else:
-		AudioHandler.playSound3D("%s_reject" % [TrashData.trash_type_names[new_trash.type]], new_trash.global_position)
+	print(new_trash)
+	if new_trash is Trash:
+		if isTrashValid(new_trash):
+			AudioHandler.playSound3D("%s_pickup" % [TrashData.trash_type_names[new_trash.type]], new_trash.global_position)
+			emit_signal("attempt_collect_trash", new_trash)
+		else:
+			AudioHandler.playSound3D("%s_reject" % [TrashData.trash_type_names[new_trash.type]], new_trash.global_position)
 
 func upgrade():
 	var upgrade_level = GameData.tool_data[tool_name]['upgrade']

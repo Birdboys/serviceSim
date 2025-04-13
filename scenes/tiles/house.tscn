@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfxkdmxms47s8"]
+[gd_scene load_steps=9 format=3 uid="uid://cfxkdmxms47s8"]
 
 [ext_resource type="Script" uid="uid://dvyremkus4iwq" path="res://scripts/house.gd" id="1_c2ydw"]
-[ext_resource type="PackedScene" uid="uid://bu06dfirp3ee1" path="res://scenes/houses/tree.tscn" id="3_0pxcl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2ydw"]
 albedo_color = Color(0.670588, 0.580392, 0.478431, 1)
@@ -35,40 +34,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00390244, 5, -2.94555)
 [node name="trees" type="Node3D" parent="."]
 visible = false
 
-[node name="tree" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree13" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.07138, 0, 16.6112)
 
-[node name="tree2" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree14" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92862, 0, 16.6112)
 
-[node name="tree3" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree15" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.92862, 0, 10.6112)
 
-[node name="tree4" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree16" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.13029, 0, 9.9887)
 
-[node name="tree5" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree17" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.92862, 0, 18.6112)
 
-[node name="tree6" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree18" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9286, 0, 4.61122)
 
-[node name="tree7" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree19" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.92862, 0, -14.3888)
 
-[node name="tree8" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree20" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92862, 0, -17.3888)
 
-[node name="tree9" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree21" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07138, 0, -14.3888)
 
-[node name="tree10" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree22" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07138, 0, -18.3888)
 
-[node name="tree11" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree23" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0714, 0, -18.3888)
 
-[node name="tree12" parent="trees" instance=ExtResource("3_0pxcl")]
+[node name="tree24" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4307, 0, 13.1753)
 
 [node name="fenceMeshFront" type="MeshInstance3D" parent="."]
@@ -76,6 +75,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
 mesh = SubResource("BoxMesh_c2ydw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="fenceMeshFront"]
+collision_layer = 257
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fenceMeshFront/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_c2ydw")
@@ -85,6 +86,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -19.875)
 mesh = SubResource("BoxMesh_c2ydw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="fenceMeshFront2"]
+collision_layer = 257
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fenceMeshFront2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_7euej")
@@ -94,6 +97,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.37
 mesh = SubResource("BoxMesh_7euej")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="fenceMeshSide"]
+collision_layer = 257
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fenceMeshSide/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0pxcl")
@@ -103,6 +108,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.375
 mesh = SubResource("BoxMesh_7euej")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="fenceMeshSide2"]
+collision_layer = 257
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fenceMeshSide2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_lhn2m")

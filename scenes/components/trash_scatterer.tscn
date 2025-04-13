@@ -4,4 +4,3 @@
 
 [node name="trashScatterer" type="Node3D"]
 script = ExtResource("1_2npaj")
-valid_rects = Array[Rect2i]([Rect2i(0, 0, 20, 20)])

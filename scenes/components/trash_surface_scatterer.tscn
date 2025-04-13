@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0i8xjdx7jnu4"]
+
+[ext_resource type="Script" uid="uid://oy443bhhjqg" path="res://scripts/components/trash_surface_scatterer.gd" id="1_mjm0n"]
+
+[node name="trashSurfaceScatterer" type="Node3D"]
+script = ExtResource("1_mjm0n")

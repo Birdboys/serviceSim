@@ -54,7 +54,7 @@ func _ready() -> void:
 	player.position += Vector3(1, 0, 1) * game_tile_size.x
 	#bus.position += Vector3(1, 0, 1) * game_tile_size.x
 	var load_tween = get_tree().create_tween()
-	load_tween.tween_interval(0.5)
+	load_tween.tween_interval(1.0)
 	load_tween.tween_property(transitionUI, "modulate", Color.TRANSPARENT, 0.5)
 	load_tween.tween_callback(transitionUI.queue_free)
 	load_tween.tween_callback(player.turnOn)

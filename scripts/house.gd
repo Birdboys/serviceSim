@@ -16,8 +16,10 @@ func randomizeHouse():
 func doTrees():
 	for tree in trees.get_children():
 		if randf() < 0.4:
-			tree.randomizeTree()
+			var new_tree = GameData.tree.instantiate()
+			tree.add_child(new_tree)
+			new_tree.randomizeTree()
 		else:
-			tree.clearTree()
+			tree.queue_free()
 		#await get_tree().process_frame
 	trees.visible = true

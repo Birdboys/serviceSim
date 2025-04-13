@@ -9,6 +9,8 @@ points = PackedVector3Array(0, 13, 5.99941, 10, 5.19988, 5.99941, 0, 13, -9, -9.
 mesh = ExtResource("1_0750l")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 257
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0750l")

@@ -301,7 +301,7 @@ skeleton = NodePath("")
 
 [node name="trashRay" type="RayCast3D" parent="."]
 enabled = false
-collision_mask = 248
+collision_mask = 504
 hit_from_inside = true
 collide_with_areas = true
 

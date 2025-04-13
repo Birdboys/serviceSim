@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bot4fe2vntboq"]
+[gd_scene load_steps=11 format=3 uid="uid://bot4fe2vntboq"]
 
 [ext_resource type="Script" uid="uid://1onia4wojg7o" path="res://scripts/rock_bed.gd" id="1_yvngm"]
-[ext_resource type="PackedScene" uid="uid://bu06dfirp3ee1" path="res://scenes/houses/tree.tscn" id="2_sk6sw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_admef"]
 albedo_color = Color(0.670588, 0.580392, 0.478431, 1)
@@ -78,31 +77,31 @@ skeleton = NodePath("../..")
 [node name="trees" type="Node3D" parent="."]
 visible = false
 
-[node name="tree" parent="trees" instance=ExtResource("2_sk6sw")]
+[node name="tree10" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
 
-[node name="tree2" parent="trees" instance=ExtResource("2_sk6sw")]
+[node name="tree11" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 8)
 
-[node name="tree3" parent="trees" instance=ExtResource("2_sk6sw")]
+[node name="tree12" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.65193, 0, -4.36765)
 
-[node name="tree4" parent="trees" instance=ExtResource("2_sk6sw")]
+[node name="tree13" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10242, 0, -4.48904)
 
-[node name="tree5" parent="trees" instance=ExtResource("2_sk6sw")]
+[node name="tree14" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="tree6" parent="trees" instance=ExtResource("2_sk6sw")]
+[node name="tree15" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3)
 
-[node name="tree7" parent="trees" instance=ExtResource("2_sk6sw")]
+[node name="tree16" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -11)
 
-[node name="tree8" parent="trees" instance=ExtResource("2_sk6sw")]
+[node name="tree17" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9579, 0, -10.6108)
 
-[node name="tree9" parent="trees" instance=ExtResource("2_sk6sw")]
+[node name="tree18" type="Node3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04213, 0, -13.6108)
 
 [node name="stones" type="Node3D" parent="."]
@@ -113,6 +112,8 @@ transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.43
 mesh = SubResource("SphereMesh_mruyh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stones/stone1"]
+collision_layer = 257
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stones/stone1/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_gwkhs")
@@ -122,6 +123,8 @@ transform = Transform3D(-0.334989, 0.785597, -0.520212, -0.174184, 0.490962, 0.8
 mesh = SubResource("SphereMesh_mruyh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stones/stone2"]
+collision_layer = 257
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stones/stone2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_gwkhs")
@@ -131,6 +134,8 @@ transform = Transform3D(0.85603, 0.467012, -0.221613, -0.081371, 0.545108, 0.834
 mesh = SubResource("SphereMesh_mruyh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stones/stone3"]
+collision_layer = 257
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stones/stone3/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_gwkhs")

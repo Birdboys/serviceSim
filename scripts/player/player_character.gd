@@ -17,7 +17,7 @@ var sensitivity := 0.0
 var gravity = 10.0
 var speed := 45.0
 
-var bag_dim := Vector2(8,8)
+var bag_dim := Vector2(8,16)
 var trash_collected := 0
 var value_collected := 0
 var max_trash := 0

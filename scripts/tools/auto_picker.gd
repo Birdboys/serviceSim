@@ -20,5 +20,6 @@ func resetTween():
 	reset_tween.tween_property(bodyMesh, "rotation", Vector3(deg_to_rad(-3.9),deg_to_rad(-75.1),deg_to_rad(-10.1)), 0.5)
 	reset_tween.tween_property(bodyMesh, "position", Vector3(1.184,0.658,-0.795), 0.5)
 	reset_tween.tween_property(pickerMesh, "position", Vector3(0,-0.95,0), 0.2)
+
 func startAutoPick():
 	pickerAnim.play("pick")
