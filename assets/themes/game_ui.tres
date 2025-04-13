@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://djs6o2b5hx67f"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://djs6o2b5hx67f"]
 
 [ext_resource type="FontFile" uid="uid://buf4naw1mfdrd" path="res://assets/fonts/Chewy/Chewy-Regular.ttf" id="1_xijo0"]
+[ext_resource type="Texture2D" uid="uid://dhyhg8qqsmrhu" path="res://assets/empty_grabber.png" id="1_xpb4n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xijo0"]
 
@@ -9,6 +10,29 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxkm7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_au6vn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au6vn"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r33x3"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxkm7"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.247059)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpb4n"]
 bg_color = Color(0, 0, 0, 0.247059)
@@ -40,8 +64,17 @@ Button/styles/focus = SubResource("StyleBoxEmpty_xijo0")
 Button/styles/hover = SubResource("StyleBoxEmpty_xpb4n")
 Button/styles/normal = SubResource("StyleBoxEmpty_dxkm7")
 Button/styles/pressed = SubResource("StyleBoxEmpty_au6vn")
+HSlider/icons/grabber = ExtResource("1_xpb4n")
+HSlider/icons/grabber_disabled = ExtResource("1_xpb4n")
+HSlider/icons/grabber_highlight = ExtResource("1_xpb4n")
+HSlider/icons/tick = ExtResource("1_xpb4n")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_au6vn")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_r33x3")
+HSlider/styles/slider = SubResource("StyleBoxFlat_dxkm7")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 8
 ProgressBar/styles/background = SubResource("StyleBoxFlat_xpb4n")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_xijo0")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 8
 controlButton/base_type = &"Button"

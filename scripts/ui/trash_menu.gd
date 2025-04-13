@@ -17,4 +17,5 @@ func saveQuit():
 	get_tree().quit()
 
 func quit():
+	GameData.saveGame()
 	get_tree().quit()

@@ -154,6 +154,7 @@ func toggleReady(yes: bool):
 func tryToLeave(cam, event:InputEvent, _event_pos, _event_norm, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1 and can_leave:
 		can_leave = false
+		GameData.saveGame()
 		get_tree().change_scene_to_file("res://scenes/litter_picking_level.tscn")
 
 func getOwnedTools():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dv6op5652dni4"]
+[gd_scene load_steps=23 format=3 uid="uid://dv6op5652dni4"]
 
 [ext_resource type="Theme" uid="uid://djs6o2b5hx67f" path="res://assets/themes/game_ui.tres" id="1_fgkus"]
 [ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="2_dc4i4"]
@@ -46,32 +46,8 @@ size = Vector3(3.5, 1, 100)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc4i4"]
 content_margin_top = 0.0
 
-[sub_resource type="Animation" id="Animation_dc4i4"]
-resource_name = "load_menu"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("transitionRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("transitionRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e54dn"]
+content_margin_left = 16.0
 
 [sub_resource type="Animation" id="Animation_e54dn"]
 length = 0.001
@@ -152,6 +128,33 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [0.0, 48.0]
+}
+
+[sub_resource type="Animation" id="Animation_dc4i4"]
+resource_name = "load_menu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transitionRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("transitionRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_cs5ya"]
@@ -272,7 +275,7 @@ trash_dist = {
 [node name="rockBeds" type="Node3D" parent="roadLTile"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.502, 4.159, 12)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 5, 12)
 fov = 40.0
 
 [node name="titleUI" type="CanvasLayer" parent="."]
@@ -395,24 +398,95 @@ theme_override_font_sizes/font_size = 32
 text = "BACK"
 
 [node name="creditsVbox" type="VBoxContainer" parent="titleUI/titleMargin"]
+visible = false
 layout_mode = 2
 alignment = 2
 
-[node name="colbyLabel" type="Label" parent="titleUI/titleMargin/creditsVbox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "PRETTY MUCH EVERYTHING: ME"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="fontLabel" type="Label" parent="titleUI/titleMargin/creditsVbox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "FONTS: asdadsada"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="spacer" type="Control" parent="titleUI/titleMargin/creditsVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="scrollMargin" type="MarginContainer" parent="titleUI/titleMargin/creditsVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_right = 128
+
+[node name="creditsScroll" type="ScrollContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e54dn")
+
+[node name="scrollVbox" type="VBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="meVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="colbyLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/meVbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "DESIGN, PROGRAMMING, 
+MODELS, UI: "
+vertical_alignment = 1
+
+[node name="colbyRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/meVbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 48
+text = "Colby Bird"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="paletteVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="paletteLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/paletteVbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "COLOR PALETTE: "
+vertical_alignment = 1
+
+[node name="paletteRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/paletteVbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 48
+text = "Resurrect 64"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="fontVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="fontsLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/fontVbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "FONTS: "
+vertical_alignment = 1
+
+[node name="fontsRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/fontVbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 48
+text = "Chewy, Lacquer, Rum Raisin"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="spacer2" type="Control" parent="titleUI/titleMargin/creditsVbox"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 mouse_filter = 2
@@ -422,6 +496,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "BACK"
+
+[node name="resetButton" type="Button" parent="titleUI/titleMargin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "RESET"
 
 [node name="transitionRect" type="ColorRect" parent="titleUI"]
 anchors_preset = 15
