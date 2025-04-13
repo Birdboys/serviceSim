@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=4 uid="uid://dp6pjn8bcgigu"]
+[gd_scene load_steps=147 format=4 uid="uid://dp6pjn8bcgigu"]
 
 [ext_resource type="Script" uid="uid://bmkdeiv33ldnb" path="res://scripts/bed_menu.gd" id="1_mswj1"]
 [ext_resource type="ArrayMesh" uid="uid://cmcnbsmd2mcmq" path="res://assets/trash_meshes/carton_small.tres" id="2_atm4g"]
@@ -19,6 +19,8 @@
 [ext_resource type="Theme" uid="uid://ct2wilxjo2x2v" path="res://assets/themes/tool_mag.tres" id="18_6mv7e"]
 [ext_resource type="PackedScene" uid="uid://js2cjgbctdi0" path="res://scenes/mag_pages/tool_cover.tscn" id="18_7gbya"]
 [ext_resource type="Script" uid="uid://bpwfd5bxbxava" path="res://scripts/ui/tool_mag_menu.gd" id="18_futsp"]
+[ext_resource type="Theme" uid="uid://dtomw7ik6uvec" path="res://assets/themes/poster.tres" id="20_7gbya"]
+[ext_resource type="Script" uid="uid://di7o2l8nutuwx" path="res://scripts/ui/poster_menu.gd" id="20_i6od6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j37jo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -265,6 +267,21 @@ size = Vector3(2.5, 0.1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mswj1"]
 size = Vector3(5, 4, 4)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i6od6"]
+viewport_path = NodePath("UILayer/UI/uiMargin/posterMenu/posterViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtgtk"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_i6od6")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6mv7e"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_wtgtk")
+size = Vector2(16, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i6od6"]
+size = Vector3(16.5, 1, 10.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4cyr"]
 albedo_color = Color(0.670588, 0.580392, 0.478431, 1)
@@ -1238,6 +1255,14 @@ _data = {
 &"reset_middle": SubResource("Animation_i6od6")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gbya"]
+bg_color = Color(0.780392, 0.862745, 0.815686, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.607843, 0.670588, 0.698039, 1)
+
 [node name="bedMenu" type="Node3D"]
 script = ExtResource("1_mswj1")
 
@@ -1274,6 +1299,10 @@ fov = 60.0
 
 [node name="doorCam" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.22, 8, -1.084)
+fov = 60.0
+
+[node name="posterCam" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 10, 0.95)
 fov = 60.0
 
 [node name="roomMesh" type="MeshInstance3D" parent="."]
@@ -1427,6 +1456,15 @@ collision_mask = 0
 [node name="computerCol" type="CollisionShape3D" parent="computerMesh/computerArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 1.5)
 shape = SubResource("BoxShape3D_mswj1")
+
+[node name="posterMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 3.82137e-15, -8.74228e-08, 8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 9, 10, 11.95)
+mesh = SubResource("PlaneMesh_6mv7e")
+
+[node name="posterArea" type="Area3D" parent="posterMesh"]
+
+[node name="areaCol" type="CollisionShape3D" parent="posterMesh/posterArea"]
+shape = SubResource("BoxShape3D_i6od6")
 
 [node name="toolBenchMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 0.5, -6)
@@ -2219,6 +2257,132 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="posterMenu" type="Control" parent="UILayer/UI/uiMargin"]
+layout_mode = 2
+script = ExtResource("20_i6od6")
+
+[node name="posterViewport" type="SubViewport" parent="UILayer/UI/uiMargin/posterMenu"]
+size = Vector2i(816, 512)
+
+[node name="posterBg" type="Panel" parent="UILayer/UI/uiMargin/posterMenu/posterViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7gbya")
+
+[node name="posterMargin" type="MarginContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("20_7gbya")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="dataVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="labelHbox" type="HBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox"]
+layout_mode = 2
+
+[node name="trashLabel" type="Label" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/labelHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.301961, 0.607843, 0.901961, 1)
+theme_override_font_sizes/font_size = 32
+text = "Trash: 123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="valueLabel" type="Label" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/labelHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.301961, 0.607843, 0.901961, 1)
+theme_override_font_sizes/font_size = 32
+text = "Credits: 123213"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="spacer2" type="Control" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="posterHbox" type="HBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="graphVbox" type="HBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="paperData" type="VBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="barSpacer" type="Control" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/paperData"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="barArea" type="ColorRect" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/paperData"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+color = Color(0.909804, 0.231373, 0.231373, 1)
+
+[node name="paperLabel" type="Label" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/paperData"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.909804, 0.231373, 0.231373, 1)
+theme_override_font_sizes/font_size = 32
+text = "PAPER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="plasticData" type="VBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="barSpacer" type="Control" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/plasticData"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="barArea" type="ColorRect" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/plasticData"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+color = Color(0.968627, 0.588235, 0.0901961, 1)
+
+[node name="paperLabel" type="Label" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/plasticData"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.968627, 0.588235, 0.0901961, 1)
+theme_override_font_sizes/font_size = 32
+text = "PLASTIC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="figureVbox" type="Control" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="spacer" type="Control" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
 [node name="escLabel" type="Label" parent="UILayer/UI/uiMargin"]
 visible = false
 modulate = Color(1, 1, 1, 0.768627)
@@ -2229,6 +2393,7 @@ theme_override_font_sizes/font_size = 32
 text = "ESC TO EXIT"
 
 [node name="transitionLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="endBG" type="ColorRect" parent="transitionLayer"]
 anchors_preset = 15

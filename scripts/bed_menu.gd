@@ -10,6 +10,7 @@ extends Node3D
 	"computer": $computerCam,
 	"door": $doorCam,
 	"tool_mag": $tableMesh/toolMagCam,
+	"poster": $posterCam,
 }
 @onready var areas := {
 	"table": $tableMesh/tableArea,
@@ -17,6 +18,7 @@ extends Node3D
 	"computer": $computerMesh/computerArea,
 	"door": $toolArea,
 	"tool_mag": $tableMesh/toolMagArea,
+	"poster": $posterMesh/posterArea
 }
 @onready var escape_path := {
 	"bed": "",	
@@ -25,6 +27,7 @@ extends Node3D
 	"computer": "bed",
 	"door": "bed",
 	"tool_mag": "table",
+	"poster": "bed",
 }
 @onready var door := $door
 @onready var doorArea := $doorArea
@@ -88,6 +91,7 @@ func transitionCamera(m):
 	print("TRANSITIONING TO ", m)
 	var transition_tween := get_tree().create_tween().set_parallel(true).set_ease(Tween.EASE_IN_OUT)
 	print("MADE TWEEN")
+	print(cams[m].global_rotation)
 	transition_tween.tween_property(playerCam, "position", cams[m].global_position, cam_tween_time)
 	transition_tween.tween_property(playerCam, "rotation", cams[m].global_rotation, cam_tween_time)
 	transition_tween.tween_property(playerCam, "fov", cams[m].fov, cam_tween_time)

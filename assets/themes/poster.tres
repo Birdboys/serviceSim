@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dtomw7ik6uvec"]
+
+[ext_resource type="FontFile" uid="uid://dchp4aei7gm6j" path="res://assets/fonts/Lacquer/Lacquer-Regular.ttf" id="1_eerld"]
+
+[resource]
+default_font = ExtResource("1_eerld")
