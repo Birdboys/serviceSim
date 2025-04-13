@@ -2393,7 +2393,6 @@ theme_override_font_sizes/font_size = 32
 text = "ESC TO EXIT"
 
 [node name="transitionLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="endBG" type="ColorRect" parent="transitionLayer"]
 anchors_preset = 15

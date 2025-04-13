@@ -1,10 +1,283 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw0028a6m07vv"]
+[gd_scene load_steps=22 format=3 uid="uid://dv6op5652dni4"]
 
 [ext_resource type="Theme" uid="uid://djs6o2b5hx67f" path="res://assets/themes/game_ui.tres" id="1_fgkus"]
+[ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="2_dc4i4"]
 [ext_resource type="Script" uid="uid://pxqgq757nd1m" path="res://scripts/title_screen.gd" id="2_sa3yf"]
+[ext_resource type="PackedScene" uid="uid://cfxkdmxms47s8" path="res://scenes/tiles/house.tscn" id="3_e54dn"]
+[ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="4_3yumr"]
 
-[node name="titleScreen" type="Control"]
-layout_mode = 3
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s4lrb"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_s2r40"]
+sky_material = SubResource("ProceduralSkyMaterial_s4lrb")
+
+[sub_resource type="Environment" id="Environment_mgrm8"]
+background_mode = 2
+sky = SubResource("Sky_s2r40")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nhbjo"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yohy"]
+albedo_color = Color(0.635294, 0.662745, 0.278431, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_umucm"]
+material = SubResource("StandardMaterial3D_5yohy")
+size = Vector3(40, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhbjo"]
+albedo_color = Color(0.192157, 0.211765, 0.219608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fegyf"]
+material = SubResource("StandardMaterial3D_nhbjo")
+size = Vector3(13, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5781l"]
+albedo_color = Color(0.698039, 0.729412, 0.564706, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qutkw"]
+material = SubResource("StandardMaterial3D_5781l")
+size = Vector3(3.5, 1, 100)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc4i4"]
+content_margin_top = 0.0
+
+[sub_resource type="Animation" id="Animation_dc4i4"]
+resource_name = "load_menu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transitionRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("transitionRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_e54dn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transitionRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("titleMargin/titleVbox/titleLabel:theme_override_styles/normal:content_margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("transitionRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bedRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("bedRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3yumr"]
+resource_name = "idle_menu"
+length = 3.0
+loop_mode = 2
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("titleMargin/titleVbox/titleLabel:theme_override_styles/normal:content_margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, 48.0]
+}
+
+[sub_resource type="Animation" id="Animation_cs5ya"]
+resource_name = "to_bed"
+length = 2.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bedRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bedRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e54dn"]
+_data = {
+&"RESET": SubResource("Animation_e54dn"),
+&"idle_menu": SubResource("Animation_3yumr"),
+&"load_menu": SubResource("Animation_dc4i4"),
+&"to_bed": SubResource("Animation_cs5ya")
+}
+
+[node name="titleScreen" type="Node3D"]
+script = ExtResource("2_sa3yf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mgrm8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.570315, -0.755405, 0.322651, -0.402828, 0.599522, 0.691594, -0.71587, 0.264454, -0.646215, 0, 0, 0)
+shadow_enabled = true
+
+[node name="roadLTile" type="Node3D" parent="."]
+script = ExtResource("2_dc4i4")
+
+[node name="groundBody" type="StaticBody3D" parent="roadLTile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_mask = 0
+
+[node name="groundCol" type="CollisionShape3D" parent="roadLTile/groundBody"]
+visible = false
+shape = SubResource("BoxShape3D_nhbjo")
+
+[node name="grassMesh" type="MeshInstance3D" parent="roadLTile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.5, 0)
+mesh = SubResource("BoxMesh_umucm")
+
+[node name="grassMesh2" type="MeshInstance3D" parent="roadLTile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -0.5, 0)
+mesh = SubResource("BoxMesh_umucm")
+
+[node name="roadMesh" type="MeshInstance3D" parent="roadLTile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_fegyf")
+
+[node name="sidewalkMesh" type="MeshInstance3D" parent="roadLTile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, -0.5, 0)
+mesh = SubResource("BoxMesh_qutkw")
+
+[node name="sidewalkMesh2" type="MeshInstance3D" parent="roadLTile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, -0.5, 0)
+mesh = SubResource("BoxMesh_qutkw")
+
+[node name="houses" type="Node3D" parent="roadLTile"]
+
+[node name="house" parent="roadLTile/houses" instance=ExtResource("3_e54dn")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 30, 0, -37.5)
+
+[node name="house2" parent="roadLTile/houses" instance=ExtResource("3_e54dn")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 30, 0, -12.5)
+
+[node name="house3" parent="roadLTile/houses" instance=ExtResource("3_e54dn")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 30, 0, 12.5)
+
+[node name="house4" parent="roadLTile/houses" instance=ExtResource("3_e54dn")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 30, 0, 37.5)
+
+[node name="house5" parent="roadLTile/houses" instance=ExtResource("3_e54dn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0, 37.5)
+
+[node name="house6" parent="roadLTile/houses" instance=ExtResource("3_e54dn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0, 12.5)
+
+[node name="house7" parent="roadLTile/houses" instance=ExtResource("3_e54dn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0, -12.5)
+
+[node name="house8" parent="roadLTile/houses" instance=ExtResource("3_e54dn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0, -37.5)
+
+[node name="trashScatterer" parent="roadLTile" instance=ExtResource("4_3yumr")]
+valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
+num_trash = 150
+miss_chances = 25
+trash_dist = {
+0: 2.0,
+1: 2.0,
+2: 1.0,
+3: 1.0
+}
+
+[node name="rockBeds" type="Node3D" parent="roadLTile"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.502, 4.159, 12)
+fov = 40.0
+
+[node name="titleUI" type="CanvasLayer" parent="."]
+
+[node name="titleMargin" type="MarginContainer" parent="titleUI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,54 +286,166 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_fgkus")
-script = ExtResource("2_sa3yf")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="titleBg" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.635294, 0.662745, 0.278431, 1)
-
-[node name="titleMargin" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
-
-[node name="titleVbox" type="VBoxContainer" parent="titleMargin"]
+[node name="titleVbox" type="VBoxContainer" parent="titleUI/titleMargin"]
 layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
 
-[node name="titleLabel" type="Label" parent="titleMargin/titleVbox"]
+[node name="spacer" type="Control" parent="titleUI/titleMargin/titleVbox"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="titleLabel" type="Label" parent="titleUI/titleMargin/titleVbox"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dc4i4")
 text = "LITTER PICKER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="demoLabel" type="Label" parent="titleMargin/titleVbox"]
+[node name="buttonVbox" type="VBoxContainer" parent="titleUI/titleMargin"]
+layout_mode = 2
+alignment = 2
+
+[node name="playButton" type="Button" parent="titleUI/titleMargin/buttonVbox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
-text = "DEMO"
+text = "PLAY"
+
+[node name="settingsButton" type="Button" parent="titleUI/titleMargin/buttonVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "SETTINGS"
+
+[node name="creditsButton" type="Button" parent="titleUI/titleMargin/buttonVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "CREDITS"
+
+[node name="spacer" type="Control" parent="titleUI/titleMargin/buttonVbox"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="quitButton" type="Button" parent="titleUI/titleMargin/buttonVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+
+[node name="settingsVbox" type="VBoxContainer" parent="titleUI/titleMargin"]
+visible = false
+layout_mode = 2
+
+[node name="mainVbox" type="VBoxContainer" parent="titleUI/titleMargin/settingsVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="musicSlider" type="HBoxContainer" parent="titleUI/titleMargin/settingsVbox/mainVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="sliderLabel" type="Label" parent="titleUI/titleMargin/settingsVbox/mainVbox/musicSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "MUSIC:"
+
+[node name="musicSlider" type="HSlider" parent="titleUI/titleMargin/settingsVbox/mainVbox/musicSlider"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="soundSlider" type="HBoxContainer" parent="titleUI/titleMargin/settingsVbox/mainVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="sliderLabel" type="Label" parent="titleUI/titleMargin/settingsVbox/mainVbox/soundSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "SOUND:"
+
+[node name="soundSlider" type="HSlider" parent="titleUI/titleMargin/settingsVbox/mainVbox/soundSlider"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="spacer" type="Control" parent="titleUI/titleMargin/settingsVbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="backButton" type="Button" parent="titleUI/titleMargin/settingsVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+
+[node name="creditsVbox" type="VBoxContainer" parent="titleUI/titleMargin"]
+layout_mode = 2
+alignment = 2
+
+[node name="colbyLabel" type="Label" parent="titleUI/titleMargin/creditsVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "PRETTY MUCH EVERYTHING: ME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="playLabel" type="Label" parent="titleMargin"]
-modulate = Color(1, 1, 1, 0.768627)
+[node name="fontLabel" type="Label" parent="titleUI/titleMargin/creditsVbox"]
 layout_mode = 2
-size_flags_vertical = 8
-text = "PRESS ANY KEY TO PLAY"
+theme_override_font_sizes/font_size = 48
+text = "FONTS: asdadsada"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="spacer" type="Control" parent="titleUI/titleMargin/creditsVbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="backButton" type="Button" parent="titleUI/titleMargin/creditsVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+
+[node name="transitionRect" type="ColorRect" parent="titleUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.568627, 0.858824, 0.411765, 1)
+
+[node name="bedRect" type="ColorRect" parent="titleUI"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="uiAnim" type="AnimationPlayer" parent="titleUI"]
+libraries = {
+&"": SubResource("AnimationLibrary_e54dn")
+}
