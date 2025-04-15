@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=4 uid="uid://dp6pjn8bcgigu"]
+[gd_scene load_steps=175 format=4 uid="uid://dp6pjn8bcgigu"]
 
 [ext_resource type="Script" uid="uid://bmkdeiv33ldnb" path="res://scripts/bed_menu.gd" id="1_mswj1"]
 [ext_resource type="ArrayMesh" uid="uid://cmcnbsmd2mcmq" path="res://assets/trash_meshes/carton_small.tres" id="2_atm4g"]
@@ -20,7 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://js2cjgbctdi0" path="res://scenes/mag_pages/tool_cover.tscn" id="18_7gbya"]
 [ext_resource type="Script" uid="uid://bpwfd5bxbxava" path="res://scripts/ui/tool_mag_menu.gd" id="18_futsp"]
 [ext_resource type="Theme" uid="uid://dtomw7ik6uvec" path="res://assets/themes/poster.tres" id="20_7gbya"]
+[ext_resource type="Script" uid="uid://cdu1q1b72xpnf" path="res://scripts/ui/toy_mag_menu.gd" id="20_ekvf7"]
 [ext_resource type="Script" uid="uid://di7o2l8nutuwx" path="res://scripts/ui/poster_menu.gd" id="20_i6od6"]
+[ext_resource type="PackedScene" uid="uid://d0hqg7tbhge76" path="res://scenes/mag_pages/toy_cover.tscn" id="21_qf3g8"]
+[ext_resource type="Theme" uid="uid://cxdkmx1yqhiuv" path="res://assets/themes/toy_mag.tres" id="22_l7yoa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j37jo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -577,6 +580,316 @@ cull_mode = 2
 albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
 roughness = 0.5
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_tw58w"]
+_surfaces = [{
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABQAGAAQABQAHAAYA"),
+"name": "edgeMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAAAAAAA////////AAD//wAA//8AAA==")
+}, {
+"aabb": AABB(-1.1, 0.01, -0.8, 2.2, 1e-05, 1.6),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "pageMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAAAAAAAAA//8AAAAAAAAAAAAA//8AAP//AAA=")
+}, {
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAAAAUA"),
+"name": "backMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("//8AAP//AAAAAP////8AAP///////wAAAAAAAP//AAAAAAAAAAAAAP//AAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nlipp"]
+resource_name = "magazine_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8/"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
+"material": SubResource("StandardMaterial3D_op4y5"),
+"name": "edgeMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TVVNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq")
+}, {
+"aabb": AABB(-1.1, 0.01, -0.8, 2.2, 1e-05, 1.6),
+"attribute_data": PackedByteArray("/2v/kwAAAAD/awAAAAD/kw=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_omsfm"),
+"name": "pageMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAVNUAAAAA//9U1QAAAAAAAFTV//8AAP//VNVU1aoqVNWqKlTVqipU1aoq")
+}, {
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"attribute_data": PackedByteArray("/1//P/+fAAD/n/8//18AAMVrLJQGAAYAxWsGAAYALJQ="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_r5jbm"),
+"name": "backMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAABU1f//AAD//1TV//8AAAAAVNUAAAAA//9U1f////////////////////9UVVRVVFVUVVRVVFVUVVRV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tw58w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84u8n"]
+albedo_color = Color(0.658824, 0.517647, 0.952941, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qf3g8"]
+viewport_path = NodePath("UILayer/UI/uiMargin/toyMagMenu/rightPageViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07g5m"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_qf3g8")
+uv1_scale = Vector3(2.375, 1.725, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dcbq"]
+albedo_color = Color(0.564706, 0.368627, 0.662745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffebr"]
+resource_name = "edgeMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3pbk"]
+resource_name = "pageMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rx4uj"]
+resource_name = "backMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_84u8n"]
+_surfaces = [{
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABQAGAAQABQAHAAYA"),
+"name": "edgeMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAAAAAAA////////AAD//wAA//8AAA==")
+}, {
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 1e-05, 1.6),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "pageMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//wAA//8AAP//AAAAAAAAAAAAAP//AAA=")
+}, {
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEABAABAAUA"),
+"name": "backMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("//8AAP//AAAAAP////8AAP///////wAAAAAAAP//AAD/////AAAAAAAA//8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_aavuy"]
+resource_name = "magazine_Cube_002"
+_surfaces = [{
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8/"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
+"material": SubResource("StandardMaterial3D_ffebr"),
+"name": "edgeMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TVVNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq")
+}, {
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 1e-05, 1.6),
+"attribute_data": PackedByteArray("AAAAAP9r/5MAAP+T/2sAAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_e3pbk"),
+"name": "pageMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNWqKlTVqipU1aoqVNWqKlTV")
+}, {
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"attribute_data": PackedByteArray("/1//P/+fAAD/n/8//18AAP9r/5MAAAAA/2sAAAAA/5M="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_rx4uj"),
+"name": "backMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP///78AAP//////v/////////+/AAAAAP///7//////AABU1QAA/////1TVAAD//wAAVNX///////9U1f////////////////////9U1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_84u8n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aavuy"]
+albedo_color = Color(0.658824, 0.517647, 0.952941, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_l7yoa"]
+viewport_path = NodePath("UILayer/UI/uiMargin/toyMagMenu/leftPageViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4a7j8"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_l7yoa")
+uv1_scale = Vector3(2.375, 1.725, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_58ivq"]
+viewport_path = NodePath("UILayer/UI/uiMargin/toyMagMenu/toyCoverViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hlsn"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_58ivq")
+uv1_scale = Vector3(2.375, 1.725, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlipp"]
+resource_name = "edgeMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wareh"]
+resource_name = "pageMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1wjq"]
+resource_name = "backMaterial"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ycbik"]
+_surfaces = [{
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABQAGAAQABQAHAAYA"),
+"name": "edgeMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAAAAAAA////////AAD//wAA//8AAA==")
+}, {
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"name": "pageMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//wAA//8AAP//AAAAAAAAAAAAAP//AAD/////AAAAAAAA/////wAAAAD//wAAAAD///////8AAA==")
+}, {
+"aabb": AABB(-1.1, -0.01, 0.8, 2.2, 0.02, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "backMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAAAAAAP//AAAAAP////8AAAAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ffebr"]
+resource_name = "magazine_Cube_003"
+_surfaces = [{
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8/"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
+"material": SubResource("StandardMaterial3D_nlipp"),
+"name": "edgeMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TVVNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq")
+}, {
+"aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
+"attribute_data": PackedByteArray("AAAAAP9r/5MAAP+T/2sAAP9r/5MAAAAA/2sAAAAA/5M="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_wareh"),
+"name": "pageMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNX/////AABU1QAA/////1TVAAD//wAAVNX///////9U1aoqVNWqKlTVqipU1aoqVNVU1aoqVNWqKlTVqipU1aoq")
+}, {
+"aabb": AABB(-1.1, -0.01, 0.8, 2.2, 0.02, 1e-05),
+"attribute_data": PackedByteArray("/1//P/+fAAD/n/8//18AAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_l1wjq"),
+"name": "backMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAA/78AAP//AAD/v/////8AAP+/AAAAAAAA/7//////////////////////")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ycbik")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4pxh4"]
+albedo_color = Color(0.658824, 0.517647, 0.952941, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ofmiy"]
+viewport_path = NodePath("UILayer/UI/uiMargin/toyMagMenu/middlePageViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mic7u"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ofmiy")
+uv1_scale = Vector3(2.375, 1.725, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58ivq"]
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_psrw2"]
 _surfaces = [{
 "aabb": AABB(-1.1, -0.01, -0.8, 2.2, 0.02, 1.6),
@@ -664,25 +977,7 @@ albedo_texture = SubResource("ViewportTexture_futsp")
 uv1_scale = Vector3(2.375, 1.725, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_le3jw"]
-albedo_color = Color(0.329412, 0.494118, 0.392157, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffebr"]
-resource_name = "edgeMaterial"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3pbk"]
-resource_name = "pageMaterial"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rx4uj"]
-resource_name = "backMaterial"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
+albedo_color = Color(0.192157, 0.211765, 0.219608, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_11jqu"]
 _surfaces = [{
@@ -775,24 +1070,6 @@ viewport_path = NodePath("UILayer/UI/uiMargin/toolMagMenu/toolCoverViewport")
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_7gbya")
 uv1_scale = Vector3(2.375, 1.725, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlipp"]
-resource_name = "edgeMaterial"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wareh"]
-resource_name = "pageMaterial"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1wjq"]
-resource_name = "backMaterial"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_141p8"]
 _surfaces = [{
@@ -979,256 +1256,16 @@ _data = {
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_6mv7e"]
 color = Color(0, 0, 0, 0)
 
-[sub_resource type="Animation" id="Animation_5st7i"]
+[sub_resource type="Animation" id="Animation_le3jw"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_tw58w"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("toolMag/magTopHinge:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("toolMag/magMidHinge:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("toolMag/magMidHinge:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_m4cyr"]
-resource_name = "open_tool_mag"
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("toolMag/magTopHinge:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-1.5, -1.5),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [2, 0],
-"method": &"updatePage"
-}, {
-"args": [0, 0],
-"method": &"updatePage"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-
-[sub_resource type="Animation" id="Animation_7gbya"]
-resource_name = "reset_middle"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("toolMag/magMidHinge:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("toolMag/magMidHinge:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_futsp"]
-resource_name = "turn_page_left"
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("toolMag/magMidHinge:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-1.5, -1.5),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("toolMag/magMidHinge:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [2, 1],
-"method": &"updatePage"
-}, {
-"args": [0, 1],
-"method": &"updatePage"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [2, -1],
-"method": &"updateMiddle"
-}, {
-"args": [0, 0],
-"method": &"updateMiddle"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_6mv7e"]
-resource_name = "turn_page_right"
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("toolMag/magMidHinge:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-1.5, -1.5),
-"update": 0,
-"values": [Vector3(3.14159, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("toolMag/magMidHinge:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [0, 0],
-"method": &"updatePage"
-}, {
-"args": [2, 0],
-"method": &"updatePage"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [0, 1],
-"method": &"updateMiddle"
-}, {
-"args": [2, 0],
-"method": &"updateMiddle"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_futsp"]
-_data = {
-&"RESET": SubResource("Animation_5st7i"),
-&"open_tool_mag": SubResource("Animation_m4cyr"),
-&"reset_middle": SubResource("Animation_7gbya"),
-&"turn_page_left": SubResource("Animation_futsp"),
-&"turn_page_right": SubResource("Animation_6mv7e")
-}
-
-[sub_resource type="Animation" id="Animation_i6od6"]
-resource_name = "reset_middle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:rotation")
+tracks/0/path = NodePath("../../../../tableMesh/toolMag/magTopHinge:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1249,10 +1286,473 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wareh"]
+resource_name = "turn_page_left"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-1.5, -1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, 1],
+"method": &"updatePage"
+}, {
+"args": [0, 1],
+"method": &"updatePage"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, -1],
+"method": &"updateMiddle"
+}, {
+"args": [0, 0],
+"method": &"updateMiddle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_l1wjq"]
+resource_name = "turn_page_right"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-1.5, -1.5),
+"update": 0,
+"values": [Vector3(3.14159, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0, 0],
+"method": &"updatePage"
+}, {
+"args": [2, 0],
+"method": &"updatePage"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0, 1],
+"method": &"updateMiddle"
+}, {
+"args": [2, 0],
+"method": &"updateMiddle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nlipp"]
+resource_name = "open_tool_mag"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../tableMesh/toolMag/magTopHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-1.5, -1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, 0],
+"method": &"updatePage"
+}, {
+"args": [0, 0],
+"method": &"updatePage"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_141p8"]
+_data = {
+&"RESET": SubResource("Animation_tw58w"),
+&"new_animation": SubResource("Animation_le3jw"),
+&"open_tool_mag": SubResource("Animation_nlipp"),
+&"turn_page_left": SubResource("Animation_wareh"),
+&"turn_page_right": SubResource("Animation_l1wjq")
+}
+
+[sub_resource type="Animation" id="Animation_i6od6"]
+resource_name = "reset_middle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../tableMesh/toyMag/magMidHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../tableMesh/toyMag/magMidHinge:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ekvf7"]
 _data = {
 &"reset_middle": SubResource("Animation_i6od6")
+}
+
+[sub_resource type="Animation" id="Animation_5st7i"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("toyMag/magTopHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("toyMag/magMidHinge:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("toyMag/magMidHinge:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m4cyr"]
+resource_name = "open_toy_mag"
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, 0],
+"method": &"updatePage"
+}, {
+"args": [0, 0],
+"method": &"updatePage"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("toyMag/magTopHinge:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-1.5, -1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7gbya"]
+resource_name = "reset_middle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("toyMag/magMidHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("toyMag/magMidHinge:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_futsp"]
+resource_name = "turn_page_left"
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, 1],
+"method": &"updatePage"
+}, {
+"args": [0, 1],
+"method": &"updatePage"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, -1],
+"method": &"updateMiddle"
+}, {
+"args": [0, 0],
+"method": &"updateMiddle"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("toyMag/magMidHinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-1.5, -1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("toyMag/magMidHinge:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_6mv7e"]
+resource_name = "turn_page_right"
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0, 0],
+"method": &"updatePage"
+}, {
+"args": [2, 0],
+"method": &"updatePage"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("../UILayer/UI/uiMargin/toolMagMenu")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0, 1],
+"method": &"updateMiddle"
+}, {
+"args": [2, 0],
+"method": &"updateMiddle"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("toyMag/magMidHinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-1.5, -1.5),
+"update": 0,
+"values": [Vector3(3.14159, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("toyMag/magMidHinge:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_futsp"]
+_data = {
+&"RESET": SubResource("Animation_5st7i"),
+&"open_toy_mag": SubResource("Animation_m4cyr"),
+&"reset_middle": SubResource("Animation_7gbya"),
+&"turn_page_left": SubResource("Animation_futsp"),
+&"turn_page_right": SubResource("Animation_6mv7e")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gbya"]
@@ -1579,6 +2079,39 @@ mesh = SubResource("BoxMesh_hnsmf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.601, 0.528682, 0)
 mesh = SubResource("BoxMesh_hnsmf")
 
+[node name="toyMag" type="Node3D" parent="tableMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51, 2.67054)
+
+[node name="magBottom" type="MeshInstance3D" parent="tableMesh/toyMag"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
+mesh = SubResource("ArrayMesh_nlipp")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_84u8n")
+surface_material_override/1 = SubResource("StandardMaterial3D_07g5m")
+surface_material_override/2 = SubResource("StandardMaterial3D_8dcbq")
+
+[node name="magTopHinge" type="Node3D" parent="tableMesh/toyMag"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00999999, 0)
+
+[node name="magTop" type="MeshInstance3D" parent="tableMesh/toyMag/magTopHinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00999999, -0.8)
+mesh = SubResource("ArrayMesh_aavuy")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_aavuy")
+surface_material_override/1 = SubResource("StandardMaterial3D_4a7j8")
+surface_material_override/2 = SubResource("StandardMaterial3D_1hlsn")
+
+[node name="magMidHinge" type="Node3D" parent="tableMesh/toyMag"]
+visible = false
+
+[node name="magMiddle" type="MeshInstance3D" parent="tableMesh/toyMag/magMidHinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
+mesh = SubResource("ArrayMesh_ffebr")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_4pxh4")
+surface_material_override/1 = SubResource("StandardMaterial3D_mic7u")
+surface_material_override/2 = SubResource("StandardMaterial3D_58ivq")
+
 [node name="toolMag" type="Node3D" parent="tableMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51021, -1.239)
 
@@ -1634,8 +2167,26 @@ metadata/_custom_type_script = "uid://d1j2lwyb1pg46"
 [node name="toolMagCol" type="CollisionShape3D" parent="tableMesh/toolMagArea"]
 shape = SubResource("BoxShape3D_5st7i")
 
+[node name="toyMagArea" type="Area3D" parent="tableMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.525, 1.90165)
+visible = false
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("6_0mrwf")
+on_start = false
+metadata/_custom_type_script = "uid://d1j2lwyb1pg46"
+
+[node name="toyMagCol" type="CollisionShape3D" parent="tableMesh/toyMagArea"]
+shape = SubResource("BoxShape3D_5st7i")
+
 [node name="toolMagCam" type="Camera3D" parent="tableMesh"]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 3.75, -1.239)
+fov = 60.0
+
+[node name="toyMagCam" type="Camera3D" parent="tableMesh"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 3.75, 2.67038)
 fov = 60.0
 
 [node name="potMesh" type="MeshInstance3D" parent="."]
@@ -2140,10 +2691,9 @@ theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="magAnim" type="AnimationPlayer" parent="UILayer/UI/uiMargin/toolMagMenu"]
-root_node = NodePath("../../../../../tableMesh")
+[node name="toolMagAnim" type="AnimationPlayer" parent="UILayer/UI/uiMargin/toolMagMenu"]
 libraries = {
-&"": SubResource("AnimationLibrary_futsp")
+&"": SubResource("AnimationLibrary_141p8")
 }
 
 [node name="resetAnim" type="AnimationPlayer" parent="UILayer/UI/uiMargin/toolMagMenu"]
@@ -2243,6 +2793,264 @@ theme = ExtResource("9_yda35")
 theme_override_font_sizes/font_size = 48
 
 [node name="buttonLabel" type="Label" parent="UILayer/UI/uiMargin/toolMagMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -21.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="toyMagMenu" type="Control" parent="UILayer/UI/uiMargin"]
+layout_mode = 2
+mouse_filter = 1
+script = ExtResource("20_ekvf7")
+
+[node name="leftButton" type="Button" parent="UILayer/UI/uiMargin/toyMagMenu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = "<"
+alignment = 2
+
+[node name="rightButton" type="Button" parent="UILayer/UI/uiMargin/toyMagMenu"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -62.5
+offset_bottom = 62.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = ">"
+alignment = 2
+
+[node name="magUI" type="HBoxContainer" parent="UILayer/UI/uiMargin/toyMagMenu"]
+custom_minimum_size = Vector2(900, 620)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -310.0
+offset_right = 450.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_6mv7e")
+
+[node name="leftPageButton" type="VBoxContainer" parent="UILayer/UI/uiMargin/toyMagMenu/magUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="topSeparator" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
+layout_mode = 2
+theme_type_variation = &"topSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="toyALeftButton" type="Button" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="toySep" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="toyBLeftButton" type="Button" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="toySep2" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="gearArea" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="toySep3" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="botControl" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="rightPageButton" type="VBoxContainer" parent="UILayer/UI/uiMargin/toyMagMenu/magUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="topSeparator" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
+layout_mode = 2
+theme_type_variation = &"topSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="toyARightButton" type="Button" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="toySep" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="toyBRightButton" type="Button" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="toySep2" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="gearArea" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="toySep3" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"listingSep"
+theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
+
+[node name="botControl" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="toyMagAnim" type="AnimationPlayer" parent="UILayer/UI/uiMargin/toyMagMenu"]
+root_node = NodePath("../../../../../tableMesh")
+libraries = {
+&"": SubResource("AnimationLibrary_futsp")
+}
+
+[node name="resetAnim" type="AnimationPlayer" parent="UILayer/UI/uiMargin/toyMagMenu"]
+libraries = {
+&"": SubResource("AnimationLibrary_ekvf7")
+}
+
+[node name="toyCoverViewport" type="SubViewport" parent="UILayer/UI/uiMargin/toyMagMenu"]
+size = Vector2i(512, 704)
+
+[node name="toyCover" parent="UILayer/UI/uiMargin/toyMagMenu/toyCoverViewport" instance=ExtResource("21_qf3g8")]
+
+[node name="leftPageViewport" type="SubViewport" parent="UILayer/UI/uiMargin/toyMagMenu"]
+size = Vector2i(512, 704)
+
+[node name="pageBg" type="Panel" parent="UILayer/UI/uiMargin/toyMagMenu/leftPageViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("22_l7yoa")
+theme_type_variation = &"pageBG"
+
+[node name="leftPageSlot" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/leftPageViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("22_l7yoa")
+
+[node name="rightPageViewport" type="SubViewport" parent="UILayer/UI/uiMargin/toyMagMenu"]
+size = Vector2i(512, 704)
+
+[node name="pageBg" type="Panel" parent="UILayer/UI/uiMargin/toyMagMenu/rightPageViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("22_l7yoa")
+theme_type_variation = &"pageBG"
+
+[node name="rightPageSlot" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/rightPageViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("22_l7yoa")
+
+[node name="middlePageViewport" type="SubViewport" parent="UILayer/UI/uiMargin/toyMagMenu"]
+size = Vector2i(512, 704)
+
+[node name="pageBg" type="Panel" parent="UILayer/UI/uiMargin/toyMagMenu/middlePageViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("22_l7yoa")
+theme_type_variation = &"pageBG"
+
+[node name="middlePageSlot" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/middlePageViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("22_l7yoa")
+
+[node name="moneyLabel" type="Label" parent="UILayer/UI/uiMargin/toyMagMenu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 63.0
+grow_horizontal = 0
+theme = ExtResource("9_yda35")
+theme_override_font_sizes/font_size = 48
+
+[node name="buttonLabel" type="Label" parent="UILayer/UI/uiMargin/toyMagMenu"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

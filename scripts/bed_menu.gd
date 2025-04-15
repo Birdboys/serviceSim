@@ -10,6 +10,7 @@ extends Node3D
 	"computer": $computerCam,
 	"door": $doorCam,
 	"tool_mag": $tableMesh/toolMagCam,
+	"toy_mag": $tableMesh/toyMagCam,
 	"poster": $posterCam,
 }
 @onready var areas := {
@@ -18,7 +19,8 @@ extends Node3D
 	"computer": $computerMesh/computerArea,
 	"door": $toolArea,
 	"tool_mag": $tableMesh/toolMagArea,
-	"poster": $posterMesh/posterArea
+	"toy_mag": $tableMesh/toyMagArea,
+	"poster": $posterMesh/posterArea,
 }
 @onready var escape_path := {
 	"bed": "",	
@@ -27,6 +29,7 @@ extends Node3D
 	"computer": "bed",
 	"door": "bed",
 	"tool_mag": "table",
+	"toy_mag": "table",
 	"poster": "bed",
 }
 @onready var door := $door
@@ -109,9 +112,13 @@ func leaveMenu(m):
 			areas["door"].visible = true
 		"table":
 			areas["tool_mag"].visible = false
+			areas["toy_mag"].visible = false
 			areas["table"].visible = true
 		"tool_mag":
 			areas["tool_mag"].visible = true
+			UI.menus[m].resetMiddle()
+		"toy_mag":
+			areas["toy_mag"].visible = true
 			UI.menus[m].resetMiddle()
 		"computer":
 			UI.menus[m].computerAnim.play_backwards("turn_computer_on")
@@ -127,10 +134,16 @@ func loadMenu(m):
 			leaveLabel.visible = true
 		"table":
 			areas["tool_mag"].visible = true
+			areas["toy_mag"].visible = true
 			areas["table"].visible = false
 		"tool_mag":
 			areas["table"].visible = false
 			areas["tool_mag"].visible = false
+			areas["toy_mag"].visible = false
+		"toy_mag":
+			areas["table"].visible = false
+			areas["tool_mag"].visible = false
+			areas["toy_mag"].visible = false
 		#"computer":
 			#UI.menus[m].computerAnim.play("turn_computer_on")
 

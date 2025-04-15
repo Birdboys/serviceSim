@@ -7,7 +7,8 @@ extends CanvasLayer
 	"computer": $UI/uiMargin/computerMenu,
 	"table": $UI/uiMargin/tableMenu,
 	"tool_mag": $UI/uiMargin/toolMagMenu,
-	"poster": $UI/uiMargin/posterMenu
+	"toy_mag": $UI/uiMargin/toyMagMenu,
+	"poster": $UI/uiMargin/posterMenu,
 }
 
 func loadMenu(m):

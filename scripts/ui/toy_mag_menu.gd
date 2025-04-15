@@ -3,7 +3,7 @@ extends Control
 enum pages {LEFT, MIDDLE, RIGHT}
 @onready var leftButton := $leftButton
 @onready var rightButton := $rightButton
-@onready var magAnim := $toolMagAnim
+@onready var magAnim := $toyMagAnim
 @onready var resetAnim := $resetAnim
 @onready var leftPageViewport := $leftPageViewport/leftPageSlot
 @onready var rightPageViewport := $rightPageViewport/rightPageSlot
@@ -12,10 +12,10 @@ enum pages {LEFT, MIDDLE, RIGHT}
 @onready var moneyLabel := $moneyLabel
 @onready var buttonLabel := $buttonLabel
 
-@onready var toolALeftButton := $magUI/leftPageButton/toolALeftButton
-@onready var toolBLeftButton := $magUI/leftPageButton/toolBLeftButton
-@onready var toolARightButton := $magUI/rightPageButton/toolARightButton
-@onready var toolBRightButton := $magUI/rightPageButton/toolBRightButton
+@onready var toyALeftButton := $magUI/leftPageButton/toyALeftButton
+@onready var toyBLeftButton := $magUI/leftPageButton/toyBLeftButton
+@onready var toyARightButton := $magUI/rightPageButton/toyARightButton
+@onready var toyBRightButton := $magUI/rightPageButton/toyBRightButton
 
 var current_page := 0
 var can_turn_page := true
@@ -36,31 +36,29 @@ var right_pages := {
 	#4: preload("res://scenes/mag_pages/tool_demo.tscn"),
 }
 
-signal tool_purchased
-
 func _ready() -> void:
 	leftButton.pressed.connect(turnPage.bind(true))
 	rightButton.pressed.connect(turnPage.bind(false))
 	
-	toolALeftButton.pressed.connect(toolPressed.bind("leftA"))
-	toolBLeftButton.pressed.connect(toolPressed.bind("leftB"))
-	toolARightButton.pressed.connect(toolPressed.bind("rightA"))
-	toolBRightButton.pressed.connect(toolPressed.bind("rightB"))
+	toyALeftButton.pressed.connect(toyPressed.bind("leftA"))
+	toyBLeftButton.pressed.connect(toyPressed.bind("leftB"))
+	toyARightButton.pressed.connect(toyPressed.bind("rightA"))
+	toyBRightButton.pressed.connect(toyPressed.bind("rightB"))
 	
-	toolALeftButton.mouse_entered.connect(updateButtonLabel.bind("leftA"))
-	toolBLeftButton.mouse_entered.connect(updateButtonLabel.bind("leftB"))
-	toolARightButton.mouse_entered.connect(updateButtonLabel.bind("rightA"))
-	toolBRightButton.mouse_entered.connect(updateButtonLabel.bind("rightB"))
+	toyALeftButton.mouse_entered.connect(updateButtonLabel.bind("leftA"))
+	toyBLeftButton.mouse_entered.connect(updateButtonLabel.bind("leftB"))
+	toyARightButton.mouse_entered.connect(updateButtonLabel.bind("rightA"))
+	toyBRightButton.mouse_entered.connect(updateButtonLabel.bind("rightB"))
 	
-	toolALeftButton.mouse_exited.connect(updateButtonLabel.bind(""))
-	toolBLeftButton.mouse_exited.connect(updateButtonLabel.bind(""))
-	toolARightButton.mouse_exited.connect(updateButtonLabel.bind(""))
-	toolBRightButton.mouse_exited.connect(updateButtonLabel.bind(""))
+	toyALeftButton.mouse_exited.connect(updateButtonLabel.bind(""))
+	toyBLeftButton.mouse_exited.connect(updateButtonLabel.bind(""))
+	toyARightButton.mouse_exited.connect(updateButtonLabel.bind(""))
+	toyBRightButton.mouse_exited.connect(updateButtonLabel.bind(""))
 	
 func reset():
 	visible = false
 	can_turn_page = false
-	if current_page != 0: magAnim.play_backwards("open_tool_mag")
+	if current_page != 0: magAnim.play_backwards("open_toy_mag")
 	current_page = 0
 	if leftPageViewport.get_child_count() > 0: leftPageViewport.get_children().map(func(x): x.queue_free())
 	if rightPageViewport.get_child_count() > 0: rightPageViewport.get_children().map(func(x): x.queue_free())
@@ -81,7 +79,7 @@ func turnPage(left: bool):
 	can_turn_page = false
 	toggleUI(false)
 	if not left: 
-		if current_page == 0: magAnim.play("open_tool_mag")
+		if current_page == 0: magAnim.play("open_toy_mag")
 		else: magAnim.play("turn_page_left")
 		current_page += 1
 	else: 
@@ -89,7 +87,7 @@ func turnPage(left: bool):
 			can_turn_page = true
 			return
 		if current_page == 1: 
-			magAnim.play_backwards("open_tool_mag")
+			magAnim.play_backwards("open_toy_mag")
 		else: magAnim.play("turn_page_right")
 		current_page -= 1
 	
@@ -134,7 +132,8 @@ func toggleUI(on: bool):
 func updateMoneyLabel():
 	moneyLabel.text = "$%s" % GameData.total_money
 
-func toolPressed(slot):
+func toyPressed(slot):
+	return
 	if leftPageViewport.get_child(0) is not ToolMagPage: return
 	var tool_name : String
 	match slot:
@@ -165,6 +164,7 @@ func tryUpgradeTool(t):
 	moneyLabel.text = "$%s" % GameData.total_money
 	
 func updateButtonLabel(b):
+	return
 	if leftPageViewport.get_child(0) is not ToolMagPage: return
 	var tool_name : String
 	var label_text : String

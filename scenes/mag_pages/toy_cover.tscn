@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0hqg7tbhge76"]
+
+[ext_resource type="Theme" uid="uid://cxdkmx1yqhiuv" path="res://assets/themes/toy_mag.tres" id="1_ckihs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1yah"]
+bg_color = Color(0.564706, 0.368627, 0.662745, 1)
+
+[node name="toyCover" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ckihs")
+theme_override_styles/panel = SubResource("StyleBoxFlat_y1yah")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.976471, 0.760784, 0.168627, 1)
+theme_override_font_sizes/font_size = 72
+text = "TOY CATALOGUE"
+horizontal_alignment = 1
+vertical_alignment = 1

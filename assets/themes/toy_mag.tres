@@ -1,0 +1,50 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cxdkmx1yqhiuv"]
+
+[ext_resource type="FontFile" uid="uid://bc247ko21x087" path="res://assets/fonts/Rum_Raisin/RumRaisin-Regular.ttf" id="1_w20m8"]
+[ext_resource type="FontFile" uid="uid://fslvvjj84y6a" path="res://assets/fonts/Tektur/Tektur-Bold.ttf" id="2_1em5m"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8mtpr"]
+color = Color(0.192157, 0.211765, 0.219608, 1)
+grow_begin = -16.0
+grow_end = -16.0
+thickness = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mtpr"]
+bg_color = Color(0.658824, 0.517647, 0.952941, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_scqus"]
+color = Color(0.192157, 0.211765, 0.219608, 1)
+thickness = 64
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qdajg"]
+color = Color(0.192157, 0.211765, 0.219608, 1)
+grow_begin = -8.0
+grow_end = -8.0
+thickness = 4
+vertical = true
+
+[resource]
+default_font = ExtResource("1_w20m8")
+listingLabel/base_type = &"Label"
+listingLabel/colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
+listingLabel/constants/line_spacing = -4
+listingLabel/font_sizes/font_size = 20
+listingSep/base_type = &"HSeparator"
+listingSep/constants/separation = 16
+listingSep/styles/separator = SubResource("StyleBoxLine_8mtpr")
+nameLabel/base_type = &"Label"
+nameLabel/colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
+nameLabel/font_sizes/font_size = 36
+nameLabel/fonts/font = ExtResource("2_1em5m")
+pageBG/base_type = &"Panel"
+pageBG/styles/panel = SubResource("StyleBoxFlat_8mtpr")
+priceLabel/base_type = &"Label"
+priceLabel/colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
+priceLabel/font_sizes/font_size = 48
+priceLabel/fonts/font = ExtResource("2_1em5m")
+topSep/base_type = &"HSeparator"
+topSep/constants/separation = 64
+topSep/styles/separator = SubResource("StyleBoxLine_scqus")
+vertSep/base_type = &"VSeparator"
+vertSep/constants/separation = 4
+vertSep/styles/separator = SubResource("StyleBoxLine_qdajg")
