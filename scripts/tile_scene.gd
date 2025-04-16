@@ -4,6 +4,7 @@ class_name TileScene
 @onready var trashScatterer := $trashScatterer
 @onready var houses := $houses
 @onready var rockbeds := $rockBeds
+@onready var cars := $cars
 @export var auto_rotate := false
 var scattered := false
 
@@ -17,6 +18,7 @@ func initTrash():
 	scattered = true
 	await doHouses()
 	await doRockBeds()
+	await doCars()
 	await trashScatterer.initTrash()
 
 func doHouses():
@@ -30,3 +32,12 @@ func doRockBeds():
 		r.doStones()
 		await get_tree().process_frame
 	rockbeds.visible = true
+
+func doCars():
+	for c in cars.get_children():
+		if randf() < 0.1:
+			var new_car = GameData.car_meshes.pick_random().instantiate()
+			c.add_child(new_car)
+			new_car.randomizeCar()
+		else:
+			c.queue_free()

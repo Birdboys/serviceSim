@@ -34,6 +34,8 @@ var total_money := 300
 
 @onready var house_meshes : Dictionary
 @onready var house_textures : Dictionary
+@onready var car_meshes := [preload("res://scenes/houses/car_pb.tscn"), preload("res://scenes/houses/car_truck.tscn"), preload("res://scenes/houses/car_minivan.tscn"), preload("res://scenes/houses/car_muscle.tscn")]
+@onready var car_textures : Array
 @onready var tool_data : Dictionary
 @onready var settings_data : Dictionary
 
@@ -47,6 +49,7 @@ func _ready() -> void:
 		print("NO SAVE FILE EXISTS")
 		createSaveData()
 	loadHouseData()
+	loadCarData()
 
 func loadDefaults():
 	tool_data = default_tool_data.duplicate(true)
@@ -58,6 +61,10 @@ func loadHouseData():
 	for x in range(0,10):
 		house_textures[x] = load("res://assets/textures/houses/house_%s.png" % x)
 
+func loadCarData():
+	for x in range(0,10):
+		car_textures.append(load("res://assets/textures/cars/car_%s.png" % x))
+		
 func createSaveData():
 	loadDefaults()
 	saveGame()
