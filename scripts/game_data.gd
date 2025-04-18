@@ -11,7 +11,7 @@ const tool_mag_data := {
 var total_trash_collected := 0
 var total_money := 300
 
-@onready var current_gear := ["pogo_picker", "spear_picker"]
+@onready var current_gear := ["robot_picker", "spear_picker"]
 @onready var bag_dim :=  Vector2(8,8)
 @onready var game_time := 2.5 * 60.0 #seconds
 @onready var call_time := 3.0

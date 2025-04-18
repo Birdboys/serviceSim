@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjntffxat7h4n"]
+
+[ext_resource type="Script" uid="uid://06i04c6coqrr" path="res://scripts/tools/net_picker.gd" id="1_1kgt8"]
+[ext_resource type="PackedScene" uid="uid://nr6avbat0w8f" path="res://assets/tool_meshes/net_picker.tscn" id="2_1kgt8"]
+
+[sub_resource type="Animation" id="Animation_p7puk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pickerMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.29788, 0.157685, -1.37658)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pickerMesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0872665, -2.87979, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1kgt8"]
+resource_name = "pick"
+length = 0.85
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pickerMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.4, 0.8),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1),
+"update": 0,
+"values": [Vector3(1.29788, 0.157685, -1.37658), Vector3(0, -0.542, -0.977), Vector3(0, -0.542, -0.977), Vector3(1.29788, 0.157685, -1.37658)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pickerMesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.4, 0.8),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0.0872665, -2.87979, 0), Vector3(1.13446, -3.14159, 1.80931e-07), Vector3(1.13446, -3.14159, 1.80931e-07), Vector3(0.0872665, -2.87979, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"collectTrash"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gklb"]
+_data = {
+&"RESET": SubResource("Animation_p7puk"),
+&"pick": SubResource("Animation_1kgt8")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1kgt8"]
+height = 1.5
+radius = 3.5
+
+[node name="netPicker" type="Node3D"]
+script = ExtResource("1_1kgt8")
+pickup_paper = true
+pickup_plastic = true
+pickup_metal = true
+pickup_glass = true
+
+[node name="pickerAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1gklb")
+}
+
+[node name="pickerMesh" parent="." instance=ExtResource("2_1kgt8")]
+transform = Transform3D(-0.965925, -0.0225578, -0.257837, 0, 0.996195, -0.0871558, 0.258822, -0.084186, -0.962249, 1.29788, 0.157685, -1.37658)
+layers = 2
+
+[node name="litterArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.4, -4.6)
+collision_layer = 0
+collision_mask = 120
+
+[node name="litterCol" type="CollisionShape3D" parent="litterArea"]
+shape = SubResource("CylinderShape3D_1kgt8")

@@ -134,8 +134,6 @@ func equipTool(tool_id):
 	match current_tool.tool_name:
 		"pogo_picker":
 			current_tool.pogo_jump.connect(pogoJump)
-		_:
-			print("NOT POGO PICKER")
 			
 func unequipTool():
 	if current_tool: 

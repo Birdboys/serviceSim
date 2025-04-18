@@ -127,7 +127,6 @@ layers = 2
 cast_shadow = 0
 
 [node name="litterArea" type="Area3D" parent="pickerMesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 0
 collision_mask = 120
 monitoring = false
