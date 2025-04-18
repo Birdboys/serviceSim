@@ -52,7 +52,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
 mesh = SubResource("BoxMesh_mprh5")
 
 [node name="trashScatterer" parent="." instance=ExtResource("1_xw6vp")]
-valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+valid_rects = Array[Rect2i]([Rect2i(-40, -40, 80, 80)])
 num_trash = 50
 miss_chances = 25
 trash_dist = {

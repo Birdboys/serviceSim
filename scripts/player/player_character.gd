@@ -15,7 +15,9 @@ var current_tool_id := -1
 var current_tool 
 var sensitivity := 0.0
 var gravity = 10.0
-var speed := 45.0
+var speed := 10.0
+var shoes_mult := 2.0
+var skates_mult := 3.0
 
 var bag_dim := Vector2(8,16)
 var trash_collected := 0
@@ -24,12 +26,20 @@ var max_trash := 0
 var combo_counter := 0
 var max_combo := 0
 
+var has_shoes := false
+var has_skates := false
+var has_cape := false
+
 const combo_time_window := 3.0
 const base_sens := 0.00005
 
 signal called_home 
 
 func _ready() -> void:
+	has_cape = GameData.toy_data['cape']['owned']
+	has_shoes = GameData.toy_data['running_shoes']['owned']
+	has_skates = GameData.toy_data['roller_skates']['owned']
+	
 	stateMachine.initialize(self)
 	max_trash = bag_dim.x * bag_dim.y
 	comboTimer.timeout.connect(endCombo)
@@ -90,6 +100,12 @@ func handleMovement(delta):
 	if direction:
 		velocity.x = direction.x * speed * stateMachine.current_state.speed_mult
 		velocity.z = direction.z * speed * stateMachine.current_state.speed_mult
+		if has_skates and Input.is_action_pressed("sprint"):
+			velocity.x *= skates_mult
+			velocity.z *= skates_mult
+		elif has_shoes and Input.is_action_pressed("sprint"):
+			velocity.x *= shoes_mult
+			velocity.z *= shoes_mult
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed*10.0*delta)
 		velocity.z = move_toward(velocity.z, 0, speed*10.0*delta)

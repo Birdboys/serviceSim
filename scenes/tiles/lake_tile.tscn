@@ -1,10 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://unfghn3ggayc"]
+[gd_scene load_steps=10 format=3 uid="uid://unfghn3ggayc"]
 
 [ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="1_mprh5"]
-[ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="1_ppu47"]
+[ext_resource type="Script" uid="uid://cta7cn3x37ldc" path="res://scripts/lake_tile.gd" id="1_ppu47"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5yohy"]
-size = Vector3(100, 2, 100)
+size = Vector3(10, 2, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3y4hm"]
+size = Vector3(80, 1, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ppu47"]
+size = Vector3(80, 100, 80)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yohy"]
 albedo_color = Color(0.635294, 0.662745, 0.278431, 1)
@@ -22,14 +28,39 @@ size = Vector3(80, 1, 80)
 
 [node name="lakeTile" type="Node3D"]
 script = ExtResource("1_ppu47")
-auto_rotate = true
 
 [node name="groundBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 collision_mask = 0
 
 [node name="groundCol" type="CollisionShape3D" parent="groundBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 0)
 shape = SubResource("BoxShape3D_5yohy")
+
+[node name="groundCol2" type="CollisionShape3D" parent="groundBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 0)
+shape = SubResource("BoxShape3D_5yohy")
+
+[node name="groundCol3" type="CollisionShape3D" parent="groundBody"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.96701e-06, 0, 45)
+shape = SubResource("BoxShape3D_5yohy")
+
+[node name="groundCol4" type="CollisionShape3D" parent="groundBody"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.96701e-06, 0, -45)
+shape = SubResource("BoxShape3D_5yohy")
+
+[node name="lakeCol" type="CollisionShape3D" parent="groundBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.357454, 0)
+shape = SubResource("BoxShape3D_3y4hm")
+
+[node name="lakeBlocker" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
+collision_mask = 0
+
+[node name="blockerCol" type="CollisionShape3D" parent="lakeBlocker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+shape = SubResource("BoxShape3D_ppu47")
 
 [node name="grassMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -0.5, 0)

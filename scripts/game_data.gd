@@ -25,6 +25,15 @@ var total_money := 300
 	#"pogo_picker": {"price": 10, "owned": false, "trash":"11100"}
 }
 
+@onready var default_toy_data := {
+	"floaties": {"owned":false, "price":10, "name":"Floaties"},
+	"walkman": {"owned":true, "price":10, "name":"Walkman"},
+	"running_shoes": {"owned":true, "price":10, "name":"Running Shoes"},
+	"roller_skates": {"owned":true, "price":10, "name":"Roller Skates"},
+	"cape": {"owned":true, "price":10, "name":"Super Cape"},
+	"action_figure": {"owned":true, "price":10, "name":"Action Figure"},
+	#"floaties": {"owned":true, "price":10, "name":"Floaties"},
+}
 @onready var default_settings_data := {
 	"sound": 0.5,
 	"music": 0.0,
@@ -37,22 +46,25 @@ var total_money := 300
 @onready var car_meshes := [preload("res://scenes/houses/car_pb.tscn"), preload("res://scenes/houses/car_truck.tscn"), preload("res://scenes/houses/car_minivan.tscn"), preload("res://scenes/houses/car_muscle.tscn")]
 @onready var car_textures : Array
 @onready var tool_data : Dictionary
+@onready var toy_data : Dictionary
 @onready var settings_data : Dictionary
 
 @onready var tree := preload("res://scenes/houses/tree.tscn")
 
 func _ready() -> void:
-	if FileAccess.file_exists(save_data_path): 
-		print("SAVE FILE EXISTS")
-		loadSaveData()
-	else: 
-		print("NO SAVE FILE EXISTS")
-		createSaveData()
+	#if FileAccess.file_exists(save_data_path): 
+		#print("SAVE FILE EXISTS")
+		#loadSaveData()
+	#else: 
+		#print("NO SAVE FILE EXISTS")
+		#createSaveData()
+	loadDefaults()
 	loadHouseData()
 	loadCarData()
 
 func loadDefaults():
 	tool_data = default_tool_data.duplicate(true)
+	toy_data = default_toy_data.duplicate(true)
 	settings_data = default_settings_data.duplicate(true)
 	
 func loadHouseData():

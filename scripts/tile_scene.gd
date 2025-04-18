@@ -35,9 +35,10 @@ func doRockBeds():
 
 func doCars():
 	for c in cars.get_children():
-		if randf() < 0.1:
+		if randf() < 0.15:
 			var new_car = GameData.car_meshes.pick_random().instantiate()
 			c.add_child(new_car)
 			new_car.randomizeCar()
+			new_car.moveCar()
 		else:
 			c.queue_free()
