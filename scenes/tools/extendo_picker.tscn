@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx3puvx2k5h1k"]
+
+[ext_resource type="Script" uid="uid://v6tjih10bvfq" path="res://scripts/tools/litter_picker.gd" id="1_ds65x"]
+[ext_resource type="PackedScene" uid="uid://bthr4y1ilr2ln" path="res://assets/tool_meshes/extendo_picker.tscn" id="2_ds65x"]
+
+[sub_resource type="Animation" id="Animation_p7puk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pickerMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.29788, 0.457685, -1.57658)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pickerMesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.226893, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2ic0e"]
+resource_name = "pick"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pickerMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.5),
+"transitions": PackedFloat32Array(0.5, 2, -2, 1),
+"update": 0,
+"values": [Vector3(1.29788, 0.457685, -1.57658), Vector3(1.29788, 0.957685, -1.17658), Vector3(0.69788, 0.657685, -2.17658), Vector3(1.29788, 0.457685, -1.57658)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pickerMesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.5),
+"transitions": PackedFloat32Array(0.5, 2, -2, 1),
+"update": 0,
+"values": [Vector3(0.226893, 0, 0), Vector3(0.872665, 0, 0), Vector3(0.872665, 0, -0.0872665), Vector3(0.226893, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"trashRayCollect"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gklb"]
+_data = {
+&"RESET": SubResource("Animation_p7puk"),
+&"pick": SubResource("Animation_2ic0e")
+}
+
+[node name="extendoPicker" type="Node3D"]
+script = ExtResource("1_ds65x")
+picker_range = 15.0
+pickup_paper = true
+pickup_plastic = true
+pickup_metal = true
+tool_name = "extendo_picker"
+
+[node name="trashRay" type="RayCast3D" parent="."]
+enabled = false
+collision_mask = 504
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="pickerAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1gklb")
+}
+
+[node name="pickerMesh" parent="." instance=ExtResource("2_ds65x")]
+transform = Transform3D(1, 0, 0, 0, 0.97437, -0.224951, 0, 0.224951, 0.97437, 1.29788, 0.457685, -1.57658)
+layers = 2

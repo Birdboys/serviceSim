@@ -15,7 +15,7 @@ var current_tool_id := -1
 var current_tool 
 var sensitivity := 0.0
 var gravity = 10.0
-var speed := 10.0
+var speed := 15.0
 var shoes_mult := 2.0
 var skates_mult := 3.0
 
@@ -107,8 +107,8 @@ func handleMovement(delta):
 			velocity.x *= shoes_mult
 			velocity.z *= shoes_mult
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed*10.0*delta)
-		velocity.z = move_toward(velocity.z, 0, speed*10.0*delta)
+		velocity.x = move_toward(velocity.x, 0.0, speed*10.0*delta)
+		velocity.z = move_toward(velocity.z, 0.0, speed*10.0*delta)
 	handleGravity(delta)
 	move_and_slide()
 
@@ -131,8 +131,17 @@ func equipTool(tool_id):
 	current_tool.equip()
 	current_tool.attempt_collect_trash.connect(collectTrash)
 	
+	match current_tool.tool_name:
+		"pogo_picker":
+			current_tool.pogo_jump.connect(pogoJump)
+		_:
+			print("NOT POGO PICKER")
+			
 func unequipTool():
 	if current_tool: 
+		match current_tool.tool_name:
+			"pogo_picker":
+				current_tool.pogo_jump.disconnect(pogoJump)
 		current_tool.unequip()
 		current_tool.queue_free()
 	current_tool = null
@@ -195,3 +204,7 @@ func handleCall(start: bool):
 
 func calledHome():
 	emit_signal("called_home")
+	
+func pogoJump(v):
+	velocity.y = v
+	

@@ -11,7 +11,7 @@ const tool_mag_data := {
 var total_trash_collected := 0
 var total_money := 300
 
-@onready var current_gear := ["basic_picker", ""]
+@onready var current_gear := ["pogo_picker", "spear_picker"]
 @onready var bag_dim :=  Vector2(8,8)
 @onready var game_time := 2.5 * 60.0 #seconds
 @onready var call_time := 3.0
@@ -20,6 +20,7 @@ var total_money := 300
 	"better_picker": {"price": 50, "upgrade_price":10, "owned": false, "upgrade": 0, "name":"Better Picker"}, 
 	"claw_picker": {"price": 75, "upgrade_price":15, "owned": false, "upgrade": 0, "name":"Claw Picker"}, 
 	"auto_picker": {"price": 100, "upgrade_price":15, "owned": false, "upgrade": 0, "name":"Auto-Picker"}, 
+	"extendo_picker": {"price": 150, "upgrade_price":15, "owned":true, "upgrade":0, "name":"Extendo-Picker"}
 	#"basic_vacuum": {"price": 5, "owned": false, "trash":"11110"}, 
 	#"spear_picker": {"price": 10, "owned": false, "trash":"11110"}, 
 	#"pogo_picker": {"price": 10, "owned": false, "trash":"11100"}

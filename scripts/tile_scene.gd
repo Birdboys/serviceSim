@@ -28,7 +28,7 @@ func doHouses():
 
 func doRockBeds():
 	for r in rockbeds.get_children():
-		r.doTrees()
+		r.doTrees() 
 		r.doStones()
 		await get_tree().process_frame
 	rockbeds.visible = true

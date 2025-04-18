@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3 uid="uid://giplehs6imbo"]
+
+[ext_resource type="Script" uid="uid://dvq80twavp6m0" path="res://scripts/tools/spear_picker.gd" id="1_2rb41"]
+[ext_resource type="PackedScene" uid="uid://besefjpwb1ggh" path="res://assets/tool_meshes/spear_picker.tscn" id="2_2rb41"]
+
+[sub_resource type="Animation" id="Animation_p7puk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pickerMesh/litterArea:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.89788, 0.057685, -1.57658)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.226893, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:state")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2rb41"]
+resource_name = "charge"
+length = 0.85
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.89788, 0.057685, -1.57658), Vector3(0.89788, 0.457685, -1.27658), Vector3(0.89788, 0.557685, -0.97658)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.226893, 0, 0), Vector3(1.5708, 0, 0), Vector3(1.74533, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:state")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gklb"]
+_data = {
+&"RESET": SubResource("Animation_p7puk"),
+&"charge": SubResource("Animation_2rb41")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2rb41"]
+radius = 0.3
+height = 0.75
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8vw73"]
+radius = 0.1
+
+[node name="spearPicker" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.97437, -0.224951, 0, 0.224951, 0.97437, 0.89788, 0.057685, -1.57658)
+script = ExtResource("1_2rb41")
+pickup_paper = true
+pickup_plastic = true
+pickup_metal = true
+tool_name = "spear_picker"
+
+[node name="pickerAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1gklb")
+}
+
+[node name="pickerMesh" parent="." instance=ExtResource("2_2rb41")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)
+layers = 2
+cast_shadow = 0
+
+[node name="litterArea" type="Area3D" parent="pickerMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 0
+collision_mask = 120
+monitoring = false
+
+[node name="litterCol" type="CollisionShape3D" parent="pickerMesh/litterArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("CapsuleShape3D_2rb41")
+
+[node name="spearCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+shape = SubResource("CapsuleShape3D_8vw73")
+
+[node name="trashPos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05, 0)
