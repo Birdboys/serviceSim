@@ -35,6 +35,7 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	$uiCont/marginCont/fpsLabel.text = "FPS:%s" % Engine.get_frames_per_second()
+
 func updatePrompt(t):
 	promptLabel.text = t
 

@@ -65,7 +65,9 @@ func _ready() -> void:
 	pauseMenu.can_pause = true
 	
 	#$sunAnim.play("sun", -1, 0.2)
-	gameTimer.start(GameData.game_time)
+	if GameData.toy_data['watch']['owned']: 
+		player.UI.timerLabel.visible = false
+	else: gameTimer.start(GameData.game_time)
 	
 func _physics_process(delta: float) -> void:
 	current_block_pos = posToBlock(player.position)    
