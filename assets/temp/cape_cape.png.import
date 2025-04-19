@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4c5qmpeilawv"
-path="res://.godot/imported/cape.png-ed1c3250ea904be490c49fdfa839e329.ctex"
+uid="uid://boofrlmcepgaj"
+path.s3tc="res://.godot/imported/cape_cape.png-5ba6eabc59a44d201243b9b8e213f24b.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "d0ad67b8d39bf268bbf344d18a70b014"
 }
 
 [deps]
 
-source_file="res://assets/textures/toys/cape.png"
-dest_files=["res://.godot/imported/cape.png-ed1c3250ea904be490c49fdfa839e329.ctex"]
+source_file="res://assets/temp/cape_cape.png"
+dest_files=["res://.godot/imported/cape_cape.png-5ba6eabc59a44d201243b9b8e213f24b.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

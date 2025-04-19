@@ -39,12 +39,15 @@ var total_money := 20000
 @onready var default_toy_data := {
 	"floaties": {"owned":false, "price":10, "name":"Floaties"},
 	"walkman": {"owned":true, "price":10, "name":"Walkman"},
-	"running_shoes": {"owned":true, "price":10, "name":"Running Shoes"},
+	"running_shoes": {"owned":false, "price":10, "name":"Running Shoes"},
 	"roller_skates": {"owned":true, "price":10, "name":"Roller Skates"},
-	"cape": {"owned":true, "price":10, "name":"Super Cape"},
+	"cape": {"owned":false, "price":10, "name":"Super Cape"},
 	"action_figure": {"owned":true, "price":10, "name":"Action Figure"},
+	"watch": {"owned":true, "price":10, "name":"Watch"},
+	"utility_belt": {"owned":true, "price":10, "name":"Utility Belt"},
 	#"floaties": {"owned":true, "price":10, "name":"Floaties"},
 }
+
 @onready var default_settings_data := {
 	"sound": 0.5,
 	"music": 0.0,
