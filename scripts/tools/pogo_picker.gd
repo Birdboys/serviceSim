@@ -8,13 +8,15 @@ enum pogo_states {IDLE, READY, BOUNCING, FALLING}
 @onready var bounceArea := $bounceArea
 @export var state := pogo_states.IDLE
 
-var bounce_strength := 10.0
+var bounce_strength := 8.0
+var trash_bounce_mult := 1.5
 var current_height := 0.0
 var prev_height := 0.0
 var player_pos 
 signal pogo_jump
 
 func _ready() -> void:
+	upgrade()
 	trashArea.area_entered.connect(collectTrash)
 	bounceArea.body_entered.connect(pogoJump)
 
@@ -38,7 +40,7 @@ func collectTrash(t):
 	print("COLLECTING TRASH")
 	if t is TrashBox and isTrashValid(t.get_parent()) and state == pogo_states.FALLING:
 		emit_signal("attempt_collect_trash", t.get_parent())
-		emit_signal("pogo_jump", bounce_strength+5)
+		emit_signal("pogo_jump", bounce_strength*trash_bounce_mult)
 		state = pogo_states.BOUNCING
 
 func pogoJump(_ground):
@@ -57,3 +59,6 @@ func equip():
 	trashArea.position = Vector3(0.0, -1.75, 0.0)
 	bounceArea.reparent(player_pos)
 	bounceArea.position = Vector3(0.0, -1.75, 0.0)
+
+func upgrade():
+	bounce_strength += 0.75 * GameData.tool_data[tool_name]['upgrade']

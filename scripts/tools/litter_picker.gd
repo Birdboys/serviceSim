@@ -34,8 +34,10 @@ func upgrade():
 		"basic_picker":
 			pass
 		"better_picker":
-			picker_range += upgrade_level * 0.25
+			picker_range += upgrade_level * 0.5
 		"claw_picker":
 			speed_mod *= 1 + upgrade_level * 0.1
 		"auto_picker":
-			picker_range += upgrade_level * 0.25
+			picker_range += upgrade_level * 0.5
+		"extendo_picker":
+			picker_range += upgrade_level * 1.0

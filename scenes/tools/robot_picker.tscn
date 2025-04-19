@@ -59,7 +59,7 @@ height = 0.6
 radius = 0.9
 
 [node name="robotPicker" type="CharacterBody3D"]
-transform = Transform3D(-0.15039, -0.344305, -0.926735, -0.086826, 0.938374, -0.334539, 0.984807, 0.0301534, -0.171016, 0.89788, -0.442315, -1.07658)
+transform = Transform3D(-0.15039, -0.344305, -0.926735, -0.0868261, 0.938374, -0.334539, 0.984807, 0.0301534, -0.171017, 0.89788, -0.442315, -1.07658)
 collision_layer = 0
 script = ExtResource("1_3eptv")
 pickup_paper = true

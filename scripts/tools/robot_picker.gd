@@ -17,6 +17,7 @@ func _ready() -> void:
 	litterArea.area_entered.connect(collectTrash)
 	pickupArea.body_entered.connect(pickupRobot)
 	player = get_parent().get_parent().get_parent().get_parent()
+	upgrade()
 	
 func _process(delta: float) -> void:
 	if going:
@@ -62,3 +63,6 @@ func pickupRobot(b_):
 func collectTrash(t):
 	if going and t is TrashBox and isTrashValid(t.get_parent()):
 		emit_signal("attempt_collect_trash", t.get_parent())
+
+func upgrade():
+	speed *= 1+0.2 * GameData.tool_data[tool_name]['upgrade']

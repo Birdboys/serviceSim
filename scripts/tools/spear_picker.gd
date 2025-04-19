@@ -14,6 +14,7 @@ var gravity := 10.0
 var held_trash := []
 
 func _ready() -> void:
+	upgrade()
 	litterArea.area_entered.connect(collectTrash)
 	
 func _process(delta: float) -> void:
@@ -96,3 +97,6 @@ func collectTrash(t):
 		var new_trash = t.get_parent()
 		new_trash.reparent(trashPos)
 		#new_trash.position = new_trash.position.normalized() * 0.2
+
+func upgrade():
+	throw_velocity += 1.0 * GameData.tool_data[tool_name]['upgrade']

@@ -96,7 +96,7 @@ libraries = {
 }
 
 [node name="pickerMesh" parent="." instance=ExtResource("2_1kgt8")]
-transform = Transform3D(-0.965925, -0.0225578, -0.257837, 0, 0.996195, -0.0871558, 0.258822, -0.084186, -0.962249, 1.29788, 0.157685, -1.37658)
+transform = Transform3D(-0.965925, -0.0225578, -0.257837, 0, 0.996195, -0.0871557, 0.258822, -0.084186, -0.962249, 1.29788, 0.157685, -1.37658)
 layers = 2
 
 [node name="litterArea" type="Area3D" parent="."]

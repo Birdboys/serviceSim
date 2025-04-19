@@ -12,6 +12,7 @@ func _ready() -> void:
 	vacuumArea.area_entered.connect(addTrash)
 	vacuumArea.area_exited.connect(removeTrash)
 	litterArea.area_entered.connect(collectTrash)
+	upgrade()
 	
 func _process(delta: float) -> void:
 	if sucking:
@@ -44,3 +45,7 @@ func collectTrash(t):
 	if sucking and t is TrashBox and isTrashValid(t.get_parent()):
 		emit_signal("attempt_collect_trash", t.get_parent())
 		sucked_trash.erase(t.get_parent())
+
+func upgrade():
+	vacuumArea.scale = Vector3.ONE * (1+0.2 * GameData.tool_data[tool_name]['upgrade'])
+	suck_power *= 1+0.2 * GameData.tool_data[tool_name]['upgrade']
