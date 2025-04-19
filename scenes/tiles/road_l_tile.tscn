@@ -86,7 +86,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0, -37.5)
 
 [node name="trashScatterer" parent="." instance=ExtResource("2_fegyf")]
-valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
+valid_rects = Array[Rect2]([Rect2(-50, -50, 100, 100)])
 num_trash = 50
 miss_chances = 25
 trash_dist = {

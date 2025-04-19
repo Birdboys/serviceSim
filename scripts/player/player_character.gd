@@ -40,6 +40,7 @@ func _ready() -> void:
 	has_shoes = GameData.toy_data['running_shoes']['owned']
 	has_skates = GameData.toy_data['roller_skates']['owned']
 	
+	if GameData.toy_data['magician_bag']['owned']: bag_dim.y *= 4
 	stateMachine.initialize(self)
 	max_trash = bag_dim.x * bag_dim.y
 	comboTimer.timeout.connect(endCombo)

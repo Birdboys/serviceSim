@@ -28,9 +28,7 @@ func doHouses():
 
 func doRockBeds():
 	for r in rockbeds.get_children():
-		r.doTrees() 
-		r.doStones()
-		await get_tree().process_frame
+		r.randomizeRockBed()
 	rockbeds.visible = true
 
 func doCars():

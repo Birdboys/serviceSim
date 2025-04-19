@@ -2,8 +2,8 @@ extends Node3D
 
 @export var lake_trash := false
 @export var tree_trash := false
-@export var valid_rects : Array[Rect2i]
-@export var invalid_rects : Array[Rect2i]
+@export var valid_rects : Array[Rect2]
+@export var invalid_rects : Array[Rect2]
 @export var num_trash := 25
 @export var miss_chances := 15
 @export var trash_dist := {

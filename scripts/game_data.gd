@@ -45,7 +45,7 @@ var total_money := 20000
 	"action_figure": {"owned":true, "price":10, "name":"Action Figure"},
 	"watch": {"owned":true, "price":10, "name":"Watch"},
 	"utility_belt": {"owned":true, "price":10, "name":"Utility Belt"},
-	#"floaties": {"owned":true, "price":10, "name":"Floaties"},
+	"magician_bag": {"owned":true, "price":10, "name":"Magician's Bag"},
 }
 
 @onready var default_settings_data := {

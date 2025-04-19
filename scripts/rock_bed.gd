@@ -2,7 +2,13 @@ extends Node3D
 
 @onready var trees := $trees
 @onready var stones := $stones
+@onready var trashScatterer := $trashScatterer
 
+func randomizeRockBed():
+	doTrees()
+	doStones()
+	trashScatterer.num_trash = randi_range(5,15)
+	trashScatterer.initTrash()
 	
 func doTrees():
 	for tree in trees.get_children():
