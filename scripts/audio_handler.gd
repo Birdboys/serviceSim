@@ -2,18 +2,45 @@ extends Node
 @onready var soundQueue := $soundEffectQueue
 @onready var soundQueue3D := $soundEffectQueue3D
 @onready var bgMusicPlayer := $bgMusicPlayer
+@onready var musicUI := $musicUI
+@onready var musicAnim := $musicUI/musicAnim
+@onready var musicLabel := $musicUI/musicMargin/musicLabel
 @onready var players := []
 @onready var players_3d := []
 @onready var queue_length := 10
 @onready var queue_index := 0
 @onready var queue_3d_index := 0
 @onready var audio_num_vars = {}
+@onready var playlist_queue := {
+	0: {
+		"track": preload("res://assets/music/untitled_kyro.wav"),
+		"title": "Untitled Kyro",
+		"artist": "Kyro",
+	},
+	1: {
+		"track": preload("res://assets/music/thetallgrass.wav"),
+		"title": "the tall grass",
+		"artist": "Kyro",
+	}
+}
 
+var current_song := 0
+var pause_point := 0.0
 var music_tween 
 func _ready():
 	loadAudioSettings()
 	populateQueues()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("music_skip"):
+		current_song = wrapi(current_song+1, 0, len(playlist_queue))
+		changeMusicTrack(current_song)
+	elif event.is_action_pressed("music_rewind"):
+		current_song = wrapi(current_song-1, 0, len(playlist_queue))
+		changeMusicTrack(current_song)
+	elif event.is_action_pressed("music_pause"):
+		pauseMusicTrack()
+		
 func populateQueues():
 	for x in range(queue_length):
 		var new_player = AudioStreamPlayer.new()
@@ -64,10 +91,19 @@ func togglePlayer(player, on):
 		"music": bgMusicPlayer.playing = on
 		pass
 
-func setPlayerStream(player, stream):
-	match player:
-		"music": bgMusicPlayer.stream = AudioHandler.getAudio(stream)
-		
+func changeMusicTrack(track_id):
+	bgMusicPlayer.stream = playlist_queue[track_id]['track']
+	bgMusicPlayer.play()
+	musicLabel.text = "%s\n%s" % [playlist_queue[track_id]['title'],playlist_queue[track_id]['artist']]
+	musicAnim.play("new_track")
+	
+func pauseMusicTrack():
+	if bgMusicPlayer.playing:
+		pause_point = bgMusicPlayer.get_playback_position()
+		bgMusicPlayer.stop()
+	else:
+		bgMusicPlayer.play(pause_point)
+	
 func reset3DPlayer(index):
 	players_3d[index].global_position = Vector3.ZERO
 

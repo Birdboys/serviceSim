@@ -1,7 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://by8rn0gvogmp6"]
+[gd_scene load_steps=7 format=3 uid="uid://by8rn0gvogmp6"]
 
 [ext_resource type="Script" uid="uid://ck62v2tkoxbvd" path="res://scripts/audio_handler.gd" id="1_ql6pa"]
-[ext_resource type="AudioStream" uid="uid://funp0ky6avpf" path="res://assets/sounds/thetallgrass.wav" id="2_m0grf"]
+[ext_resource type="AudioStream" uid="uid://c814gn8ekd05x" path="res://assets/music/untitled_kyro.wav" id="2_m0grf"]
+[ext_resource type="Theme" uid="uid://djs6o2b5hx67f" path="res://assets/themes/game_ui.tres" id="3_7fwcy"]
+
+[sub_resource type="Animation" id="Animation_7fwcy"]
+resource_name = "new_track"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("musicMargin/musicLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_11bbw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("musicMargin/musicLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_24e85"]
+_data = {
+&"RESET": SubResource("Animation_11bbw"),
+&"new_track": SubResource("Animation_7fwcy")
+}
 
 [node name="audioHandler" type="Node"]
 process_mode = 3
@@ -15,3 +53,33 @@ script = ExtResource("1_ql6pa")
 stream = ExtResource("2_m0grf")
 autoplay = true
 bus = &"musicBus"
+
+[node name="musicUI" type="CanvasLayer" parent="."]
+
+[node name="musicMargin" type="MarginContainer" parent="musicUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_7fwcy")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="musicLabel" type="Label" parent="musicUI/musicMargin"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="musicAnim" type="AnimationPlayer" parent="musicUI"]
+libraries = {
+&"": SubResource("AnimationLibrary_24e85")
+}
