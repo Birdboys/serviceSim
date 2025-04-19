@@ -59,7 +59,7 @@ height = 0.6
 radius = 0.9
 
 [node name="robotPicker" type="CharacterBody3D"]
-transform = Transform3D(-0.150387, -0.344305, -0.926735, -0.086826, 0.938374, -0.334539, 0.984807, 0.0301544, -0.171014, 0.89788, -0.442315, -1.07658)
+transform = Transform3D(-0.15039, -0.344305, -0.926735, -0.086826, 0.938374, -0.334539, 0.984807, 0.0301534, -0.171016, 0.89788, -0.442315, -1.07658)
 collision_layer = 0
 script = ExtResource("1_3eptv")
 pickup_paper = true
@@ -74,7 +74,6 @@ libraries = {
 }
 
 [node name="pickerMesh" parent="." instance=ExtResource("2_ecfq4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 layers = 2
 
 [node name="litterArea" type="Area3D" parent="."]

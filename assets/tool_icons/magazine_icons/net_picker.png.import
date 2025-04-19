@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx6lapgnw3mad"
-path="res://.godot/imported/basic_picker.png-811fa60f4e5ce068eeec10069252a41e.ctex"
+uid="uid://digkcuy0g2gw7"
+path="res://.godot/imported/net_picker.png-20bdf4b3d810eb7a10c2c29fe99245cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tool_icons/magazine_icons/basic_picker.png"
-dest_files=["res://.godot/imported/basic_picker.png-811fa60f4e5ce068eeec10069252a41e.ctex"]
+source_file="res://assets/tool_icons/magazine_icons/net_picker.png"
+dest_files=["res://.godot/imported/net_picker.png-20bdf4b3d810eb7a10c2c29fe99245cf.ctex"]
 
 [params]
 

@@ -172,4 +172,4 @@ func tryToLeave(cam, event:InputEvent, _event_pos, _event_norm, _shape_idx):
 
 func getOwnedTools():
 	for t in GameData.tool_data:
-		tools.find_child(t).visible = GameData.tool_data[t]['owned']
+		if tools.find_child(t): tools.find_child(t).visible = GameData.tool_data[t]['owned']

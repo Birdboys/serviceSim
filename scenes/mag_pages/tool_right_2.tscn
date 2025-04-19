@@ -1,15 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://w2rpdfgddo6a"]
+[gd_scene load_steps=6 format=3 uid="uid://k5t701js0kyc"]
 
-[ext_resource type="Theme" uid="uid://ct2wilxjo2x2v" path="res://assets/themes/tool_mag.tres" id="1_bvpsh"]
+[ext_resource type="Theme" uid="uid://ct2wilxjo2x2v" path="res://assets/themes/tool_mag.tres" id="1_4osdn"]
+[ext_resource type="Script" uid="uid://ruyfks1d4nc6" path="res://scripts/tool_mag_page.gd" id="2_06pmv"]
+[ext_resource type="FontFile" uid="uid://fslvvjj84y6a" path="res://assets/fonts/Tektur/Tektur-Bold.ttf" id="3_a2dek"]
+[ext_resource type="Texture2D" uid="uid://d1kx4c6bwfqcs" path="res://assets/tool_icons/magazine_icons/extendo_picker.png" id="3_luwjg"]
+[ext_resource type="Texture2D" uid="uid://c386g6hjygjhh" path="res://assets/tool_icons/magazine_icons/spear_picker.png" id="4_luwjg"]
 
-[node name="pageDemo" type="VBoxContainer"]
+[node name="rightPage2" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_bvpsh")
+theme = ExtResource("1_4osdn")
 theme_override_constants/separation = 0
+script = ExtResource("2_06pmv")
+left = false
+page = 2
+tool_a_desc = "Litter picking, the loooong way
+
+Collects: Paper, Plastic, Metal
+
+Upgrade: Increase range (%s/5)"
+tool_b_desc = "Go hunting for litter
+
+Collects: Paper, Plastic, Metal
+
+Upgrade: Increase speed (%s/5)"
 
 [node name="topSeparator" type="HSeparator" parent="."]
 layout_mode = 2
@@ -22,12 +39,45 @@ size_flags_stretch_ratio = 1.5
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_right = 24
 
-[node name="toolName" type="Label" parent="toolAArea"]
+[node name="toolCont" type="HBoxContainer" parent="toolAArea"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="toolIcon" type="TextureRect" parent="toolAArea/toolCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_luwjg")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="toolAArea/toolCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="toolName" type="Label" parent="toolAArea/toolCont/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"nameLabel"
-text = "PAGE 2 RIGHT"
-horizontal_alignment = 1
+text = "EXTENDO-PICKER"
+
+[node name="toolDesc" type="Label" parent="toolAArea/toolCont/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"listingLabel"
+text = "Litter picking, the loooong way
+
+Collects: Paper, Plastic, Metal
+
+Upgrade: Increase range (%s/5)"
 autowrap_mode = 3
+
+[node name="priceLabel" type="Label" parent="toolAArea"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_type_variation = &"priceLabel"
+text = "$75"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="toolSep" type="HSeparator" parent="."]
 layout_mode = 2
@@ -40,12 +90,48 @@ size_flags_stretch_ratio = 1.5
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_right = 24
 
-[node name="toolName" type="Label" parent="toolAArea2"]
+[node name="toolCont" type="HBoxContainer" parent="toolAArea2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="toolAArea2/toolCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="toolName" type="Label" parent="toolAArea2/toolCont/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"nameLabel"
-text = "PAGE 2 RIGHT"
-horizontal_alignment = 1
+text = "SPEAR PICKER"
+horizontal_alignment = 2
+
+[node name="toolDesc" type="Label" parent="toolAArea2/toolCont/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"listingLabel"
+text = "Go hunting for litter
+
+Collects: Paper, Plastic, Metal
+
+Upgrade: Increase speed (%s/5)"
+horizontal_alignment = 2
 autowrap_mode = 3
+
+[node name="toolIcon" type="TextureRect" parent="toolAArea2/toolCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_luwjg")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="priceLabel" type="Label" parent="toolAArea2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_type_variation = &"priceLabel"
+theme_override_fonts/font = ExtResource("3_a2dek")
+text = "$100"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="toolSep2" type="HSeparator" parent="."]
 layout_mode = 2

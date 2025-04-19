@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx6lapgnw3mad"
-path="res://.godot/imported/basic_picker.png-811fa60f4e5ce068eeec10069252a41e.ctex"
+uid="uid://d1kx4c6bwfqcs"
+path="res://.godot/imported/extendo_picker.png-b0c4587b2a182a42c25fe920cf782832.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tool_icons/magazine_icons/basic_picker.png"
-dest_files=["res://.godot/imported/basic_picker.png-811fa60f4e5ce068eeec10069252a41e.ctex"]
+source_file="res://assets/tool_icons/magazine_icons/extendo_picker.png"
+dest_files=["res://.godot/imported/extendo_picker.png-b0c4587b2a182a42c25fe920cf782832.ctex"]
 
 [params]
 

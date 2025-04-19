@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx6lapgnw3mad"
-path="res://.godot/imported/basic_picker.png-811fa60f4e5ce068eeec10069252a41e.ctex"
+uid="uid://biem2yl2nprci"
+path="res://.godot/imported/robot_picker.png-56930154b6954276ee22e545daf5a2a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tool_icons/magazine_icons/basic_picker.png"
-dest_files=["res://.godot/imported/basic_picker.png-811fa60f4e5ce068eeec10069252a41e.ctex"]
+source_file="res://assets/tool_icons/magazine_icons/robot_picker.png"
+dest_files=["res://.godot/imported/robot_picker.png-56930154b6954276ee22e545daf5a2a0.ctex"]
 
 [params]
 

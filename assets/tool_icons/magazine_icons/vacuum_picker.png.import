@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx6lapgnw3mad"
-path="res://.godot/imported/basic_picker.png-811fa60f4e5ce068eeec10069252a41e.ctex"
+uid="uid://4h20j7o58qhy"
+path="res://.godot/imported/vacuum_picker.png-54c38d47397da1d94f755ae4cc68f58a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tool_icons/magazine_icons/basic_picker.png"
-dest_files=["res://.godot/imported/basic_picker.png-811fa60f4e5ce068eeec10069252a41e.ctex"]
+source_file="res://assets/tool_icons/magazine_icons/vacuum_picker.png"
+dest_files=["res://.godot/imported/vacuum_picker.png-54c38d47397da1d94f755ae4cc68f58a.ctex"]
 
 [params]
 

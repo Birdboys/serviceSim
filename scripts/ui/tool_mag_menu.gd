@@ -24,15 +24,15 @@ var demo_page := preload("res://scenes/mag_pages/tool_demo.tscn")
 var left_pages := {
 	0: preload("res://scenes/mag_pages/tool_cover.tscn"),
 	1: preload("res://scenes/mag_pages/tool_left_1.tscn"),
-	2: preload("res://scenes/mag_pages/tool_demo.tscn"),
-	#3: preload("res://scenes/mag_pages/tool_left_3.tscn"),
+	2: preload("res://scenes/mag_pages/tool_left_2.tscn"),
+	3: preload("res://scenes/mag_pages/tool_left_3.tscn"),
 	#4: preload("res://scenes/mag_pages/tool_demo.tscn"),
 }
 var right_pages := {
 	0: preload("res://scenes/mag_pages/tool_right_1.tscn"),
 	1: preload("res://scenes/mag_pages/tool_right_1.tscn"),
-	2: preload("res://scenes/mag_pages/tool_demo.tscn"),
-	#3: preload("res://scenes/mag_pages/tool_right_3.tscn"),
+	2: preload("res://scenes/mag_pages/tool_right_2.tscn"),
+	3: preload("res://scenes/mag_pages/tool_right_3.tscn"),
 	#4: preload("res://scenes/mag_pages/tool_demo.tscn"),
 }
 
@@ -81,6 +81,9 @@ func turnPage(left: bool):
 	can_turn_page = false
 	toggleUI(false)
 	if not left: 
+		if current_page == 3: 
+			can_turn_page = true
+			return
 		if current_page == 0: magAnim.play("open_tool_mag")
 		else: magAnim.play("turn_page_left")
 		current_page += 1
@@ -101,27 +104,18 @@ func updatePage(page: pages, dir: int):
 	match page:
 		pages.LEFT:
 			if leftPageViewport.get_child_count() > 0: leftPageViewport.get_children().map(func(x): x.queue_free())
-			if current_page > 2: leftPageViewport.add_child(demo_page.instantiate())
-			else: leftPageViewport.add_child(left_pages[current_page].instantiate())
+			leftPageViewport.add_child(left_pages[current_page].instantiate())
 		pages.MIDDLE:
 			if middlePageViewport.get_child_count() > 0: middlePageViewport.get_children().map(func(x): x.queue_free())
-			if current_page > 2: 
-				middlePageViewport.add_child(demo_page.instantiate())
-				return
-			
-			
+	
 			if dir == -1: middlePageViewport.add_child(right_pages[current_page+dir].instantiate())
 			else: middlePageViewport.add_child(left_pages[current_page+dir].instantiate())
 		pages.RIGHT:
 			if rightPageViewport.get_child_count() > 0: rightPageViewport.get_children().map(func(x): x.queue_free())
-			if current_page > 2: rightPageViewport.add_child(demo_page.instantiate())
-			else: rightPageViewport.add_child(right_pages[current_page].instantiate())
+			rightPageViewport.add_child(right_pages[current_page].instantiate())
 
 func updateMiddle(page: pages, dir:int):
 	if middlePageViewport.get_child_count() > 0: middlePageViewport.get_children().map(func(x): x.queue_free())
-	if current_page+dir > 2: 
-		middlePageViewport.add_child(demo_page.instantiate())
-		return
 	match page:
 		pages.LEFT:
 			middlePageViewport.add_child(left_pages[current_page+dir].instantiate())
@@ -129,25 +123,32 @@ func updateMiddle(page: pages, dir:int):
 			middlePageViewport.add_child(right_pages[current_page+dir].instantiate())
 
 func toggleUI(on: bool):
+	print("TOGGLING UI for %s page %s" % [current_page, on])
 	magUI.visible = on
 	
 func updateMoneyLabel():
 	moneyLabel.text = "$%s" % GameData.total_money
 
 func toolPressed(slot):
-	if leftPageViewport.get_child(0) is not ToolMagPage: return
+	if rightPageViewport.get_child(0) is not ToolMagPage: return
 	var tool_name : String
 	match slot:
-		"leftA": tool_name = leftPageViewport.get_child(0).tool_a
-		"leftB": tool_name = leftPageViewport.get_child(0).tool_b
+		"leftA": 
+			if leftPageViewport.get_child(0) is ToolMagPage:
+				tool_name = leftPageViewport.get_child(0).tool_a
+			else: return
+		"leftB":
+			if leftPageViewport.get_child(0) is ToolMagPage:
+				tool_name = leftPageViewport.get_child(0).tool_b
+			else: return
 		"rightA": tool_name = rightPageViewport.get_child(0).tool_a
 		"rightB": tool_name = rightPageViewport.get_child(0).tool_b
-	
 	if not GameData.tool_data[tool_name]["owned"]: await tryBuyTool(tool_name)
 	elif GameData.tool_data[tool_name]["upgrade"] < 5: await tryUpgradeTool(tool_name)
 	
 	if "left" in slot: leftPageViewport.get_child(0).loadData()
 	else: rightPageViewport.get_child(0).loadData()
+	updateButtonLabel(slot)
 	
 func tryBuyTool(t):
 	var tool_price = GameData.tool_data[t]['price']
@@ -165,12 +166,22 @@ func tryUpgradeTool(t):
 	moneyLabel.text = "$%s" % GameData.total_money
 	
 func updateButtonLabel(b):
-	if leftPageViewport.get_child(0) is not ToolMagPage: return
+	if rightPageViewport.get_child(0) is not ToolMagPage: return
 	var tool_name : String
 	var label_text : String
 	match b:
-		"leftA": tool_name = leftPageViewport.get_child(0).tool_a
-		"leftB": tool_name = leftPageViewport.get_child(0).tool_b
+		"leftA": 
+			if leftPageViewport.get_child(0) is ToolMagPage:
+				tool_name = leftPageViewport.get_child(0).tool_a
+			else:
+				buttonLabel.text = ""
+				return 
+		"leftB": 
+			if leftPageViewport.get_child(0) is ToolMagPage:
+				tool_name = leftPageViewport.get_child(0).tool_b
+			else:
+				buttonLabel.text = ""
+				return 
 		"rightA": tool_name = rightPageViewport.get_child(0).tool_a
 		"rightB": tool_name = rightPageViewport.get_child(0).tool_b
 		_: 
@@ -180,12 +191,12 @@ func updateButtonLabel(b):
 		if GameData.tool_data[tool_name]['price'] > GameData.total_money:
 			label_text = "Insufficient funds"
 		else:	
-			label_text = "Click to purchase %s" % GameData.tool_data[tool_name]["name"]
+			label_text = "Click to buy %s" % GameData.tool_data[tool_name]["name"]
 	else:
 		if GameData.tool_data[tool_name]['upgrade'] < 5:
 			label_text = "Click to upgrade %s" % GameData.tool_data[tool_name]["name"]
 		else:
-			label_text = "%s fully upgraded" % GameData.tool_data[tool_name]["name"]
+			label_text = "%s is fully upgraded" % GameData.tool_data[tool_name]["name"]
 	buttonLabel.text = label_text
 
 func resetMiddle():

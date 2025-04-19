@@ -2,14 +2,22 @@ extends Node
 
 const save_data_path := "user://service_sim_save_data.json"
 const tool_mag_data := {
-	"left1A": "basic_picker",
-	"left1B": "better_picker",
-	"right1A": "claw_picker",
-	"right1B": "auto_picker",
+	"left1A": null,
+	"left1B": null,
+	"right1A": "basic_picker",
+	"right1B": "better_picker",
+	"left2A": "claw_picker",
+	"left2B": "auto_picker",
+	"right2A": "extendo_picker",
+	"right2B": "spear_picker",
+	"left3A": "pogo_picker",
+	"left3B": "net_picker",
+	"right3A": "vacuum_picker",
+	"right3B": "robot_picker",
 }
 
 var total_trash_collected := 0
-var total_money := 300
+var total_money := 20000
 
 @onready var current_gear := ["robot_picker", "spear_picker"]
 @onready var bag_dim :=  Vector2(8,8)
@@ -20,10 +28,12 @@ var total_money := 300
 	"better_picker": {"price": 50, "upgrade_price":10, "owned": false, "upgrade": 0, "name":"Better Picker"}, 
 	"claw_picker": {"price": 75, "upgrade_price":15, "owned": false, "upgrade": 0, "name":"Claw Picker"}, 
 	"auto_picker": {"price": 100, "upgrade_price":15, "owned": false, "upgrade": 0, "name":"Auto-Picker"}, 
-	"extendo_picker": {"price": 150, "upgrade_price":15, "owned":true, "upgrade":0, "name":"Extendo-Picker"}
-	#"basic_vacuum": {"price": 5, "owned": false, "trash":"11110"}, 
-	#"spear_picker": {"price": 10, "owned": false, "trash":"11110"}, 
-	#"pogo_picker": {"price": 10, "owned": false, "trash":"11100"}
+	"extendo_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Extendo-Picker"},
+	"spear_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Spear Picker"},
+	"pogo_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Pogo-Picker"},
+	"net_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Net Picker"},
+	"vacuum_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Vacuum Picker"},
+	"robot_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Robot Picker"},
 }
 
 @onready var default_toy_data := {

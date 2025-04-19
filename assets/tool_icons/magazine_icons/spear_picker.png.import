@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx6lapgnw3mad"
-path="res://.godot/imported/basic_picker.png-811fa60f4e5ce068eeec10069252a41e.ctex"
+uid="uid://c386g6hjygjhh"
+path="res://.godot/imported/spear_picker.png-277cf17f6c098984d090cb18a33b05d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tool_icons/magazine_icons/basic_picker.png"
-dest_files=["res://.godot/imported/basic_picker.png-811fa60f4e5ce068eeec10069252a41e.ctex"]
+source_file="res://assets/tool_icons/magazine_icons/spear_picker.png"
+dest_files=["res://.godot/imported/spear_picker.png-277cf17f6c098984d090cb18a33b05d1.ctex"]
 
 [params]
 
