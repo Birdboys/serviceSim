@@ -15,6 +15,8 @@ trashBox = NodePath("trashBox")
 trashMesh = NodePath("trashMesh")
 
 [node name="interactBox" parent="." node_paths=PackedStringArray("interactCol") instance=ExtResource("2_x38g0")]
+object_prompt = "PLASTIC BOTTLE
+CAP"
 interactCol = NodePath("interactBox")
 
 [node name="interactBox" type="CollisionShape3D" parent="interactBox"]

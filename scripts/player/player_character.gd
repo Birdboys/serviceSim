@@ -92,7 +92,7 @@ func handleCamera(event):
 func handlePrompt():
 	var interact_col = interactRay.get_collider()
 	var interact_text = ""
-	if interact_col: interact_text = interact_col.getPrompt()
+	if interact_col and interact_col is InteractBox: interact_text = interact_col.getPrompt()
 	UI.updatePrompt(interact_text)
 	
 func handleInteract():

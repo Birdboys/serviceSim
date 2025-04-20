@@ -15,6 +15,7 @@ trashBox = NodePath("trashBox")
 trashMesh = NodePath("trashMesh")
 
 [node name="interactBox" parent="." instance=ExtResource("2_e318d")]
+object_prompt = "PAPER BOX"
 
 [node name="interactCol" type="CollisionShape3D" parent="interactBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478799, 0)
