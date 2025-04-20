@@ -120,3 +120,4 @@ func reset3DPlayer(index):
 func loadAudioSettings():
 	AudioServer.set_bus_volume_linear(1, GameData.settings_data['sound'])
 	AudioServer.set_bus_volume_linear(2, GameData.settings_data['music'])
+	bgMusicPlayer.play()

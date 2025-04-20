@@ -5,14 +5,19 @@ extends Node3D
 @onready var settingsVbox := $titleUI/titleMargin/settingsVbox
 @onready var buttonVbox := $titleUI/titleMargin/buttonVbox
 @onready var creditsVbox := $titleUI/titleMargin/creditsVbox
+@onready var howVbox := $titleUI/titleMargin/howVbox
 
 @onready var playButton := $titleUI/titleMargin/buttonVbox/playButton
+@onready var howButton := $titleUI/titleMargin/buttonVbox/howButton
+@onready var howBack := $titleUI/titleMargin/howVbox/quitButton
 @onready var settingsButton := $titleUI/titleMargin/buttonVbox/settingsButton
 @onready var settingsBack := $titleUI/titleMargin/settingsVbox/backButton
 @onready var creditsButton := $titleUI/titleMargin/buttonVbox/creditsButton
 @onready var creditsBack := $titleUI/titleMargin/creditsVbox/backButton
 @onready var quitButton := $titleUI/titleMargin/buttonVbox/quitButton
 @onready var resetButton := $titleUI/titleMargin/resetButton
+
+
 
 @onready var musicSlider := $titleUI/titleMargin/settingsVbox/mainVbox/musicSlider/musicSlider
 @onready var soundSlider := $titleUI/titleMargin/settingsVbox/mainVbox/soundSlider/soundSlider
@@ -22,6 +27,8 @@ var current_menu := "main"
 func _ready() -> void:
 	
 	playButton.pressed.connect(toBed)
+	howButton.pressed.connect(loadMenu.bind("how"))
+	howBack.pressed.connect(loadMenu.bind("main"))
 	settingsButton.pressed.connect(loadMenu.bind("settings"))
 	settingsBack.pressed.connect(loadMenu.bind("main"))
 	creditsButton.pressed.connect(loadMenu.bind("credits"))
@@ -55,8 +62,12 @@ func loadMenu(m: String):
 	match m:
 		"main":
 			buttonVbox.visible = true
+			howVbox.visible = false
 			settingsVbox.visible = false
 			creditsVbox.visible = false
+		"how":
+			howVbox.visible = true
+			buttonVbox.visible = false
 		"settings":
 			setSliders()
 			settingsVbox.visible = true

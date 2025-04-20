@@ -1,10 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://dv6op5652dni4"]
+[gd_scene load_steps=28 format=3 uid="uid://dv6op5652dni4"]
 
 [ext_resource type="Theme" uid="uid://djs6o2b5hx67f" path="res://assets/themes/game_ui.tres" id="1_fgkus"]
 [ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="2_dc4i4"]
 [ext_resource type="Script" uid="uid://pxqgq757nd1m" path="res://scripts/title_screen.gd" id="2_sa3yf"]
 [ext_resource type="PackedScene" uid="uid://cfxkdmxms47s8" path="res://scenes/tiles/house.tscn" id="3_e54dn"]
 [ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="4_3yumr"]
+[ext_resource type="Script" uid="uid://cfie4dfqslqft" path="res://scripts/ui/credits_links.gd" id="6_e54dn"]
+[ext_resource type="Texture2D" uid="uid://ihf752w5ge7l" path="res://assets/trash_icons/cardboard_small_0.png" id="6_tklts"]
+[ext_resource type="Texture2D" uid="uid://brudptmc303i6" path="res://assets/trash_icons/tall_can_1.png" id="7_u26n3"]
+[ext_resource type="Texture2D" uid="uid://cqbxmadxbid0r" path="res://assets/trash_icons/water_small_0.png" id="8_ib7db"]
+[ext_resource type="Texture2D" uid="uid://r62g873km48i" path="res://assets/trash_icons/burg_bottle_0.png" id="9_frs5l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s4lrb"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -127,7 +132,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [0.0, 48.0]
+"values": [0.0, 72.0]
 }
 
 [sub_resource type="Animation" id="Animation_dc4i4"]
@@ -262,7 +267,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0, -37.5)
 
 [node name="trashScatterer" parent="roadLTile" instance=ExtResource("4_3yumr")]
-valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
+valid_rects = Array[Rect2]([Rect2(-50, -50, 100, 100)])
 num_trash = 150
 miss_chances = 25
 trash_dist = {
@@ -300,7 +305,7 @@ theme_override_constants/margin_bottom = 32
 layout_mode = 2
 
 [node name="spacer" type="Control" parent="titleUI/titleMargin/titleVbox"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 mouse_filter = 2
 
@@ -322,11 +327,11 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "PLAY"
 
-[node name="settingsButton" type="Button" parent="titleUI/titleMargin/buttonVbox"]
+[node name="howButton" type="Button" parent="titleUI/titleMargin/buttonVbox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
-text = "SETTINGS"
+text = "HOW TO PLAY"
 
 [node name="creditsButton" type="Button" parent="titleUI/titleMargin/buttonVbox"]
 layout_mode = 2
@@ -334,8 +339,14 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "CREDITS"
 
+[node name="settingsButton" type="Button" parent="titleUI/titleMargin/buttonVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "SETTINGS"
+
 [node name="spacer" type="Control" parent="titleUI/titleMargin/buttonVbox"]
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 mouse_filter = 2
 
@@ -344,6 +355,217 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
+
+[node name="howVbox" type="VBoxContainer" parent="titleUI/titleMargin"]
+visible = false
+layout_mode = 2
+alignment = 2
+
+[node name="howLabel" type="Label" parent="titleUI/titleMargin/howVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "COLLECT TRASH TO EARN CREDITS
+PAPER: $2  -  PLASTIC: $5  -  METAL: $10  -  GLASS: $15
+
+SPEND CREDITS ON TOOLS AND TOYS
+TOOLS: USED TO COLLECT TRASH  -  TOYS: GIVE SPECIAL BONUSES
+
+EARN 1000 CREDITS AND PURCHASE ACTION-THEM,
+YOUR FAVORITE ACTION FIGURE"
+horizontal_alignment = 1
+
+[node name="leftTrash" type="VBoxContainer" parent="titleUI/titleMargin/howVbox/howLabel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="leftTrash" type="TextureRect" parent="titleUI/titleMargin/howVbox/howLabel/leftTrash"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_tklts")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="leftTrash2" type="TextureRect" parent="titleUI/titleMargin/howVbox/howLabel/leftTrash"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_u26n3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="rightTrash" type="VBoxContainer" parent="titleUI/titleMargin/howVbox/howLabel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="rightTrash" type="TextureRect" parent="titleUI/titleMargin/howVbox/howLabel/rightTrash"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("8_ib7db")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="rightTrash2" type="TextureRect" parent="titleUI/titleMargin/howVbox/howLabel/rightTrash"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_frs5l")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="spacer" type="Control" parent="titleUI/titleMargin/howVbox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="quitButton" type="Button" parent="titleUI/titleMargin/howVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+
+[node name="creditsVbox" type="VBoxContainer" parent="titleUI/titleMargin"]
+visible = false
+layout_mode = 2
+alignment = 2
+script = ExtResource("6_e54dn")
+
+[node name="spacer" type="Control" parent="titleUI/titleMargin/creditsVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="scrollMargin" type="MarginContainer" parent="titleUI/titleMargin/creditsVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 196
+theme_override_constants/margin_right = 196
+
+[node name="creditsScroll" type="ScrollContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e54dn")
+
+[node name="scrollVbox" type="VBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="meVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="colbyLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/meVbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 48
+text = "GAME DESIGN, 
+PROGRAMMING, 
+MODELING, 
+AUDIO & UI: "
+
+[node name="colbyRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/meVbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[url=\"https://birdboys.itch.io/\"]Colby Bird[/url]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+
+[node name="musicVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="musicLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/musicVbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 48
+text = "MUSIC:"
+
+[node name="musicRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/musicVbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[url=\"https://drsanic.itch.io/\"]Kyro[/url]
+[url=\"https://www.youtube.com/@wyzegye\"]WyzeGye[/url]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+
+[node name="paletteVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="paletteLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/paletteVbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 48
+text = "COLOR PALETTE: "
+
+[node name="paletteRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/paletteVbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[url=\"https://lospec.com/palette-list/resurrect-64\"]Resurrect 64[/url]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+
+[node name="fontVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="fontsLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/fontVbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 48
+text = "FONTS: "
+
+[node name="fontsRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/fontVbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[url=\"https://fonts.google.com/specimen/Chewy\"]Chewy[/url]
+[url=\"https://fonts.google.com/specimen/Permanent+Marker\"]Permanent Marker[/url]
+[url=\"https://fonts.google.com/specimen/Rum+Raisin\"]Rum Raisin[/url]
+[url=\"https://fonts.google.com/specimen/Tektur\"]Tektur[/url]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+
+[node name="spacer2" type="Control" parent="titleUI/titleMargin/creditsVbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="backButton" type="Button" parent="titleUI/titleMargin/creditsVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "BACK"
 
 [node name="settingsVbox" type="VBoxContainer" parent="titleUI/titleMargin"]
 visible = false
@@ -394,106 +616,6 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="backButton" type="Button" parent="titleUI/titleMargin/settingsVbox"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "BACK"
-
-[node name="creditsVbox" type="VBoxContainer" parent="titleUI/titleMargin"]
-visible = false
-layout_mode = 2
-alignment = 2
-
-[node name="spacer" type="Control" parent="titleUI/titleMargin/creditsVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="scrollMargin" type="MarginContainer" parent="titleUI/titleMargin/creditsVbox"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 128
-theme_override_constants/margin_right = 128
-
-[node name="creditsScroll" type="ScrollContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_e54dn")
-
-[node name="scrollVbox" type="VBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="meVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
-layout_mode = 2
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="colbyLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/meVbox"]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "DESIGN, PROGRAMMING, 
-MODELS, UI: "
-vertical_alignment = 1
-
-[node name="colbyRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/meVbox"]
-layout_mode = 2
-size_flags_horizontal = 10
-theme_override_font_sizes/normal_font_size = 48
-text = "Colby Bird"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="paletteVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
-layout_mode = 2
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="paletteLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/paletteVbox"]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "COLOR PALETTE: "
-vertical_alignment = 1
-
-[node name="paletteRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/paletteVbox"]
-layout_mode = 2
-size_flags_horizontal = 10
-theme_override_font_sizes/normal_font_size = 48
-text = "Resurrect 64"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="fontVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
-layout_mode = 2
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="fontsLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/fontVbox"]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "FONTS: "
-vertical_alignment = 1
-
-[node name="fontsRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/fontVbox"]
-layout_mode = 2
-size_flags_horizontal = 10
-theme_override_font_sizes/normal_font_size = 48
-text = "Chewy, Lacquer, Rum Raisin"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
-[node name="spacer2" type="Control" parent="titleUI/titleMargin/creditsVbox"]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="backButton" type="Button" parent="titleUI/titleMargin/creditsVbox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
