@@ -163,6 +163,13 @@ func collectTrash(t: Trash):
 	
 	trash_collected += 1
 	value_collected += TrashData.getTrashPrice(t.type, t.sub_type)
+	GameData.trash_data["total"] += 1
+	match t.type:
+		TrashData.trash_types.PAPER: GameData.trash_data['paper'] += 1
+		TrashData.trash_types.PLASTIC: GameData.trash_data['plastic'] += 1
+		TrashData.trash_types.METAL: GameData.trash_data['metal'] += 1
+		TrashData.trash_types.GLASS: GameData.trash_data['glass'] += 1
+		
 	handleCombo()
 	UI.addTrashToBag(t.trash_name, trash_collected)
 	UI.updateBagLabel(trash_collected, max_trash)

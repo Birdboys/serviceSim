@@ -3,9 +3,10 @@ extends Node3D
 @onready var toolSpot := $toolSpot
 @onready var toolCam := $toolCam
 
-var tool_path := "res://assets/tool_meshes/"
+var tool_path := "res://assets/toy_meshes/"
 var og_cam_pos := Vector3(0.0, 1.75, 3.5)
 
+#tool spot rotation Vector3(-15, 30, 0)
 func doPhotography():
 	var tool_dir = DirAccess.open(tool_path)
 	for t in tool_dir.get_files():

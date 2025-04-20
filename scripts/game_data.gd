@@ -17,7 +17,7 @@ const tool_mag_data := {
 }
 
 var total_trash_collected := 0
-var total_money := 20000
+var total_money := 32
 
 @onready var current_gear := ["robot_picker", "spear_picker"]
 @onready var bag_dim :=  Vector2(8,8)
@@ -37,15 +37,15 @@ var total_money := 20000
 }
 
 @onready var default_toy_data := {
-	"floaties": {"owned":false, "price":10, "name":"Floaties"},
-	"walkman": {"owned":true, "price":10, "name":"Walkman"},
-	"running_shoes": {"owned":false, "price":10, "name":"Running Shoes"},
-	"roller_skates": {"owned":true, "price":10, "name":"Roller Skates"},
-	"cape": {"owned":false, "price":10, "name":"Super Cape"},
-	"action_figure": {"owned":true, "price":10, "name":"Action Figure"},
-	"watch": {"owned":true, "price":10, "name":"Watch"},
-	"utility_belt": {"owned":true, "price":10, "name":"Utility Belt"},
-	"magician_bag": {"owned":true, "price":10, "name":"Magician's Bag"},
+	"floaties": {"owned":false, "price":100, "name":"Floaties"},
+	"walkman": {"owned":true, "price":100, "name":"Walkman"},
+	"running_shoes": {"owned":false, "price":100, "name":"Running Shoes"},
+	"roller_skates": {"owned":true, "price":100, "name":"Roller Skates"},
+	"cape": {"owned":false, "price":100, "name":"Super Cape"},
+	"action_figure": {"owned":true, "price":100, "name":"Action Figure"},
+	"watch": {"owned":true, "price":100, "name":"Watch"},
+	"utility_belt": {"owned":true, "price":100, "name":"Utility Belt"},
+	"magician_bag": {"owned":true, "price":100, "name":"Magician's Bag"},
 }
 
 @onready var default_settings_data := {
@@ -55,6 +55,14 @@ var total_money := 20000
 	"fov": 65.0
 }
 
+@onready var default_trash_data := {
+	"paper": 0,
+	"plastic": 0,
+	"metal": 0,
+	"glass": 0,
+	"total": 0,
+}
+
 @onready var house_meshes : Dictionary
 @onready var house_textures : Dictionary
 @onready var car_meshes := [preload("res://scenes/houses/car_pb.tscn"), preload("res://scenes/houses/car_truck.tscn"), preload("res://scenes/houses/car_minivan.tscn"), preload("res://scenes/houses/car_muscle.tscn")]
@@ -62,6 +70,7 @@ var total_money := 20000
 @onready var tool_data : Dictionary
 @onready var toy_data : Dictionary
 @onready var settings_data : Dictionary
+@onready var trash_data : Dictionary
 
 @onready var tree := preload("res://scenes/houses/tree.tscn")
 
@@ -80,6 +89,7 @@ func loadDefaults():
 	tool_data = default_tool_data.duplicate(true)
 	toy_data = default_toy_data.duplicate(true)
 	settings_data = default_settings_data.duplicate(true)
+	trash_data = default_trash_data.duplicate(true)
 	
 func loadHouseData():
 	for x in range(1,7):
@@ -104,7 +114,9 @@ func loadSaveData():
 	bag_dim.x = parsed_save_data['bag_dim_x']
 	bag_dim.y = parsed_save_data['bag_dim_y']
 	tool_data = parsed_save_data['tool_data']
+	toy_data = parsed_save_data['toy_data']
 	settings_data = parsed_save_data['settings_data']
+	trash_data = parsed_save_data['trash_data']
 
 	
 func saveGame():
@@ -115,7 +127,9 @@ func saveGame():
 	new_save_data['bag_dim_x'] = bag_dim.x
 	new_save_data['bag_dim_y'] = bag_dim.y
 	new_save_data['tool_data'] = tool_data
+	new_save_data['toy_data'] = toy_data
 	new_save_data['settings_data'] = settings_data
+	new_save_data['trash_data'] = trash_data
 	var json_save_data = JSON.stringify(new_save_data)
 	
 	var save_file = FileAccess.open(save_data_path, FileAccess.WRITE)

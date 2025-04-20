@@ -14,14 +14,24 @@ extends Node
 @onready var playlist_queue := {
 	0: {
 		"track": preload("res://assets/music/untitled_kyro.wav"),
-		"title": "Untitled Kyro",
+		"title": "dots",
 		"artist": "Kyro",
 	},
 	1: {
 		"track": preload("res://assets/music/thetallgrass.wav"),
 		"title": "the tall grass",
 		"artist": "Kyro",
-	}
+	},
+	2: {
+		"track": preload("res://assets/music/in_search_of_rocks.mp3"),
+		"title": "In Search Of Rocks",
+		"artist": "WyzeGye",
+	},
+	3: {
+		"track": preload("res://assets/music/peaks_of_the_horizon.mp3"),
+		"title": "Peaks of the Horizon",
+		"artist": "WyzeGye",
+	},
 }
 
 var current_song := 0
@@ -32,13 +42,13 @@ func _ready():
 	populateQueues()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("music_skip"):
+	if event.is_action_pressed("music_skip") and GameData.toy_data['walkman']['owned']:
 		current_song = wrapi(current_song+1, 0, len(playlist_queue))
 		changeMusicTrack(current_song)
-	elif event.is_action_pressed("music_rewind"):
+	elif event.is_action_pressed("music_rewind") and GameData.toy_data['walkman']['owned']:
 		current_song = wrapi(current_song-1, 0, len(playlist_queue))
 		changeMusicTrack(current_song)
-	elif event.is_action_pressed("music_pause"):
+	elif event.is_action_pressed("music_pause") and GameData.toy_data['walkman']['owned']:
 		pauseMusicTrack()
 		
 func populateQueues():

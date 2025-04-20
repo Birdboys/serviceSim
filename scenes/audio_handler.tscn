@@ -4,6 +4,21 @@
 [ext_resource type="AudioStream" uid="uid://c814gn8ekd05x" path="res://assets/music/untitled_kyro.wav" id="2_m0grf"]
 [ext_resource type="Theme" uid="uid://djs6o2b5hx67f" path="res://assets/themes/game_ui.tres" id="3_7fwcy"]
 
+[sub_resource type="Animation" id="Animation_11bbw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("musicMargin/musicLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_7fwcy"]
 resource_name = "new_track"
 step = 0.5
@@ -18,21 +33,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, 2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_11bbw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("musicMargin/musicLabel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_24e85"]
@@ -55,6 +55,7 @@ autoplay = true
 bus = &"musicBus"
 
 [node name="musicUI" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="musicMargin" type="MarginContainer" parent="musicUI"]
 anchors_preset = 15
@@ -64,6 +65,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme = ExtResource("3_7fwcy")
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
