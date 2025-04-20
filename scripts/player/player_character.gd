@@ -101,7 +101,7 @@ func handleMovement(delta):
 	if direction:
 		velocity.x = direction.x * speed * stateMachine.current_state.speed_mult
 		velocity.z = direction.z * speed * stateMachine.current_state.speed_mult
-		if has_skates and Input.is_action_pressed("sprint"):
+		if has_skates and Input.is_action_pressed("skate"):
 			velocity.x *= skates_mult
 			velocity.z *= skates_mult
 		elif has_shoes and Input.is_action_pressed("sprint"):

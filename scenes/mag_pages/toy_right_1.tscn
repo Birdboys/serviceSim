@@ -1,24 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://w6742hgcnk3n"]
+[gd_scene load_steps=5 format=3 uid="uid://buhmq8r4ron8k"]
 
-[ext_resource type="Theme" uid="uid://cxdkmx1yqhiuv" path="res://assets/themes/toy_mag.tres" id="1_0vh6n"]
-[ext_resource type="Texture2D" uid="uid://bi3bstvpp82wi" path="res://assets/toy_icons/running_shoes.png" id="3_o5h26"]
-[ext_resource type="Texture2D" uid="uid://bevnrstwl2imp" path="res://assets/toy_icons/floaties.png" id="4_2m35e"]
+[ext_resource type="Theme" uid="uid://cxdkmx1yqhiuv" path="res://assets/themes/toy_mag.tres" id="1_vx53w"]
+[ext_resource type="Script" uid="uid://c17v8isknm8re" path="res://scripts/toy_mag_page.gd" id="2_q6ovx"]
+[ext_resource type="Texture2D" uid="uid://bi3bstvpp82wi" path="res://assets/toy_icons/running_shoes.png" id="3_4nyjn"]
+[ext_resource type="Texture2D" uid="uid://bevnrstwl2imp" path="res://assets/toy_icons/floaties.png" id="4_rravi"]
 
-[node name="leftPage1" type="VBoxContainer"]
+[node name="rightPage1" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_0vh6n")
+theme = ExtResource("1_vx53w")
 theme_override_constants/separation = 0
+script = ExtResource("2_q6ovx")
+left = false
 
 [node name="topSeparator" type="HSeparator" parent="."]
 layout_mode = 2
 theme_type_variation = &"topSep"
 
 [node name="toyHBox" type="HBoxContainer" parent="."]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
@@ -47,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_o5h26")
+texture = ExtResource("3_4nyjn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -119,7 +121,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_2m35e")
+texture = ExtResource("4_rravi")
 expand_mode = 1
 stretch_mode = 5
 
@@ -129,15 +131,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_type_variation = &"priceLabel"
 text = "$48"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 96
-text = "STUFF ABOUT THE TOYS I HAVEN'T WRITTEN YET"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="topSeparator2" type="HSeparator" parent="."]
 layout_mode = 2

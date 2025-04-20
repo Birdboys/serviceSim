@@ -4,6 +4,7 @@ extends Node3D
 @onready var playerCam := $playerCam
 @onready var tools := $toolBenchMesh/tools
 @onready var toys := $toolBenchMesh/toys
+@onready var shelfToys := $deskMesh/shelfMesh/shelfToys
 @onready var cams := {
 	"bed": $bedCam,	
 	"table": $tableCam,
@@ -53,6 +54,7 @@ func _ready() -> void:
 	getOwnedToys()
 	UI.menus['door'].ready_to_leave.connect(toggleReady)
 	UI.menus['tool_mag'].tool_purchased.connect(getOwnedTools)
+	UI.menus['toy_mag'].toy_purchased.connect(getOwnedToys)
 	doorArea.mouse_entered.connect(toggleDoor.bind(true))
 	doorArea.mouse_exited.connect(toggleDoor.bind(false))
 	doorArea.input_event.connect(tryToLeave)
@@ -179,3 +181,4 @@ func getOwnedTools():
 func getOwnedToys():
 	for t in GameData.toy_data:
 		if toys.find_child(t): toys.find_child(t).visible = GameData.toy_data[t]['owned']
+		elif shelfToys.find_child(t): shelfToys.find_child(t).visible = GameData.toy_data[t]['owned']

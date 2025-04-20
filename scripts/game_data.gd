@@ -16,8 +16,26 @@ const tool_mag_data := {
 	"right3B": "robot_picker",
 }
 
+const toy_mag_data := {
+	"left1A": null,
+	"left1B": null,
+	"right1A": "running_shoes",
+	"right1B": "floaties",
+	"left2A": "cape",
+	"left2B": "utility_belt",
+	"right2A": "watch",
+	"right2B": "roller_skates",
+	"left3A": "walkman",
+	"left3B": "infini_bag",
+	"right3A": "action_figure",
+	"right3B": "action_figure",
+	"left4A": "action_figure_a",
+	"left4B": "action_figure_b",
+	"right4A": "action_figure_g",
+	"right4B": "action_figure_o",
+}
 var total_trash_collected := 0
-var total_money := 32
+var total_money := 1000
 
 @onready var current_gear := ["robot_picker", "spear_picker"]
 @onready var bag_dim :=  Vector2(8,8)
@@ -38,14 +56,18 @@ var total_money := 32
 
 @onready var default_toy_data := {
 	"floaties": {"owned":false, "price":100, "name":"Floaties"},
-	"walkman": {"owned":true, "price":100, "name":"Walkman"},
+	"walkman": {"owned":false, "price":100, "name":"Walkman"},
 	"running_shoes": {"owned":false, "price":100, "name":"Running Shoes"},
-	"roller_skates": {"owned":true, "price":100, "name":"Roller Skates"},
+	"roller_skates": {"owned":false, "price":100, "name":"Roller Skates"},
 	"cape": {"owned":false, "price":100, "name":"Super Cape"},
-	"action_figure": {"owned":true, "price":100, "name":"Action Figure"},
-	"watch": {"owned":true, "price":100, "name":"Watch"},
-	"utility_belt": {"owned":true, "price":100, "name":"Utility Belt"},
-	"magician_bag": {"owned":true, "price":100, "name":"Magician's Bag"},
+	"watch": {"owned":false, "price":100, "name":"Watch"},
+	"utility_belt": {"owned":false, "price":100, "name":"Utility Belt"},
+	"infini_bag": {"owned":false, "price":100, "name":"Semi-Infini-Bag"},
+	"action_figure": {"owned":false, "price":100, "name":"Action Figure"},
+	"action_figure_a": {"owned":false, "price":100, "name":"Action Figure ALPHA"},
+	"action_figure_b": {"owned":false, "price":100, "name":"Action Figure BETA"},
+	"action_figure_g": {"owned":false, "price":100, "name":"Action Figure GAMMA"},
+	"action_figure_o": {"owned":false, "price":100, "name":"Action Figure OMEGA"},
 }
 
 @onready var default_settings_data := {

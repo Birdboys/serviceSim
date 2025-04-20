@@ -1,4 +1,4 @@
-[gd_scene load_steps=251 format=4 uid="uid://dp6pjn8bcgigu"]
+[gd_scene load_steps=252 format=4 uid="uid://dp6pjn8bcgigu"]
 
 [ext_resource type="Script" uid="uid://bmkdeiv33ldnb" path="res://scripts/bed_menu.gd" id="1_mswj1"]
 [ext_resource type="ArrayMesh" uid="uid://cmcnbsmd2mcmq" path="res://assets/trash_meshes/carton_small.tres" id="2_atm4g"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://boofrlmcepgaj" path="res://assets/temp/cape_cape.png" id="21_rx4uj"]
 [ext_resource type="Theme" uid="uid://cxdkmx1yqhiuv" path="res://assets/themes/toy_mag.tres" id="22_l7yoa"]
 [ext_resource type="Texture2D" uid="uid://cbcs6kppqexgj" path="res://assets/textures/toys/walkman.png" id="22_wtgtk"]
+[ext_resource type="Texture2D" uid="uid://bxbfug0kmrlx2" path="res://assets/textures/toy_mag_bg.png" id="39_8dcbq"]
 [ext_resource type="Texture2D" uid="uid://cf477chf54nng" path="res://assets/toy_icons/action_figure.png" id="41_4pxh4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j37jo"]
@@ -2230,6 +2231,23 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../UILayer/UI/uiMargin/toyMagMenu")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, 0],
+"method": &"updatePage"
+}, {
+"args": [0, 0],
+"method": &"updatePage"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_7gbya"]
 resource_name = "reset_middle"
@@ -2320,6 +2338,40 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../UILayer/UI/uiMargin/toyMagMenu")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, 1],
+"method": &"updatePage"
+}, {
+"args": [0, 1],
+"method": &"updatePage"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../UILayer/UI/uiMargin/toyMagMenu")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [2, -1],
+"method": &"updateMiddle"
+}, {
+"args": [0, 0],
+"method": &"updateMiddle"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_6mv7e"]
 resource_name = "turn_page_right"
@@ -2381,6 +2433,40 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../UILayer/UI/uiMargin/toyMagMenu")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0, 0],
+"method": &"updatePage"
+}, {
+"args": [2, 0],
+"method": &"updatePage"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../UILayer/UI/uiMargin/toyMagMenu")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0, 1],
+"method": &"updateMiddle"
+}, {
+"args": [2, 0],
+"method": &"updateMiddle"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_futsp"]
@@ -2590,8 +2676,10 @@ mesh = SubResource("BoxMesh_21ha7")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5.9, -2.2)
 mesh = SubResource("BoxMesh_aavuy")
 
-[node name="actionFigure1" type="MeshInstance3D" parent="deskMesh/shelfMesh"]
-transform = Transform3D(-0.5, 0.208616, 0.840523, 5.00983e-09, 0.970553, -0.240889, -0.866025, -0.120444, -0.485276, 5.72205e-06, 2.35719, 4.3)
+[node name="shelfToys" type="Node3D" parent="deskMesh/shelfMesh"]
+
+[node name="action_figure" type="MeshInstance3D" parent="deskMesh/shelfMesh/shelfToys"]
+transform = Transform3D(-0.5, 0.208616, 0.840523, 5.00983e-09, 0.970553, -0.240889, -0.866025, -0.120444, -0.485276, 6.67572e-06, 2.35719, 4.3)
 mesh = SubResource("ArrayMesh_nqcs6")
 skeleton = NodePath("")
 
@@ -3391,6 +3479,44 @@ theme_override_font_sizes/font_size = 48
 toggle_mode = true
 text = "C"
 
+[node name="sprintCont" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="sprintLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/sprintCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 48
+text = "SPRINT"
+
+[node name="sprintButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/sprintCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"controlButton"
+theme_override_font_sizes/font_size = 48
+toggle_mode = true
+text = "C"
+
+[node name="skateCont" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="skateLabel" type="Label" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/skateCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 48
+text = "SKATE"
+
+[node name="skateButton" type="Button" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox/skateCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"controlButton"
+theme_override_font_sizes/font_size = 48
+toggle_mode = true
+text = "C"
+
 [node name="musicFCont" type="HBoxContainer" parent="UILayer/UI/uiMargin/computerMenu/controlsVbox/controlScroll/scrollVbox"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -3806,9 +3932,9 @@ offset_right = 450.0
 offset_bottom = 310.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("18_6mv7e")
+theme = ExtResource("22_l7yoa")
 
-[node name="leftPageButton" type="VBoxContainer" parent="UILayer/UI/uiMargin/toyMagMenu/magUI"]
+[node name="leftPageButton" type="HBoxContainer" parent="UILayer/UI/uiMargin/toyMagMenu/magUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
@@ -3820,6 +3946,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 
 [node name="toyALeftButton" type="Button" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
@@ -3830,30 +3957,11 @@ theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 
 [node name="toyBLeftButton" type="Button" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="toySep2" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
-layout_mode = 2
-theme_type_variation = &"listingSep"
-theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
-
-[node name="gearArea" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="toySep3" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
-visible = false
-layout_mode = 2
-theme_type_variation = &"listingSep"
-theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
-
-[node name="botControl" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/leftPageButton"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-
-[node name="rightPageButton" type="VBoxContainer" parent="UILayer/UI/uiMargin/toyMagMenu/magUI"]
+[node name="rightPageButton" type="HBoxContainer" parent="UILayer/UI/uiMargin/toyMagMenu/magUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
@@ -3865,6 +3973,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 
 [node name="toyARightButton" type="Button" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
@@ -3875,6 +3984,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
 
 [node name="toyBRightButton" type="Button" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
@@ -3882,21 +3992,6 @@ size_flags_stretch_ratio = 1.5
 layout_mode = 2
 theme_type_variation = &"listingSep"
 theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
-
-[node name="gearArea" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="toySep3" type="HSeparator" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
-visible = false
-layout_mode = 2
-theme_type_variation = &"listingSep"
-theme_override_styles/separator = SubResource("StyleBoxLine_6mv7e")
-
-[node name="botControl" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/magUI/rightPageButton"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
 
 [node name="toyMagAnim" type="AnimationPlayer" parent="UILayer/UI/uiMargin/toyMagMenu"]
 root_node = NodePath("../../../../../tableMesh")
@@ -3928,6 +4023,15 @@ size_flags_vertical = 3
 theme = ExtResource("22_l7yoa")
 theme_type_variation = &"pageBG"
 
+[node name="pageTexture" type="TextureRect" parent="UILayer/UI/uiMargin/toyMagMenu/leftPageViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("39_8dcbq")
+stretch_mode = 1
+
 [node name="leftPageSlot" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/leftPageViewport"]
 layout_mode = 3
 anchors_preset = 15
@@ -3953,6 +4057,15 @@ size_flags_vertical = 3
 theme = ExtResource("22_l7yoa")
 theme_type_variation = &"pageBG"
 
+[node name="pageTexture" type="TextureRect" parent="UILayer/UI/uiMargin/toyMagMenu/rightPageViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("39_8dcbq")
+stretch_mode = 1
+
 [node name="rightPageSlot" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/rightPageViewport"]
 layout_mode = 3
 anchors_preset = 15
@@ -3977,6 +4090,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("22_l7yoa")
 theme_type_variation = &"pageBG"
+
+[node name="pageTexture" type="TextureRect" parent="UILayer/UI/uiMargin/toyMagMenu/middlePageViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("39_8dcbq")
+stretch_mode = 1
 
 [node name="middlePageSlot" type="Control" parent="UILayer/UI/uiMargin/toyMagMenu/middlePageViewport"]
 layout_mode = 3
@@ -4239,7 +4361,7 @@ show_percentage = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.196078, 0.2, 0.32549, 1)
 theme_override_font_sizes/font_size = 24
-text = "ACTION FIGURE TRACKER"
+text = "ACTION FIGURE FUNDS"
 horizontal_alignment = 1
 
 [node name="spacer" type="Control" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox"]
@@ -4255,6 +4377,7 @@ theme_override_font_sizes/font_size = 32
 text = "ESC TO EXIT"
 
 [node name="transitionLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="endBG" type="ColorRect" parent="transitionLayer"]
 anchors_preset = 15

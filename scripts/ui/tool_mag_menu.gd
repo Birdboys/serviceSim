@@ -83,6 +83,7 @@ func turnPage(left: bool):
 	if not left: 
 		if current_page == 3: 
 			can_turn_page = true
+			toggleUI(true)
 			return
 		if current_page == 0: magAnim.play("open_tool_mag")
 		else: magAnim.play("turn_page_left")

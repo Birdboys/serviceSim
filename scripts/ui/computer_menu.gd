@@ -18,6 +18,8 @@ extends Control
 	"jump": $controlsVbox/controlScroll/scrollVbox/jumpCont/jumpButton,
 	"bag": $controlsVbox/controlScroll/scrollVbox/bagCont/bagButton,
 	"call": $controlsVbox/controlScroll/scrollVbox/callCont/callButton,
+	"sprint": $controlsVbox/controlScroll/scrollVbox/sprintCont/sprintButton,
+	"skate": $controlsVbox/controlScroll/scrollVbox/skateCont/skateButton,
 	"music_skip": $controlsVbox/controlScroll/scrollVbox/musicFCont/musicFButton,
 	"music_pause": $controlsVbox/controlScroll/scrollVbox/musicPCont/musicPButton,
 	"music_rewind": $controlsVbox/controlScroll/scrollVbox/musicRCont/musicRButton,

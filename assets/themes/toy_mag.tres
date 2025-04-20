@@ -1,20 +1,32 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://cxdkmx1yqhiuv"]
 
 [ext_resource type="FontFile" uid="uid://bc247ko21x087" path="res://assets/fonts/Rum_Raisin/RumRaisin-Regular.ttf" id="1_w20m8"]
-[ext_resource type="FontFile" uid="uid://fslvvjj84y6a" path="res://assets/fonts/Tektur/Tektur-Bold.ttf" id="2_1em5m"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_8mtpr"]
-color = Color(0.192157, 0.211765, 0.219608, 1)
-grow_begin = -16.0
-grow_end = -16.0
-thickness = 16
+color = Color(0.984314, 1, 0.52549, 1)
+grow_begin = -32.0
+grow_end = -32.0
+thickness = 8
+vertical = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mtpr"]
 bg_color = Color(0.658824, 0.517647, 0.952941, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_scqus"]
-color = Color(0.192157, 0.211765, 0.219608, 1)
-thickness = 64
+color = Color(0.984314, 1, 0.52549, 1)
+thickness = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w20m8"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.984314, 1, 0.52549, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.564706, 0.368627, 0.662745, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_qdajg"]
 color = Color(0.192157, 0.211765, 0.219608, 1)
@@ -30,21 +42,22 @@ listingLabel/colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
 listingLabel/constants/line_spacing = -4
 listingLabel/font_sizes/font_size = 20
 listingSep/base_type = &"HSeparator"
-listingSep/constants/separation = 16
+listingSep/constants/separation = 8
 listingSep/styles/separator = SubResource("StyleBoxLine_8mtpr")
 nameLabel/base_type = &"Label"
 nameLabel/colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
 nameLabel/font_sizes/font_size = 36
-nameLabel/fonts/font = ExtResource("2_1em5m")
+nameLabel/fonts/font = ExtResource("1_w20m8")
 pageBG/base_type = &"Panel"
 pageBG/styles/panel = SubResource("StyleBoxFlat_8mtpr")
 priceLabel/base_type = &"Label"
 priceLabel/colors/font_color = Color(0.192157, 0.211765, 0.219608, 1)
 priceLabel/font_sizes/font_size = 48
-priceLabel/fonts/font = ExtResource("2_1em5m")
 topSep/base_type = &"HSeparator"
-topSep/constants/separation = 64
+topSep/constants/separation = 16
 topSep/styles/separator = SubResource("StyleBoxLine_scqus")
+toyBG/base_type = &"Panel"
+toyBG/styles/panel = SubResource("StyleBoxFlat_w20m8")
 vertSep/base_type = &"VSeparator"
 vertSep/constants/separation = 4
 vertSep/styles/separator = SubResource("StyleBoxLine_qdajg")

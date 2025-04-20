@@ -1,24 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://w6742hgcnk3n"]
+[gd_scene load_steps=5 format=3 uid="uid://ce6jqsnjwda6i"]
 
-[ext_resource type="Theme" uid="uid://cxdkmx1yqhiuv" path="res://assets/themes/toy_mag.tres" id="1_0vh6n"]
-[ext_resource type="Texture2D" uid="uid://bi3bstvpp82wi" path="res://assets/toy_icons/running_shoes.png" id="3_o5h26"]
-[ext_resource type="Texture2D" uid="uid://bevnrstwl2imp" path="res://assets/toy_icons/floaties.png" id="4_2m35e"]
+[ext_resource type="Theme" uid="uid://cxdkmx1yqhiuv" path="res://assets/themes/toy_mag.tres" id="1_j4l7m"]
+[ext_resource type="Script" uid="uid://c17v8isknm8re" path="res://scripts/toy_mag_page.gd" id="2_13h1g"]
+[ext_resource type="Texture2D" uid="uid://cf477chf54nng" path="res://assets/toy_icons/action_figure.png" id="3_j4l7m"]
+[ext_resource type="Texture2D" uid="uid://cybrk2cj63ssn" path="res://assets/toy_icons/roller_skates.png" id="4_6jnsu"]
 
-[node name="leftPage1" type="VBoxContainer"]
+[node name="rightPage3" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_0vh6n")
+theme = ExtResource("1_j4l7m")
 theme_override_constants/separation = 0
+script = ExtResource("2_13h1g")
+left = false
+page = 3
 
 [node name="topSeparator" type="HSeparator" parent="."]
 layout_mode = 2
 theme_type_variation = &"topSep"
 
 [node name="toyHBox" type="HBoxContainer" parent="."]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
@@ -47,7 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_o5h26")
+texture = ExtResource("3_j4l7m")
 expand_mode = 1
 stretch_mode = 5
 
@@ -55,16 +58,18 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"nameLabel"
-text = "RUNNING SHOES"
+text = "ACTION-THEM"
+horizontal_alignment = 1
 
 [node name="toyDesc" type="Label" parent="toyHBox/toyAArea/toyVbox"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"listingLabel"
-text = "Be the fastest kid on the playground with your RUNNING SHOES. Fully equipped with the latest in running technology!
+text = "Poseable, playable, and super funnable. Its ACTION-THEM, the most popular action figure on the market! Can you collect all the ACTION-THEMS?
 
-[HOLD SHIFT TO SPRINT]
+[YOUR END GOAL]
 "
+horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="priceLabel" type="Label" parent="toyHBox/toyAArea"]
@@ -79,6 +84,7 @@ layout_mode = 2
 theme_type_variation = &"listingSep"
 
 [node name="toyBArea" type="MarginContainer" parent="toyHBox"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 24
@@ -93,16 +99,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 10
 theme_type_variation = &"nameLabel"
-text = "FLOATIES"
+text = "ROLLER SKATES"
 horizontal_alignment = 2
 
 [node name="toyDesc" type="Label" parent="toyHBox/toyBArea/toyVbox"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"listingLabel"
-text = "The safest way to swim is with FLOATIES. Keep your head above water and your spirits high!
+text = "A world on wheels can take you away! All the kids want to ROLLER SKATE.
 
-[ALLOWS LAKE TRAVERSAL]
+[HOLD CTRL TO SKATE]
 "
 horizontal_alignment = 2
 autowrap_mode = 3
@@ -119,7 +125,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_2m35e")
+texture = ExtResource("4_6jnsu")
 expand_mode = 1
 stretch_mode = 5
 
@@ -129,15 +135,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_type_variation = &"priceLabel"
 text = "$48"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 96
-text = "STUFF ABOUT THE TOYS I HAVEN'T WRITTEN YET"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="topSeparator2" type="HSeparator" parent="."]
 layout_mode = 2
