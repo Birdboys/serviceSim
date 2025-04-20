@@ -10,7 +10,7 @@ extends Node
 @onready var queue_length := 10
 @onready var queue_index := 0
 @onready var queue_3d_index := 0
-@onready var audio_num_vars = {}
+@onready var audio_num_vars = {"footstep_grass":1, "footstep_pavement":1, "footstep_rocks":1, "footstep_water":1, "footstep_metal":1,}
 @onready var playlist_queue := {
 	0: {
 		"track": preload("res://assets/music/untitled_kyro.wav"),

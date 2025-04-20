@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bot4fe2vntboq"]
+[gd_scene load_steps=14 format=3 uid="uid://bot4fe2vntboq"]
 
 [ext_resource type="Script" uid="uid://1onia4wojg7o" path="res://scripts/rock_bed.gd" id="1_yvngm"]
 [ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="2_yvngm"]
@@ -37,6 +37,13 @@ rings = 6
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gwkhs"]
 points = PackedVector3Array(-3.30403, -1.22208, -2.03158, 4.13887, 0.524346, 2.34472, 3.83498, 0.815803, 2.19168, -0.25749, -0.49806, 4.66207, -2.26086, 1.66118, 1.29068, 0.17982, 0.5228, -4.67713, 1.89623, -1.77906, -1.14626, 3.33091, 1.22998, -2.00655, -3.30403, -1.22208, 2.03158, -4.02377, 0.518464, -2.46308, 4.16017, -0.503916, -2.35689, 3.34796, -1.21318, 2.01693, -4.02377, 0.518465, 2.46308, -0.108156, 1.7923, -2.13707, 0.176495, 1.36802, 3.42785, 0.034003, -1.22231, -3.91929, -0.250731, -1.76691, 2.13434, 1.87901, 1.7856, 1.13567, -1.83755, -1.78803, -1.152, -4.0446, -0.497971, -2.47572, 0.17982, 0.5228, 4.67713, -3.28698, 1.23887, -2.0212, 4.16017, -0.503916, 2.35689, -4.0446, -0.497971, 2.47572, 4.13887, 0.524346, -2.34472, -0.25749, -0.49806, -4.66207, 0.034003, -1.22231, 3.91929, 0.034003, 1.10032, -4.06613, 3.34796, -1.21318, -2.01693, -3.28698, 1.23887, 2.0212, -0.534672, 1.9329, 0.426144, 1.89623, -1.77905, 1.14626)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yvngm"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvngm"]
+size = Vector3(30, 1, 30)
 
 [node name="rockBed" type="Node3D"]
 script = ExtResource("1_yvngm")
@@ -145,3 +152,30 @@ shape = SubResource("ConvexPolygonShape3D_gwkhs")
 valid_rects = Array[Rect2]([Rect2(-10, 10.5, 23, 2), Rect2(-12, 9, 2, -23)])
 num_trash = 10
 miss_chances = 5
+
+[node name="bushCols" type="StaticBody3D" parent="."]
+collision_layer = 512
+collision_mask = 0
+
+[node name="bush" type="CollisionShape3D" parent="bushCols"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.5, 4.72524, 4.5)
+shape = SubResource("CapsuleShape3D_yvngm")
+
+[node name="bush2" type="CollisionShape3D" parent="bushCols"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.5, 4.72524, -8.5)
+shape = SubResource("CapsuleShape3D_yvngm")
+
+[node name="bush3" type="CollisionShape3D" parent="bushCols"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -5, 4.72524, 12)
+shape = SubResource("CapsuleShape3D_yvngm")
+
+[node name="bush4" type="CollisionShape3D" parent="bushCols"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 8, 4.72524, 12)
+shape = SubResource("CapsuleShape3D_yvngm")
+
+[node name="rockCol" type="StaticBody3D" parent="."]
+collision_layer = 2048
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rockCol"]
+shape = SubResource("BoxShape3D_yvngm")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4ka2npfj5l6g"]
+[gd_scene load_steps=19 format=3 uid="uid://c4ka2npfj5l6g"]
 
 [ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="1_bse6s"]
 [ext_resource type="PackedScene" uid="uid://cfxkdmxms47s8" path="res://scenes/tiles/house.tscn" id="1_ndolb"]
@@ -7,6 +7,21 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhbjo"]
 size = Vector3(100, 2, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tiqto"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmdsh"]
+size = Vector3(40, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ynbmh"]
+size = Vector3(100, 1, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cnywq"]
+size = Vector3(20, 1, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a5o4c"]
+size = Vector3(20, 1, 60)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yohy"]
 albedo_color = Color(0.635294, 0.662745, 0.278431, 1)
@@ -47,6 +62,34 @@ collision_mask = 0
 [node name="groundCol" type="CollisionShape3D" parent="groundBody"]
 visible = false
 shape = SubResource("BoxShape3D_nhbjo")
+
+[node name="grassBody" type="StaticBody3D" parent="."]
+collision_layer = 512
+collision_mask = 0
+
+[node name="graass" type="CollisionShape3D" parent="grassBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 30)
+shape = SubResource("BoxShape3D_tiqto")
+
+[node name="graass2" type="CollisionShape3D" parent="grassBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+shape = SubResource("BoxShape3D_fmdsh")
+
+[node name="graass4" type="CollisionShape3D" parent="grassBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+shape = SubResource("BoxShape3D_ynbmh")
+
+[node name="roadBody" type="StaticBody3D" parent="."]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="road" type="CollisionShape3D" parent="roadBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+shape = SubResource("BoxShape3D_cnywq")
+
+[node name="road2" type="CollisionShape3D" parent="roadBody"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, 8.74228e-07)
+shape = SubResource("BoxShape3D_a5o4c")
 
 [node name="grassMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.5, 0)
@@ -105,7 +148,7 @@ transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 12.5, 0,
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 37.5, 0, -30)
 
 [node name="trashScatterer" parent="." instance=ExtResource("2_5urf6")]
-valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
+valid_rects = Array[Rect2]([Rect2(-50, -50, 100, 100)])
 num_trash = 50
 miss_chances = 25
 trash_dist = {

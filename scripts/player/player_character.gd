@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var neck := $playerNeck
 @onready var cam := $playerNeck/playerCam
+@onready var headAnim := $playerNeck/headAnim
 @onready var toolCam := $toolLayer/toolCont/toolViewport/toolCam
 @onready var toolHand := $playerNeck/playerCam/toolHand 
 @onready var interactRay := $playerNeck/playerCam/interactRay
@@ -9,6 +10,7 @@ extends CharacterBody3D
 @onready var UI := $playerUI
 @onready var comboTimer := $comboTimer
 @onready var callTimer := $callTimer
+@onready var footstepRay := $footstepRay
 
 var available_tools := []
 var current_tool_id := -1
@@ -40,7 +42,7 @@ func _ready() -> void:
 	has_shoes = GameData.toy_data['running_shoes']['owned']
 	has_skates = GameData.toy_data['roller_skates']['owned']
 	
-	if GameData.toy_data['magician_bag']['owned']: bag_dim.y *= 4
+	if GameData.toy_data['infini_bag']['owned']: bag_dim.y *= 4
 	stateMachine.initialize(self)
 	max_trash = bag_dim.x * bag_dim.y
 	comboTimer.timeout.connect(endCombo)
@@ -52,6 +54,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if stateMachine.current_state.movement_control: handleMovement(delta)
+	if not headAnim.is_playing(): cam.position = cam.position.move_toward(Vector3.ZERO, delta)
 	syncCameras()
 
 func _physics_process(delta: float) -> void:
@@ -213,4 +216,18 @@ func calledHome():
 	
 func pogoJump(v):
 	velocity.y = v
+
+func handleFootstep():
+	if not footstepRay.is_colliding(): return
+	var floor = footstepRay.get_collider()
+	if floor is not StaticBody3D: return
+	
+	if floor.get_collision_layer_value(10): #grass
+		AudioHandler.playSound("footstep_grass")
+	elif floor.get_collision_layer_value(11): #pavement
+		AudioHandler.playSound("footstep_pavement")
+	elif floor.get_collision_layer_value(12): #rocks
+		AudioHandler.playSound("footstep_rocks")
+	elif floor.get_collision_layer_value(13): #water
+		AudioHandler.playSound("footstep_water")
 	

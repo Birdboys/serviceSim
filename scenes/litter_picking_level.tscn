@@ -593,6 +593,7 @@ libraries = {
 }
 
 [node name="transitionLayer" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="transitionBG" type="ColorRect" parent="transitionLayer"]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bosj2o6gap5rm"]
+[gd_scene load_steps=13 format=3 uid="uid://bosj2o6gap5rm"]
 
 [ext_resource type="Script" uid="uid://48bq1r0uc88p" path="res://scripts/tile_scene.gd" id="1_bq8od"]
 [ext_resource type="PackedScene" uid="uid://cpi5xw7k5r43u" path="res://scenes/components/trash_scatterer.tscn" id="2_admef"]
@@ -6,6 +6,12 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhbjo"]
 size = Vector3(100, 2, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bq8od"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nbvdv"]
+size = Vector3(20, 1, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yohy"]
 albedo_color = Color(0.635294, 0.662745, 0.278431, 1)
@@ -38,6 +44,37 @@ collision_mask = 0
 [node name="groundCol" type="CollisionShape3D" parent="groundBody"]
 visible = false
 shape = SubResource("BoxShape3D_nhbjo")
+
+[node name="grassBody" type="StaticBody3D" parent="."]
+collision_layer = 512
+collision_mask = 0
+
+[node name="graass" type="CollisionShape3D" parent="grassBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 30)
+shape = SubResource("BoxShape3D_bq8od")
+
+[node name="graass2" type="CollisionShape3D" parent="grassBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30)
+shape = SubResource("BoxShape3D_bq8od")
+
+[node name="graass3" type="CollisionShape3D" parent="grassBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -30)
+shape = SubResource("BoxShape3D_bq8od")
+
+[node name="graass4" type="CollisionShape3D" parent="grassBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -30)
+shape = SubResource("BoxShape3D_bq8od")
+
+[node name="roadBody" type="StaticBody3D" parent="."]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="road" type="CollisionShape3D" parent="roadBody"]
+shape = SubResource("BoxShape3D_nbvdv")
+
+[node name="road2" type="CollisionShape3D" parent="roadBody"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_nbvdv")
 
 [node name="grassMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.5, -30)
@@ -96,7 +133,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.25,
 mesh = SubResource("BoxMesh_qutkw")
 
 [node name="trashScatterer" parent="." instance=ExtResource("2_admef")]
-valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
+valid_rects = Array[Rect2]([Rect2(-50, -50, 100, 100)])
 num_trash = 50
 miss_chances = 25
 trash_dist = {

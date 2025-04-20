@@ -43,7 +43,7 @@ data = PackedVector3Array(-5.3371, -0.3389, 1.9688, -6.2897, -0.8889, 1.0688, -5
 
 [node name="minivan" type="StaticBody3D"]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-collision_layer = 257
+collision_layer = 8449
 collision_mask = 0
 script = ExtResource("1_2vibs")
 
@@ -57,7 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 shape = SubResource("ConcavePolygonShape3D_fuvus")
 
 [node name="trashScatterer" parent="." instance=ExtResource("1_6nkbx")]
-valid_rects = Array[Rect2i]([Rect2i(-3, -2, 6, 4)])
+valid_rects = Array[Rect2]([Rect2(-3, -2, 6, 4)])
 num_trash = 5
 miss_chances = 5
 trash_dist = {

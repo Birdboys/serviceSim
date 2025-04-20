@@ -31,6 +31,7 @@ script = ExtResource("1_ppu47")
 
 [node name="groundBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 513
 collision_mask = 0
 
 [node name="groundCol" type="CollisionShape3D" parent="groundBody"]
@@ -49,8 +50,12 @@ shape = SubResource("BoxShape3D_5yohy")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.96701e-06, 0, -45)
 shape = SubResource("BoxShape3D_5yohy")
 
-[node name="lakeCol" type="CollisionShape3D" parent="groundBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.357454, 0)
+[node name="lakeBottom" type="StaticBody3D" parent="."]
+collision_layer = 4097
+collision_mask = 0
+
+[node name="lakeCol" type="CollisionShape3D" parent="lakeBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35745, 0)
 shape = SubResource("BoxShape3D_3y4hm")
 
 [node name="lakeBlocker" type="StaticBody3D" parent="."]
@@ -83,8 +88,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
 mesh = SubResource("BoxMesh_mprh5")
 
 [node name="trashScatterer" parent="." instance=ExtResource("1_mprh5")]
-valid_rects = Array[Rect2i]([Rect2i(-50, -50, 100, 100)])
-invalid_rects = Array[Rect2i]([Rect2i(-40, -40, 80, 80)])
+valid_rects = Array[Rect2]([Rect2(-50, -50, 100, 100)])
+invalid_rects = Array[Rect2]([Rect2(-40, -40, 80, 80)])
 num_trash = 50
 miss_chances = 25
 trash_dist = {

@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdetnpitwsnnq"
-path.s3tc="res://.godot/imported/picker_mag_image_test.png-bdbbdd035fcf1b29f8230347463b577a.s3tc.ctex"
+uid="uid://bp4c50t2vasx3"
+path="res://.godot/imported/action_figure_b.png-0f87c1cd5b6426b859771f2e25d914a7.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temp/picker_mag_image_test.png"
-dest_files=["res://.godot/imported/picker_mag_image_test.png-bdbbdd035fcf1b29f8230347463b577a.s3tc.ctex"]
+source_file="res://assets/textures/toys/action_figure_b.png"
+dest_files=["res://.godot/imported/action_figure_b.png-0f87c1cd5b6426b859771f2e25d914a7.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

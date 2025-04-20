@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5hxccw6xqmdh"]
+[gd_scene load_steps=20 format=3 uid="uid://b5hxccw6xqmdh"]
 
 [ext_resource type="Script" uid="uid://b28ay6my54ijt" path="res://scripts/player/player_character.gd" id="1_56udc"]
 [ext_resource type="Script" uid="uid://8cg5k2ajkd8v" path="res://scripts/state_machine.gd" id="2_6r27q"]
@@ -15,8 +15,65 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_56udc"]
 
+[sub_resource type="Animation" id="Animation_herhr"]
+resource_name = "walk"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playerCam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"handleFootstep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xb3ya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playerCam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7f3b"]
+_data = {
+&"RESET": SubResource("Animation_xb3ya"),
+&"walk": SubResource("Animation_herhr")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_herhr"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
 bg_color = Color(0.780392, 0.862745, 0.815686, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
 
 [sub_resource type="Animation" id="Animation_pxja8"]
 length = 0.001
@@ -131,6 +188,15 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="toolHand" type="Node3D" parent="playerNeck/playerCam"]
+
+[node name="headAnim" type="AnimationPlayer" parent="playerNeck"]
+libraries = {
+&"": SubResource("AnimationLibrary_s7f3b")
+}
+
+[node name="footstepRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.25, 0)
+collision_mask = 7680
 
 [node name="comboTimer" type="Timer" parent="."]
 one_shot = true
@@ -305,7 +371,7 @@ grow_vertical = 2
 theme_override_constants/margin_left = 128
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 128
-theme_override_constants/margin_bottom = 64
+theme_override_constants/margin_bottom = 0
 
 [node name="bagVbox" type="VBoxContainer" parent="playerUI/uiCont/bagMarginCont"]
 layout_mode = 2

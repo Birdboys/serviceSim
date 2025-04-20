@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://cfbvgkc81djqr"]
 
 [ext_resource type="Script" uid="uid://d05ag56dt7y3a" path="res://scripts/tool_photographer.gd" id="1_sltp7"]
-[ext_resource type="Texture2D" uid="uid://bhdk6ldtxfjda" path="res://assets/textures/toys/action_figure.png" id="2_sltp7"]
+[ext_resource type="Texture2D" uid="uid://cj0bb16p2nw5r" path="res://assets/textures/toys/action_figure_o.png" id="2_sltp7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2mc72"]
 sky_top_color = Color(0.501961, 0.501961, 0.501961, 1)
@@ -15,6 +15,9 @@ sky_material = SubResource("ProceduralSkyMaterial_2mc72")
 [sub_resource type="Environment" id="Environment_84k52"]
 background_mode = 1
 sky = SubResource("Sky_xvsrc")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
 reflected_light_source = 1
 glow_enabled = true
 
@@ -71,7 +74,6 @@ light_indirect_energy = 0.0
 sky_mode = 1
 
 [node name="toolSpot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="toolCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.595, 3.335)
@@ -79,6 +81,5 @@ fov = 45.0
 
 [node name="actionFigure1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.530749, 0.0311926, 0.278088, 0, 0.596261, -0.0668814, -0.279832, 0.059162, 0.527441, 0, 0.072, 0)
-visible = false
 mesh = SubResource("ArrayMesh_qjao6")
 skeleton = NodePath("")
