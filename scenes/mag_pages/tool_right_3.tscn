@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://ct2wilxjo2x2v" path="res://assets/themes/tool_mag.tres" id="1_dlrc0"]
 [ext_resource type="Script" uid="uid://ruyfks1d4nc6" path="res://scripts/tool_mag_page.gd" id="2_5bkg7"]
 [ext_resource type="Texture2D" uid="uid://4h20j7o58qhy" path="res://assets/tool_icons/magazine_icons/vacuum_picker.png" id="3_5bkg7"]
-[ext_resource type="Texture2D" uid="uid://c386g6hjygjhh" path="res://assets/tool_icons/magazine_icons/spear_picker.png" id="4_oghdl"]
+[ext_resource type="Texture2D" uid="uid://biem2yl2nprci" path="res://assets/tool_icons/magazine_icons/robot_picker.png" id="4_5bkg7"]
 [ext_resource type="FontFile" uid="uid://fslvvjj84y6a" path="res://assets/fonts/Tektur/Tektur-Bold.ttf" id="5_tnndy"]
 
 [node name="rightPage3" type="VBoxContainer"]
@@ -119,7 +119,7 @@ autowrap_mode = 3
 [node name="toolIcon" type="TextureRect" parent="toolAArea2/toolCont"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("4_oghdl")
+texture = ExtResource("4_5bkg7")
 expand_mode = 1
 stretch_mode = 3
 

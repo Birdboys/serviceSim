@@ -37,7 +37,7 @@ const toy_mag_data := {
 var total_trash_collected := 0
 var total_money := 1000
 
-@onready var current_gear := ["basic_picker", "robot_picker"]
+@onready var current_gear := ["basic_picker"]
 @onready var bag_dim :=  Vector2(8,8)
 @onready var game_time := 2.5 * 60.0 #seconds
 @onready var call_time := 3.0
@@ -55,7 +55,7 @@ var total_money := 1000
 }
 
 @onready var default_toy_data := {
-	"floaties": {"owned":true, "price":100, "name":"Floaties"},
+	"floaties": {"owned":false, "price":100, "name":"Floaties"},
 	"walkman": {"owned":false, "price":100, "name":"Walkman"},
 	"running_shoes": {"owned":false, "price":100, "name":"Running Shoes"},
 	"roller_skates": {"owned":false, "price":100, "name":"Roller Skates"},
@@ -97,13 +97,13 @@ var total_money := 1000
 @onready var tree := preload("res://scenes/houses/tree.tscn")
 
 func _ready() -> void:
-	#if FileAccess.file_exists(save_data_path): 
-		#print("SAVE FILE EXISTS")
-		#loadSaveData()
-	#else: 
-		#print("NO SAVE FILE EXISTS")
-		#createSaveData()
-	loadDefaults()
+	if FileAccess.file_exists(save_data_path): 
+		print("SAVE FILE EXISTS")
+		loadSaveData()
+	else: 
+		print("NO SAVE FILE EXISTS")
+		createSaveData()
+	#loadDefaults()
 	loadHouseData()
 	loadCarData()
 

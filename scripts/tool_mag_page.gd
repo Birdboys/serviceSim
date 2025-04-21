@@ -28,13 +28,13 @@ func loadData():
 		if GameData.tool_data[tool_a]['upgrade'] == 5: updatePrice("A", "COMPLETED")
 		else: updatePrice("A", "%s $%s" % ["UPGRADE", GameData.tool_data[tool_a]['upgrade_price']])
 	else: updatePrice("A", "%s $%s" % ["BUY", GameData.tool_data[tool_a]['price']])
-	toolADesc.text = tool_a_desc % GameData.tool_data[tool_a]['upgrade']
+	toolADesc.text = tool_a_desc % int(GameData.tool_data[tool_a]['upgrade'])
 	
 	if GameData.tool_data[tool_b]['owned']: 
 		if GameData.tool_data[tool_b]['upgrade'] == 5: updatePrice("B", "COMPLETED")
 		else: updatePrice("B", "%s $%s" % ["UPGRADE",GameData.tool_data[tool_b]['upgrade_price']])
 	else: updatePrice("B", "%s $%s" % ["BUY", GameData.tool_data[tool_b]['price']])
-	toolBDesc.text = tool_b_desc % GameData.tool_data[tool_b]['upgrade']
+	toolBDesc.text = tool_b_desc % int(GameData.tool_data[tool_b]['upgrade'])
 
 func updatePrice(t, p):
 	match t:

@@ -13,7 +13,8 @@ config_version=5
 config/name="serviceSim"
 run/main_scene="uid://dv6op5652dni4"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.568627, 0.858824, 0.411765, 1)
+config/icon="uid://byfcm66t4pit0"
 
 [autoload]
 

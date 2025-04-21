@@ -485,6 +485,30 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 2
 
+[node name="figureVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="figureLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/figureVbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 48
+text = "ACTION-THEM MODEL"
+
+[node name="fontsRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/figureVbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Logan Bird"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+
 [node name="musicVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
 layout_mode = 2
 theme_override_constants/separation = 32
@@ -553,6 +577,52 @@ text = "[url=\"https://fonts.google.com/specimen/Chewy\"]Chewy[/url]
 [url=\"https://fonts.google.com/specimen/Permanent+Marker\"]Permanent Marker[/url]
 [url=\"https://fonts.google.com/specimen/Rum+Raisin\"]Rum Raisin[/url]
 [url=\"https://fonts.google.com/specimen/Tektur\"]Tektur[/url]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+
+[node name="testingVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="testingLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/testingVbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 48
+text = "TESTING:"
+
+[node name="fontsRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/testingVbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Friends and Family"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+
+[node name="playerVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="playerLabel" type="Label" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/playerVbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 48
+text = "PLAYER:"
+
+[node name="fontsRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/playerVbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "YOU (TY FOR PLAYING)"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -650,7 +720,21 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_fgkus")
 color = Color(0, 0, 0, 1)
+
+[node name="endLabel" type="Label" parent="titleUI/bedRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = "HEADING
+HOME"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="uiAnim" type="AnimationPlayer" parent="titleUI"]
 libraries = {
