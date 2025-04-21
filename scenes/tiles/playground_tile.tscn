@@ -340,7 +340,6 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="monkey_bars2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="monkey_bars2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_v10sh")
 
 [node name="monkey_bars3" type="MeshInstance3D" parent="."]

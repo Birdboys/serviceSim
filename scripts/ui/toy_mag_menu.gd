@@ -171,6 +171,7 @@ func tryBuyToy(t):
 	GameData.toy_data[t]['owned'] = true
 	moneyLabel.text = "$%s" % GameData.total_money
 	emit_signal("toy_purchased")
+	if t == "utility_belt": GameData.current_gear.append("")
 
 	
 func updateButtonLabel(b):
