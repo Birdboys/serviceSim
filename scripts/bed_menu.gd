@@ -25,7 +25,8 @@ extends Node3D
 	"poster": $posterMesh/posterArea,
 }
 @onready var escape_path := {
-	"bed": "",	
+	"help": "bed",
+	"bed": "help",	
 	"table": "bed",
 	"trash": "bed",
 	"computer": "bed",
@@ -71,14 +72,26 @@ func _ready() -> void:
 	
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("escape") and current_menu != "bed" and can_click:
+	if event.is_action_pressed("escape") and can_click:
+		if current_menu != "bed" and current_menu != "help":
+			UI.escLabel.visible = false
+			can_click = false
+			leaveMenu(current_menu)
+			current_menu = escape_path[current_menu]
+			UI.reset()
+			transitionCamera(current_menu) 
+		else:
+			UI.escLabel.visible = false
+			can_click = false
+			current_menu = escape_path[current_menu]
+			UI.reset()
+			loadMenu(current_menu)
+	if event.is_action_pressed("bag") and can_click and current_menu == "bed":
 		UI.escLabel.visible = false
 		can_click = false
-		leaveMenu(current_menu)
 		current_menu = escape_path[current_menu]
 		UI.reset()
-		transitionCamera(current_menu) 
-		
+		loadMenu(current_menu)
 
 func menuClick(cam, event:InputEvent, _event_pos, _event_norm, _shape_idx, m):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1 and can_click:
@@ -98,7 +111,6 @@ func transitionCamera(m):
 	print("TRANSITIONING TO ", m)
 	var transition_tween := get_tree().create_tween().set_parallel(true).set_ease(Tween.EASE_IN_OUT)
 	print("MADE TWEEN")
-	print(cams[m].global_rotation)
 	transition_tween.tween_property(playerCam, "position", cams[m].global_position, cam_tween_time)
 	transition_tween.tween_property(playerCam, "rotation", cams[m].global_rotation, cam_tween_time)
 	transition_tween.tween_property(playerCam, "fov", cams[m].fov, cam_tween_time)

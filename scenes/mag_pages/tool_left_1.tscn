@@ -15,50 +15,35 @@ theme_override_constants/separation = 0
 layout_mode = 2
 theme_type_variation = &"topSep"
 
-[node name="toolAArea" type="MarginContainer" parent="."]
+[node name="toolName" type="Label" parent="."]
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_right = 24
-
-[node name="toolName" type="Label" parent="toolAArea"]
-layout_mode = 2
-theme_type_variation = &"nameLabel"
-text = "SHOULD BE TRASH PAGE"
+theme_type_variation = &"priceLabel"
+text = "THE CITY LITTER CATALOGUE"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="toolSep" type="HSeparator" parent="."]
+[node name="toolName2" type="Label" parent="."]
 layout_mode = 2
-theme_type_variation = &"listingSep"
+size_flags_vertical = 6
+theme_type_variation = &"listingLabel"
+text = "The premier location for all of your
+Trash Tool and Trash Tool Accessory needs!
 
-[node name="toolAArea2" type="MarginContainer" parent="."]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_right = 24
+BUY tools to add them to your collection
+UPGRADE tools to increase their stats
+USE your tools with the mouse buttons
 
-[node name="toolName" type="Label" parent="toolAArea2"]
-layout_mode = 2
-theme_type_variation = &"nameLabel"
-text = "INFORMATION ABOUT THE TRASH IDEALLY"
+More expensive tools can 
+pickup more types of trash.
+
+Have fun picking!"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="toolSep2" type="HSeparator" parent="."]
 layout_mode = 2
-theme_type_variation = &"listingSep"
-
-[node name="gearArea" type="Control" parent="."]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="toolSep3" type="HSeparator" parent="."]
-visible = false
-layout_mode = 2
+size_flags_vertical = 8
 theme_type_variation = &"listingSep"
 
 [node name="botControl" type="Control" parent="."]

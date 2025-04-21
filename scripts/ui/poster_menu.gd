@@ -20,9 +20,9 @@ func updatePoster():
 	valueLabel.text = "CREDITS: %s" % GameData.total_money
 	trashLabel.text = "TRASH: %s" % GameData.total_trash_collected
 	
-	paperBar.custom_minimum_size.x = 345.0 * (GameData.trash_data['paper']/1000.0)
-	plasticBar.custom_minimum_size.x = 345.0 * (GameData.trash_data['plastic']/1000.0)
-	metalBar.custom_minimum_size.x = 345.0 * (GameData.trash_data['metal']/1000.0)
-	glassBar.custom_minimum_size.x = 345.0 * (GameData.trash_data['glass']/1000.0)
+	paperBar.custom_minimum_size.x = 251.0 * (min(GameData.trash_data['paper'], 1000)/1000.0)
+	plasticBar.custom_minimum_size.x = 251.0 * (min(GameData.trash_data['plastic'], 1000)/1000.0)
+	metalBar.custom_minimum_size.x = 251.0 * (min(GameData.trash_data['metal'], 1000)/1000.0)
+	glassBar.custom_minimum_size.x = 251.0 * (min(GameData.trash_data['glass'], 1000)/1000.0)
 	figBar.value = min(100.0, (float(GameData.total_money)/float(GameData.toy_data['action_figure']['price']))*100.0)
 	print(figBar.value)

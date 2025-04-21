@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var escLabel := $UI/uiMargin/escLabel
 @onready var menus := {
+	"help": $UI/uiMargin/helperMenu,
 	"door": $UI/uiMargin/doorMenu,
 	"trash": $UI/uiMargin/trashMenu,
 	"computer": $UI/uiMargin/computerMenu,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=269 format=4 uid="uid://dp6pjn8bcgigu"]
+[gd_scene load_steps=270 format=4 uid="uid://dp6pjn8bcgigu"]
 
 [ext_resource type="Script" uid="uid://bmkdeiv33ldnb" path="res://scripts/bed_menu.gd" id="1_mswj1"]
 [ext_resource type="ArrayMesh" uid="uid://cmcnbsmd2mcmq" path="res://assets/trash_meshes/carton_small.tres" id="2_atm4g"]
@@ -42,6 +42,7 @@
 [ext_resource type="Theme" uid="uid://cxdkmx1yqhiuv" path="res://assets/themes/toy_mag.tres" id="22_l7yoa"]
 [ext_resource type="Texture2D" uid="uid://cbcs6kppqexgj" path="res://assets/textures/toys/walkman.png" id="22_wtgtk"]
 [ext_resource type="PackedScene" uid="uid://b0hm1t3ckh0i0" path="res://assets/toy_meshes/infini_bag.tscn" id="27_4a7j8"]
+[ext_resource type="Script" uid="uid://b4lytt08q0spd" path="res://scripts/ui/helper_menu.gd" id="31_1hlsn"]
 [ext_resource type="Texture2D" uid="uid://bxbfug0kmrlx2" path="res://assets/textures/toy_mag_bg.png" id="39_8dcbq"]
 [ext_resource type="Texture2D" uid="uid://cf477chf54nng" path="res://assets/toy_icons/action_figure.png" id="41_4pxh4"]
 
@@ -2615,7 +2616,7 @@ thickness = 8
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_8dcbq"]
 color = Color(0.192157, 0.211765, 0.219608, 1)
-grow_begin = 8.0
+grow_begin = 24.0
 thickness = 8
 vertical = true
 
@@ -3351,7 +3352,52 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
+[node name="helperMenu" type="Control" parent="UILayer/UI/uiMargin"]
+layout_mode = 2
+script = ExtResource("31_1hlsn")
+
+[node name="helperBG" type="ColorRect" parent="UILayer/UI/uiMargin/helperMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.447059, 0.447059, 0.501961)
+
+[node name="helperVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/helperMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="mainLabel" type="Label" parent="UILayer/UI/uiMargin/helperMenu/helperVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "THE BEDROOM"
+horizontal_alignment = 1
+
+[node name="subLabel" type="Label" parent="UILayer/UI/uiMargin/helperMenu/helperVbox"]
+layout_mode = 2
+theme_override_constants/line_spacing = 8
+theme_override_font_sizes/font_size = 32
+text = "The base of operations for your litter picking operation.
+Click objects to view their menus:
+
+DOOR - Equip/Unequip Tools & Go Picking
+LITTER MAGAZINE - Buy Trash Tools
+TOY MAGAZINE - Buy Toys
+POSTER - View Litter Picking Stats
+COMPUTER - Change Settings & Save Game
+TRASH CAN - Quit Game
+"
+horizontal_alignment = 1
+
 [node name="doorMenu" type="Control" parent="UILayer/UI/uiMargin"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("8_0mrwf")
@@ -3367,6 +3413,7 @@ grow_vertical = 0
 alignment = 2
 
 [node name="trashMenu" type="Control" parent="UILayer/UI/uiMargin"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("10_6iq6k")
@@ -3398,6 +3445,7 @@ theme_override_font_sizes/font_size = 72
 text = "QUIT GAME"
 
 [node name="computerMenu" type="Control" parent="UILayer/UI/uiMargin"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("11_yda35")
@@ -3754,6 +3802,7 @@ theme_override_font_sizes/font_size = 24
 text = "GAME SAVED"
 
 [node name="tableMenu" type="Control" parent="UILayer/UI/uiMargin"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("12_le12v")
@@ -3776,6 +3825,7 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
 
 [node name="toolMagMenu" type="Control" parent="UILayer/UI/uiMargin"]
+visible = false
 layout_mode = 2
 mouse_filter = 1
 script = ExtResource("18_futsp")
@@ -4033,6 +4083,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="toyMagMenu" type="Control" parent="UILayer/UI/uiMargin"]
+visible = false
 layout_mode = 2
 mouse_filter = 1
 script = ExtResource("20_ekvf7")
@@ -4287,6 +4338,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="posterMenu" type="Control" parent="UILayer/UI/uiMargin"]
+visible = false
 layout_mode = 2
 script = ExtResource("20_i6od6")
 
@@ -4320,7 +4372,7 @@ theme_override_constants/margin_bottom = 32
 [node name="dataVbox" type="VBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 0
+theme_override_constants/separation = 16
 
 [node name="labelHbox" type="HBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox"]
 layout_mode = 2
@@ -4367,7 +4419,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="paperLabel" type="Label" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/paperData"]
-custom_minimum_size = Vector2(96, 0)
+custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.75
 theme_override_colors/font_color = Color(0.909804, 0.231373, 0.231373, 1)
@@ -4381,11 +4433,6 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 color = Color(0.909804, 0.231373, 0.231373, 1)
 
-[node name="barSpacer" type="Control" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/paperData"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-
 [node name="plasticData" type="HBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -4393,7 +4440,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="paperLabel" type="Label" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/plasticData"]
-custom_minimum_size = Vector2(96, 0)
+custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.75
 theme_override_colors/font_color = Color(0.968627, 0.588235, 0.0901961, 1)
@@ -4407,12 +4454,6 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 color = Color(0.968627, 0.588235, 0.0901961, 1)
 
-[node name="barSpacer" type="Control" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/plasticData"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="metalData" type="HBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -4420,7 +4461,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="metalLabel" type="Label" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/metalData"]
-custom_minimum_size = Vector2(96, 0)
+custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.75
 theme_override_colors/font_color = Color(0.568627, 0.858824, 0.411765, 1)
@@ -4434,12 +4475,6 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 color = Color(0.568627, 0.858824, 0.411765, 1)
 
-[node name="barSpacer" type="Control" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/metalData"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="glassData" type="HBoxContainer" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -4447,7 +4482,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="glassLabel" type="Label" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/glassData"]
-custom_minimum_size = Vector2(96, 0)
+custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.75
 theme_override_colors/font_color = Color(0.301961, 0.607843, 0.901961, 1)
@@ -4460,12 +4495,6 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 color = Color(0.301961, 0.607843, 0.901961, 1)
-
-[node name="barSpacer" type="Control" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox/graphVbox/glassData"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="VSeparator" type="VSeparator" parent="UILayer/UI/uiMargin/posterMenu/posterViewport/posterMargin/dataVbox/posterHbox"]
 layout_mode = 2
@@ -4525,6 +4554,7 @@ theme_override_font_sizes/font_size = 32
 text = "ESC TO EXIT"
 
 [node name="transitionLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="endBG" type="ColorRect" parent="transitionLayer"]
 anchors_preset = 15

@@ -22,7 +22,7 @@ var can_turn_page := true
 
 var demo_page := preload("res://scenes/mag_pages/tool_demo.tscn")
 var left_pages := {
-	0: preload("res://scenes/mag_pages/tool_cover.tscn"),
+	0: preload("res://scenes/mag_pages/toy_cover.tscn"),
 	1: preload("res://scenes/mag_pages/toy_left_1.tscn"),
 	2: preload("res://scenes/mag_pages/toy_left_2.tscn"),
 	3: preload("res://scenes/mag_pages/toy_left_3.tscn"),
