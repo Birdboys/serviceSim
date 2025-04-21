@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var roadTile := $roadLTile
 @onready var uiAnim := $titleUI/uiAnim
+@onready var titleVbox := $titleUI/titleMargin/titleVbox
 @onready var settingsVbox := $titleUI/titleMargin/settingsVbox
 @onready var buttonVbox := $titleUI/titleMargin/buttonVbox
 @onready var creditsVbox := $titleUI/titleMargin/creditsVbox
@@ -61,12 +62,14 @@ func loadMenu(m: String):
 	current_menu = m
 	match m:
 		"main":
+			titleVbox.visible = true
 			buttonVbox.visible = true
 			howVbox.visible = false
 			settingsVbox.visible = false
 			creditsVbox.visible = false
 		"how":
 			howVbox.visible = true
+			titleVbox.visible = false
 			buttonVbox.visible = false
 		"settings":
 			setSliders()

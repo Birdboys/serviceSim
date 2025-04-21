@@ -132,6 +132,11 @@ skate={
 3d_physics/layer_7="glass"
 3d_physics/layer_8="bio"
 3d_physics/layer_9="ray_interrupt"
+3d_physics/layer_10="grass"
+3d_physics/layer_11="pavement"
+3d_physics/layer_12="rocks"
+3d_physics/layer_13="water"
+3d_physics/layer_14="metal"
 
 [rendering]
 

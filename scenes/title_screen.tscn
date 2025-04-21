@@ -357,8 +357,8 @@ theme_override_font_sizes/font_size = 32
 text = "QUIT"
 
 [node name="howVbox" type="VBoxContainer" parent="titleUI/titleMargin"]
-visible = false
 layout_mode = 2
+theme_override_constants/separation = 0
 alignment = 2
 
 [node name="howLabel" type="Label" parent="titleUI/titleMargin/howVbox"]
@@ -367,10 +367,12 @@ theme_override_font_sizes/font_size = 32
 text = "COLLECT TRASH TO EARN CREDITS
 PAPER: $2  -  PLASTIC: $5  -  METAL: $10  -  GLASS: $15
 
-SPEND CREDITS ON TOOLS AND TOYS
-TOOLS: USED TO COLLECT TRASH  -  TOYS: GIVE SPECIAL BONUSES
+HOLD [C] WHILE LITTER PICKING TO LEAVE EARLY
 
-EARN 1000 CREDITS AND PURCHASE ACTION-THEM,
+SPEND CREDITS ON TOOLS AND TOYS
+TOOLS: USED TO COLLECT TRASH  -  TOYS: GIVE SPECIAL PERKS
+
+EARN 1000 CREDITS AND PURCHASE THE \"ACTION-THEM\" TOY,
 YOUR FAVORITE ACTION FIGURE"
 horizontal_alignment = 1
 
@@ -420,7 +422,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="spacer" type="Control" parent="titleUI/titleMargin/howVbox"]
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 mouse_filter = 2
 
@@ -500,7 +502,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "[url=\"https://drsanic.itch.io/\"]Kyro[/url]
+text = "[url=\"https://soundcloud.com/drsanic\"]Kyro[/url]
 [url=\"https://www.youtube.com/@wyzegye\"]WyzeGye[/url]"
 fit_content = true
 scroll_active = false
