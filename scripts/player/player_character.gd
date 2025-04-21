@@ -31,6 +31,7 @@ var max_combo := 0
 var has_shoes := false
 var has_skates := false
 var has_cape := false
+var active_robot = null
 
 const combo_time_window := 3.0
 const base_sens := 0.00005
@@ -138,12 +139,24 @@ func equipTool(tool_id):
 	match current_tool.tool_name:
 		"pogo_picker":
 			current_tool.pogo_jump.connect(pogoJump)
+		"robot_picker":
+			if active_robot:
+				active_robot.queue_free()
+				active_robot = null
 			
 func unequipTool():
 	if current_tool: 
 		match current_tool.tool_name:
 			"pogo_picker":
 				current_tool.pogo_jump.disconnect(pogoJump)
+			"robot_picker":
+				if current_tool.going:
+					active_robot = current_tool
+					current_tool.unequip()
+					current_tool = null
+					current_tool_id = -1
+					return
+				
 		current_tool.unequip()
 		current_tool.queue_free()
 	current_tool = null
