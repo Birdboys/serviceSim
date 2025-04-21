@@ -433,6 +433,7 @@ vertical_alignment = 2
 
 [node name="endMenu" type="CanvasLayer" parent="."]
 process_mode = 3
+layer = 3
 visible = false
 script = ExtResource("5_itd7a")
 

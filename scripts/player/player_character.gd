@@ -17,7 +17,7 @@ var current_tool_id := -1
 var current_tool 
 var sensitivity := 0.0
 var gravity = 10.0
-var speed := 15.0
+var speed := 50.0#15.0
 var shoes_mult := 2.0
 var skates_mult := 3.0
 

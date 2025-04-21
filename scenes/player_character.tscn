@@ -423,7 +423,7 @@ script = ExtResource("4_4h0vy")
 
 [node name="jumpState" type="Node" parent="stateMachine"]
 script = ExtResource("5_2vmgx")
-jump_strength = 10.0
+jump_strength = 7.0
 
 [node name="bagState" type="Node" parent="stateMachine"]
 script = ExtResource("6_6unfe")

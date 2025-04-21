@@ -422,7 +422,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="spacer" type="Control" parent="titleUI/titleMargin/howVbox"]
-custom_minimum_size = Vector2(0, 8)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 mouse_filter = 2
 
@@ -486,7 +486,6 @@ autowrap_mode = 0
 horizontal_alignment = 2
 
 [node name="figureVbox" type="HBoxContainer" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
@@ -496,14 +495,14 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 5
 theme_override_font_sizes/font_size = 48
-text = "ACTION-THEM MODEL"
+text = "\"ACTION-THEM\" MODEL:"
 
 [node name="fontsRichLabel" type="RichTextLabel" parent="titleUI/titleMargin/creditsVbox/scrollMargin/creditsScroll/scrollVbox/figureVbox"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "Logan Bird"
+text = "[url=\"https://www.youtube.com/@wyzegye\"]WyzeGye[/url]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
