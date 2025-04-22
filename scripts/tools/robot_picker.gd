@@ -65,7 +65,7 @@ func pickupRobot(b_):
 
 func collectTrash(t):
 	if going and t is TrashBox and isTrashValid(t.get_parent()):
-		AudioHandler.playSound("%s_reject" % [TrashData.trash_type_names[t.get_parent().type]])
+		AudioHandler.playSound("%s_pickup" % [TrashData.trash_type_names[t.get_parent().type]])
 		emit_signal("attempt_collect_trash", t.get_parent())
 
 func upgrade():

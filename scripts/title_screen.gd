@@ -41,10 +41,8 @@ func _ready() -> void:
 	
 	musicSlider.value_changed.connect(updateMusic)
 	musicSlider.drag_started.connect(AudioHandler.playSound.bind("ui_click"))
-	musicSlider.drag_ended.connect(AudioHandler.playSound.bind("ui_click"))
 	soundSlider.value_changed.connect(updateSound)
 	soundSlider.drag_started.connect(AudioHandler.playSound.bind("ui_click"))
-	soundSlider.drag_ended.connect(AudioHandler.playSound.bind("ui_click"))
 	
 	loadTitle()
 	
@@ -88,12 +86,10 @@ func loadMenu(m: String):
 			buttonVbox.visible = false
 	
 func updateMusic(v):
-	AudioHandler.playSound("ui_click")
 	GameData.settings_data['music'] = v/100.0
 	AudioHandler.loadAudioSettings()
 	
 func updateSound(v):
-	AudioHandler.playSound("ui_click")
 	GameData.settings_data['sound'] = v/100.0
 	AudioHandler.loadAudioSettings()
 

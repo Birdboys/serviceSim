@@ -52,6 +52,7 @@ var music_tween
 func _ready():
 	loadAudioSettings()
 	populateQueues()
+	bgMusicPlayer.play()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("music_skip") and GameData.toy_data['walkman']['owned']:
@@ -132,4 +133,3 @@ func reset3DPlayer(index):
 func loadAudioSettings():
 	AudioServer.set_bus_volume_linear(1, GameData.settings_data['sound'])
 	AudioServer.set_bus_volume_linear(2, GameData.settings_data['music'])
-	bgMusicPlayer.play()

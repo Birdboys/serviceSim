@@ -229,6 +229,7 @@ func calledHome():
 	
 func pogoJump(v):
 	velocity.y = v
+	handleFootstep()
 
 func handleFootstep():
 	if not footstepRay.is_colliding(): return

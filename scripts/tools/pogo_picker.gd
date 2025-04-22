@@ -42,6 +42,7 @@ func collectTrash(t):
 		emit_signal("attempt_collect_trash", t.get_parent())
 		emit_signal("pogo_jump", bounce_strength*trash_bounce_mult)
 		state = pogo_states.BOUNCING
+		AudioHandler.playSound("%s_pickup" % [TrashData.trash_type_names[t.get_parent().type]])
 
 func pogoJump(_ground):
 	match state:

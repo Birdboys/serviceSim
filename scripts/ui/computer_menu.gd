@@ -32,9 +32,7 @@ func _ready() -> void:
 	musicSlider.value_changed.connect(updateMusic)
 	soundSlider.value_changed.connect(updateSound)
 	musicSlider.drag_started.connect(AudioHandler.playSound.bind("ui_click"))
-	musicSlider.drag_ended.connect(AudioHandler.playSound.bind("ui_click"))
 	soundSlider.drag_started.connect(AudioHandler.playSound.bind("ui_click"))
-	soundSlider.drag_ended.connect(AudioHandler.playSound.bind("ui_click"))
 	
 	controlsButton.pressed.connect(toggleMenu.bind("controls"))
 	controlsBack.pressed.connect(toggleMenu.bind("main"))

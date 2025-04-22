@@ -164,6 +164,6 @@ func resetSaveData():
 	DirAccess.remove_absolute(save_data_path)
 	total_money = 0
 	total_trash_collected = 0
-	current_gear = ["basic_picker", ""]
+	current_gear = ["basic_picker"]
 	createSaveData()
 	return
