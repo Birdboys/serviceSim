@@ -14,6 +14,7 @@ func collectTrash():
 	print(litterArea.get_overlapping_areas())
 	for b in litterArea.get_overlapping_areas():
 		if b is TrashBox and isTrashValid(b.get_parent()):
+			AudioHandler.playSound("%s_pickup" % [TrashData.trash_type_names[b.get_parent().type]])
 			emit_signal("attempt_collect_trash", b.get_parent())
 
 func upgrade():

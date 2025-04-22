@@ -55,7 +55,7 @@ var total_money := 0
 }
 
 @onready var default_toy_data := {
-	"floaties": {"owned":false, "price":100, "name":"Floaties"},
+	"floaties": {"owned":false, "price":150, "name":"Floaties"},
 	"walkman": {"owned":false, "price":250, "name":"Walkman"},
 	"running_shoes": {"owned":false, "price":150, "name":"Running Shoes"},
 	"roller_skates": {"owned":false, "price":350, "name":"Roller Skates"},

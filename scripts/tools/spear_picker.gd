@@ -80,11 +80,13 @@ func pickupSpear():
 	top_level = false
 	if len(held_trash) > 0:
 		for t in held_trash:
+			AudioHandler.playSound("%s_pickup" % [TrashData.trash_type_names[t.type]])
 			t.reparent(get_tree().root)
 			t.global_position.y = 0.0
 			held_trash.erase(t)
 			emit_signal("attempt_collect_trash", t)
 			held_trash.erase(t)
+			
 	litterArea.monitoring = false
 	pickerAnim.play("RESET")
 	pickerMesh.set_layer_mask_value(1, false)
