@@ -26,6 +26,7 @@ sky = SubResource("Sky_itd7a")
 tonemap_mode = 2
 glow_enabled = true
 fog_mode = 1
+fog_density = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhbjo"]
 size = Vector3(100, 2, 100)

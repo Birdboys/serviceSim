@@ -21,6 +21,7 @@ sky = SubResource("Sky_itd7a")
 tonemap_mode = 2
 glow_enabled = true
 fog_mode = 1
+fog_density = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5f2k8"]
 
