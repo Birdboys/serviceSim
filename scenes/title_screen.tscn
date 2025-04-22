@@ -11,18 +11,21 @@
 [ext_resource type="Texture2D" uid="uid://cqbxmadxbid0r" path="res://assets/trash_icons/water_small_0.png" id="8_ib7db"]
 [ext_resource type="Texture2D" uid="uid://r62g873km48i" path="res://assets/trash_icons/burg_bottle_0.png" id="9_frs5l"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s4lrb"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_27wqk"]
+sky_top_color = Color(0.301961, 0.607843, 0.901961, 1)
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+sky_curve = 0.102453
 ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
-[sub_resource type="Sky" id="Sky_s2r40"]
-sky_material = SubResource("ProceduralSkyMaterial_s4lrb")
+[sub_resource type="Sky" id="Sky_itd7a"]
+sky_material = SubResource("ProceduralSkyMaterial_27wqk")
 
-[sub_resource type="Environment" id="Environment_mgrm8"]
+[sub_resource type="Environment" id="Environment_tklts"]
 background_mode = 2
-sky = SubResource("Sky_s2r40")
+sky = SubResource("Sky_itd7a")
 tonemap_mode = 2
 glow_enabled = true
+fog_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhbjo"]
 size = Vector3(100, 2, 100)
@@ -203,7 +206,7 @@ _data = {
 script = ExtResource("2_sa3yf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_mgrm8")
+environment = SubResource("Environment_tklts")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.570315, -0.755405, 0.322651, -0.402828, 0.599522, 0.691594, -0.71587, 0.264454, -0.646215, 0, 0, 0)

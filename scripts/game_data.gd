@@ -72,7 +72,7 @@ var total_money := 0
 
 @onready var default_settings_data := {
 	"sound": 0.5,
-	"music": 0.0,
+	"music": 0.5,
 	"sensitivity": 25.0,
 	"fov": 65.0
 }
