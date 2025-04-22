@@ -40,7 +40,11 @@ func _ready() -> void:
 	quitButton.pressed.connect(get_tree().quit)
 	
 	musicSlider.value_changed.connect(updateMusic)
+	musicSlider.drag_started.connect(AudioHandler.playSound.bind("ui_click"))
+	musicSlider.drag_ended.connect(AudioHandler.playSound.bind("ui_click"))
 	soundSlider.value_changed.connect(updateSound)
+	soundSlider.drag_started.connect(AudioHandler.playSound.bind("ui_click"))
+	soundSlider.drag_ended.connect(AudioHandler.playSound.bind("ui_click"))
 	
 	loadTitle()
 	
@@ -53,12 +57,16 @@ func loadTitle():
 	uiAnim.play("idle_menu")
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("escape"): loadMenu("main")
+	if event.is_action_pressed("escape"): 
+		AudioHandler.playSound("ui_click")
+		loadMenu("main")
 	elif event is InputEventKey and event.keycode == KEY_F5 and event.pressed and uiAnim.current_animation == "idle_menu": 
+		AudioHandler.playSound("ui_click")
 		print("TRYING RELOAD")
 		get_tree().reload_current_scene()
 	
 func loadMenu(m: String):
+	AudioHandler.playSound("ui_click")
 	current_menu = m
 	match m:
 		"main":
@@ -80,10 +88,12 @@ func loadMenu(m: String):
 			buttonVbox.visible = false
 	
 func updateMusic(v):
+	AudioHandler.playSound("ui_click")
 	GameData.settings_data['music'] = v/100.0
 	AudioHandler.loadAudioSettings()
 	
 func updateSound(v):
+	AudioHandler.playSound("ui_click")
 	GameData.settings_data['sound'] = v/100.0
 	AudioHandler.loadAudioSettings()
 
@@ -92,6 +102,7 @@ func setSliders():
 	soundSlider.value = GameData.settings_data['sound'] * 100.0
 
 func toBed():
+	AudioHandler.playSound("ui_click")
 	uiAnim.play("to_bed")
 	await uiAnim.animation_finished
 	get_tree().change_scene_to_file("res://scenes/bed_menu.tscn")
@@ -101,6 +112,11 @@ func toggleResetButton(on: bool):
 	else: resetButton.text = "RESET"
 
 func resetSaveData():
+	AudioHandler.playSound("ui_click")
 	print("RESET THE GAMEERTONDSA")
 	await GameData.resetSaveData()
 	get_tree().reload_current_scene()
+
+func quitGame():
+	AudioHandler.playSound("ui_click")
+	get_tree().quit()

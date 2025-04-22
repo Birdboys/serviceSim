@@ -177,7 +177,7 @@ func collectTrash(t: Trash):
 	#var trash_val = col_data['value']
 	#var trash_name = col_data['name']
 	
-	trash_collected += 1
+	trash_collected +=  1
 	value_collected += TrashData.getTrashPrice(t.type, t.sub_type)
 	GameData.trash_data["total"] += 1
 	match t.type:
@@ -243,4 +243,8 @@ func handleFootstep():
 		AudioHandler.playSound("footstep_rocks")
 	elif floor.get_collision_layer_value(13): #water
 		AudioHandler.playSound("footstep_water")
+	elif floor.get_collision_layer_value(14): #metal
+		AudioHandler.playSound("footstep_metal")
+	elif floor.get_collision_layer_value(15): #bush
+		AudioHandler.playSound("footstep_bush")
 	

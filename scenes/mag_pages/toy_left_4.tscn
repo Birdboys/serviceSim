@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://1vkk82vb1fhx"]
+[gd_scene load_steps=5 format=3 uid="uid://1vkk82vb1fhx"]
 
 [ext_resource type="Theme" uid="uid://cxdkmx1yqhiuv" path="res://assets/themes/toy_mag.tres" id="1_34oot"]
 [ext_resource type="Script" uid="uid://c17v8isknm8re" path="res://scripts/toy_mag_page.gd" id="2_58728"]
-[ext_resource type="Texture2D" uid="uid://cf477chf54nng" path="res://assets/toy_icons/action_figure.png" id="3_34oot"]
+[ext_resource type="Texture2D" uid="uid://b4s7wimgi6xdx" path="res://assets/toy_icons/action_figure_a.png" id="3_34oot"]
+[ext_resource type="Texture2D" uid="uid://c3833h47doc2" path="res://assets/toy_icons/action_figure_b.png" id="4_58728"]
 
 [node name="leftPage4" type="VBoxContainer"]
 anchors_preset = 15
@@ -56,14 +57,14 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"nameLabel"
-text = "ACTION-THEM ALPHA"
+text = "SCHLADEEM ALPHA"
 autowrap_mode = 3
 
 [node name="toyDesc" type="Label" parent="toyHBox/toyAArea/toyVbox"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"listingLabel"
-text = "Another member of the ACTION-THEM crew.
+text = "Another member of the SCHLADEEM crew.
 
 [COLLECT THEM ALL?]
 "
@@ -95,7 +96,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 10
 theme_type_variation = &"nameLabel"
-text = "ACTION-THEM BETA"
+text = "SCHLADEEM BETA"
 horizontal_alignment = 2
 autowrap_mode = 3
 
@@ -103,7 +104,7 @@ autowrap_mode = 3
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"listingLabel"
-text = "Another member of the ACTION-THEM crew.
+text = "Another member of the SCHLADEEM  crew.
 
 [COLLECT THEM ALL?]
 "
@@ -122,7 +123,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_34oot")
+texture = ExtResource("4_58728")
 expand_mode = 1
 stretch_mode = 5
 

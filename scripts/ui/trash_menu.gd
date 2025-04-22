@@ -17,5 +17,6 @@ func saveQuit():
 	get_tree().quit()
 
 func quit():
+	AudioHandler.playSound("ui_click")
 	GameData.saveGame()
 	get_tree().quit()

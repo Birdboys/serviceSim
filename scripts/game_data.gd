@@ -35,7 +35,7 @@ const toy_mag_data := {
 	"right4B": "action_figure_o",
 }
 var total_trash_collected := 0
-var total_money := 50000
+var total_money := 0
 
 @onready var current_gear := ["basic_picker"]
 @onready var bag_dim :=  Vector2(8,8)
@@ -44,30 +44,30 @@ var total_money := 50000
 @onready var default_tool_data := {
 	"basic_picker": {"price": 0, "upgrade_price":0, "owned": true, "upgrade": 5, "name":"Basic Picker"}, 
 	"better_picker": {"price": 50, "upgrade_price":10, "owned": false, "upgrade": 0, "name":"Better Picker"}, 
-	"claw_picker": {"price": 75, "upgrade_price":15, "owned": false, "upgrade": 0, "name":"Claw Picker"}, 
-	"auto_picker": {"price": 100, "upgrade_price":15, "owned": false, "upgrade": 0, "name":"Auto-Picker"}, 
+	"claw_picker": {"price": 150, "upgrade_price":15, "owned": false, "upgrade": 0, "name":"Claw Picker"}, 
+	"auto_picker": {"price": 150, "upgrade_price":15, "owned": false, "upgrade": 0, "name":"Auto-Picker"}, 
 	"extendo_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Extendo-Picker"},
 	"spear_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Spear Picker"},
-	"pogo_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Pogo-Picker"},
-	"net_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Net Picker"},
-	"vacuum_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Vacuum Picker"},
-	"robot_picker": {"price": 150, "upgrade_price":15, "owned":false, "upgrade":0, "name":"Robot Picker"},
+	"pogo_picker": {"price": 300, "upgrade_price":25, "owned":false, "upgrade":0, "name":"Pogo-Picker"},
+	"net_picker": {"price": 300, "upgrade_price":25, "owned":false, "upgrade":0, "name":"Net Picker"},
+	"vacuum_picker": {"price": 300, "upgrade_price":25, "owned":false, "upgrade":0, "name":"Vacuum Picker"},
+	"robot_picker": {"price": 300, "upgrade_price":25, "owned":false, "upgrade":0, "name":"Robot Picker"},
 }
 
 @onready var default_toy_data := {
 	"floaties": {"owned":false, "price":100, "name":"Floaties"},
-	"walkman": {"owned":false, "price":100, "name":"Walkman"},
-	"running_shoes": {"owned":false, "price":100, "name":"Running Shoes"},
-	"roller_skates": {"owned":false, "price":100, "name":"Roller Skates"},
-	"cape": {"owned":false, "price":100, "name":"Super Cape"},
-	"watch": {"owned":false, "price":100, "name":"Watch"},
-	"utility_belt": {"owned":false, "price":100, "name":"Utility Belt"},
-	"infini_bag": {"owned":false, "price":100, "name":"Semi-Infini-Bag"},
-	"action_figure": {"owned":false, "price":100, "name":"Action Figure"},
-	"action_figure_a": {"owned":false, "price":100, "name":"Action Figure ALPHA"},
-	"action_figure_b": {"owned":false, "price":100, "name":"Action Figure BETA"},
-	"action_figure_g": {"owned":false, "price":100, "name":"Action Figure GAMMA"},
-	"action_figure_o": {"owned":false, "price":100, "name":"Action Figure OMEGA"},
+	"walkman": {"owned":false, "price":250, "name":"Walkman"},
+	"running_shoes": {"owned":false, "price":150, "name":"Running Shoes"},
+	"roller_skates": {"owned":false, "price":350, "name":"Roller Skates"},
+	"cape": {"owned":false, "price":200, "name":"Super Cape"},
+	"watch": {"owned":false, "price":300, "name":"Watch"},
+	"utility_belt": {"owned":false, "price":150, "name":"Utility Belt"},
+	"infini_bag": {"owned":false, "price":400, "name":"Semi-Infini-Bag"},
+	"action_figure": {"owned":false, "price":1000, "name":"Action Figure"},
+	"action_figure_a": {"owned":false, "price":1000, "name":"Action Figure ALPHA"},
+	"action_figure_b": {"owned":false, "price":1000, "name":"Action Figure BETA"},
+	"action_figure_g": {"owned":false, "price":1000, "name":"Action Figure GAMMA"},
+	"action_figure_o": {"owned":false, "price":1000, "name":"Action Figure OMEGA"},
 }
 
 @onready var default_settings_data := {

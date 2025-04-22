@@ -31,6 +31,11 @@ var current_control := ""
 func _ready() -> void:
 	musicSlider.value_changed.connect(updateMusic)
 	soundSlider.value_changed.connect(updateSound)
+	musicSlider.drag_started.connect(AudioHandler.playSound.bind("ui_click"))
+	musicSlider.drag_ended.connect(AudioHandler.playSound.bind("ui_click"))
+	soundSlider.drag_started.connect(AudioHandler.playSound.bind("ui_click"))
+	soundSlider.drag_ended.connect(AudioHandler.playSound.bind("ui_click"))
+	
 	controlsButton.pressed.connect(toggleMenu.bind("controls"))
 	controlsBack.pressed.connect(toggleMenu.bind("main"))
 	saveButton.pressed.connect(saveGame)
@@ -44,10 +49,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.keycode == KEY_ESCAPE or event.keycode == KEY_ALT: 
 			get_viewport().set_input_as_handled()
 			return
+		AudioHandler.playSound("ui_click")
 		input_listening = false
 		updateControl(event)
 		
 func loadMenu():
+	AudioHandler.playSound("computer_sounds")
 	setSliders()
 	visible = true
 	toggleMenu("main")
@@ -70,14 +77,17 @@ func setSliders():
 	soundSlider.value = GameData.settings_data['sound'] * 100.0
 
 func toggleMenu(m):
+	AudioHandler.playSound("ui_click")
 	mainVbox.visible = m == "main"
 	controlsVbox.visible = m == "controls"
 
 func saveGame():
+	AudioHandler.playSound("ui_click")
 	GameData.saveGame()
 	computerAnim.play("game_saved")
 
 func handleControlButton(pressed_button: String):
+	AudioHandler.playSound("ui_click")
 	input_listening = true
 	current_control = pressed_button
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

@@ -291,7 +291,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="pauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 3
-visible = false
 script = ExtResource("3_s2r40")
 
 [node name="bg" type="ColorRect" parent="pauseMenu"]
@@ -403,6 +402,12 @@ custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+
+[node name="callReminder" type="Label" parent="pauseMenu/pauseMargin/pauseVbox"]
+modulate = Color(1, 1, 1, 0.741176)
+layout_mode = 2
+text = "HOLD [C] TO STOP PICKING EARLY"
+horizontal_alignment = 1
 
 [node name="quitButton" type="Button" parent="pauseMenu/pauseMargin/pauseVbox"]
 layout_mode = 2

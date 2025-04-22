@@ -58,14 +58,14 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"nameLabel"
-text = "ACTION-THEM"
+text = "SCHLADEEM"
 horizontal_alignment = 1
 
 [node name="toyDesc" type="Label" parent="toyHBox/toyAArea/toyVbox"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"listingLabel"
-text = "Poseable, playable, and super funnable. Its ACTION-THEM, the most popular action figure on the market! Can you collect all the ACTION-THEMS?
+text = "Poseable, playable, and super funnable. Its ACTION-THEM, the most popular action figure on the market! Can you collect all the SCHLADEEMS?
 
 [YOUR END GOAL]
 "

@@ -3,6 +3,7 @@ extends TrashTool
 @onready var pickerMesh := $pickerMesh
 @onready var vacuumArea := $vacuumArea
 @onready var litterArea := $litterArea
+@onready var suckSound := $suckSound
 
 var sucked_trash := []
 var sucking := false
@@ -26,10 +27,12 @@ func _process(delta: float) -> void:
 
 func primaryDown():
 	sucking = true
-
+	suckSound.play()
+	
 func primaryUp():
 	sucking = false
-
+	suckSound.stop()
+	
 func addTrash(t):
 	if t is TrashBox and isTrashValid(t.get_parent()):
 		sucked_trash.append(t.get_parent())
@@ -45,6 +48,7 @@ func collectTrash(t):
 	if sucking and t is TrashBox and isTrashValid(t.get_parent()):
 		emit_signal("attempt_collect_trash", t.get_parent())
 		sucked_trash.erase(t.get_parent())
+		AudioHandler.playSound("%s_pickup" % [TrashData.trash_type_names[t.get_parent().type]])
 
 func upgrade():
 	vacuumArea.scale = Vector3.ONE * (1+0.2 * GameData.tool_data[tool_name]['upgrade'])

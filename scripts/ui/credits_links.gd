@@ -13,4 +13,5 @@ func _ready() -> void:
 		l.meta_clicked.connect(openCreditsLink)
 		
 func openCreditsLink(link):
+	AudioHandler.playSound("ui_click")
 	OS.shell_open(str(link))

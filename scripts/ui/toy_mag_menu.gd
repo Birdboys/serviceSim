@@ -60,7 +60,9 @@ func _ready() -> void:
 func reset():
 	visible = false
 	can_turn_page = false
-	if current_page != 0: magAnim.play_backwards("open_toy_mag")
+	if current_page != 0: 
+		AudioHandler.playSound("mag_close")
+		magAnim.play_backwards("open_toy_mag")
 	current_page = 0
 	if leftPageViewport.get_child_count() > 0: leftPageViewport.get_children().map(func(x): x.queue_free())
 	if rightPageViewport.get_child_count() > 0: rightPageViewport.get_children().map(func(x): x.queue_free())
@@ -100,7 +102,7 @@ func turnPage(left: bool):
 			magAnim.play_backwards("open_toy_mag")
 		else: magAnim.play("turn_page_right")
 		current_page -= 1
-	
+	AudioHandler.playSound("mag_open")
 	await magAnim.animation_finished
 	can_turn_page = true
 	toggleUI(current_page != 0)
@@ -144,6 +146,7 @@ func updateMoneyLabel():
 
 func toyPressed(slot):
 	if rightPageViewport.get_child(0) is not ToyMagPage: return
+	AudioHandler.playSound("ui_click")
 	var toy_name : String
 	match slot:
 		"leftA": 

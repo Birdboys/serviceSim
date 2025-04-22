@@ -25,6 +25,7 @@ func reset():
 	
 func toolClicked(t):
 	if t in equipped_tools: return
+	AudioHandler.playSound("ui_click")
 	for i in range(len(equipped_tools)):
 		if equipped_tools[i] == "": 
 			equipped_tools[i] = t
@@ -34,6 +35,7 @@ func toolClicked(t):
 
 func gearClicked(event: InputEvent, i):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1 and equipped_tools[i] != "": 
+		AudioHandler.playSound("ui_click")
 		equipped_tools[i] = ""
 		doorHbox.get_child(i).updateIcon("")
 		pushToolData()

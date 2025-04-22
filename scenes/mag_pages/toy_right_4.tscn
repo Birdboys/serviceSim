@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://e2tq5r88soll"]
+[gd_scene load_steps=5 format=3 uid="uid://e2tq5r88soll"]
 
 [ext_resource type="Theme" uid="uid://cxdkmx1yqhiuv" path="res://assets/themes/toy_mag.tres" id="1_jy237"]
 [ext_resource type="Script" uid="uid://c17v8isknm8re" path="res://scripts/toy_mag_page.gd" id="2_so627"]
-[ext_resource type="Texture2D" uid="uid://cf477chf54nng" path="res://assets/toy_icons/action_figure.png" id="3_h72lu"]
+[ext_resource type="Texture2D" uid="uid://cktn5afvqgoj8" path="res://assets/toy_icons/action_figure_c.png" id="3_jy237"]
+[ext_resource type="Texture2D" uid="uid://drvotbnvqepxl" path="res://assets/toy_icons/action_figure_o.png" id="4_so627"]
 
 [node name="rightPage4" type="VBoxContainer"]
 anchors_preset = 15
@@ -49,7 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_h72lu")
+texture = ExtResource("3_jy237")
 expand_mode = 1
 stretch_mode = 5
 
@@ -57,14 +58,14 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"nameLabel"
-text = "ACTION-THEM GAMMA"
+text = "SCHLADEEM GAMMA"
 autowrap_mode = 3
 
 [node name="toyDesc" type="Label" parent="toyHBox/toyAArea/toyVbox"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"listingLabel"
-text = "Another member of the ACTION-THEM crew.
+text = "Another member of the SCHLADEEM crew.
 
 [COLLECT THEM ALL?]
 "
@@ -96,7 +97,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 10
 theme_type_variation = &"nameLabel"
-text = "ALPHA-THEM OMAEGA"
+text = "SCHLADEEM OMEGA"
 horizontal_alignment = 2
 autowrap_mode = 3
 
@@ -104,7 +105,7 @@ autowrap_mode = 3
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"listingLabel"
-text = "Another member of the ACTION-THEM crew.
+text = "Another member of the SCHLADEEM crew.
 
 [COLLECT THEM ALL?]
 "
@@ -123,7 +124,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_h72lu")
+texture = ExtResource("4_so627")
 expand_mode = 1
 stretch_mode = 5
 

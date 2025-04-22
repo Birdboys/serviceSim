@@ -9,7 +9,7 @@ points = PackedVector3Array(-10, 6.59985, -9, -9.00171, -5, -8.00098, -10, 6.599
 mesh = ExtResource("1_dxole")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 257
+collision_layer = 1281
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]

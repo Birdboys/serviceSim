@@ -27,11 +27,13 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape") and can_pause:
 		if get_tree().paused: #unpause
+			AudioHandler.playSound("ui_click")
 			visible = false
 			get_tree().paused = false
 			emit_signal("game_paused", false)
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		else: #pause
+			AudioHandler.playSound("ui_click")
 			emit_signal("game_paused", true)
 			setSliders()
 			visible = true

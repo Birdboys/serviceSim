@@ -1,4 +1,4 @@
-[gd_scene load_steps=270 format=4 uid="uid://dp6pjn8bcgigu"]
+[gd_scene load_steps=271 format=4 uid="uid://dp6pjn8bcgigu"]
 
 [ext_resource type="Script" uid="uid://bmkdeiv33ldnb" path="res://scripts/bed_menu.gd" id="1_mswj1"]
 [ext_resource type="ArrayMesh" uid="uid://cmcnbsmd2mcmq" path="res://assets/trash_meshes/carton_small.tres" id="2_atm4g"]
@@ -2251,8 +2251,36 @@ _data = {
 &"turn_page_right": SubResource("Animation_l1wjq")
 }
 
+[sub_resource type="Animation" id="Animation_1hlsn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_i6od6"]
 resource_name = "reset_middle"
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2277,9 +2305,34 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../../tableMesh/toolMag/magMidHinge:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ekvf7"]
 _data = {
+&"RESET": SubResource("Animation_1hlsn"),
 &"reset_middle": SubResource("Animation_i6od6")
 }
 

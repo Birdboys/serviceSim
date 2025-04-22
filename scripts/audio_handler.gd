@@ -10,7 +10,9 @@ extends Node
 @onready var queue_length := 10
 @onready var queue_index := 0
 @onready var queue_3d_index := 0
-@onready var audio_num_vars = {"footstep_grass":1, "footstep_pavement":1, "footstep_rocks":1, "footstep_water":1, "footstep_metal":1,}
+@onready var audio_num_vars = {"footstep_grass":4, "footstep_pavement":4, "footstep_rocks":4, "footstep_water":4, "footstep_metal":4, "footstep_bush":2,
+"metal_pickup":3, "metal_reject":3, "glass_pickup":1, "glass_reject":3, "plastic_pickup":3, "paper_pickup":1,
+"computer_sounds":3, "ui_click":3, "mag_open":3}
 @onready var playlist_queue := {
 	0: {
 		"track": preload("res://assets/music/untitled_kyro.wav"),
@@ -31,6 +33,16 @@ extends Node
 		"track": preload("res://assets/music/peaks_of_the_horizon.mp3"),
 		"title": "Peaks of the Horizon",
 		"artist": "WyzeGye",
+	},
+	4: {
+		"track": preload("res://assets/music/oh_girl.mp3"),
+		"title": "Oh Girl!",
+		"artist": "Esai Vargas",
+	},
+	5: {
+		"track": preload("res://assets/music/the_daze_master.mp3"),
+		"title": "Daze",
+		"artist": "Esai Vargas",
 	},
 }
 

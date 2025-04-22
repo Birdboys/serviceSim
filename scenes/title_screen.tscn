@@ -372,7 +372,7 @@ HOLD [C] WHILE LITTER PICKING TO LEAVE EARLY
 SPEND CREDITS ON TOOLS AND TOYS
 TOOLS: USED TO COLLECT TRASH  -  TOYS: GIVE SPECIAL PERKS
 
-EARN 1000 CREDITS AND PURCHASE THE \"ACTION-THEM\" TOY,
+EARN 1000 CREDITS AND PURCHASE THE \"SCHLADEEM\" TOY,
 YOUR FAVORITE ACTION FIGURE"
 horizontal_alignment = 1
 
@@ -526,7 +526,8 @@ size_flags_horizontal = 10
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[url=\"https://soundcloud.com/drsanic\"]Kyro[/url]
-[url=\"https://www.youtube.com/@wyzegye\"]WyzeGye[/url]"
+[url=\"https://www.youtube.com/@wyzegye\"]WyzeGye[/url]
+[url=\"https://open.spotify.com/artist/3GpJaMiYj3MlsnDtMx4r8J?si=LQh3uNweTIqG9yNyckrQKw\"]Esai Vargas[/url]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

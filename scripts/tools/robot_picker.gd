@@ -4,6 +4,7 @@ extends TrashToolBody
 @onready var litterArea := $litterArea
 @onready var pickupArea := $pickupArea
 @onready var pickerAnim := $pickerAnim
+@onready var suckSound := $suckSound
 @export var collectable := false
 
 var going := false
@@ -38,6 +39,7 @@ func primaryDown():
 
 func throwRobot():
 	if throw_tween is Tween: throw_tween.kill()
+	suckSound.play()
 	top_level = true
 	velocity = -(player.transform.basis.z) * throw_velocity
 	print(velocity)
@@ -52,6 +54,7 @@ func throwRobot():
 	
 func pickupRobot(b_): 
 	if not collectable: return
+	suckSound.stop()
 	collectable = false
 	going = false
 	print("PICKED UP")
@@ -62,6 +65,7 @@ func pickupRobot(b_):
 
 func collectTrash(t):
 	if going and t is TrashBox and isTrashValid(t.get_parent()):
+		AudioHandler.playSound("%s_reject" % [TrashData.trash_type_names[t.get_parent().type]])
 		emit_signal("attempt_collect_trash", t.get_parent())
 
 func upgrade():

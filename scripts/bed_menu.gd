@@ -73,6 +73,7 @@ func _ready() -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape") and can_click:
+		AudioHandler.playSound("ui_click")
 		if current_menu != "bed" and current_menu != "help":
 			UI.escLabel.visible = false
 			can_click = false
@@ -87,6 +88,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			UI.reset()
 			loadMenu(current_menu)
 	if event.is_action_pressed("bag") and can_click and current_menu == "bed":
+		AudioHandler.playSound("ui_click")
 		UI.escLabel.visible = false
 		can_click = false
 		current_menu = escape_path[current_menu]
@@ -96,6 +98,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func menuClick(cam, event:InputEvent, _event_pos, _event_norm, _shape_idx, m):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1 and can_click:
 		if m == current_menu: return
+		AudioHandler.playSound("ui_click")
 		can_click = false
 		UI.reset()
 		leaveMenu(current_menu)
@@ -174,7 +177,9 @@ func toggleToolCols(on: bool):
 func toggleDoor(on: bool):
 	if current_menu != "door": return
 	if not GameData.current_gear.any(func(t): return t != ""): return
-	if on: doorAnim.play("open_door")
+	if on: 
+		AudioHandler.playSound("door_open")
+		doorAnim.play("open_door")
 	else: doorAnim.play_backwards("open_door")
 
 func toggleReady(yes: bool):
@@ -184,6 +189,7 @@ func tryToLeave(cam, event:InputEvent, _event_pos, _event_norm, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1 and can_leave:
 		can_leave = false
 		GameData.saveGame()
+		AudioHandler.playSound("door_close")
 		get_tree().change_scene_to_file("res://scenes/litter_picking_level.tscn")
 
 func getOwnedTools():
