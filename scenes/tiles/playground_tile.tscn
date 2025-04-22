@@ -283,7 +283,7 @@ trash_dist = {
 [node name="cars" type="Node3D" parent="."]
 
 [node name="merry_go" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25032, 0.511395, 2.24996)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25032, 0.275726, 2.24996)
 mesh = SubResource("ArrayMesh_g3sab")
 skeleton = NodePath("")
 
@@ -293,7 +293,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_ev813")
 
 [node name="merry_go2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74968, 0.511395, -5.75004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74968, 0.275726, -5.75004)
 mesh = SubResource("ArrayMesh_g3sab")
 skeleton = NodePath("")
 
@@ -303,7 +303,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_ev813")
 
 [node name="swings" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6972, 2.80604, 14.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6972, 2.50299, 14.25)
 mesh = SubResource("ArrayMesh_v10sh")
 skeleton = NodePath("")
 
@@ -313,7 +313,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_67lha")
 
 [node name="swings2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30281, 2.80604, 14.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30281, 2.50299, 14.25)
 mesh = SubResource("ArrayMesh_v10sh")
 skeleton = NodePath("")
 

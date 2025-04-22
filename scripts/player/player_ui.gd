@@ -49,12 +49,12 @@ func initBag(dim):
 
 func openTrashBag():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	AudioHandler.playSound("open_bag")
+	AudioHandler.playSound("bag_open")
 	bagAnim.play("open_bag")
 
 func closeTrashBag():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	AudioHandler.playSound("close_bag")
+	AudioHandler.playSound("bag_close")
 	bagAnim.play_backwards("open_bag")
 
 func updateBagLabel(v, m):

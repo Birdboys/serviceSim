@@ -98,6 +98,7 @@ func collectTrash(t):
 		held_trash.append(t.get_parent())
 		var new_trash = t.get_parent()
 		new_trash.reparent(trashPos)
+		AudioHandler.playSound("%s_pickup" % [TrashData.trash_type_names[new_trash.type]])
 		#new_trash.position = new_trash.position.normalized() * 0.2
 
 func upgrade():

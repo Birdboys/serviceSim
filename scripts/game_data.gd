@@ -37,7 +37,7 @@ const toy_mag_data := {
 var total_trash_collected := 0
 var total_money := 0
 
-@onready var current_gear := ["basic_picker"]
+@onready var current_gear := ["basic_picker"]#["better_picker", "claw_picker", "auto_picker", "extendo_picker", "spear_picker", "pogo_picker", "net_picker", "vacuum_picker", "robot_picker"]
 @onready var bag_dim :=  Vector2(8,8)
 @onready var game_time := 2.5 * 60.0 #seconds
 @onready var call_time := 2.5
@@ -167,3 +167,12 @@ func resetSaveData():
 	current_gear = ["basic_picker"]
 	createSaveData()
 	return
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("test"): screenShot()
+	
+func screenShot():
+	return
+	var sc = get_viewport().get_texture().get_image()
+	var image_name = str(int(Time.get_ticks_msec()/1000)) + ".png"
+	var error = sc.save_png("user://"+image_name)
