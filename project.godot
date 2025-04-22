@@ -138,6 +138,7 @@ skate={
 3d_physics/layer_12="rocks"
 3d_physics/layer_13="water"
 3d_physics/layer_14="metal"
+3d_physics/layer_15="bush"
 
 [rendering]
 
